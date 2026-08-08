@@ -1,0 +1,111 @@
+# Slovak Crazy-News → Telegram (RU) Bot
+
+Automated pipeline: scrape Slovak news → AI scores how "crazy"/tabloid it is → translates + writes a труха-style caption in Russian → posts to a Telegram channel. Runs on a schedule via GitHub Actions, $0/month hosting.
+
+---
+
+## 1. Telegram setup (do this first)
+
+1. **Create the bot**
+   - Open Telegram, message **@BotFather**
+   - Send `/newbot`, give it a name and a username (must end in `bot`, e.g. `svktrukha_bot`)
+   - BotFather replies with a **bot token** — save it, you'll need it as `TELEGRAM_BOT_TOKEN`
+
+2. **Create the channel**
+   - Create a new Telegram channel (public or private)
+   - Add your bot as an **administrator** of the channel (needs "Post Messages" permission)
+
+3. **Get the channel ID**
+   - If public: the ID is just `@yourchannelname`
+   - If private: post any message in the channel, then visit
+     `https://api.telegram.org/bot<TOKEN>/getUpdates`
+     and look for the `chat.id` (looks like `-1001234567890`)
+   - Save this as `TELEGRAM_CHANNEL_ID`
+
+4. **Test it manually** (optional sanity check, replace values):
+   ```bash
+   curl -X POST "https://api.telegram.org/bot<TOKEN>/sendMessage" \
+     -d chat_id="<CHANNEL_ID>" \
+     -d text="test post"
+   ```
+
+---
+
+## 2. Google AI Studio (Gemini API) setup
+
+1. Go to https://aistudio.google.com/
+2. Sign in, click **Get API key** → **Create API key** (no credit card needed)
+3. Save it as `GEMINI_API_KEY`
+4. Free tier: Gemini 2.5 Flash, ~1,500 requests/day — way more than the 20-30 articles/day this needs
+
+---
+
+## 3. Repo setup
+
+1. Create a new **GitHub repo** (private is fine, Actions free tier is generous either way)
+2. Add repo secrets: **Settings → Secrets and variables → Actions → New repository secret**
+   - `TELEGRAM_BOT_TOKEN`
+   - `TELEGRAM_CHANNEL_ID`
+   - `GEMINI_API_KEY`
+3. Paste this file into the repo root as `PROJECT_BRIEF.md` — use it as the spec when you prompt Gemini CLI to scaffold the code.
+
+---
+
+## 4. What to ask Gemini CLI to build
+
+Give it this brief directly. Target structure:
+
+```
+/
+├── .github/workflows/run.yml     # scheduled trigger
+├── scraper.py                    # fetch + parse Slovak news
+├── classify_translate.py         # Gemini call: score + translate + caption
+├── post_telegram.py              # send to channel
+├── main.py                       # orchestrates the above
+├── seen_urls.json                # dedup state, committed back by the workflow
+└── requirements.txt
+```
+
+**Sources to scrape** (RSS first, HTML fallback):
+- Topky.sk
+- Cas.sk
+- Noviny.sk
+- Pluska.sk
+- Aktuality.sk
+
+**Pipeline logic:**
+1. Pull latest articles from each source's RSS feed (or scrape if no RSS)
+2. Compare URLs against `seen_urls.json`, skip already-posted
+3. For each new article, send title + summary to Gemini with a prompt that returns JSON:
+   ```json
+   {
+     "craziness_score": 1-10,
+     "russian_title": "...",
+     "russian_caption": "трухa-style punchy caption in Russian"
+   }
+   ```
+4. If `craziness_score >= 7`, post to Telegram via Bot API (`sendMessage`, or `sendPhoto` if the article has an image)
+5. Append the URL to `seen_urls.json`
+6. Workflow commits the updated `seen_urls.json` back to the repo at the end of the run
+
+**GitHub Actions schedule** (`.github/workflows/run.yml`):
+- Trigger: `schedule: cron: '*/45 * * * *'` (every 45 min) + `workflow_dispatch` for manual runs
+- Steps: checkout → setup Python → install deps → run `main.py` with secrets as env vars → commit `seen_urls.json` if changed
+
+---
+
+## 5. Env vars the code needs
+
+| Variable | Source |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | BotFather |
+| `TELEGRAM_CHANNEL_ID` | getUpdates or @channelname |
+| `GEMINI_API_KEY` | Google AI Studio |
+
+---
+
+## 6. Notes / gotchas
+
+- Start with the craziness threshold conservative (7-8) and manually watch the first day or two of output before trusting it fully — tabloid "crazy" framing can drift into misleading or unverified claims fast.
+- Some Slovak sites may rate-limit or block generic scrapers — set a normal browser `User-Agent` header.
+- If Gemini free tier ever gets tight, Groq is the fallback (14.4K requests/day, add as a second provider with the same JSON-output prompt).
