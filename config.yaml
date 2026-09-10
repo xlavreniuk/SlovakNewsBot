@@ -1,0 +1,62 @@
+# ==============================================================================
+# Universal News Bot Configuration
+# ==============================================================================
+# This configuration defines which country to monitor, what type of news to find,
+# how to filter and score them, and how to format the output for Telegram.
+# To adapt this bot for another country or style, simply adjust the values below!
+
+# 1. Target Region and Topic
+country: "Slovakia"
+source_language: "Slovak"
+content_theme: "bizarre, crazy, shocking, funny, weird, or tabloid human-interest incidents, crimes, and viral stories"
+min_score: 7  # 1 to 10 craziness/tabloid threshold required to post
+
+# 2. Output and Style
+output:
+  target_language: "Russian"
+  style_guide: >
+    Труха-style: punchy, sarcastic, dramatic tabloid news tone.
+    Format requirements:
+    1. Start with 1-2 eye-catching emojis (⚡️, 🤡, 🤦‍♂️, 🍌, 🍻, 🚗💥, 🐻) followed by a bold, catchy headline.
+    2. Give 2-3 short, vivid, colloquial sentences summarizing what happened.
+    3. Highlight the location (e.g., "В Братиславе...", "В Словакии...").
+    4. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
+  max_caption_length: 900  # Stays safely under Telegram's 1024-character photo caption limit
+  include_source_link: true
+
+# 3. AI Model Settings
+ai:
+  provider: "gemini"
+  model: "gemini-2.5-flash"  # Automatic fallback to gemini-2.0-flash / gemini-1.5-flash
+  temperature: 0.3
+  batch_size: 10             # Evaluates up to 10 articles per prompt to stay within 15 RPM limits
+
+# 4. RSS Feed Sources
+# You can add, disable, or replace feeds here at any time.
+sources:
+  - name: "Topky Domáce"
+    rss_url: "https://www.topky.sk/rss/10/Spravy_-_Domace.rss"
+    enabled: true
+  - name: "Topky Zaujímavosti"
+    rss_url: "https://www.topky.sk/rss/13/Zaujimavosti.rss"
+    enabled: true
+  - name: "Aktuality"
+    rss_url: "https://www.aktuality.sk/rss/"
+    enabled: true
+  - name: "Pravda Správy"
+    rss_url: "https://www.pravda.sk/spravy/rss/xml"
+    enabled: true
+  - name: "Refresher SK"
+    rss_url: "https://refresher.sk/rss"
+    enabled: true
+  - name: "Teraz.sk Slovensko"
+    rss_url: "https://www.teraz.sk/rss/slovensko.rss"
+    enabled: true
+
+# 5. Pipeline Tuning
+settings:
+  max_articles_per_run: 30    # Maximum total new articles to evaluate per run
+  max_posts_per_run: 3        # Maximum posts sent to Telegram per run (prevents channel spamming)
+  history_retention_days: 14  # Auto-prune state entries older than 14 days
+  post_delay_seconds: 3       # Sleep between Telegram posts to respect rate limits
+  request_timeout_seconds: 15 # Network timeout for scraping and requests
