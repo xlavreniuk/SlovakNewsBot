@@ -26,6 +26,8 @@ output:
     6. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
   max_caption_length: 900  # Stays safely under Telegram's 1024-character photo caption limit
   include_source_link: true
+  channel_name: "Bratislava News"
+  channel_link: "https://t.me/bratislavanewss"
 
 # 3. AI Model Settings
 ai:

@@ -104,11 +104,11 @@ class AIEngine:
             logger.error("Empty caption returned for '%s'", article.title)
             return None
 
-        # Build final HTML caption
+        # Build final HTML caption with source and channel branding
         caption = self._clean_telegram_html(body)
-        if self.config.output.include_source_link and article.url:
-            source_tag = f'\n\n👉 <a href="{article.url}">{article.source_name}</a>'
-            caption += source_tag
+        footer = self._build_footer(article)
+        if footer:
+            caption += f"\n\n{footer}"
 
         # Check length limit for Telegram
         max_len = self.config.output.max_caption_length
@@ -117,6 +117,16 @@ class AIEngine:
             caption = self._truncate_html_caption(caption, max_len, article)
 
         return GeneratedPost(article=article, headline=headline, caption=caption)
+
+    def _build_footer(self, article: Article) -> str:
+        """Constructs footer with original source link and channel branding link."""
+        footer_parts = []
+        if self.config.output.include_source_link and article.url:
+            footer_parts.append(f'👉 <a href="{article.url}">{article.source_name}</a>')
+        if self.config.output.channel_link:
+            name = self.config.output.channel_name or "Bratislava News"
+            footer_parts.append(f'📢 <a href="{self.config.output.channel_link}">{name}</a>')
+        return " | ".join(footer_parts)
 
     @staticmethod
     def _clean_telegram_html(raw_html: str) -> str:
@@ -279,18 +289,18 @@ Return STRICTLY a JSON object with this structure:
 }}
 """
 
-    @staticmethod
-    def _truncate_html_caption(caption: str, max_len: int, article: Article) -> str:
-        """Safely trims text if it exceeds maximum length, preserving link."""
-        source_tag = f'\n\n👉 <a href="{article.url}">{article.source_name}</a>'
-        allowed_body = max_len - len(source_tag) - 10
+    def _truncate_html_caption(self, caption: str, max_len: int, article: Article) -> str:
+        """Safely trims text if it exceeds maximum length, preserving footer links."""
+        footer = self._build_footer(article)
+        footer_tag = f"\n\n{footer}" if footer else ""
+        allowed_body = max_len - len(footer_tag) - 10
         if allowed_body <= 50:
             return caption[:max_len]
 
         # Strip html tags before slicing to avoid malformed HTML
         clean = re.sub(r"<[^>]+>", "", caption)
         trimmed = clean[:allowed_body] + "..."
-        return f"<b>{trimmed}</b>{source_tag}"
+        return f"<b>{trimmed}</b>{footer_tag}"
 
     @staticmethod
     def _parse_json_safe(text: str) -> Optional[Any]:

@@ -21,6 +21,8 @@ class OutputConfig:
     style_guide: str = ""
     max_caption_length: int = 900
     include_source_link: bool = True
+    channel_name: str = "Bratislava News"
+    channel_link: str = "https://t.me/bratislavanewss"
 
 
 @dataclass
@@ -92,7 +94,9 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         target_language=output_data.get("target_language", "Russian"),
         style_guide=output_data.get("style_guide", "").strip(),
         max_caption_length=output_data.get("max_caption_length", 900),
-        include_source_link=output_data.get("include_source_link", True)
+        include_source_link=output_data.get("include_source_link", True),
+        channel_name=output_data.get("channel_name", "Bratislava News"),
+        channel_link=output_data.get("channel_link", "https://t.me/bratislavanewss")
     )
 
     ai_data = data.get("ai", {})
