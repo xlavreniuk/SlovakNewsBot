@@ -105,7 +105,7 @@ class AIEngine:
             return None
 
         # Build final HTML caption
-        caption = body
+        caption = self._clean_telegram_html(body)
         if self.config.output.include_source_link and article.url:
             source_tag = f'\n\n👉 <a href="{article.url}">{article.source_name}</a>'
             caption += source_tag
@@ -117,6 +117,25 @@ class AIEngine:
             caption = self._truncate_html_caption(caption, max_len, article)
 
         return GeneratedPost(article=article, headline=headline, caption=caption)
+
+    @staticmethod
+    def _clean_telegram_html(raw_html: str) -> str:
+        """Sanitizes HTML for Telegram Bot API (converts <br> and <p> to newlines, preserves <b>, <i>, <a>)."""
+        if not raw_html:
+            return ""
+        # Replace br tags with newlines
+        text = re.sub(r"<br\s*/?>", "\n", raw_html, flags=re.IGNORECASE)
+        # Replace p tags with double newlines
+        text = re.sub(r"<\s*p[^>]*>", "", text, flags=re.IGNORECASE)
+        text = re.sub(r"<\s*/\s*p\s*>", "\n\n", text, flags=re.IGNORECASE)
+        # Strip unsupported tags while keeping text
+        # Telegram only allows: b, strong, i, em, u, ins, s, strike, del, span, tg-spoiler, a, tg-emoji, code, pre
+        allowed = r"</?(?:b|strong|i|em|u|ins|s|strike|del|a)(?:\s+href=[\"'][^\"']*[\"'])?\s*/?>"
+        # Remove any other HTML tag
+        clean = re.sub(r"<[^>]+>", lambda m: m.group(0) if re.match(allowed, m.group(0), re.IGNORECASE) else "", text)
+        # Collapse excessive newlines
+        clean = re.sub(r"\n{3,}", "\n\n", clean).strip()
+        return clean
 
     def _call_gemini_json(self, prompt: str) -> Optional[Any]:
         """Calls Gemini API with JSON enforcement, handling model fallbacks."""

@@ -22,13 +22,25 @@ class TelegramPoster:
         Posts article to Telegram.
         Tries sendPhoto if an image is provided; falls back to sendMessage on failure.
         """
+        clean_caption = self._sanitize_html(caption)
+
         if image_url:
-            success = self._send_photo(image_url, caption)
+            success = self._send_photo(image_url, clean_caption)
             if success:
                 return True
             logger.warning("sendPhoto failed or rejected image. Falling back to sendMessage.")
 
-        return self._send_message(caption)
+        return self._send_message(clean_caption)
+
+    @staticmethod
+    def _sanitize_html(text: str) -> str:
+        """Converts <br> and <p> into real newlines for Telegram parse_mode='HTML'."""
+        if not text:
+            return ""
+        text = re.sub(r"<br\s*/?>", "\n", text, flags=re.IGNORECASE)
+        text = re.sub(r"<\s*p[^>]*>", "", text, flags=re.IGNORECASE)
+        text = re.sub(r"<\s*/\s*p\s*>", "\n\n", text, flags=re.IGNORECASE)
+        return text.strip()
 
     def _send_photo(self, photo_url: str, caption: str) -> bool:
         url = f"{self.base_url}/sendPhoto"
