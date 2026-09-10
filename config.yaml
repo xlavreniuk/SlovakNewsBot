@@ -15,12 +15,13 @@ min_score: 7  # 1 to 10 craziness/tabloid threshold required to post
 output:
   target_language: "Russian"
   style_guide: >
-    Труха-style: punchy, sarcastic, dramatic tabloid news tone.
+    Труха-style: punchy, sarcastic, dramatic tabloid news tone, BUT STRICTLY FACTUAL.
     Format requirements:
     1. Start with 1-2 eye-catching emojis (⚡️, 🤡, 🤦‍♂️, 🍌, 🍻, 🚗💥, 🐻) followed by a bold, catchy headline.
-    2. Give 2-3 short, vivid, colloquial sentences summarizing what happened.
+    2. Give 2-3 short, vivid sentences summarizing what happened.
     3. Highlight the location (e.g., "В Братиславе...", "В Словакии...").
-    4. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
+    4. FACT-CHECKING RULE: Stick strictly to the verified facts in the source. Do NOT invent details, do NOT exaggerate facts into falsehoods, and do NOT make up fake context. Real news only.
+    5. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
   max_caption_length: 900  # Stays safely under Telegram's 1024-character photo caption limit
   include_source_link: true
 
@@ -28,7 +29,7 @@ output:
 ai:
   provider: "gemini"
   model: "gemini-3.5-flash-lite"  # Fast, highly available model on free tier (fallback: gemini-3.1-flash-lite)
-  temperature: 0.3
+  temperature: 0.2           # Lower temperature = higher factual accuracy and zero hallucination
   batch_size: 10             # Evaluates up to 10 articles per prompt to stay within 15 RPM limits
 
 # 4. RSS Feed Sources
@@ -56,7 +57,7 @@ sources:
 # 5. Pipeline Tuning
 settings:
   max_articles_per_run: 30    # Maximum total new articles to evaluate per run
-  max_posts_per_run: 3        # Maximum posts sent to Telegram per run (prevents channel spamming)
+  max_posts_per_run: 1        # Optimal pacing: 1 top story per run (e.g. 1 per hour)
   history_retention_days: 14  # Auto-prune state entries older than 14 days
   post_delay_seconds: 3       # Sleep between Telegram posts to respect rate limits
   request_timeout_seconds: 15 # Network timeout for scraping and requests

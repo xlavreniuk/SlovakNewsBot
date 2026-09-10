@@ -241,11 +241,12 @@ Summary: {article.summary}
 STYLE AND TONE GUIDE:
 {self.config.output.style_guide}
 
-STRICT FORMATTING REQUIREMENTS:
+STRICT FORMATTING AND FACTUAL REQUIREMENTS:
 1. Output language: {self.config.output.target_language}.
 2. Use valid HTML for formatting (<b>bold</b>, <i>italic</i>). Do NOT use Markdown (no asterisks, no hash headers).
 3. The post must be catchy, punchy, engaging, and clear.
 4. Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
+5. STRICT FACTUAL INTEGRITY: Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. The tone is lively and tabloid, but every single fact must be 100% real and accurate.
 
 Return STRICTLY a JSON object with this structure:
 {{
