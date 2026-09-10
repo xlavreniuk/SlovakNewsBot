@@ -98,7 +98,13 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         else:
             raise ValueError("GEMINI_API_KEY must be provided to run live evaluation.")
 
-    logger.info("%d articles qualified with score >= %d", len(qualified), config.min_score)
+    if config.settings.require_image:
+        before_count = len(qualified)
+        qualified = [q for q in qualified if q.article.image_url]
+        if before_count != len(qualified):
+            logger.info("Filtered %d qualified articles lacking images (require_image=True).", before_count - len(qualified))
+
+    logger.info("%d articles ready to post (score >= %d with images)", len(qualified), config.min_score)
 
     # 4. Limit to max posts per run
     selected = qualified[:config.settings.max_posts_per_run]

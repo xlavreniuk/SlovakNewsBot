@@ -34,7 +34,8 @@ class AIConfig:
 @dataclass
 class SettingsConfig:
     max_articles_per_run: int = 30
-    max_posts_per_run: int = 3
+    max_posts_per_run: int = 1
+    require_image: bool = True
     history_retention_days: int = 14
     post_delay_seconds: int = 3
     request_timeout_seconds: int = 15
@@ -115,7 +116,8 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
     settings_data = data.get("settings", {})
     settings_cfg = SettingsConfig(
         max_articles_per_run=int(settings_data.get("max_articles_per_run", 30)),
-        max_posts_per_run=int(settings_data.get("max_posts_per_run", 3)),
+        max_posts_per_run=int(settings_data.get("max_posts_per_run", 1)),
+        require_image=bool(settings_data.get("require_image", True)),
         history_retention_days=int(settings_data.get("history_retention_days", 14)),
         post_delay_seconds=int(settings_data.get("post_delay_seconds", 3)),
         request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15))
