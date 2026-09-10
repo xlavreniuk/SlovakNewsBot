@@ -146,7 +146,11 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             print(post.caption)
             print("=" * 60 + "\n")
         else:
-            success = poster.post(caption=post.caption, image_url=art.image_url)
+            success = poster.post(
+                caption=post.caption,
+                image_url=art.image_url,
+                require_image=config.settings.require_image
+            )
             if success:
                 state.record_posted_story(art.url, art.title)
                 logger.info("Successfully posted to channel: '%s'", art.title)

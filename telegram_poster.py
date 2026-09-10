@@ -17,10 +17,10 @@ class TelegramPoster:
         self.timeout = timeout
         self.base_url = f"https://api.telegram.org/bot{self.bot_token}"
 
-    def post(self, caption: str, image_url: Optional[str] = None) -> bool:
+    def post(self, caption: str, image_url: Optional[str] = None, require_image: bool = True) -> bool:
         """
         Posts article to Telegram.
-        Tries sendPhoto if an image is provided; falls back to sendMessage on failure.
+        If require_image is True, it MUST succeed as sendPhoto, and will NEVER fall back to plain text.
         """
         clean_caption = self._sanitize_html(caption)
 
@@ -28,7 +28,14 @@ class TelegramPoster:
             success = self._send_photo(image_url, clean_caption)
             if success:
                 return True
-            logger.warning("sendPhoto failed or rejected image. Falling back to sendMessage.")
+            logger.warning("sendPhoto failed or image was inaccessible.")
+            if require_image:
+                logger.error("require_image is True: refusing to fall back to plain text.")
+                return False
+
+        if require_image:
+            logger.error("No image provided and require_image is True: refusing to post plain text.")
+            return False
 
         return self._send_message(clean_caption)
 
