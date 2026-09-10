@@ -87,24 +87,92 @@ class NewsScraper:
         return articles
 
     def enrich_image_if_missing(self, article: Article) -> None:
-        """Attempts to scrape og:image or twitter:image from article HTML if RSS lacked an image."""
+        """Robust multi-source image scraper (OpenGraph, Twitter card, JSON-LD, and lead figures)."""
+        # If image already present, verify it is accessible
         if article.image_url:
-            return
+            if self._verify_image_url(article.image_url):
+                return
+            else:
+                logger.debug("Existing image_url failed verification: %s", article.image_url)
+                article.image_url = None
 
         try:
-            resp = self.session.get(article.url, timeout=5)
-            if resp.status_code == 200:
-                soup = BeautifulSoup(resp.content, "html.parser")
-                og_img = soup.find("meta", property="og:image") or soup.find("meta", attrs={"name": "og:image"})
-                if og_img and og_img.get("content"):
-                    article.image_url = og_img.get("content").strip()
-                    return
+            resp = self.session.get(article.url, timeout=8)
+            if resp.status_code != 200:
+                return
 
-                tw_img = soup.find("meta", property="twitter:image") or soup.find("meta", attrs={"name": "twitter:image"})
-                if tw_img and tw_img.get("content"):
-                    article.image_url = tw_img.get("content").strip()
+            soup = BeautifulSoup(resp.content, "html.parser")
+
+            # 1. OpenGraph meta (highest quality)
+            for attr in [{"property": "og:image"}, {"name": "og:image"}, {"property": "og:image:secure_url"}]:
+                tag = soup.find("meta", attrs=attr)
+                if tag and tag.get("content"):
+                    candidate = tag.get("content").strip()
+                    if self._verify_image_url(candidate):
+                        article.image_url = candidate
+                        logger.info("Found verified og:image for '%s': %s", article.title[:40], candidate)
+                        return
+
+            # 2. Twitter Card image
+            for attr in [{"name": "twitter:image"}, {"property": "twitter:image"}]:
+                tag = soup.find("meta", attrs=attr)
+                if tag and tag.get("content"):
+                    candidate = tag.get("content").strip()
+                    if self._verify_image_url(candidate):
+                        article.image_url = candidate
+                        logger.info("Found verified twitter:image for '%s'", article.title[:40])
+                        return
+
+            # 3. Schema.org JSON-LD structured data
+            for script in soup.find_all("script", type="application/ld+json"):
+                try:
+                    import json
+                    data = json.loads(script.string or "")
+                    if isinstance(data, dict):
+                        img = data.get("image")
+                        candidate = None
+                        if isinstance(img, str):
+                            candidate = img
+                        elif isinstance(img, list) and img and isinstance(img[0], str):
+                            candidate = img[0]
+                        elif isinstance(img, dict) and img.get("url"):
+                            candidate = img.get("url")
+
+                        if candidate and self._verify_image_url(candidate):
+                            article.image_url = candidate
+                            logger.info("Found verified JSON-LD image for '%s'", article.title[:40])
+                            return
+                except Exception:
+                    pass
+
+            # 4. Lead figure or article image
+            for selector in ["figure img", "article img", ".lead-image img", ".article-body img"]:
+                img = soup.select_one(selector)
+                if img:
+                    candidate = img.get("src") or img.get("data-src")
+                    if candidate and candidate.startswith("http"):
+                        if self._verify_image_url(candidate):
+                            article.image_url = candidate
+                            logger.info("Found verified figure image for '%s'", article.title[:40])
+                            return
         except Exception as e:
-            logger.debug("Could not scrape og:image for %s: %s", article.url, e)
+            logger.debug("Failed to enrich image for %s: %s", article.url, e)
+
+    def _verify_image_url(self, url: str) -> bool:
+        """Verifies that an image URL is live, returns HTTP 200, and is a valid image > 3KB."""
+        if not url or not url.startswith("http"):
+            return False
+        try:
+            r = self.session.get(url, timeout=5, stream=True)
+            if r.status_code == 200:
+                ctype = r.headers.get("Content-Type", "").lower()
+                clen = int(r.headers.get("Content-Length", 10000))
+                # Must be an image and greater than 3KB (to filter out tracking pixels and tiny icons)
+                if ("image" in ctype or url.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))) and clen > 3000:
+                    return True
+        except Exception:
+            pass
+        return False
 
     def _extract_summary(self, entry) -> str:
         """Extracts and strips HTML tags from description or summary."""
