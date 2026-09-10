@@ -7,51 +7,52 @@
 
 # 1. Target Region and Topic
 country: "Slovakia"
+target_city: "Bratislava"
 source_language: "Slovak"
-content_theme: "bizarre, crazy, shocking, funny, weird, or tabloid human-interest incidents, crimes, and viral stories"
-min_score: 7  # 1 to 10 craziness/tabloid threshold required to post
+content_theme: "crazy, bizarre, shocking, funny, weird, or notable news, crime blotters, accidents, transport, and city life occurring EXCLUSIVELY in BRATISLAVA (and Bratislava boroughs: Petržalka, Ružinov, Staré Mesto, Nové Mesto, Rača, Dúbravka, Karlova Ves, etc.)"
+min_score: 7  # 1 to 10 threshold required to post
 
 # 2. Output and Style
 output:
   target_language: "Russian"
   style_guide: >
-    Труха-style: punchy, sarcastic, dramatic tabloid news tone, BUT STRICTLY FACTUAL.
+    Труха-style: punchy, sarcastic, dramatic news tone, BUT STRICTLY FACTUAL.
     Format requirements:
-    1. Start with 1-2 eye-catching emojis (⚡️, 🤡, 🤦‍♂️, 🍌, 🍻, 🚗💥, 🐻) followed by a bold, catchy headline.
+    1. Start with 1-2 eye-catching emojis (⚡️, 🤡, 🤦‍♂️, 🚗💥, 🍻, 🚓) followed by a bold, catchy headline.
     2. Give 2-3 short, vivid sentences summarizing what happened.
-    3. Highlight the location (e.g., "В Братиславе...", "В Словакии...").
-    4. FACT-CHECKING RULE: Stick strictly to the verified facts in the source. Do NOT invent details, do NOT exaggerate facts into falsehoods, and do NOT make up fake context. Real news only.
-    5. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
+    3. Always specify the exact location in Bratislava (e.g., "В Братиславе на улице...", "В Петржалке...", "В Старом городе...").
+    4. FACT-CHECKING RULE: Stick strictly to the verified facts in the source. Do NOT invent details. Real news only.
+    5. LOCATION RULE: Strictly about Bratislava. Never post stories from other cities.
+    6. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
   max_caption_length: 900  # Stays safely under Telegram's 1024-character photo caption limit
   include_source_link: true
 
 # 3. AI Model Settings
 ai:
   provider: "gemini"
-  model: "gemini-3.5-flash-lite"  # Fast, highly available model on free tier (fallback: gemini-3.1-flash-lite)
-  temperature: 0.2           # Lower temperature = higher factual accuracy and zero hallucination
+  model: "gemini-3.5-flash-lite"  # Fast, highly available model on free tier
+  temperature: 0.2           # Low temperature for factual accuracy
   batch_size: 10             # Evaluates up to 10 articles per prompt to stay within 15 RPM limits
 
-# 4. RSS Feed Sources
-# You can add, disable, or replace feeds here at any time.
+# 4. RSS Feed Sources (Bratislava-focused + National feeds filtered for Bratislava)
 sources:
+  - name: "SME Bratislava"
+    rss_url: "https://bratislava.sme.sk/rss-title"
+    enabled: true
+  - name: "Bratislava Dnes24"
+    rss_url: "https://bratislava.dnes24.sk/rss"
+    enabled: true
+  - name: "Bratislavský Kraj"
+    rss_url: "https://bratislavskykraj.sk/feed/"
+    enabled: true
   - name: "Topky Domáce"
     rss_url: "https://www.topky.sk/rss/10/Spravy_-_Domace.rss"
-    enabled: true
-  - name: "Topky Zaujímavosti"
-    rss_url: "https://www.topky.sk/rss/13/Zaujimavosti.rss"
     enabled: true
   - name: "Aktuality"
     rss_url: "https://www.aktuality.sk/rss/"
     enabled: true
   - name: "Pravda Správy"
     rss_url: "https://www.pravda.sk/spravy/rss/xml"
-    enabled: true
-  - name: "Refresher SK"
-    rss_url: "https://refresher.sk/rss"
-    enabled: true
-  - name: "Teraz.sk Slovensko"
-    rss_url: "https://www.teraz.sk/rss/slovensko.rss"
     enabled: true
 
 # 5. Pipeline Tuning

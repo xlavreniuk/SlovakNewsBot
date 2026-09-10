@@ -214,26 +214,30 @@ class AIEngine:
             else "None yet"
         )
 
-        return f"""You are an editorial assistant for a Telegram channel monitoring news from {self.config.country}.
-Our channel specifically seeks stories fitting this theme:
+        return f"""You are an editorial assistant for a Telegram channel dedicated EXCLUSIVELY to BRATISLAVA, Slovakia.
+Channel theme:
 "{self.config.content_theme}"
 
-We want to filter out routine news (boring politics, standard business/finance, scheduled weather forecasts, generic sports results, regular announcements).
-We only want wild, bizarre, funny, shocking, tabloid, or extraordinary human-interest incidents and local crazy events.
+STRICT LOCATION REQUIREMENT - BRATISLAVA ONLY:
+1. The story MUST take place in Bratislava or its immediate boroughs/districts (Staré Mesto, Petržalka, Ružinov, Nové Mesto, Rača, Dúbravka, Karlova Ves, Devín, Devínska Nová Ves, Vrakuňa, Podunajské Biskupice, Lamač, Záhorská Bystrica, Vajnory, Jarovce, Rusovce, Čunovo, Pezinok, Senec, Malacky).
+2. If the story happened in ANY OTHER CITY (for example: Košice, Prešov, Žilina, Banská Bystrica, Nitra, Trnava, Poprad, Martin, or abroad), you MUST REJECT IT by setting score = 0 and reason = "Not in Bratislava".
+
+SCORING CRITERIA FOR BRATISLAVA STORIES:
+- 0: Not in Bratislava / outside Bratislava region.
+- 1-4: Routine politics, dull announcements, standard financial statements, boring statistics.
+- 5-6: Mildly interesting local Bratislava news, but nothing extraordinary.
+- 7-8: Genuinely wild, bizarre, funny, shocking, notable crime blotter, road incident, transport chaos, or viral event in Bratislava.
+- 9-10: Huge, unbelievable, absurd, or sensational event in Bratislava.
 
 Recently posted stories on the channel (AVOID DUPLICATE REPORTING OF THE SAME EVENT):
 {recent_text}
 
-Here is a batch of new incoming articles from {self.config.country}:
+Here is a batch of new incoming articles:
 {articles_text}
 
 Task:
 Evaluate each article by its ID.
-1. Assign a score from 1 to 10:
-   - 1-4: Routine, ordinary, political statements, business, sports match results, dull news.
-   - 5-6: Mildly interesting local news, but nothing extraordinary.
-   - 7-8: Genuinely crazy, funny, bizarre, shocking tabloid crime, bizarre human incident, or viral occurrence.
-   - 9-10: Mind-blowing, unbelievable, absurd tabloid event.
+1. Assign a score from 0 to 10 (STRICTLY 0 if not in Bratislava!).
 2. Check `is_duplicate`: Set true if this article covers the exact same event as any of the recently posted stories.
 3. Brief reason (one short phrase).
 
@@ -243,14 +247,14 @@ Respond STRICTLY with a valid JSON array of objects:
     "id": 0,
     "score": 8,
     "is_duplicate": false,
-    "reason": "Drunk driver in shopping cart"
+    "reason": "Petržalka car arsonist"
   }}
 ]
 """
 
     def _build_generation_prompt(self, article: Article) -> str:
-        return f"""You are a professional copywriter for a Telegram news channel.
-Adapt this {self.config.country} news article into {self.config.output.target_language}.
+        return f"""You are a professional copywriter for a Telegram news channel dedicated EXCLUSIVELY to BRATISLAVA.
+Adapt this Bratislava news article into {self.config.output.target_language}.
 
 ARTICLE DETAILS:
 Source: {article.source_name}
@@ -263,9 +267,10 @@ STYLE AND TONE GUIDE:
 STRICT FORMATTING AND FACTUAL REQUIREMENTS:
 1. Output language: {self.config.output.target_language}.
 2. Use valid HTML for formatting (<b>bold</b>, <i>italic</i>). Do NOT use Markdown (no asterisks, no hash headers).
-3. The post must be catchy, punchy, engaging, and clear.
-4. Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
-5. STRICT FACTUAL INTEGRITY: Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. The tone is lively and tabloid, but every single fact must be 100% real and accurate.
+3. Specify the exact Bratislava borough or street where it occurred (e.g. 'В Братиславе...', 'В Петржалке...', 'В Старом городе...').
+4. The post must be catchy, punchy, engaging, and clear.
+5. Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
+6. STRICT FACTUAL INTEGRITY: Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. Real news only.
 
 Return STRICTLY a JSON object with this structure:
 {{
