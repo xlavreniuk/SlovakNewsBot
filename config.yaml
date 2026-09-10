@@ -25,8 +25,8 @@ output:
     5. LOCATION RULE: Strictly about Bratislava. Never post stories from other cities.
     6. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
   max_caption_length: 900  # Stays safely under Telegram's 1024-character photo caption limit
-  include_source_link: true
-  channel_name: "Bratislava News"
+  include_source_link: false  # Do NOT mention original news source
+  channel_name: "Братислава"
   channel_link: "https://t.me/bratislavanewss"
 
 # 3. AI Model Settings
