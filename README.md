@@ -1,18 +1,24 @@
-# 🌍 Universal News → Telegram AI Bot
+# 🌍 Bratislava News → Telegram AI Bot
 
-An automated, configuration-driven pipeline that scrapes news feeds from **any country**, uses **Google Gemini AI** to score and filter for wild, bizarre, or tabloid news, translates and stylizes the stories (e.g., *«Труха»* style), and posts them to your Telegram channel.
+An automated, configuration-driven pipeline that monitors news for **Bratislava**, uses **Google Gemini AI** to score and filter for wild, bizarre, or notable local stories, translates and stylizes them into Russian *«Труха»* style, and publishes them with photos to the Telegram channel [t.me/bratislavanewss](https://t.me/bratislavanewss).
 
-Runs automatically on a schedule via **GitHub Actions ($0/month hosting)**.
+Runs 100% autonomously 24/7 on **GitHub Actions ($0/month hosting)**.
+
+> 📖 **For complete architectural documentation, prompt guidelines, and AI memory, see [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).**
 
 ---
 
 ## ✨ Features
 
-- **100% Configurable & Universal**: Swap country, topic theme, target language, writing style, and RSS sources in `config.yaml` without changing any code.
-- **Smart 2-Stage AI Evaluation**: Evaluates articles in batches to easily stay under Google AI Studio's free-tier rate limits (15 RPM).
-- **Cross-Source Deduplication**: Avoids posting the exact same event multiple times if multiple outlets report it.
-- **Telegram Formatting Resilience**: Uses clean HTML mode with automatic fallback: `sendPhoto` with caption $\rightarrow$ `sendMessage` fallback $\rightarrow$ plain text recovery.
-- **Auto-pruning State**: Prevents repository bloat by pruning `seen_urls.json` entries older than 14 days.
+- **Strictly Bratislava-Focused**: Only evaluates news happening in Bratislava and its boroughs. Stories from other cities are rejected.
+- **Always With Images**: Multi-source image extraction (OpenGraph, Twitter Cards, JSON-LD) with direct binary photo upload to Telegram.
+- **Zero Hallucination / Strictly Factual**: Real, verified news only (temperature 0.2, strict anti-rumor prompt).
+- **Smart 2-Stage AI Evaluation**: Batch triage groups articles together to easily stay under Google AI Studio's 15 RPM limit (<5% of free tier used).
+- **Cross-Source Deduplication**: Blocks reporting the same incident twice across different newspapers.
+- **Viral Channel Branding**: Every post ends with `📢 Bratislava` directly linking back to your channel.
+- **Autonomous Day/Night Schedule**: 
+  - ☀️ **Day (08:00 – 00:00):** Every 30 minutes
+  - 🌙 **Night (00:00 – 08:00):** Every 2 hours
 
 ---
 
@@ -20,18 +26,19 @@ Runs automatically on a schedule via **GitHub Actions ($0/month hosting)**.
 
 ```text
 .
-├── config.yaml               # Country, language, vibe, feeds & settings
+├── PROJECT_CONTEXT.md        # Full architectural memory and future AI reference
+├── config.yaml               # Country, city, feeds, AI thresholds, writing style, schedule settings
 ├── config.py                 # Configuration loader & validator
-├── scraper.py                # Universal RSS scraper & image extractor
+├── scraper.py                # Multi-layer RSS & webpage image scraper
 ├── ai_engine.py              # Gemini AI scoring, deduplication & copywriting
-├── telegram_poster.py        # Telegram Bot API client with resilience fallbacks
-├── state_manager.py          # seen_urls.json deduplication & pruning
+├── telegram_poster.py        # Telegram Bot API client with direct binary photo upload
+├── state_manager.py          # seen_urls.json deduplication & auto-pruning
 ├── main.py                   # Main pipeline entrypoint (supports --dry-run)
 ├── seen_urls.json            # State file tracking processed articles
 ├── requirements.txt          # Python dependencies
 ├── .env.example              # Template for environment variables
 └── .github/workflows/
-    └── run.yml               # GitHub Actions scheduled runner (runs every 45 min)
+    └── run.yml               # GitHub Actions scheduled runner (Day: 30m, Night: 2h)
 ```
 
 ---
