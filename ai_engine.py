@@ -123,7 +123,10 @@ class AIEngine:
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY is not set. Cannot call AI engine.")
 
-        for model in self.candidate_models:
+        # Put active model first
+        ordered_models = [self.active_model] + [m for m in self.candidate_models if m != self.active_model]
+
+        for model in ordered_models:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.api_key}"
             headers = {"Content-Type": "application/json"}
             payload = {
@@ -140,7 +143,7 @@ class AIEngine:
             }
 
             try:
-                resp = requests.post(url, headers=headers, json=payload, timeout=30)
+                resp = requests.post(url, headers=headers, json=payload, timeout=20)
                 if resp.status_code == 200:
                     self.active_model = model
                     result = resp.json()
@@ -152,14 +155,14 @@ class AIEngine:
                     )
                     return self._parse_json_safe(raw_text)
 
-                if resp.status_code == 404:
-                    logger.warning("Model %s returned 404 Not Found, trying next candidate...", model)
+                if resp.status_code in (404, 503):
+                    logger.warning("Model %s returned status %d, trying next candidate...", model, resp.status_code)
                     continue
 
                 if resp.status_code == 429:
-                    logger.warning("Gemini rate limit (429) hit. Waiting 5s before retrying...")
-                    time.sleep(5)
-                    resp = requests.post(url, headers=headers, json=payload, timeout=30)
+                    logger.warning("Gemini rate limit (429) hit. Waiting 4s before retrying...")
+                    time.sleep(4)
+                    resp = requests.post(url, headers=headers, json=payload, timeout=20)
                     if resp.status_code == 200:
                         self.active_model = model
                         result = resp.json()
@@ -296,7 +299,12 @@ Return STRICTLY a JSON object with this structure:
 
     @staticmethod
     def _build_model_candidates(preferred: str) -> List[str]:
-        standard = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
+        standard = [
+            "gemini-3.5-flash-lite",
+            "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
+            "gemini-flash-latest"
+        ]
         candidates = [preferred] if preferred else []
         for m in standard:
             if m not in candidates:

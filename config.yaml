@@ -27,7 +27,7 @@ output:
 # 3. AI Model Settings
 ai:
   provider: "gemini"
-  model: "gemini-2.5-flash"  # Automatic fallback to gemini-2.0-flash / gemini-1.5-flash
+  model: "gemini-3.5-flash-lite"  # Fast, highly available model on free tier (fallback: gemini-3.1-flash-lite)
   temperature: 0.3
   batch_size: 10             # Evaluates up to 10 articles per prompt to stay within 15 RPM limits
 
