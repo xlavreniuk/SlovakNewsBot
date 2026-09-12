@@ -10,7 +10,7 @@ country: "Slovakia"
 target_city: "Bratislava"
 source_language: "Slovak"
 content_theme: "crazy, bizarre, shocking, funny, weird, or notable news, crime blotters, accidents, transport, and city life occurring EXCLUSIVELY in BRATISLAVA (and Bratislava boroughs: Petržalka, Ružinov, Staré Mesto, Nové Mesto, Rača, Dúbravka, Karlova Ves, etc.)"
-min_score: 7  # 1 to 10 threshold required to post
+min_score: 5  # 1 to 10 threshold required to post (5 = notable local incident, 7+ = wild/crazy)
 
 # 2. Output and Style
 output:
@@ -36,16 +36,16 @@ ai:
   temperature: 0.2           # Low temperature for factual accuracy
   batch_size: 10             # Evaluates up to 10 articles per prompt to stay within 15 RPM limits
 
-# 4. RSS Feed Sources (Bratislava-focused + National feeds filtered for Bratislava)
+# 4. RSS Feed Sources (Bratislava-focused + National/Regional feeds)
 sources:
-  - name: "SME Bratislava"
-    rss_url: "https://bratislava.sme.sk/rss-title"
-    enabled: true
-  - name: "Bratislava Dnes24"
-    rss_url: "https://bratislava.dnes24.sk/rss"
-    enabled: true
   - name: "Bratislavský Kraj"
     rss_url: "https://bratislavskykraj.sk/feed/"
+    enabled: true
+  - name: "Pravda Regióny"
+    rss_url: "https://spravy.pravda.sk/regiony/rss/xml/"
+    enabled: true
+  - name: "Teraz Regióny"
+    rss_url: "https://www.teraz.sk/rss/regiony.rss"
     enabled: true
   - name: "Topky Domáce"
     rss_url: "https://www.topky.sk/rss/10/Spravy_-_Domace.rss"
@@ -54,7 +54,10 @@ sources:
     rss_url: "https://www.aktuality.sk/rss/"
     enabled: true
   - name: "Pravda Správy"
-    rss_url: "https://www.pravda.sk/spravy/rss/xml"
+    rss_url: "https://spravy.pravda.sk/domace/rss/xml/"
+    enabled: true
+  - name: "SME Bratislava"
+    rss_url: "https://bratislava.sme.sk/rss-title"
     enabled: true
 
 # 5. Pipeline Tuning

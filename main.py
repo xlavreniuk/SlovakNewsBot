@@ -19,6 +19,20 @@ logging.basicConfig(
 logger = logging.getLogger("news_bot")
 
 
+BRATISLAVA_KEYWORDS = [
+    'bratislav', 'petržal', 'ružinov', 'staré mesto', 'stare mesto',
+    'starom meste', 'starého mesta', 'nové mesto', 'nove mesto',
+    'novom meste', 'nového mesta', 'karlov', 'dúbravk', 'dubravk',
+    'rača', 'rači', 'račiansk', 'devín', 'devin', 'lamač', 'lamac',
+    'vajnory', 'vajnor', 'vrakuň', 'vrakun', 'biskupic', 'jarovc',
+    'rusovc', 'čunov', 'cunov', 'záhorsk', 'zahorsk', 'dunaj',
+    'most snp', 'prístavn', 'pristavn', 'apollo', 'sitina', 'kamzík',
+    'kamzik', 'koliba', 'trnavsk', 'patrónk', 'patronk', 'mlynsk',
+    'hodžov', 'hodzov', 'obchodná', 'obchodna', 'poštová', 'postov',
+    'pezinok', 'pezinsk', 'senec', 'seneck', 'malack'
+]
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Universal News -> Telegram AI Bot")
     parser.add_argument(
@@ -56,32 +70,49 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
     # 2. Fetch new articles from sources
     scraper = NewsScraper(timeout=config.settings.request_timeout_seconds)
     new_candidates: List[Article] = []
+    skipped_non_target_urls: List[str] = []
 
     enabled_sources = [s for s in config.sources if s.enabled]
     logger.info("Scanning %d enabled sources...", len(enabled_sources))
 
     for source in enabled_sources:
+        is_dedicated = (
+            "bratislav" in source.name.lower() or
+            "bratislav" in source.rss_url.lower()
+        )
         articles = scraper.fetch_articles_from_source(source.name, source.rss_url)
         for art in articles:
-            if not state.is_seen(art.url):
+            if state.is_seen(art.url):
+                continue
+
+            text_to_check = f"{art.title} {art.summary}".lower()
+            is_relevant = is_dedicated or any(kw in text_to_check for kw in BRATISLAVA_KEYWORDS)
+
+            if is_relevant:
                 new_candidates.append(art)
                 if len(new_candidates) >= config.settings.max_articles_per_run:
-                    logger.info("Reached maximum articles per run limit (%d).", config.settings.max_articles_per_run)
+                    logger.info("Reached maximum candidate articles limit (%d).", config.settings.max_articles_per_run)
                     break
+            else:
+                # Mark non-target articles so future runs do not re-scan them
+                skipped_non_target_urls.append(art.url)
+
         if len(new_candidates) >= config.settings.max_articles_per_run:
             break
 
-    logger.info("Discovered %d new, unread articles to analyze.", len(new_candidates))
+    logger.info(
+        "Discovered %d relevant Bratislava candidates (%d skipped as non-target).",
+        len(new_candidates),
+        len(skipped_non_target_urls)
+    )
     if not new_candidates:
-        logger.info("No new articles to process. Everything up to date!")
+        logger.info("No new Bratislava articles to process. Everything up to date!")
         if not dry_run:
+            for u in skipped_non_target_urls:
+                state.mark_seen(u)
             state.prune()
             state.save()
         return
-
-    # Enrich images if missing
-    for art in new_candidates:
-        scraper.enrich_image_if_missing(art)
 
     # 3. AI Evaluation & Scoring
     recent_titles = state.get_recent_posted_titles(hours=48)
@@ -98,18 +129,23 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         else:
             raise ValueError("GEMINI_API_KEY must be provided to run live evaluation.")
 
+    # 4. Enrich and verify images for qualified articles
     if config.settings.require_image:
-        before_count = len(qualified)
-        qualified = [q for q in qualified if q.article.image_url]
-        if before_count != len(qualified):
-            logger.info("Filtered %d qualified articles lacking images (require_image=True).", before_count - len(qualified))
+        valid_qualified: List[ScoredArticle] = []
+        for q in qualified:
+            scraper.enrich_image_if_missing(q.article)
+            if q.article.image_url:
+                valid_qualified.append(q)
+            else:
+                logger.info("Filtered qualified article lacking verified image: '%s'", q.article.title)
+        qualified = valid_qualified
 
     logger.info("%d articles ready to post (score >= %d with images)", len(qualified), config.min_score)
 
-    # 4. Limit to max posts per run
+    # 5. Limit to max posts per run
     selected = qualified[:config.settings.max_posts_per_run]
 
-    # 5. Generate Styled Posts & Dispatch
+    # 6. Generate Styled Posts & Dispatch
     poster = None
     if not dry_run:
         config.validate_secrets(dry_run=False)
@@ -158,10 +194,12 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             else:
                 logger.error("Failed to post story to channel: '%s'", art.title)
 
-    # 6. Mark all evaluated candidates as seen in state
+    # 7. Mark all evaluated candidates and skipped non-target articles as seen in state
     if not dry_run:
         for art in new_candidates:
             state.mark_seen(art.url)
+        for u in skipped_non_target_urls:
+            state.mark_seen(u)
         state.save()
 
     logger.info("Pipeline execution completed successfully.")
