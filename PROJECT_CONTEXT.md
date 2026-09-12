@@ -81,19 +81,20 @@ This document preserves the full context, architecture, operational history, and
 ## 3. Active Feeds & Credentials
 
 ### Active Feeds in `config.yaml`:
-* **SME Bratislava:** `https://bratislava.sme.sk/rss-title`
-* **Bratislava Dnes24:** `https://bratislava.dnes24.sk/rss`
 * **Bratislavský Kraj:** `https://bratislavskykraj.sk/feed/`
+* **Pravda Regióny:** `https://spravy.pravda.sk/regiony/rss/xml/`
+* **Teraz Regióny:** `https://www.teraz.sk/rss/regiony.rss`
 * **Topky Domáce:** `https://www.topky.sk/rss/10/Spravy_-_Domace.rss`
 * **Aktuality:** `https://www.aktuality.sk/rss/`
-* **Pravda Správy:** `https://www.pravda.sk/spravy/rss/xml`
+* **Pravda Správy:** `https://spravy.pravda.sk/domace/rss/xml/`
+* **SME Bratislava:** `https://bratislava.sme.sk/rss-title`
 
 ### Required Environment Secrets:
 | Key | Description |
 |---|---|
-| `TELEGRAM_BOT_TOKEN` | Bot API token from @BotFather (`YOUR_TELEGRAM_BOT_TOKEN_HERE`) |
-| `TELEGRAM_CHANNEL_ID` | Telegram Channel Username (`@bratislavanewss`) or ID (`-1003978794281`) |
-| `GEMINI_API_KEY` | Google AI Studio Key (`YOUR_GEMINI_API_KEY_HERE`) |
+| `TELEGRAM_BOT_TOKEN` | Bot API token from @BotFather (e.g. `123456789:ABC...`) |
+| `TELEGRAM_CHANNEL_ID` | Telegram Channel Username (e.g. `@bratislavanewss`) or Chat ID |
+| `GEMINI_API_KEY` | Google AI Studio Key (e.g. `AIzaSy...`) |
 
 ---
 
