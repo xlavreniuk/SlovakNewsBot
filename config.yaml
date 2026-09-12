@@ -9,8 +9,8 @@
 country: "Slovakia"
 target_city: "Bratislava"
 source_language: "Slovak"
-content_theme: "crazy, bizarre, shocking, funny, weird, or notable news, crime blotters, accidents, transport, and city life occurring EXCLUSIVELY in BRATISLAVA (and Bratislava boroughs: Petržalka, Ružinov, Staré Mesto, Nové Mesto, Rača, Dúbravka, Karlova Ves, etc.)"
-min_score: 5  # 1 to 10 threshold required to post (5 = notable local incident, 7+ = wild/crazy)
+content_theme: "interesting, engaging, notable, or fresh local news, events, festivals, accidents, transport, city life, crime blotters, weather warnings, culture, and happenings occurring EXCLUSIVELY in BRATISLAVA (and Bratislava boroughs: Petržalka, Ružinov, Staré Mesto, Nové Mesto, Rača, Dúbravka, Karlova Ves, etc.). Reject only completely boring bureaucratic notices, obscure tenders, or stories outside Bratislava."
+min_score: 3  # 1 to 10 threshold required to post (3+ = any interesting Bratislava news/events/incidents, 1-2 = very boring bureaucracy, 0 = not in Bratislava)
 
 # 2. Output and Style
 output:

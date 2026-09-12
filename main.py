@@ -117,10 +117,16 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
     # 3. AI Evaluation & Scoring
     recent_titles = state.get_recent_posted_titles(hours=48)
     qualified: List[ScoredArticle] = []
+    rejected_urls: List[str] = []
 
     if config.gemini_api_key:
         ai_engine = AIEngine(config)
         qualified = ai_engine.evaluate_batch(new_candidates, recent_titles)
+        # Identify articles that were evaluated by AI but rejected (score < min_score or duplicate)
+        qualified_urls = {q.article.url for q in qualified}
+        for art in new_candidates:
+            if art.url not in qualified_urls:
+                rejected_urls.append(art.url)
     else:
         if dry_run:
             logger.warning("GEMINI_API_KEY not set. Running mock evaluation for demonstration in dry-run.")
@@ -130,6 +136,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             raise ValueError("GEMINI_API_KEY must be provided to run live evaluation.")
 
     # 4. Enrich and verify images for qualified articles
+    no_image_urls: List[str] = []
     if config.settings.require_image:
         valid_qualified: List[ScoredArticle] = []
         for q in qualified:
@@ -138,6 +145,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
                 valid_qualified.append(q)
             else:
                 logger.info("Filtered qualified article lacking verified image: '%s'", q.article.title)
+                no_image_urls.append(q.article.url)
         qualified = valid_qualified
 
     logger.info("%d articles ready to post (score >= %d with images)", len(qualified), config.min_score)
@@ -194,10 +202,13 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             else:
                 logger.error("Failed to post story to channel: '%s'", art.title)
 
-    # 7. Mark all evaluated candidates and skipped non-target articles as seen in state
+    # 7. State management: Mark seen only for posted, rejected, and non-target articles.
+    # Unposted qualified articles remain unseen so they are posted in subsequent runs.
     if not dry_run:
-        for art in new_candidates:
-            state.mark_seen(art.url)
+        for u in rejected_urls:
+            state.mark_seen(u)
+        for u in no_image_urls:
+            state.mark_seen(u)
         for u in skipped_non_target_urls:
             state.mark_seen(u)
         state.save()

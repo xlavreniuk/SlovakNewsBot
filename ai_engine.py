@@ -233,11 +233,11 @@ STRICT LOCATION REQUIREMENT - BRATISLAVA ONLY:
 2. If the story happened in ANY OTHER CITY (for example: Košice, Prešov, Žilina, Banská Bystrica, Nitra, Trnava, Poprad, Martin, or abroad), you MUST REJECT IT by setting score = 0 and reason = "Not in Bratislava".
 
 SCORING CRITERIA FOR BRATISLAVA STORIES:
-- 0: Not in Bratislava / outside Bratislava region.
-- 1-4: Routine politics, dull announcements, standard financial statements, boring statistics.
-- 5-6: Mildly interesting local Bratislava news, but nothing extraordinary.
-- 7-8: Genuinely wild, bizarre, funny, shocking, notable crime blotter, road incident, transport chaos, or viral event in Bratislava.
-- 9-10: Huge, unbelievable, absurd, or sensational event in Bratislava.
+- 0: Not in Bratislava / outside Bratislava region (STRICTLY 0).
+- 1-2: Extremely boring / dull bureaucratic announcements, dry administrative notices, obscure procurement tenders, routine statistical tables.
+- 3-5: Standard interesting local news: culture, city events, festivals, concerts, weather alerts, transport changes, local improvements, urban life, community stories.
+- 6-8: Notable crime blotters, road accidents, police actions, bizarre situations, disputes, funny/viral incidents.
+- 9-10: Huge, sensational, extraordinary, or viral event in Bratislava.
 
 Recently posted stories on the channel (AVOID DUPLICATE REPORTING OF THE SAME EVENT):
 {recent_text}
