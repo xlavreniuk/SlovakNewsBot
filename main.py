@@ -61,6 +61,9 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
     if dry_run:
         logger.info("Running in DRY-RUN mode (no posts will be sent, state won't be saved).")
 
+    if not dry_run:
+        config.validate_secrets(dry_run=False)
+
     # 1. Initialize State Manager
     state = StateManager(
         filepath="seen_urls.json",
@@ -121,12 +124,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
 
     if config.gemini_api_key:
         ai_engine = AIEngine(config)
-        qualified = ai_engine.evaluate_batch(new_candidates, recent_titles)
-        # Identify articles that were evaluated by AI but rejected (score < min_score or duplicate)
-        qualified_urls = {q.article.url for q in qualified}
-        for art in new_candidates:
-            if art.url not in qualified_urls:
-                rejected_urls.append(art.url)
+        qualified, rejected_urls = ai_engine.evaluate_batch(new_candidates, recent_titles)
     else:
         if dry_run:
             logger.warning("GEMINI_API_KEY not set. Running mock evaluation for demonstration in dry-run.")

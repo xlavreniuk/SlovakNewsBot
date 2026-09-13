@@ -58,7 +58,7 @@ sources:
     enabled: true
   - name: "SME Bratislava"
     rss_url: "https://bratislava.sme.sk/rss-title"
-    enabled: true
+    enabled: false
 
 # 5. Pipeline Tuning
 settings:

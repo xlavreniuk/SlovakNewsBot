@@ -30,7 +30,7 @@ class AIEngine:
 
     def __init__(self, config: AppConfig):
         self.config = config
-        self.api_key = config.gemini_api_key
+        self.api_key = config.gemini_api_key.strip().strip("'\"") if config.gemini_api_key else None
         self.candidate_models = self._build_model_candidates(config.ai.model)
         self.active_model = self.candidate_models[0]
         self.temperature = config.ai.temperature
@@ -40,14 +40,16 @@ class AIEngine:
         self,
         articles: List[Article],
         recent_posted_titles: List[str]
-    ) -> List[ScoredArticle]:
+    ) -> Tuple[List[ScoredArticle], List[str]]:
         """
         Evaluates a list of candidate articles in batches to score suitability and check for duplicate events.
-        Saves API quota and respects the 15 RPM free-tier limit.
+        Returns a tuple of (qualified_articles, explicitly_rejected_urls).
+        Raises RuntimeError if Gemini API fails to prevent discarding un-evaluated articles.
         """
         scored_results: List[ScoredArticle] = []
+        rejected_urls: List[str] = []
         if not articles:
-            return scored_results
+            return scored_results, rejected_urls
 
         for i in range(0, len(articles), self.batch_size):
             chunk = articles[i:i + self.batch_size]
@@ -57,8 +59,8 @@ class AIEngine:
             response_json = self._call_gemini_json(batch_prompt)
 
             if not response_json or not isinstance(response_json, list):
-                logger.warning("Batch evaluation returned invalid JSON response, skipping chunk.")
-                continue
+                logger.error("Batch evaluation returned invalid response from Gemini API. Aborting batch to protect candidates.")
+                raise RuntimeError("Gemini API batch evaluation failed. Aborting to avoid discarding candidates.")
 
             for item in response_json:
                 try:
@@ -71,6 +73,7 @@ class AIEngine:
 
                         if is_duplicate:
                             logger.info("Filtered as duplicate event: '%s'", article.title)
+                            rejected_urls.append(article.url)
                             continue
 
                         if score >= self.config.min_score:
@@ -78,15 +81,16 @@ class AIEngine:
                             scored_results.append(ScoredArticle(article=article, score=score, reason=reason))
                         else:
                             logger.debug("Filtered out [score=%d]: '%s'", score, article.title)
+                            rejected_urls.append(article.url)
                 except Exception as e:
                     logger.warning("Error parsing item in batch evaluation: %s", e)
 
             # Polite pause between batches to respect free tier RPM
             time.sleep(1.5)
 
-        # Sort highest craziness/theme score first
+        # Sort highest score first
         scored_results.sort(key=lambda x: x.score, reverse=True)
-        return scored_results
+        return scored_results, rejected_urls
 
     def generate_styled_post(self, article: Article) -> Optional[GeneratedPost]:
         """Translates and rewrites an article in the requested target language and style."""
