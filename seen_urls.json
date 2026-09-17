@@ -698,14 +698,10 @@
     "https://www.aktuality.sk/clanok/VeoJQvc/na-slovensko-mieri-oblacnost-a-dazd-v-tychto-krajoch-si-pripravte-dazdniky-uz-v-noci/": "2026-09-16T22:03:12.114532+00:00",
     "https://bratislavskykraj.sk/bratislavsky-samospravny-kraj-pripravuje-nove-specializovane-zariadenie-pre-mladych-ludi-s-autizmom/": "2026-09-17T00:45:32.395681+00:00",
     "https://www.topky.sk/cl/10/9470715/Tento-KVIZ-otestuje--ci-ste-v-obraze--Zistite--ci-mate-prehlad-o-top-udalostiach": "2026-09-17T00:45:35.395943+00:00",
-    "https://www.topky.sk/cl/10/9494883/Nemecky-gigant-stavil-na-Slovensko--Investicia-za-80-MILIONOV-prinesie-desiatky-pracovnych-miest-": "2026-09-17T00:45:35.395969+00:00"
+    "https://www.topky.sk/cl/10/9494883/Nemecky-gigant-stavil-na-Slovensko--Investicia-za-80-MILIONOV-prinesie-desiatky-pracovnych-miest-": "2026-09-17T00:45:35.395969+00:00",
+    "https://www.teraz.sk/regiony/nova-scena-uvedie-v-slovenskej-premie/992731-clanok.html": "2026-09-17T02:52:17.162223+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/domace/clanok/2040423-vystava-o-ruskych-pokladoch-narazila-na-odpor-slovenskej-diplomacie-rezort-hovori-jasne-o-kryme",
-      "title": "Výstava o „ruských pokladoch“ narazila na odpor slovenskej diplomacie. Rezort hovorí jasne o Kryme",
-      "posted_at": "2026-09-14T02:49:47.864335+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9469167/Na-Pristavnom-moste-v-Bratislave-doslo-k-nehode-troch-aut-a-motorky",
       "title": "Na Prístavnom moste v Bratislave došlo k nehode troch áut a motorky",
@@ -800,6 +796,11 @@
       "url": "https://bratislavskykraj.sk/bratislavsky-samospravny-kraj-pripravuje-nove-specializovane-zariadenie-pre-mladych-ludi-s-autizmom/",
       "title": "Bratislavský samosprávny kraj pripravuje nové špecializované zariadenie pre mladých ľudí s autizmom",
       "posted_at": "2026-09-17T00:45:32.395698+00:00"
+    },
+    {
+      "url": "https://www.teraz.sk/regiony/nova-scena-uvedie-v-slovenskej-premie/992731-clanok.html",
+      "title": "Nová Scéna uvedie v slovenskej premiére slávny rodinný muzikál Matilda",
+      "posted_at": "2026-09-17T02:52:17.162240+00:00"
     }
   ]
 }
