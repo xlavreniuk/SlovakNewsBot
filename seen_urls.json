@@ -1238,14 +1238,10 @@
     "https://www.pravda.sk/spravy/regiony/clanok/2044389-v-bratislave-na-cyklotrase-nasli-muza-bez-znamok-zivota": "2026-09-19T21:36:50.592191+00:00",
     "https://www.topky.sk/cl/10/9497973/SOKUJUCI-nalez-na-oblubenej-cyklotrase--Nedaleko-bufetu-objavili-telo-muza-": "2026-09-19T21:36:53.592450+00:00",
     "https://www.topky.sk/cl/10/9497875/Slovensko-caka-v-nedelu-teplotny-SOK--Teploty-vyletia-vysoko--no-potom----Vecer-sa-pocasie-prudko-zmeni-": "2026-09-19T21:36:53.592475+00:00",
-    "https://www.aktuality.sk/clanok/Hxn57OK/medzi-zahorskou-bystricou-a-stupavou-doslo-k-zrazke-motocykla-s-osobnym-autom/": "2026-09-19T21:36:53.592480+00:00"
+    "https://www.aktuality.sk/clanok/Hxn57OK/medzi-zahorskou-bystricou-a-stupavou-doslo-k-zrazke-motocykla-s-osobnym-autom/": "2026-09-19T21:36:53.592480+00:00",
+    "https://www.topky.sk/cl/10/9473395/Pito-vzal-spat-ziadost-o-miernejsi-rezim--Stratil-doveru-v-rozhodovanie-sudu": "2026-09-19T23:51:10.980198+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/regiony/clanok/2042469-revizori-pripravili-bratislavu-o-pol-miliona-eur-tvrdi-winkler-hrube-zavadzanie-reaguje-dpb-a-pripustil-vypovede",
-      "title": "Revízori pripravili Bratislavu o pol milióna eur, tvrdí Winkler. Hrubé zavádzanie, reaguje DPB a pripustil výpovede",
-      "posted_at": "2026-09-16T22:03:09.114303+00:00"
-    },
     {
       "url": "https://bratislavskykraj.sk/bratislavsky-samospravny-kraj-pripravuje-nove-specializovane-zariadenie-pre-mladych-ludi-s-autizmom/",
       "title": "Bratislavský samosprávny kraj pripravuje nové špecializované zariadenie pre mladých ľudí s autizmom",
@@ -1355,6 +1351,11 @@
       "url": "https://www.pravda.sk/spravy/regiony/clanok/2044389-v-bratislave-na-cyklotrase-nasli-muza-bez-znamok-zivota",
       "title": "V Bratislave na cyklotrase našli muža bez známok života",
       "posted_at": "2026-09-19T21:36:50.592205+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9473395/Pito-vzal-spat-ziadost-o-miernejsi-rezim--Stratil-doveru-v-rozhodovanie-sudu",
+      "title": "Piťo vzal späť žiadosť o miernejší režim: Stratil dôveru v rozhodovanie súdu",
+      "posted_at": "2026-09-19T23:51:10.980214+00:00"
     }
   ]
 }
