@@ -1109,14 +1109,10 @@
     "https://www.teraz.sk/regiony/policia-ziada-o-pomoc-pri-patrani-po/993295-clanok.html": "2026-09-18T23:27:05.785568+00:00",
     "https://bratislavskykraj.sk/otvoreny-atelier-pokracuje-na-jesen-klee-durer-a-giotto/": "2026-09-18T23:27:08.786151+00:00",
     "https://www.topky.sk/cl/10/9496183/KVIZ-Ako-dobre-zvladanie-pisanie-i-a-y--Plny-pocet-ziskaju-len-skutocni-znalci-slovenciny--Pozor-na-CHYTAKY": "2026-09-18T23:27:08.786176+00:00",
-    "https://www.topky.sk/cl/10/9472213/Caka-nas-dalsi-sviatok-v-robote--TABULKA-Kolko--kedy-a-za-co-dostanete-zaplatene-": "2026-09-18T23:27:08.786181+00:00"
+    "https://www.topky.sk/cl/10/9472213/Caka-nas-dalsi-sviatok-v-robote--TABULKA-Kolko--kedy-a-za-co-dostanete-zaplatene-": "2026-09-18T23:27:08.786181+00:00",
+    "https://bratislavskykraj.sk/bratislavska-zupa-pokracuje-v-prevencii-dalsi-ockovaci-den-proti-hpv-bude-uz-v-piatok/": "2026-09-19T02:37:53.159869+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9469843/Dalsi-problem-dopravnych-kamier--Soitron-vysielal-zabery-z-vytazenej-bratislavskej-ulice-do-celeho-sveta--Nevedno-kolko",
-      "title": "Ďalší problém dopravných kamier: Soitron vysielal zábery z vyťaženej bratislavskej ulice do celého sveta! Nevedno koľko",
-      "posted_at": "2026-09-16T00:38:08.301894+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9470283/Prisla-o-vyse-15-tisic-eur--Zena-odovzdala-hotovost-podvodnikovi--policia-zverejnila-FOTO",
       "title": "Prišla o vyše 15-tisíc eur! Žena odovzdala hotovosť podvodníkovi, polícia zverejnila FOTO",
@@ -1221,6 +1217,11 @@
       "url": "https://www.teraz.sk/regiony/policia-ziada-o-pomoc-pri-patrani-po/993295-clanok.html",
       "title": "Polícia žiada o pomoc pri pátraní po Máriovi Rigóovi z Bratislavy",
       "posted_at": "2026-09-18T23:27:05.785581+00:00"
+    },
+    {
+      "url": "https://bratislavskykraj.sk/bratislavska-zupa-pokracuje-v-prevencii-dalsi-ockovaci-den-proti-hpv-bude-uz-v-piatok/",
+      "title": "Bratislavská župa pokračuje v prevencii. Ďalší očkovací deň proti HPV bude už v piatok",
+      "posted_at": "2026-09-19T02:37:53.159884+00:00"
     }
   ]
 }
