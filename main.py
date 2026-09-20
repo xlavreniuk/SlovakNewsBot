@@ -138,7 +138,11 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
     if config.settings.require_image:
         valid_qualified: List[ScoredArticle] = []
         for q in qualified:
-            scraper.enrich_image_if_missing(q.article)
+            scraper.enrich_image(
+                q.article,
+                min_width=config.settings.min_image_width,
+                min_height=config.settings.min_image_height
+            )
             if q.article.image_url:
                 valid_qualified.append(q)
             else:
@@ -168,11 +172,11 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         if config.gemini_api_key:
             post = ai_engine.generate_styled_post(art)
         else:
-            # Fallback format for mock dry-run
+            # Fallback format for mock dry-run (Ukrainian, 1 emoji max, clean link)
             post_caption = (
-                f"<b>⚡️ {art.title}</b>\n\n"
+                f"<b>📍 {art.title}</b>\n\n"
                 f"{art.summary}\n\n"
-                f"👉 <a href=\"{art.url}\">{art.source_name}</a>"
+                f'<a href="{config.output.channel_link}">{config.output.channel_name}</a>'
             )
             from ai_engine import GeneratedPost
             post = GeneratedPost(article=art, headline=art.title, caption=post_caption)

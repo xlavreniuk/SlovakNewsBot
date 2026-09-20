@@ -14,16 +14,17 @@ min_score: 3  # 1 to 10 threshold required to post (3+ = any interesting Bratisl
 
 # 2. Output and Style
 output:
-  target_language: "Russian"
+  target_language: "Ukrainian"
   style_guide: >
-    Труха-style: punchy, sarcastic, dramatic news tone, BUT STRICTLY FACTUAL.
-    Format requirements:
-    1. Start with 1-2 eye-catching emojis (⚡️, 🤡, 🤦‍♂️, 🚗💥, 🍻, 🚓) followed by a bold, catchy headline.
-    2. Give 2-3 short, vivid sentences summarizing what happened.
-    3. Always specify the exact location in Bratislava (e.g., "В Братиславе на улице...", "В Петржалке...", "В Старом городе...").
-    4. FACT-CHECKING RULE: Stick strictly to the verified facts in the source. Do NOT invent details. Real news only.
-    5. LOCATION RULE: Strictly about Bratislava. Never post stories from other cities.
-    6. Use clean HTML: <b>bold</b>, <i>italic</i>, and <a href="...">links</a>. Do NOT use markdown.
+    Інформативний, стриманий, але простий і зрозумілий стиль міських новин для пересічного читача (без «жовтизни», сарказму чи спаму емодзі).
+    Вимоги до формату:
+    1. Заголовок: чіткий, влучний, виділений жирним шрифтом (<b>...</b>). Дозволено використати МАКСИМУМ 1 доречний емодзі (наприклад: 📍, 🏛️, 🚗, ⚠️) на початку заголовка або взагалі без емодзі.
+    2. Текст: 2-3 лаконічні речення, які просто і доступно пояснюють суть події: що сталося, де саме і які наслідки чи деталі важливі для жителів.
+    3. Локація: обов'язково вказувати точне місце у Братиславі природною українською мовою (наприклад, «У Братиславі на вулиці...», «У Петржалці...», «У Ружинові...», «У Старому місті...»).
+    4. ПРАВИЛО ЕМОДЗІ: Суворо НЕ БІЛЬШЕ 1 емодзі на всю публікацію! Жодного нагромадження смайликів чи треш-емодзі (ніяких 🤡, 🤦‍♂️, 🍻 тощо).
+    5. ФАКТЧЕКІНГ: Суворо 100% відповідність фактам із першоджерела. Жодних вигадок, домислів чи перебільшень. Тільки реальні факти.
+    6. ЛОКАЦІЙНЕ ПРАВИЛО: Публікації виключно про Братиславу та її райони.
+    7. Використовуйте чистий HTML: <b>жирний</b>, <i>курсив</i> та <a href="...">посилання</a>. Не використовуйте markdown.
   max_caption_length: 900  # Stays safely under Telegram's 1024-character photo caption limit
   include_source_link: false  # Do NOT mention original news source
   channel_name: "Братислава"
@@ -65,6 +66,8 @@ settings:
   max_articles_per_run: 30    # Maximum total new articles to evaluate per run
   max_posts_per_run: 1        # Optimal pacing: 1 top story per run (e.g. 1 per hour)
   require_image: true         # Only post articles that have an image (no plain text posts)
+  min_image_width: 500        # Minimum image width in pixels for high quality posts
+  min_image_height: 300       # Minimum image height in pixels
   history_retention_days: 14  # Auto-prune state entries older than 14 days
   post_delay_seconds: 3       # Sleep between Telegram posts to respect rate limits
   request_timeout_seconds: 15 # Network timeout for scraping and requests

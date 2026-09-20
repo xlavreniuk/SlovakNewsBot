@@ -11,8 +11,8 @@ This document preserves the full context, architecture, operational history, and
 * **Target Audience & Channel:** [t.me/bratislavanewss](https://t.me/bratislavanewss) (`@bratislavanewss`, Chat ID: `-1003978794281`)
 * **Telegram Bot:** `@xlvrnewsbot`
 * **Target Scope:** Strictly **Bratislava** and its districts (Staré Mesto, Petržalka, Ružinov, Nové Mesto, Rača, Dúbravka, Karlova Ves, etc.). Stories from other cities are strictly rejected.
-* **Content Style:** Russian *«Труха»* style (punchy, energetic, emojis, short engaging paragraphs), but **100% strictly factual** with zero hallucinations or fake news.
-* **Format:** Every post is published as a **photo post** (direct multipart binary upload) with formatted HTML caption and a clickable channel footer: `📢 [Братислава](https://t.me/bratislavanewss)`. External sources are omitted from the footer to keep traffic inside the channel.
+* **Content Style:** Clear, professional, and informative city news tone in **Ukrainian** for the average reader (no tabloid/yellow journalism, no sarcasm, max **1 emoji** per post), 100% strictly factual with zero hallucinations.
+* **Format:** Every post is published as a **photo post** (direct multipart binary upload of verified high-definition photos) with formatted HTML caption and a clickable channel footer: `[Братислава](https://t.me/bratislavanewss)`. External sources are omitted from the footer to keep traffic inside the channel.
 
 ---
 
@@ -22,13 +22,13 @@ This document preserves the full context, architecture, operational history, and
 .
 ├── config.yaml               # Country, city, feeds, AI thresholds, writing style, schedule settings
 ├── config.py                 # Dataclasses & YAML/environment loader
-├── scraper.py                # Universal RSS scraper + multi-layer image extraction engine
-├── ai_engine.py              # Gemini AI client: batch triage, deduplication, style copywriting
-├── telegram_poster.py        # Telegram Bot API client: binary photo upload, HTML sanitization
+├── scraper.py                # Universal RSS scraper + Pillow high-resolution image engine
+├── ai_engine.py              # Gemini AI client: batch triage, deduplication, Ukrainian copywriter & emoji enforcer
+├── telegram_poster.py        # Telegram Bot API client: binary photo upload, Pillow format optimization, HTML sanitization
 ├── state_manager.py          # seen_urls.json manager: persistent URL history & auto-pruning
 ├── main.py                   # Orchestrator with support for live runs and --dry-run
 ├── seen_urls.json            # State file tracking processed articles & recent post titles
-├── requirements.txt          # Minimal, reliable Python dependencies
+├── requirements.txt          # Minimal, reliable Python dependencies (including Pillow)
 ├── .env.example              # Template for environment secrets
 ├── .env                      # Local environment secrets (git-ignored)
 └── .github/workflows/
@@ -38,30 +38,32 @@ This document preserves the full context, architecture, operational history, and
 ### Module Responsibilities:
 
 1. **`config.yaml` & `config.py`**:
-   - Universal configuration: to adapt the bot to any other country (Poland, Czechia, etc.) or city, change only this YAML file without altering Python code.
+   - Universal configuration: to adapt the bot to any other country or city, change only this YAML file without altering Python code.
    - Parses `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHANNEL_ID`, and `GEMINI_API_KEY`.
+   - Defines image resolution thresholds (`min_image_width: 500`, `min_image_height: 300`).
 
 2. **`scraper.py`**:
    - Fetches RSS feeds with desktop browser `User-Agent`.
-   - **Multi-Source Image Extraction Engine**:
-     - Layer 1: RSS `<enclosure>` / `<media:content>` / `<media:thumbnail>`
-     - Layer 2: OpenGraph `<meta property="og:image">`
-     - Layer 3: Twitter Card `<meta name="twitter:image">`
-     - Layer 4: Schema.org JSON-LD `<script type="application/ld+json">`
-     - Layer 5: Lead figures (`figure img`, `article img`)
-   - Pre-verifies that images return `HTTP 200`, `Content-Type: image/*`, and size $> 3\text{ KB}$ (filters out tracking pixels and icons).
+   - **High-Resolution Image Extraction Engine**:
+     - Scrapes webpage candidates: OpenGraph (`og:image`), Twitter Card, JSON-LD, `srcset` descriptors, lead figures.
+     - CMS & CDN upscaling heuristics: strips WordPress resized dimensions (e.g. `-724x1024.png`), upgrades Pravda (`/16x9-big/`), upgrades Topky (`/1280px/`), strips resizing query parameters.
+     - Probes dimensions using **Pillow** (`PIL.Image`) and ranks candidate images by pixel resolution, selecting the highest-definition valid image.
+     - Enforces minimum dimensions ($500\times 300$) and filters out icons, tracking pixels, or distorted banners.
 
 3. **`ai_engine.py`**:
    - Uses Google AI Studio REST API (`gemini-3.5-flash-lite`, with fallbacks to `gemini-3.1-flash-lite` and `gemini-flash-latest`).
    - **Batch Triage**: Groups 10 articles into a single prompt to stay well below the 15 RPM free tier limit.
    - **Strict Location Filter**: Rejects any story outside Bratislava with score `0`.
-   - **Semantic Deduplication**: Checks incoming articles against recently posted headlines to prevent reporting the same incident twice across different newspapers.
-   - **Factual Copywriter**: Rewrites the story in Russian Труха style while enforcing 100% adherence to source facts (temperature `0.2`).
+   - **Semantic Deduplication**: Checks incoming articles against recently posted headlines to prevent reporting the same incident twice.
+   - **Ukrainian Copywriter**: Rewrites the story in clear, accessible, professional Ukrainian with full translation of Slovak terms and institutions.
+   - **Emoji Enforcer**: Programmatically ensures at most 1 calm, relevant emoji is present across the entire post.
    - Cleans HTML tags (`<br>` and `<p>` converted to `\n`) for Telegram Bot API compliance.
 
 4. **`telegram_poster.py`**:
-   - Downloads verified image bytes and uploads them directly to Telegram via `multipart/form-data`. This completely avoids CDN anti-bot blocks.
-   - Strictly enforces `require_image=True`: refuses to fall back to plain text if an image is missing or inaccessible.
+   - Inspects and prepares downloaded image bytes with **Pillow**.
+   - Converts exotic formats (AVIF, WebP, CMYK) into high-quality RGB JPEG (`quality=95`, `optimize=True`) for guaranteed Telegram retina rendering.
+   - Uploads directly to Telegram via `multipart/form-data` to avoid CDN anti-bot blocks.
+   - Strictly enforces `require_image=True`.
 
 5. **`state_manager.py`**:
    - Records processed URLs in `seen_urls.json`.

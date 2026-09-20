@@ -1,11 +1,15 @@
 import html
+import io
+import json
 import logging
 import re
 import warnings
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import Dict, List, Optional, Set, Tuple
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import feedparser
+from PIL import Image
 import requests
 
 # Suppress urllib3 LibreSSL warning on macOS if present
@@ -30,7 +34,7 @@ class Article:
 
 
 class NewsScraper:
-    """Universal RSS & metadata scraper for any news source."""
+    """Universal RSS & high-resolution metadata scraper for any news source."""
 
     def __init__(self, user_agent: str = DEFAULT_USER_AGENT, timeout: int = 15):
         self.user_agent = user_agent
@@ -38,9 +42,10 @@ class NewsScraper:
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": self.user_agent,
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9,sk;q=0.8,cs;q=0.7",
         })
+        self._image_cache: Dict[str, Optional[Tuple[int, int, str, int]]] = {}
 
     def fetch_articles_from_source(self, name: str, rss_url: str) -> List[Article]:
         """Fetches and parses a single RSS feed."""
@@ -86,93 +91,237 @@ class NewsScraper:
         logger.info("Retrieved %d entries from %s", len(articles), name)
         return articles
 
-    def enrich_image_if_missing(self, article: Article) -> None:
-        """Robust multi-source image scraper (OpenGraph, Twitter card, JSON-LD, and lead figures)."""
-        # If image already present, verify it is accessible
-        if article.image_url:
-            if self._verify_image_url(article.image_url):
-                return
-            else:
-                logger.debug("Existing image_url failed verification: %s", article.image_url)
-                article.image_url = None
+    def upgrade_url_variants(self, url: str) -> List[str]:
+        """
+        Generates high-resolution upgrade variants for common Slovak news CMSs and image CDNs.
+        Returns a list of URLs with the highest expected resolution variants first.
+        """
+        if not url or not url.startswith("http"):
+            return []
+
+        variants: List[str] = []
+
+        # 1. WordPress: Strip resized dimension suffixes (e.g. image-724x1024.png -> image.png)
+        wp = re.sub(r'-\d+x\d+(\.[a-zA-Z0-9]+)$', r'\1', url)
+        if wp != url:
+            variants.append(wp)
+
+        # 2. Pravda CDN: Upgrade /4x3-medium/, /4x3-small/, etc. to /16x9-big/
+        prv = re.sub(r'/(?:4x3|16x9)-(?:medium|small|big)/', '/16x9-big/', url)
+        if prv != url:
+            variants.append(prv)
+
+        # 3. Topky CDN: Upgrade img.topky.sk/{id}.jpg to img.topky.sk/1280px/{id}.jpg
+        topky = re.sub(r'img\.topky\.sk/(?:640px/)?(\d+\.jpe?g)', r'img.topky.sk/1280px/\1', url)
+        if topky != url:
+            variants.append(topky)
+
+        # 4. Zoznam image proxy: Unwrap nested original Topky URL
+        m_zoz = re.search(r'https://img\.topky\.sk/[^\s\'"]+', url)
+        if m_zoz:
+            unwrapped = m_zoz.group(0)
+            variants.append(re.sub(r'img\.topky\.sk/(?:640px/)?(\d+\.jpe?g)', r'img.topky.sk/1280px/\1', unwrapped))
+            variants.append(unwrapped)
+
+        # 5. Generic query parameter stripping for resizers
+        if any(param in url for param in ("?w=", "&w=", "width=", "resize=", "fit=")):
+            stripped = url.split("?")[0]
+            if stripped != url:
+                variants.append(stripped)
+
+        variants.append(url)
+
+        # Deduplicate while preserving order
+        seen: Set[str] = set()
+        ordered: List[str] = []
+        for v in variants:
+            if v not in seen:
+                seen.add(v)
+                ordered.append(v)
+        return ordered
+
+    def probe_image(self, url: str) -> Optional[Tuple[int, int, str, int]]:
+        """
+        Probes image URL using Pillow.
+        Returns (width, height, format, byte_size) or None if inaccessible or invalid.
+        """
+        if not url or not url.startswith("http"):
+            return None
+        if url in self._image_cache:
+            return self._image_cache[url]
 
         try:
-            resp = self.session.get(article.url, timeout=8)
+            resp = self.session.get(url, timeout=6)
+            if resp.status_code == 200 and len(resp.content) > 3000:
+                img = Image.open(io.BytesIO(resp.content))
+                info = (img.width, img.height, img.format or "JPEG", len(resp.content))
+                self._image_cache[url] = info
+                return info
+        except Exception:
+            pass
+
+        self._image_cache[url] = None
+        return None
+
+    def _collect_page_candidates(self, page_url: str) -> List[Tuple[str, str]]:
+        """Scrapes article webpage to discover OpenGraph, Twitter, JSON-LD, srcset, and lead images."""
+        candidates: List[Tuple[str, str]] = []
+        try:
+            resp = self.session.get(page_url, timeout=8)
             if resp.status_code != 200:
-                return
+                return candidates
 
             soup = BeautifulSoup(resp.content, "html.parser")
 
-            # 1. OpenGraph meta (highest quality)
-            for attr in [{"property": "og:image"}, {"name": "og:image"}, {"property": "og:image:secure_url"}]:
+            # 1. OpenGraph meta (highest editorial quality)
+            for attr in [{"property": "og:image"}, {"property": "og:image:secure_url"}, {"name": "og:image"}]:
                 tag = soup.find("meta", attrs=attr)
                 if tag and tag.get("content"):
-                    candidate = tag.get("content").strip()
-                    if self._verify_image_url(candidate):
-                        article.image_url = candidate
-                        logger.info("Found verified og:image for '%s': %s", article.title[:40], candidate)
-                        return
+                    candidates.append(("og:image", tag.get("content").strip()))
 
-            # 2. Twitter Card image
-            for attr in [{"name": "twitter:image"}, {"property": "twitter:image"}]:
+            # 2. Twitter Card meta
+            for attr in [{"name": "twitter:image"}, {"property": "twitter:image"}, {"name": "twitter:image:src"}]:
                 tag = soup.find("meta", attrs=attr)
                 if tag and tag.get("content"):
-                    candidate = tag.get("content").strip()
-                    if self._verify_image_url(candidate):
-                        article.image_url = candidate
-                        logger.info("Found verified twitter:image for '%s'", article.title[:40])
-                        return
+                    candidates.append(("twitter:image", tag.get("content").strip()))
 
             # 3. Schema.org JSON-LD structured data
             for script in soup.find_all("script", type="application/ld+json"):
                 try:
-                    import json
                     data = json.loads(script.string or "")
-                    if isinstance(data, dict):
-                        img = data.get("image")
-                        candidate = None
-                        if isinstance(img, str):
-                            candidate = img
-                        elif isinstance(img, list) and img and isinstance(img[0], str):
-                            candidate = img[0]
-                        elif isinstance(img, dict) and img.get("url"):
-                            candidate = img.get("url")
 
-                        if candidate and self._verify_image_url(candidate):
-                            article.image_url = candidate
-                            logger.info("Found verified JSON-LD image for '%s'", article.title[:40])
-                            return
+                    def extract_jsonld_images(obj):
+                        if isinstance(obj, dict):
+                            if "image" in obj:
+                                img = obj["image"]
+                                if isinstance(img, str):
+                                    candidates.append(("json-ld", img.strip()))
+                                elif isinstance(img, list):
+                                    for item in img:
+                                        if isinstance(item, str):
+                                            candidates.append(("json-ld", item.strip()))
+                                        elif isinstance(item, dict) and "url" in item:
+                                            candidates.append(("json-ld", str(item["url"]).strip()))
+                                elif isinstance(img, dict) and "url" in img:
+                                    candidates.append(("json-ld", str(img["url"]).strip()))
+                            for val in obj.values():
+                                extract_jsonld_images(val)
+                        elif isinstance(obj, list):
+                            for elem in obj:
+                                extract_jsonld_images(elem)
+
+                    extract_jsonld_images(data)
                 except Exception:
                     pass
 
-            # 4. Lead figure or article image
-            for selector in ["figure img", "article img", ".lead-image img", ".article-body img"]:
-                img = soup.select_one(selector)
-                if img:
-                    candidate = img.get("src") or img.get("data-src")
-                    if candidate and candidate.startswith("http"):
-                        if self._verify_image_url(candidate):
-                            article.image_url = candidate
-                            logger.info("Found verified figure image for '%s'", article.title[:40])
-                            return
+            # 4. srcset descriptors on picture/figure/article images
+            for el in soup.select("article img, figure img, .lead-image img, picture source, picture img"):
+                srcset = el.get("srcset")
+                if srcset:
+                    parts = [p.strip() for p in srcset.split(",") if p.strip()]
+                    for p in parts:
+                        tokens = p.split()
+                        if tokens:
+                            resolved = urljoin(page_url, tokens[0])
+                            candidates.append(("srcset", resolved))
+
+            # 5. Lead figures and article images
+            for selector in [
+                "figure img", "article img", ".lead-image img",
+                ".article-body img", "img[data-src]", "img[data-full-src]", "img[data-original]"
+            ]:
+                for el in soup.select(selector):
+                    src = el.get("src") or el.get("data-src") or el.get("data-full-src") or el.get("data-original")
+                    if src and not src.startswith("data:"):
+                        resolved = urljoin(page_url, src.strip())
+                        candidates.append(("lead-img", resolved))
+
         except Exception as e:
-            logger.debug("Failed to enrich image for %s: %s", article.url, e)
+            logger.debug("Failed to collect page candidates for %s: %s", page_url, e)
+
+        return candidates
+
+    def enrich_image(self, article: Article, min_width: int = 500, min_height: int = 300) -> None:
+        """
+        Extracts, verifies, and upgrades images to ensure the highest resolution photo is selected.
+        Uses Pillow to probe dimensions and reject blurry thumbnails or tracking icons.
+        """
+        raw_candidates: List[Tuple[str, str]] = []
+
+        # If RSS provided an image, include it as initial candidate
+        if article.image_url:
+            raw_candidates.append(("rss", article.image_url))
+
+        # Scrape article webpage to discover high-resolution options
+        page_candidates = self._collect_page_candidates(article.url)
+        raw_candidates.extend(page_candidates)
+
+        # Expand all candidates into high-res URL variants
+        all_variants: List[Tuple[str, str]] = []
+        seen_urls: Set[str] = set()
+
+        for tag, url in raw_candidates:
+            variants = self.upgrade_url_variants(url)
+            for v in variants:
+                if v not in seen_urls and v.startswith("http"):
+                    seen_urls.add(v)
+                    all_variants.append((tag, v))
+
+        # Probe candidate variants with Pillow and score them
+        scored_candidates: List[Tuple[float, int, int, str, int, str]] = []
+
+        for tag, url in all_variants:
+            info = self.probe_image(url)
+            if not info:
+                continue
+
+            width, height, fmt, byte_size = info
+
+            # Strictly require minimum HD dimensions and valid image size
+            if width < min_width or height < min_height or byte_size < 8000:
+                continue
+
+            # Filter out extreme aspect ratios (thin separator banners or ultra-tall ribbons)
+            ratio = width / max(height, 1)
+            if ratio > 4.5 or ratio < 0.25:
+                continue
+
+            pixel_area = width * height
+            score = float(pixel_area)
+
+            # Strong boost for candidates meeting minimum HD dimensions
+            if width >= min_width and height >= min_height:
+                score += 5_000_000.0
+
+            # Editorial bonus for OpenGraph, Twitter card, or JSON-LD lead images
+            if tag in ("og:image", "twitter:image", "json-ld"):
+                score += 500_000.0
+
+            scored_candidates.append((score, width, height, fmt, byte_size, url))
+
+        if scored_candidates:
+            # Sort highest score first
+            scored_candidates.sort(key=lambda x: x[0], reverse=True)
+            best = scored_candidates[0]
+            article.image_url = best[5]
+            logger.info(
+                "Selected high-res image for '%s': %dx%d (%s, %d bytes) -> %s",
+                article.title[:40], best[1], best[2], best[3], best[4], best[5]
+            )
+        else:
+            logger.warning("No suitable high-resolution image found for '%s'", article.title[:40])
+            # If the original image was accessible, keep as fallback
+            if article.image_url and not self._verify_image_url(article.image_url):
+                article.image_url = None
+
+    def enrich_image_if_missing(self, article: Article) -> None:
+        """Backwards-compatible alias for enrich_image."""
+        self.enrich_image(article)
 
     def _verify_image_url(self, url: str) -> bool:
-        """Verifies that an image URL is live, returns HTTP 200, and is a valid image > 3KB."""
-        if not url or not url.startswith("http"):
-            return False
-        try:
-            r = self.session.get(url, timeout=5, stream=True)
-            if r.status_code == 200:
-                ctype = r.headers.get("Content-Type", "").lower()
-                clen = int(r.headers.get("Content-Length", 10000))
-                # Must be an image and greater than 3KB (to filter out tracking pixels and tiny icons)
-                if ("image" in ctype or url.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))) and clen > 3000:
-                    return True
-        except Exception:
-            pass
-        return False
+        """Verifies that an image URL is live, returns HTTP 200, and is a valid image >= 500x300."""
+        info = self.probe_image(url)
+        return info is not None and info[0] >= 500 and info[1] >= 300
 
     def _extract_summary(self, entry) -> str:
         """Extracts and strips HTML tags from description or summary."""

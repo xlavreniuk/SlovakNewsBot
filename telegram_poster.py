@@ -1,8 +1,10 @@
 import html
+import io
 import logging
 import re
 import time
 from typing import Optional
+from PIL import Image, ImageOps
 import requests
 
 logger = logging.getLogger(__name__)
@@ -59,7 +61,35 @@ class TelegramPoster:
                 timeout=10
             )
             if img_resp.status_code == 200 and len(img_resp.content) > 3000:
-                files = {"photo": ("photo.jpg", img_resp.content, "image/jpeg")}
+                upload_bytes = img_resp.content
+                filename = "photo.jpg"
+                mime_type = "image/jpeg"
+
+                try:
+                    img = Image.open(io.BytesIO(img_resp.content))
+                    img = ImageOps.exif_transpose(img)
+                    logger.info("Image verified: %dx%d (%s, %d bytes) for Telegram upload", img.width, img.height, img.format, len(upload_bytes))
+
+                    if img.width < 500 or img.height < 300:
+                        logger.error("Image resolution (%dx%d) below acceptable quality threshold (500x300)! Refusing upload.", img.width, img.height)
+                        return False
+
+                    # Preserve PNG or convert to highest-quality sRGB JPEG (quality=95, subsampling=0)
+                    if img.format == "PNG" and img.mode in ("RGB", "RGBA"):
+                        filename = "photo.png"
+                        mime_type = "image/png"
+                    else:
+                        out_io = io.BytesIO()
+                        rgb_img = img.convert("RGB")
+                        rgb_img.save(out_io, format="JPEG", quality=95, subsampling=0, optimize=True)
+                        upload_bytes = out_io.getvalue()
+                        filename = "photo.jpg"
+                        mime_type = "image/jpeg"
+                except Exception as e:
+                    logger.warning("Pillow processing error: %s", e)
+                    return False
+
+                files = {"photo": (filename, upload_bytes, mime_type)}
                 data = {
                     "chat_id": self.channel_id,
                     "caption": caption,

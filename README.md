@@ -17,7 +17,7 @@ Runs **100% autonomously 24/7 in GitHub Actions cloud** at **$0/month hosting co
 
 * **Channel:** [t.me/bratislavanewss](https://t.me/bratislavanewss) (`@bratislavanewss`)
 * **Topic:** Bratislava, Slovakia local news, city life, and notable incidents
-* **Language:** Russian (punchy, engaging, strictly factual)
+* **Language:** Ukrainian (informative, clear, professional, strictly factual)
 
 ---
 
@@ -222,9 +222,9 @@ Every behavior of the bot can be tuned in [`config.yaml`](config.yaml) without w
 | `target_city` | string | `"Bratislava"` | Primary city. AI strictly rejects articles occurring outside this metropolitan area. |
 | `content_theme` | string | *See config.yaml* | Instructions given to Gemini defining what topics and stories qualify. |
 | `min_score` | integer (0-10) | `3` | Score threshold to post: `0` = off-target, `1-2` = boring bureaucracy, `3-5` = standard city news, `6-8` = notable incidents/crime, `9-10` = sensational/viral. |
-| `output.target_language` | string | `"Russian"` | Output language for Telegram posts (e.g. `English`, `Ukrainian`, `Slovak`, `German`, `Spanish`). |
-| `output.style_guide` | text | *See config.yaml* | Tone of voice and formatting rules (e.g. punchy headlines, emojis, clean HTML). |
-| `output.include_source_link` | boolean | `false` | If `true`, adds `👉 Original Source` link to footer. If `false`, keeps traffic inside your channel. |
+| `output.target_language` | string | `"Ukrainian"` | Output language for Telegram posts (e.g. `Ukrainian`, `English`, `Slovak`, `German`). |
+| `output.style_guide` | text | *See config.yaml* | Tone of voice and formatting rules (informative, clear, max 1 emoji, clean HTML). |
+| `output.include_source_link` | boolean | `false` | If `true`, adds source link to footer. If `false`, keeps traffic inside your channel. |
 | `output.channel_name` | string | `"Братислава"` | Text displayed for your channel branding link. |
 | `output.channel_link` | string | `"https://t.me/..."` | Clickable channel link attached to the footer of every post. |
 | `ai.model` | string | `"gemini-3.5-flash-lite"` | Primary Gemini model. Automatically falls back to other Flash models if needed. |
@@ -233,6 +233,8 @@ Every behavior of the bot can be tuned in [`config.yaml`](config.yaml) without w
 | `settings.max_articles_per_run` | integer | `30` | Maximum candidate articles to fetch and evaluate per run. |
 | `settings.max_posts_per_run` | integer | `1` | Pacing limit: publishes 1 story per run (e.g. 1 post every 30 minutes). Remaining qualified stories stay queued. |
 | `settings.require_image` | boolean | `true` | If `true`, strictly requires a verified lead photo (refuses to fall back to plain text). |
+| `settings.min_image_width` | integer | `500` | Minimum image width in pixels for high quality posts. |
+| `settings.min_image_height` | integer | `300` | Minimum image height in pixels for high quality posts. |
 | `settings.history_retention_days` | integer | `14` | Records older than this are pruned from `seen_urls.json` to keep repo size tiny. |
 
 ---

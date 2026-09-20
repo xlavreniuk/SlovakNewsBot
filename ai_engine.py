@@ -108,8 +108,13 @@ class AIEngine:
             logger.error("Empty caption returned for '%s'", article.title)
             return None
 
+        # Ensure caption begins with bold headline if not already present
+        if headline and not body.startswith("<b>") and headline.lower() not in body.lower()[:len(headline) + 20]:
+            body = f"<b>{headline}</b>\n\n{body}"
+
         # Build final HTML caption with source and channel branding
         caption = self._clean_telegram_html(body)
+        caption = self._enforce_max_one_emoji(caption)
         footer = self._build_footer(article)
         if footer:
             caption += f"\n\n{footer}"
@@ -126,11 +131,44 @@ class AIEngine:
         """Constructs footer with original source link and channel branding link."""
         footer_parts = []
         if self.config.output.include_source_link and article.url:
-            footer_parts.append(f'👉 <a href="{article.url}">{article.source_name}</a>')
+            footer_parts.append(f'<a href="{article.url}">{article.source_name}</a>')
         if self.config.output.channel_link:
-            name = self.config.output.channel_name or "Bratislava News"
-            footer_parts.append(f'📢 <a href="{self.config.output.channel_link}">{name}</a>')
+            name = self.config.output.channel_name or "Братислава"
+            footer_parts.append(f'<a href="{self.config.output.channel_link}">{name}</a>')
         return " | ".join(footer_parts)
+
+    @staticmethod
+    def _enforce_max_one_emoji(text: str) -> str:
+        """Enforces that at most one emoji exists across the entire generated text."""
+        emoji_pattern = re.compile(
+            r'(?:'
+            r'[\U0001F600-\U0001F64F]|'
+            r'[\U0001F300-\U0001F5FF]|'
+            r'[\U0001F680-\U0001F6FF]|'
+            r'[\U0001F1E0-\U0001F1FF]|'
+            r'[\U0001F900-\U0001F9FF]|'
+            r'[\U0001FA00-\U0001FAFF]|'
+            r'[\U00002600-\U000027BF]|'
+            r'[\U00002300-\U000023FF]|'
+            r'[\U00002B00-\U00002BFF]'
+            r')(?:[\U0000FE0E\U0000FE0F]|[\U0001F3FB-\U0001F3FF])?(?:\u200D(?:'
+            r'[\U0001F600-\U0001F64F]|[\U0001F300-\U0001F5FF]|[\U0001F680-\U0001F6FF]|[\U0001F900-\U0001F9FF]|[\U0001FA00-\U0001FAFF]|[\U00002600-\U000027BF]'
+            r')(?:[\U0000FE0E\U0000FE0F]|[\U0001F3FB-\U0001F3FF])?)*',
+            flags=re.UNICODE
+        )
+        matches = list(emoji_pattern.finditer(text))
+        if len(matches) <= 1:
+            return text
+        result = []
+        first_end = matches[0].end()
+        result.append(text[:first_end])
+        last_pos = first_end
+        for m in matches[1:]:
+            result.append(text[last_pos:m.start()])
+            last_pos = m.end()
+        result.append(text[last_pos:])
+        clean = ''.join(result)
+        return re.sub(r'[ \t]{2,}', ' ', clean)
 
     @staticmethod
     def _clean_telegram_html(raw_html: str) -> str:
@@ -281,15 +319,18 @@ STYLE AND TONE GUIDE:
 STRICT FORMATTING AND FACTUAL REQUIREMENTS:
 1. Output language: {self.config.output.target_language}.
 2. Use valid HTML for formatting (<b>bold</b>, <i>italic</i>). Do NOT use Markdown (no asterisks, no hash headers).
-3. Specify the exact Bratislava borough or street where it occurred (e.g. 'В Братиславе...', 'В Петржалке...', 'В Старом городе...').
-4. The post must be catchy, punchy, engaging, and clear.
-5. Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
-6. STRICT FACTUAL INTEGRITY: Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. Real news only.
+3. The post must start with a concise bold headline (<b>...</b>) with at most 1 relevant emoji (or no emoji).
+4. Specify the exact Bratislava borough or street where it occurred in natural Ukrainian (e.g. 'У Братиславі...', 'У Петржалці...', 'У Ружинові...', 'У Старому місті...').
+5. EMOJI RULE: Use at most ONE relevant emoji in the entire post (e.g. at the start of the headline or in the text). Do NOT use multiple emojis or informal emoji spam.
+6. TONE: Informative, professional, calm, but simple and easily understandable for the average reader. Avoid tabloid sensationalism, vulgarity, sarcasm, or trash clickbait.
+7. TRANSLATION QUALITY: Write completely in clean, natural Ukrainian. Fully translate all Slovak institutions, words, and terms into Ukrainian (e.g. 'mestské zastupiteľstvo' -> 'міська рада', 'polícia' -> 'поліція', 'magistrát' -> 'магістрат / мерія'). Never leave untranslated Slovak words in the Ukrainian text.
+8. Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
+9. STRICT FACTUAL INTEGRITY: Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. Real news only.
 
 Return STRICTLY a JSON object with this structure:
 {{
-  "headline": "Short punchy title",
-  "caption": "Full formatted text in HTML ready for Telegram"
+  "headline": "Short punchy title without HTML tags",
+  "caption": "Full formatted post in HTML ready for Telegram (beginning with <b>headline</b> followed by empty line and 2-3 body sentences)"
 }}
 """
 

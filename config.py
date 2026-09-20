@@ -17,11 +17,11 @@ class SourceConfig:
 
 @dataclass
 class OutputConfig:
-    target_language: str = "Russian"
+    target_language: str = "Ukrainian"
     style_guide: str = ""
     max_caption_length: int = 900
     include_source_link: bool = True
-    channel_name: str = "Bratislava News"
+    channel_name: str = "Братислава"
     channel_link: str = "https://t.me/bratislavanewss"
 
 
@@ -38,6 +38,8 @@ class SettingsConfig:
     max_articles_per_run: int = 30
     max_posts_per_run: int = 1
     require_image: bool = True
+    min_image_width: int = 500
+    min_image_height: int = 300
     history_retention_days: int = 14
     post_delay_seconds: int = 3
     request_timeout_seconds: int = 15
@@ -91,11 +93,11 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
     # Parse nested configs
     output_data = data.get("output", {})
     output_cfg = OutputConfig(
-        target_language=output_data.get("target_language", "Russian"),
+        target_language=output_data.get("target_language", "Ukrainian"),
         style_guide=output_data.get("style_guide", "").strip(),
         max_caption_length=output_data.get("max_caption_length", 900),
         include_source_link=output_data.get("include_source_link", True),
-        channel_name=output_data.get("channel_name", "Bratislava News"),
+        channel_name=output_data.get("channel_name", "Братислава"),
         channel_link=output_data.get("channel_link", "https://t.me/bratislavanewss")
     )
 
@@ -122,6 +124,8 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         max_articles_per_run=int(settings_data.get("max_articles_per_run", 30)),
         max_posts_per_run=int(settings_data.get("max_posts_per_run", 1)),
         require_image=bool(settings_data.get("require_image", True)),
+        min_image_width=int(settings_data.get("min_image_width", 500)),
+        min_image_height=int(settings_data.get("min_image_height", 300)),
         history_retention_days=int(settings_data.get("history_retention_days", 14)),
         post_delay_seconds=int(settings_data.get("post_delay_seconds", 3)),
         request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15))
