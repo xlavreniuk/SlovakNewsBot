@@ -66,8 +66,8 @@ settings:
   max_articles_per_run: 30    # Maximum total new articles to evaluate per run
   max_posts_per_run: 1        # Optimal pacing: 1 top story per run (e.g. 1 per hour)
   require_image: true         # Only post articles that have an image (no plain text posts)
-  min_image_width: 500        # Minimum image width in pixels for high quality posts
-  min_image_height: 300       # Minimum image height in pixels
+  min_image_width: 600        # Minimum image width in pixels for high quality posts
+  min_image_height: 350       # Minimum image height in pixels
   history_retention_days: 14  # Auto-prune state entries older than 14 days
   post_delay_seconds: 3       # Sleep between Telegram posts to respect rate limits
   request_timeout_seconds: 15 # Network timeout for scraping and requests
