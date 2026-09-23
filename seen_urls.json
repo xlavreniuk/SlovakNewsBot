@@ -1703,14 +1703,10 @@
     "https://www.topky.sk/cl/10/9475641/Fico-otvorene-o-kradnuti-cez-MOM-ky--Obvinena-zamestnankyna-je-len-vrcholom-ladovca": "2026-09-22T22:21:58.916984+00:00",
     "https://www.aktuality.sk/clanok/8u1ZsfD/trump-rokoval-so-zelenskym-primerie-nedohodli/": "2026-09-22T22:21:58.916989+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2046147-statny-tajomnik-ladislav-slobodnik-nehoda-jis-operacia-ministerstvo-zdravotnictva-kamil-sasko": "2026-09-22T22:21:58.916993+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2046109-pellegrini-svet-je-v-ovela-horsej-situacii-nez-pred-rokom": "2026-09-22T22:21:58.916996+00:00"
+    "https://www.pravda.sk/spravy/svet/clanok/2046109-pellegrini-svet-je-v-ovela-horsej-situacii-nez-pred-rokom": "2026-09-22T22:21:58.916996+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2045849-spor-o-pecniansky-les-po-rokoch-rozhodol-najvyssi-sud-lesy-sr-neuspeli-boj-sa-vsak-nemusi-skoncit": "2026-09-23T00:49:10.642484+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9473395/Pito-vzal-spat-ziadost-o-miernejsi-rezim--Stratil-doveru-v-rozhodovanie-sudu",
-      "title": "Piťo vzal späť žiadosť o miernejší režim: Stratil dôveru v rozhodovanie súdu",
-      "posted_at": "2026-09-19T23:51:10.980214+00:00"
-    },
     {
       "url": "https://www.teraz.sk/regiony/bratislavska-petrzalka-sa-cez-vikend/993418-clanok.html",
       "title": "Bratislavská Petržalka sa cez víkend rozlúči s letom na Petržalkafeste",
@@ -1800,6 +1796,11 @@
       "url": "https://www.topky.sk/cl/10/9475531/Drama-a-vybuch-v-hlavnom-meste--Dalsi-uder-bankomatovej-MAFIE--odvazlivec-ich-vyrusil-a-splasene-usli-",
       "title": "Dráma a výbuch v hlavnom meste: Ďalší úder bankomatovej MAFIE, odvážlivec ich vyrušil a splašene ušli!",
       "posted_at": "2026-09-22T22:21:55.916713+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/domace/clanok/2045849-spor-o-pecniansky-les-po-rokoch-rozhodol-najvyssi-sud-lesy-sr-neuspeli-boj-sa-vsak-nemusi-skoncit",
+      "title": "Spor o Pečniansky les po rokoch rozhodol Najvyšší súd. Lesy SR neuspeli, boj sa však nemusí skončiť",
+      "posted_at": "2026-09-23T00:49:10.642500+00:00"
     }
   ]
 }
