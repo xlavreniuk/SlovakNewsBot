@@ -2312,14 +2312,13 @@
     "https://www.topky.sk/cl/10/9478663/Vodici--pozor-na-problemy-v-Bratislave--Na-D2-pred-Lamacom-sa-po-nehode-zdrzite-45-minut": "2026-09-26T21:24:10.347745+00:00",
     "https://www.teraz.sk/regiony/bratislavska-arcidiecezna-charita-rozd/995242-clanok.html": "2026-09-26T21:24:13.347942+00:00",
     "https://www.topky.sk/cl/10/9503619/Pozor-na-Sitinu--Bratislavsky-tunel-bude-cez-vikend-opat-uzavrety-v-oboch-smeroch": "2026-09-26T21:24:13.347968+00:00",
-    "https://www.topky.sk/cl/10/9503675/Hroziva-nehoda-pri-Zlatych-Moravciach--Auto-sa-celne-zrazilo-s-dodavkou--pre-13-rocne-dievca-letel-vrtulnik-": "2026-09-26T21:24:13.347972+00:00"
+    "https://www.topky.sk/cl/10/9503675/Hroziva-nehoda-pri-Zlatych-Moravciach--Auto-sa-celne-zrazilo-s-dodavkou--pre-13-rocne-dievca-letel-vrtulnik-": "2026-09-26T21:24:13.347972+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2048081-sudca-ktory-odmietol-obzalobu-na-curillovcov-dostal-padaka-z-bratislavy-takto-pracuje-mafia-reaguje-kubina": "2026-09-26T23:45:41.536730+00:00",
+    "https://www.topky.sk/cl/10/9501909/Vyssie-dane-namiesto-prijmov-prinasaju-odliv-mozgov--Priemysel-vola-po-navrate-k-rovnej-dani": "2026-09-26T23:45:44.536969+00:00",
+    "https://www.topky.sk/cl/10/9503671/Gaspar-varuje-pred-unahlenymi-zavermi--Informacie-o-ruskej-GRU-na-Slovensku-zatial-nie-su-potvrdene": "2026-09-26T23:45:44.537001+00:00",
+    "https://www.topky.sk/cl/10/9478477/Pridavky-na-deti-cakaju-ZMENY--Vyplacat-sa-maju-dlhsie--no-sprisnia-sa-kontroly--Na-TOTO-pozor": "2026-09-26T23:45:44.537004+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9476101/Zrazka-motocykla-s-autom-v-Senci--Motocyklistu-po-nehode-previezol-vrtulnik",
-      "title": "Zrážka motocykla s autom v Senci: Motocyklistu po nehode previezol vrtuľník",
-      "posted_at": "2026-09-23T22:25:32.213326+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9475931/Vazna-nehoda-nedaleko-Lozorna--Z-fotiek-ide-strach--policia-musela-zasadne-obmedzit-dopravu-",
       "title": "Vážna nehoda neďaleko Lozorna: Z fotiek ide strach, polícia musela zásadne obmedziť dopravu!",
@@ -2409,6 +2408,11 @@
       "url": "https://www.topky.sk/cl/10/9478663/Vodici--pozor-na-problemy-v-Bratislave--Na-D2-pred-Lamacom-sa-po-nehode-zdrzite-45-minut",
       "title": "Vodiči, pozor na problémy v Bratislave: Na D2 pred Lamačom sa po nehode zdržíte 45 minút",
       "posted_at": "2026-09-26T21:24:10.347762+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/domace/clanok/2048081-sudca-ktory-odmietol-obzalobu-na-curillovcov-dostal-padaka-z-bratislavy-takto-pracuje-mafia-reaguje-kubina",
+      "title": "Sudca, ktorý odmietol obžalobu na čurillovcov, dostal padáka z Bratislavy. Takto pracuje mafia, reaguje Kubina",
+      "posted_at": "2026-09-26T23:45:41.536749+00:00"
     }
   ]
 }
