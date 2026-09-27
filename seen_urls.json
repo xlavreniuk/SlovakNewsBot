@@ -1,21 +1,5 @@
 {
   "seen_urls": {
-    "https://bratislavskykraj.sk/festival-prieniky-nebude-len-o-babkach-ponukne-aj-styri-hudobne-projekty-zadarmo/": "2026-09-13T17:53:31.060493+00:00",
-    "https://www.topky.sk/cl/10/9468843/Tarabov-rezort-chrani-Slovensko-pred-vystavbou-veternych-parkov": "2026-09-13T17:53:34.060766+00:00",
-    "https://www.aktuality.sk/clanok/DKHbkSr/po-braci-poziar-zasiahol-dalsiu-oblubenu-destinaciu-slovakov-chorvati-nasadili-lietadla/": "2026-09-13T17:53:34.060793+00:00",
-    "https://www.teraz.sk/regiony/okresny-sud-v-trebisove-sa-po-rekons/991967-clanok.html": "2026-09-13T17:53:34.060798+00:00",
-    "https://www.teraz.sk/regiony/v-centre-tu-ba-pribudne-interaktivny-3d/991960-clanok.html": "2026-09-13T17:53:34.060801+00:00",
-    "https://www.teraz.sk/regiony/obnova-hradu-v-kralovskom-chlmci-zlep/991950-clanok.html": "2026-09-13T17:53:34.060804+00:00",
-    "https://www.teraz.sk/regiony/starz-hodnoti-letnu-sezonu-pozitivne/991949-clanok.html": "2026-09-13T17:53:34.060807+00:00",
-    "https://www.teraz.sk/regiony/divadelne-dni-predstavili-v-tlmacoch-o/991947-clanok.html": "2026-09-13T17:53:34.060811+00:00",
-    "https://www.topky.sk/cl/10/9468859/Policia-kontrolovala-areal-byvalej-Bukozy--zistila-viacero-priestupkov": "2026-09-13T17:53:34.060815+00:00",
-    "https://www.aktuality.sk/clanok/1i42TPM/zriedkave-divadlo-na-oblohe-mesiac-v-pondelok-na-viac-nez-hodinu-uplne-zakryje-planetu-venusa/": "2026-09-13T17:53:34.060818+00:00",
-    "https://www.aktuality.sk/clanok/WgDS8fG/polsko-varuje-pred-eskalaciou-ruskej-agresie-napor-utokov-na-ukrajinu-moze-zasiahnut-aj-nasich-severnych-susedov/": "2026-09-13T17:53:34.060821+00:00",
-    "https://www.aktuality.sk/clanok/59oE6CI/rusky-dron-utocil-vlak-pri-polskych-hraniciach-len-par-minut-po-prejazde-specialu-s-elitami-ako-boris-johnson/": "2026-09-13T17:53:34.060823+00:00",
-    "https://www.aktuality.sk/clanok/nhShJn0/kanada-zrychluje-odklon-od-usa-a-moze-sa-stat-asociovanym-clenom-eu/": "2026-09-13T17:53:34.060826+00:00",
-    "https://www.aktuality.sk/clanok/S6uuydZ/kosovsky-parlament-schvalil-novu-vladu-na-cele-s-premierom-albinom-kurtim/": "2026-09-13T17:53:34.060828+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2040709-gaspar-pod-obzalobou-no-vo-vedeni-parlamentu-ma-podla-rasiho-zostat-opozicia-nesuhlasi": "2026-09-13T17:53:34.060831+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2040697-taraba-otvoril-temu-ktora-moze-zatriast-vladou-migal-potvrdil-rozhovory-o-zruseni-rezortu": "2026-09-13T17:53:34.060833+00:00",
     "https://www.topky.sk/cl/10/9492789/Interaktivny-model-Bratislavy-v-mierke-1-3000--Ukaze--ako-sa-bude-mesto-rozvijat-do-roku-2050": "2026-09-13T20:12:29.443694+00:00",
     "https://www.teraz.sk/regiony/macek-z-ludovej-piesne-bude-v-malackac/991977-clanok.html": "2026-09-13T20:12:32.444351+00:00",
     "https://www.topky.sk/cl/10/9468935/V-okresoch-Komarno--Levice-a-Nove-Zamky-sa-mozu-v-piatok-vyskytnut-horucavy": "2026-09-13T20:12:32.444376+00:00",
@@ -2335,7 +2319,27 @@
     "https://www.aktuality.sk/clanok/LEu28jc/severne-irsko-sa-obava-navratu-starych-konfliktov-sporny-pochod-oranzistov-zablokovali-tisice-ludi-v-portadowne/": "2026-09-27T15:47:08.729836+00:00",
     "https://www.aktuality.sk/clanok/5OGSt5Q/neutralita-zostava-flexibilna-ukazuje-prognoza-svajciarskeho-referedna/": "2026-09-27T15:47:08.729841+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2048761-budu-v-januari-volby-politolog-fico-rozohral-hru-no-vstavat-od-plneho-stola-sa-neoplati": "2026-09-27T15:47:08.729844+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2048713-sns-odmieta-predcasne-volby-aj-obvinenia-z-koalicnej-krizy": "2026-09-27T15:47:08.729846+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2048713-sns-odmieta-predcasne-volby-aj-obvinenia-z-koalicnej-krizy": "2026-09-27T15:47:08.729846+00:00",
+    "https://www.aktuality.sk/clanok/XoLQPQ2/kandidat-na-primatora-bratislavy-miroslav-heredos-konci-v-boji-o-mesto-skoncil-na-nemocnicnom-lozku/": "2026-09-27T19:31:59.749953+00:00",
+    "https://www.teraz.sk/regiony/o-funkciu-rektora-ekonomickej-univerzity/995390-clanok.html": "2026-09-27T19:32:02.750178+00:00",
+    "https://www.topky.sk/cl/10/9504151/Slovensko-caka-mraziva-noc--V-tychto-oblastiach-hrozi-prizemny-mraz": "2026-09-27T19:32:02.750203+00:00",
+    "https://www.topky.sk/cl/10/9503987/Fico-nechce-dalsiu-adresnu-energopomoc--Peniaze-dostanu-vsetci--Transakcna-dan-zatial-zostava": "2026-09-27T19:32:02.750208+00:00",
+    "https://www.topky.sk/cl/10/9504083/Za-pripravu-vrazdy-vlastnej-dcery-dostal-osem-rokov--O-osude-Afganca-rozhodne-Najvyssi-sud": "2026-09-27T19:32:02.750211+00:00",
+    "https://www.topky.sk/cl/10/9504065/Pozor-na-podvod--Znama-poistovna-varuje-pred-strankou--ktora-sa-vydava-za-jej-oficialny-web": "2026-09-27T19:32:02.750215+00:00",
+    "https://www.topky.sk/cl/10/9479797/Sefka-STVR-odhalila-jesenne-novinky--Televizia-meni-vizualnu-identitu-a-vracia-na-obrazovky-oblubenu-sou": "2026-09-27T19:32:02.750218+00:00",
+    "https://www.teraz.sk/regiony/sered-ma-prvych-clenov-mestskeho-ml/995410-clanok.html": "2026-09-27T19:32:02.750223+00:00",
+    "https://www.teraz.sk/regiony/v-podtatranskej-kniznici-vystavia-abstr/995408-clanok.html": "2026-09-27T19:32:02.750228+00:00",
+    "https://www.teraz.sk/regiony/dopravny-podnik-v-presove-vrati-na-ce/995406-clanok.html": "2026-09-27T19:32:02.750231+00:00",
+    "https://www.teraz.sk/regiony/most-na-mladeznickej-ulici-v-b-bystr/995396-clanok.html": "2026-09-27T19:32:02.750234+00:00",
+    "https://www.teraz.sk/regiony/balneologicke-muzeum-dokumentuje-hist/995395-clanok.html": "2026-09-27T19:32:02.750237+00:00",
+    "https://www.teraz.sk/regiony/v-novozamockej-nemocnici-bude-v-pondelo/995386-clanok.html": "2026-09-27T19:32:02.750240+00:00",
+    "https://www.topky.sk/cl/10/9479733/Minister-Migal-s-cinskym-velvyslancom-na-vychode--V-Presovskom-kraji-dohadovali-nove-investicie": "2026-09-27T19:32:02.750279+00:00",
+    "https://www.topky.sk/cl/10/9479721/Posmyknutie-s-nestastnym-koncom--Turistku-museli-z-Malej-Fatry-transportovat-na-nosidlach": "2026-09-27T19:32:02.750284+00:00",
+    "https://www.topky.sk/cl/10/9479713/Velka-zmena-v-Banskej-Bystrici--Rooseveltova-nemocnica-sa-meni-na-univerzitnu--Pribudne-nova-lekarska-fakulta": "2026-09-27T19:32:02.750288+00:00",
+    "https://www.aktuality.sk/clanok/jBIbOiJ/po-chladnej-noci-nas-caka-prijemne-teply-den/": "2026-09-27T19:32:02.750291+00:00",
+    "https://www.aktuality.sk/clanok/8tzaBuv/kristina-tormova-videla-som-zlatu-rybu/": "2026-09-27T19:32:02.750294+00:00",
+    "https://www.aktuality.sk/clanok/6Wr3AIq/melu-cestoviny-na-chlieb-lovia-bazanty-okupovane-olesky-celia-humanitarnej-krize-bezpecny-koridor-z-mesta-je-v-nedohladne/": "2026-09-27T19:32:02.750296+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2048811-prichadza-studena-noc-na-viacerych-miestach-slovenska-hrozi-mraz": "2026-09-27T19:32:02.750299+00:00"
   },
   "recent_posts": [
     {
@@ -2432,6 +2436,11 @@
       "url": "https://www.topky.sk/cl/10/9503913/Poplach-vo-vlaku-smerujucom-z-Bratislavy--Cestujucich-mal-ohrozovat-muz-so-strelnou-zbranou-",
       "title": "Poplach vo vlaku smerujúcom z Bratislavy: Cestujúcich mal ohrozovať muž so strelnou zbraňou!",
       "posted_at": "2026-09-27T15:47:05.729443+00:00"
+    },
+    {
+      "url": "https://www.aktuality.sk/clanok/XoLQPQ2/kandidat-na-primatora-bratislavy-miroslav-heredos-konci-v-boji-o-mesto-skoncil-na-nemocnicnom-lozku/",
+      "title": "Kandidát na primátora Bratislavy Miroslav Heredoš končí v boji o mesto. Skončil na nemocničnom lôžku",
+      "posted_at": "2026-09-27T19:31:59.749966+00:00"
     }
   ]
 }
