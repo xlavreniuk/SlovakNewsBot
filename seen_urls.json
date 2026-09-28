@@ -1,7 +1,5 @@
 {
   "seen_urls": {
-    "https://www.pravda.sk/spravy/domace/clanok/2040423-vystava-o-ruskych-pokladoch-narazila-na-odpor-slovenskej-diplomacie-rezort-hovori-jasne-o-kryme": "2026-09-14T02:49:47.864318+00:00",
-    "https://www.topky.sk/cl/10/9492765/Slovensko-caka-prudky-ZVRAT--V-noci-udrie-okluzny-front--pondelok-prinesie-neprijemne-prekvapenie-": "2026-09-14T02:49:50.864632+00:00",
     "https://www.topky.sk/cl/10/9469167/Na-Pristavnom-moste-v-Bratislave-doslo-k-nehode-troch-aut-a-motorky": "2026-09-14T09:27:48.304653+00:00",
     "https://bratislavskykraj.sk/vlaky-zssk-budu-15-septembra-premavat-podla-cestovneho-poriadku-pre-pracovny-den/": "2026-09-14T09:27:51.305247+00:00",
     "https://www.teraz.sk/regiony/dunajska-streda-pripravuje-den-bez-au/992049-clanok.html": "2026-09-14T09:27:51.305275+00:00",
@@ -2334,14 +2332,10 @@
     "https://www.topky.sk/cl/10/9504171/Skuska-pamati--Ako-dobre-sledujete-aktualne-dianie--Zistite-to-v-nasom-KVIZE-o-top-udalostiach-": "2026-09-27T22:32:22.255153+00:00",
     "https://www.topky.sk/cl/10/9504197/Zmena-v-boji-o-kreslo-primatora-Bratislavy--Heredos-utrpel-srdcovu-prihodu--z-kandidatury-odstupuje": "2026-09-27T22:32:22.255156+00:00",
     "https://www.topky.sk/cl/10/9479555/Nelegalna-skladka-v-chranenej-oblasti-v-Bratislave--Skoda-sa-vysplhala-na-viac-ako-6-MILIONOV-eur": "2026-09-28T01:07:11.788746+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2048875-tragedia-na-kolajniciach-pri-bratislave-osobu-zrazil-vlak-premavku-zastavili": "2026-09-28T01:07:14.789028+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2048875-tragedia-na-kolajniciach-pri-bratislave-osobu-zrazil-vlak-premavku-zastavili": "2026-09-28T01:07:14.789028+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2047525-stojime-v-kolonach-na-vlastny-byt-nemame-napriek-tomu-sme-s-bratislavou-prekvapivo-spokojni": "2026-09-28T03:01:28.953137+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9476903/Vyluka-na-bratislavskej-hlavnej-stanici-potrva-tri-mesiace--Pripravte-sa-na-zmeny-aj-rusenie-spojov",
-      "title": "Výluka na bratislavskej hlavnej stanici potrvá tri mesiace: Pripravte sa na zmeny aj rušenie spojov",
-      "posted_at": "2026-09-25T02:56:09.521163+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9502641/AKTUALNE-Generalnemu-prokuratorovi-Marosovi-Zilinkovi-a-jeho-zene-sa-vyhrazaju-BOMBOVYM-utokom",
       "title": "AKTUÁLNE Generálnemu prokurátorovi Marošovi Žilinkovi a jeho žene sa vyhrážajú BOMBOVÝM útokom",
@@ -2436,6 +2430,11 @@
       "url": "https://www.topky.sk/cl/10/9479555/Nelegalna-skladka-v-chranenej-oblasti-v-Bratislave--Skoda-sa-vysplhala-na-viac-ako-6-MILIONOV-eur",
       "title": "Nelegálna skládka v chránenej oblasti v Bratislave: Škoda sa vyšplhala na viac ako 6 MILIÓNOV eur",
       "posted_at": "2026-09-28T01:07:11.788768+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/domace/clanok/2047525-stojime-v-kolonach-na-vlastny-byt-nemame-napriek-tomu-sme-s-bratislavou-prekvapivo-spokojni",
+      "title": "71 hodín v zápchach, drahé byty a lístok za 263 eur. Bratislava prekvapila Prahu, Viedeň aj Varšavu",
+      "posted_at": "2026-09-28T03:01:28.953156+00:00"
     }
   ]
 }
