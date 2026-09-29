@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9493415/V-hlavnom-meste-utocili-srsne--Zdravotnici-museli-osetrit-tri-male-deti-so-zdravotnymi-tazkostami": "2026-09-15T02:52:34.442454+00:00",
     "https://www.topky.sk/cl/10/9493375/Preparkovanie-auta-sa-zmenilo-na-totalny-chaos--Opity-vodic-rozbil-auta-aj-znacku--Nafukal-2-8-promile": "2026-09-15T09:07:17.108633+00:00",
     "https://www.topky.sk/cl/10/9494017/Klienti-skrachovanej-cestovky-dostavaju-peniaze-spat--Poistovna-odskodnuje-priblizne-2000-ludi": "2026-09-15T09:07:20.109130+00:00",
     "https://www.topky.sk/cl/10/9493949/Statistika-ukazuje-pokles-pachania-trestnej-cinnosti-cudzincami--uviedol-Zilinka": "2026-09-15T09:07:20.109154+00:00",
@@ -2300,14 +2299,13 @@
     "https://www.pravda.sk/spravy/domace/clanok/2049043-danko-kriza-vyzva-tarabovi-vyzva-ficovi": "2026-09-29T00:18:03.533384+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2049053-sng-hasi-problem-s-navstevnostou-a-ponuka-vstupy-zadarmo-pre-vsetkych": "2026-09-29T00:18:03.533387+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2049015-sns-vyzyva-tarabu-na-odstupenie-ak-tak-neurobi-v-parlamente-ho-odvola": "2026-09-29T00:18:03.533389+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2046587-napodobnia-vase-telefonne-cislo-a-vyzvanaju-inym-podvodnici-otravuju-slovakov-znamym-trikom": "2026-09-29T00:18:03.533392+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2046587-napodobnia-vase-telefonne-cislo-a-vyzvanaju-inym-podvodnici-otravuju-slovakov-znamym-trikom": "2026-09-29T00:18:03.533392+00:00",
+    "https://www.pravda.sk/spravy/regiony/clanok/2048971-pri-bytovke-v-bratislave-nasli-mrtveho-muza": "2026-09-29T03:42:19.772241+00:00",
+    "https://www.topky.sk/cl/10/9504823/Akcna-nahanacka-v-hlavnom-meste--Cudzinec-ukradol-auto-na-pumpe-priamo-pred-ocami-majitela": "2026-09-29T03:42:22.772420+00:00",
+    "https://www.topky.sk/cl/10/9480603/V-slovenskej-obci-sa-objavila-tuberkuloza--Vyskyt-pripadov-potvrdili-hygienici": "2026-09-29T03:42:22.772445+00:00",
+    "https://www.aktuality.sk/clanok/yBinJtO/boj-o-ropu-este-len-startuje-do-hry-bude-vtiahnuta-klucova-mocnost/": "2026-09-29T03:42:22.772450+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.teraz.sk/regiony/petrzalka-podava-v-pripade-vysetrova/994907-clanok.html",
-      "title": "Petržalka podáva v prípade vyšetrovania podvodu aj civilnú žalobu",
-      "posted_at": "2026-09-26T03:00:22.799402+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9477581/RUSNO-na-jednej-z-bratislavskych-ulic--FOTO-Muza-spacifikovali-priamo-na-chodniku--Policajt-utrpel-zranenia",
       "title": "RUŠNO na jednej z bratislavských ulíc: FOTO Muža spacifikovali priamo na chodníku! Policajt utrpel zranenia",
@@ -2387,6 +2385,11 @@
       "url": "https://www.pravda.sk/spravy/domace/clanok/2049245-ukradol-land-cruiser-priamo-z-pumpy-utek-cez-bratislavu-ukoncila-zrazka-s-autom",
       "title": "Ukradol Land Cruiser priamo z pumpy. Útek cez Bratislavu ukončila zrážka s autom",
       "posted_at": "2026-09-29T00:18:00.533021+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/regiony/clanok/2048971-pri-bytovke-v-bratislave-nasli-mrtveho-muza",
+      "title": "Pri bytovke v Bratislave našli mŕtveho muža",
+      "posted_at": "2026-09-29T03:42:19.772256+00:00"
     }
   ]
 }
