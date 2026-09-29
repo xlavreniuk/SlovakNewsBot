@@ -1,13 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9469859/Vecerna-TRAGEDIA-na-dialnici-pri-Bratislave--O-zivot-prisla-17-rocna-motocyklistka": "2026-09-14T21:22:10.593672+00:00",
-    "https://www.topky.sk/cl/11/9493775/Rozpaky-v-Bruseli--Slovensko-a-Francuzsko-zablokovali-sankcie-voci-Rusku--v-pozadi-je-miliardar": "2026-09-14T21:22:13.594224+00:00",
-    "https://www.topky.sk/cl/10/9493431/POZOR-na-zmeny-v-nemocniciach-15--septembra--NUSCH-obmedzi-prevadzku": "2026-09-14T21:22:13.594249+00:00",
-    "https://www.aktuality.sk/clanok/3qGKLlr/slovensko-a-francuzsko-zablokovali-dlhsie-predlzenie-sankcii-voci-rusom-spor-je-o-miliardara-usmanova/": "2026-09-14T21:22:13.594254+00:00",
-    "https://www.aktuality.sk/clanok/jn1iGeD/pavel-a-babis-obnovili-pravidelne-rokovania-hovorili-o-osn-rozpocte-aj-zahranicnej-politike/": "2026-09-14T21:22:13.594259+00:00",
-    "https://www.aktuality.sk/clanok/UJdtCbY/noc-prinesie-postupne-pokojnejsie-pocasie-zrazky-ustupia-pozor-vsak-na-ranne-hmly/": "2026-09-14T21:22:13.594262+00:00",
-    "https://www.aktuality.sk/clanok/ojzkMEW/orban-po-volebnej-prehre-predstavil-plan-navratu-chce-prestavat-madarsku-pravicu-a-cakat-na-chyby-vlady/": "2026-09-14T21:22:13.594266+00:00",
-    "https://www.topky.sk/cl/10/9469197/Bizarny-vyjav-v-hlavnom-meste--VIDEO-Muz-sa-premaval-po-Bratislave-na-kolobezke-s-chladnickou-": "2026-09-14T23:56:23.501987+00:00",
     "https://www.topky.sk/cl/10/9493415/V-hlavnom-meste-utocili-srsne--Zdravotnici-museli-osetrit-tri-male-deti-so-zdravotnymi-tazkostami": "2026-09-15T02:52:34.442454+00:00",
     "https://www.topky.sk/cl/10/9493375/Preparkovanie-auta-sa-zmenilo-na-totalny-chaos--Opity-vodic-rozbil-auta-aj-znacku--Nafukal-2-8-promile": "2026-09-15T09:07:17.108633+00:00",
     "https://www.topky.sk/cl/10/9494017/Klienti-skrachovanej-cestovky-dostavaju-peniaze-spat--Poistovna-odskodnuje-priblizne-2000-ludi": "2026-09-15T09:07:20.109130+00:00",
@@ -2269,14 +2261,48 @@
     "https://www.topky.sk/cl/10/9480631/Krvavy-konflikt-pre-komunalne-volby--Pri-odovzdavani-kandidatok-sa-objavili-noze--tiekla-krv-": "2026-09-28T20:01:06.380685+00:00",
     "https://www.topky.sk/cl/10/9480253/Krvavy-konflikt-na-vychode-Slovenska--Hromadna-BITKA-a-utok-vidlami--zasahovat-muselo-mnozstvo-policajtov": "2026-09-28T20:01:06.380687+00:00",
     "https://www.topky.sk/cl/10/9480599/Slovalco-opat-rozbieha-pece--Fico-hovori-o-dobrej-sprave-pre-Slovensko-aj-celu-Europu": "2026-09-28T20:01:06.380689+00:00",
-    "https://www.topky.sk/cl/10/9480083/Oblubena-siet-pekarni-na-Slovensku-KONCI--Hromadne-zatvaraju-predajne--zakaznici-su-v-soku": "2026-09-28T20:01:06.380690+00:00"
+    "https://www.topky.sk/cl/10/9480083/Oblubena-siet-pekarni-na-Slovensku-KONCI--Hromadne-zatvaraju-predajne--zakaznici-su-v-soku": "2026-09-28T20:01:06.380690+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049245-ukradol-land-cruiser-priamo-z-pumpy-utek-cez-bratislavu-ukoncila-zrazka-s-autom": "2026-09-29T00:18:00.533007+00:00",
+    "https://www.topky.sk/cl/10/9504391/Slovenska-univerzita-neskryva-HRDOST--Obrovsky-milnik-a-zisk-dolezitej-akreditacie--TATO-fakulta-z-nej-vytazi-": "2026-09-29T00:18:03.533238+00:00",
+    "https://www.topky.sk/cl/10/9478349/Pred-komunalnymi-volbami-HUSTNE-atmosfera--Bookmakeri-uz-vypisali-kurzy-na-kandidatov--napinavy-vychod-": "2026-09-29T00:18:03.533262+00:00",
+    "https://www.topky.sk/cl/10/9480569/Dolezite-projekty-na-zelezniciach-su-hotove--ZSR-potvrdili-splnenie-klucovych-terminov": "2026-09-29T00:18:03.533267+00:00",
+    "https://www.topky.sk/cl/10/9480491/Velky-navrat-po-viac-ako-troch-rokoch--Na-Slovensku-opat-rozbiehaju-vyrobu-hlinika--investuju-100-milionov-eur": "2026-09-29T00:18:03.533271+00:00",
+    "https://www.topky.sk/cl/10/9480409/Taraba-narazil--Sporne-uznesenia-o-narodnych-parkoch-padli--Minister-musel-cuvnut": "2026-09-29T00:18:03.533274+00:00",
+    "https://www.topky.sk/cl/10/9480345/Zdruzenie-vlastnikov-pody-vyzyva-Richarda-Takaca-na-prijatie-stabilizacnych-opatreni": "2026-09-29T00:18:03.533277+00:00",
+    "https://www.aktuality.sk/clanok/6EbWeBC/prehlad-dna-platy-policajtov-koalicny-spor-o-tarabu-a-politicke-boje-doma-aj-v-madarsku/": "2026-09-29T00:18:03.533283+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049287-rezignacia-ci-hlasy-z-trucu-vilagi-spory-v-koalicii-nie-su-dobrym-signalom-pre-volicov-vladnych-stran": "2026-09-29T00:18:03.533287+00:00",
+    "https://www.topky.sk/cl/10/9504659/Tvrdy-a-RAZNY-krok-sudu-pri-SPACKANEJ-milionovej-cyklotrase--Mesto-prehralo-dolezity-spor--co-bude-nasledovat-": "2026-09-29T00:18:03.533292+00:00",
+    "https://www.topky.sk/cl/10/9480397/Velke-problemy-onkologie-v-Trebisove--Nemocnica-nema-lekarov--docasny-KONIEC--Pacienti-musiet-cestovat-inde": "2026-09-29T00:18:03.533295+00:00",
+    "https://www.topky.sk/cl/2005793/9480223/Legendarna-zubacka-oslavuje-130-rokov--Horehronie-a-Gemer-spoji-vynimocna-jazda-parneho-vlaku": "2026-09-29T00:18:03.533298+00:00",
+    "https://www.topky.sk/cl/10/9480443/Slovensko-po-rokoch-opat-vyraba-hlinik--Slovalco-preinvestuje-najmenej-100-milionov--pracu-ziska-cez-200-ludi-": "2026-09-29T00:18:03.533301+00:00",
+    "https://www.aktuality.sk/clanok/OtAiwAb/rusko-planuje-rekordny-obranny-rozpocet-vydavky-na-armadu-stupnu-o-niekolko-percent/": "2026-09-29T00:18:03.533304+00:00",
+    "https://www.aktuality.sk/clanok/re5jA5A/takto-spravne-zamrazite-chlieb-aby-neskor-chutil-ako-cerstvy/": "2026-09-29T00:18:03.533307+00:00",
+    "https://www.aktuality.sk/clanok/cyLXHDR/jasna-a-chladna-noc-na-slovensku-v-udoliach-hrozi-prizemny-mraz-pozor-aj-na-ranne-hmly/": "2026-09-29T00:18:03.533310+00:00",
+    "https://www.aktuality.sk/clanok/Gtk8Daj/slovensko-caka-slnecny-a-teply-utorok-pozor-vsak-na-ranny-prizemny-mraz/": "2026-09-29T00:18:03.533313+00:00",
+    "https://www.aktuality.sk/clanok/VYyTc0g/wadephul-odmieta-dalsie-rokovania-s-ruskom-kym-moskva-neprejavi-ustretovost/": "2026-09-29T00:18:03.533316+00:00",
+    "https://www.aktuality.sk/clanok/0jT7nC1/ruske-utoky-v-kyjeve-zasiahli-akademiu-vied-aj-kliniku-zahynulo-najmenej-sedem-ludi/": "2026-09-29T00:18:03.533319+00:00",
+    "https://www.aktuality.sk/clanok/pCVsddj/rusky-dron-zasiahol-hranicny-priechod-na-ukrajine-len-kusok-od-polska/": "2026-09-29T00:18:03.533323+00:00",
+    "https://www.aktuality.sk/clanok/qW5iahT/krajne-pravicove-narodne-zdruzenie-marine-le-penovej-po-prvykrat-vytvori-vlastny-klub-v-senate/": "2026-09-29T00:18:03.533326+00:00",
+    "https://www.aktuality.sk/clanok/cXewuBS/pat-muzov-zadrzanych-pri-leteckej-zakladni-fairford-prepustia-na-kauciu/": "2026-09-29T00:18:03.533329+00:00",
+    "https://www.aktuality.sk/clanok/CXF9qnF/tri-roky-nonstop-konfliktov-v-koalicii-fico-hovori-o-stabilite-no-krizy-smeru-hlasu-a-sns-nemaju-konca/": "2026-09-29T00:18:03.533333+00:00",
+    "https://www.aktuality.sk/clanok/GfoRacL/moskva-bez-vysvetlenia-prebera-docasnu-spravu-nad-ruskymi-aktivami-retazca-metro/": "2026-09-29T00:18:03.533336+00:00",
+    "https://www.aktuality.sk/clanok/MgxsFo5/v-kosiciach-obvinili-51-rocneho-muza-z-extremizmu-po-zasahu-policie-skoncil-vo-vazbe/": "2026-09-29T00:18:03.533339+00:00",
+    "https://www.aktuality.sk/clanok/5K6WCng/novacikovia-v-eu-bez-prava-veta-brusel-chysta-bic-na-krajiny-ktore-by-chceli-napodobnit-madarsko/": "2026-09-29T00:18:03.533342+00:00",
+    "https://www.aktuality.sk/clanok/o71PHWp/litva-lotyssko-a-estonsko-uvalili-vlastne-sankcie-na-ruskych-oligarchov/": "2026-09-29T00:18:03.533345+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049267-fico-danko-gp": "2026-09-29T00:18:03.533360+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049355-kocner-lexa-bodor-gaspar-rusko-a-mafiani-ficov-poradca-para-zaluje-poslankynu-holeckovu-za-status-ziada-verejne-ospravedlnenie": "2026-09-29T00:18:03.533363+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049343-bitto-ciganikova-nezahlasuje-za-odvolanie-tarabu-neschovavajte-sa-pod-moju-suknu-odkazala-dankovi": "2026-09-29T00:18:03.533366+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049303-zeleznice-pre-incident-z-augusta-posielaju-do-problemovych-vlakov-dalsich-esbeskaro": "2026-09-29T00:18:03.533369+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049215-skody-su-v-stovkach-milionov-eur-financna-sprava-hlasi-rekordne-odhalenia-kriminality": "2026-09-29T00:18:03.533372+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049193-chmelar-fico-hra-vabank-predcasne-volby-su-stale-v-hre-koalicia-sa-dostala-na-hranu": "2026-09-29T00:18:03.533375+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049187-fico-stiahol-navrh-na-odvolanie-tarabu": "2026-09-29T00:18:03.533378+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049139-zilinka-rozhodol-druhym-prokuratorom-kauzy-ocistec-sa-stal-ondrej-repa-vracia-sa-k-celemu-pripadu": "2026-09-29T00:18:03.533381+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049043-danko-kriza-vyzva-tarabovi-vyzva-ficovi": "2026-09-29T00:18:03.533384+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049053-sng-hasi-problem-s-navstevnostou-a-ponuka-vstupy-zadarmo-pre-vsetkych": "2026-09-29T00:18:03.533387+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2049015-sns-vyzyva-tarabu-na-odstupenie-ak-tak-neurobi-v-parlamente-ho-odvola": "2026-09-29T00:18:03.533389+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2046587-napodobnia-vase-telefonne-cislo-a-vyzvanaju-inym-podvodnici-otravuju-slovakov-znamym-trikom": "2026-09-29T00:18:03.533392+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9502957/Kradli-kable-priamo-v-NEMOCNICI--Policia-ich-prichytila-pri-cine",
-      "title": "Kradli káble priamo v NEMOCNICI: Polícia ich prichytila pri čine",
-      "posted_at": "2026-09-25T23:03:23.712148+00:00"
-    },
     {
       "url": "https://www.teraz.sk/regiony/petrzalka-podava-v-pripade-vysetrova/994907-clanok.html",
       "title": "Petržalka podáva v prípade vyšetrovania podvodu aj civilnú žalobu",
@@ -2356,6 +2382,11 @@
       "url": "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2049011-martin-winkler-sa-vzdal-kandidatury-na-post-primatora-bratislavy",
       "title": "Winkler sa vzdal kandidatúry. Ešte v júni to odmietal. Ak v Bratislave vyhrá Ráž, dostane pozíciu viceprimátora, Vallo bije na poplach",
       "posted_at": "2026-09-28T10:25:27.926492+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/domace/clanok/2049245-ukradol-land-cruiser-priamo-z-pumpy-utek-cez-bratislavu-ukoncila-zrazka-s-autom",
+      "title": "Ukradol Land Cruiser priamo z pumpy. Útek cez Bratislavu ukončila zrážka s autom",
+      "posted_at": "2026-09-29T00:18:00.533021+00:00"
     }
   ]
 }
