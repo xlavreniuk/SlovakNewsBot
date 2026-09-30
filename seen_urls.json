@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9470283/Prisla-o-vyse-15-tisic-eur--Zena-odovzdala-hotovost-podvodnikovi--policia-zverejnila-FOTO": "2026-09-16T02:48:07.649873+00:00",
     "https://www.topky.sk/cl/10/9494741/AKTUALNE-Velka-akcia-UBOK--Vyse-STO-policajtov-zasahuje-v-piatich-krajoch--Zadrzali-uz-10-ludi": "2026-09-16T08:59:12.358568+00:00",
     "https://www.teraz.sk/regiony/pri-poziari-auta-v-kysuckom-novom-meste/992519-clanok.html": "2026-09-16T08:59:15.358935+00:00",
     "https://www.topky.sk/cl/10/9494687/Velky-prihovor-Pellegriniho-o-stave-REPUBLIKY--Obrovsky-NAKLAD-opozicii--iluzia-zmierenia-a-rozhadane-tabory-": "2026-09-16T08:59:15.358957+00:00",
@@ -2304,14 +2303,11 @@
     "https://www.pravda.sk/spravy/domace/clanok/2049933-opozicia-ma-sancu-ukazat-sa-na-poslancov-je-vyvijany-tlak-tvrdi-dubeci-konanie-ciganikovej-ukazala-kam-patri": "2026-09-29T22:31:07.833972+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2049915-hlas-sa-pridal-k-sns-premier-fico-neodolanim-tarabu-porusil-koalicnu-zmluvu": "2026-09-29T22:31:07.833974+00:00",
     "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-": "2026-09-30T01:29:41.272913+00:00",
-    "https://www.topky.sk/cl/10/9505601/Nejasne-peniaze-mozu-zamiesat-komunalnymi-volbami--Vacsina-volicov-by-pri-kandidatovi-zvazovala-inu-volbu": "2026-09-30T01:29:44.273169+00:00"
+    "https://www.topky.sk/cl/10/9505601/Nejasne-peniaze-mozu-zamiesat-komunalnymi-volbami--Vacsina-volicov-by-pri-kandidatovi-zvazovala-inu-volbu": "2026-09-30T01:29:44.273169+00:00",
+    "https://bratislavskykraj.sk/ids-bk-otestuje-nove-cezhranicne-autobusove-spojenie/": "2026-09-30T03:28:54.423408+00:00",
+    "https://www.topky.sk/cl/1005417/9483799/TEST-OSOBNOSTI-Ake-alter-ego-sa-v-tebe-ukryva--Odhal-svoju-druhu-tvar--ktoru-bezne-neukazujes": "2026-09-30T03:28:57.423637+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9477557/REVOLUCNA-operacia-na-Kramaroch--Premiera-prelomoveho-zakroku-rukami-zahranicneho-EXPERTA-",
-      "title": "REVOLUČNÁ operácia na Kramároch: Premiéra prelomového zákroku rukami zahraničného EXPERTA!",
-      "posted_at": "2026-09-27T03:03:33.185344+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9479013/Hororova-jazda-cez-aplikaciu--Vodic-v-Bratislave-mal-zamknut-auto--vziat-zene-mobil-a-napadnut-ju-",
       "title": "Hororová jazda cez aplikáciu: Vodič v Bratislave mal zamknúť auto, vziať žene mobil a napadnúť ju!",
@@ -2386,6 +2382,11 @@
       "url": "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-",
       "title": "Zlodej v obľúbenej bratislavskej reštaurácii: Po roku ich opäť okradli, majiteľ zúfalo prosí o pomoc!",
       "posted_at": "2026-09-30T01:29:41.272932+00:00"
+    },
+    {
+      "url": "https://bratislavskykraj.sk/ids-bk-otestuje-nove-cezhranicne-autobusove-spojenie/",
+      "title": "IDS BK otestuje nové cezhraničné autobusové spojenie",
+      "posted_at": "2026-09-30T03:28:54.423424+00:00"
     }
   ]
 }
