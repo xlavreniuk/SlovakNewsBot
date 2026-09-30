@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9469843/Dalsi-problem-dopravnych-kamier--Soitron-vysielal-zabery-z-vytazenej-bratislavskej-ulice-do-celeho-sveta--Nevedno-kolko": "2026-09-16T00:38:08.301879+00:00",
     "https://www.topky.sk/cl/10/9470283/Prisla-o-vyse-15-tisic-eur--Zena-odovzdala-hotovost-podvodnikovi--policia-zverejnila-FOTO": "2026-09-16T02:48:07.649873+00:00",
     "https://www.topky.sk/cl/10/9494741/AKTUALNE-Velka-akcia-UBOK--Vyse-STO-policajtov-zasahuje-v-piatich-krajoch--Zadrzali-uz-10-ludi": "2026-09-16T08:59:12.358568+00:00",
     "https://www.teraz.sk/regiony/pri-poziari-auta-v-kysuckom-novom-meste/992519-clanok.html": "2026-09-16T08:59:15.358935+00:00",
@@ -2303,14 +2302,11 @@
     "https://www.pravda.sk/spravy/domace/clanok/2049993-fico-reaguje-na-tragediu-v-staskove-chce-vratit-ucitelom-autoritu-varuje-aj-pred-nasilim-vo-filmoch-a-hrach": "2026-09-29T22:31:07.833966+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2049947-video-spoluziaci-prehovorili-o-utocnikovi-vraj-sa-zamotal-do-problemov-pre-jednu-zlu-fotku": "2026-09-29T22:31:07.833969+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2049933-opozicia-ma-sancu-ukazat-sa-na-poslancov-je-vyvijany-tlak-tvrdi-dubeci-konanie-ciganikovej-ukazala-kam-patri": "2026-09-29T22:31:07.833972+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049915-hlas-sa-pridal-k-sns-premier-fico-neodolanim-tarabu-porusil-koalicnu-zmluvu": "2026-09-29T22:31:07.833974+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2049915-hlas-sa-pridal-k-sns-premier-fico-neodolanim-tarabu-porusil-koalicnu-zmluvu": "2026-09-29T22:31:07.833974+00:00",
+    "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-": "2026-09-30T01:29:41.272913+00:00",
+    "https://www.topky.sk/cl/10/9505601/Nejasne-peniaze-mozu-zamiesat-komunalnymi-volbami--Vacsina-volicov-by-pri-kandidatovi-zvazovala-inu-volbu": "2026-09-30T01:29:44.273169+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/domace/clanok/2048081-sudca-ktory-odmietol-obzalobu-na-curillovcov-dostal-padaka-z-bratislavy-takto-pracuje-mafia-reaguje-kubina",
-      "title": "Sudca, ktorý odmietol obžalobu na čurillovcov, dostal padáka z Bratislavy. Takto pracuje mafia, reaguje Kubina",
-      "posted_at": "2026-09-26T23:45:41.536749+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9477557/REVOLUCNA-operacia-na-Kramaroch--Premiera-prelomoveho-zakroku-rukami-zahranicneho-EXPERTA-",
       "title": "REVOLUČNÁ operácia na Kramároch: Premiéra prelomového zákroku rukami zahraničného EXPERTA!",
@@ -2385,6 +2381,11 @@
       "url": "https://www.topky.sk/cl/10/9480931/Policia-zverejnila-VIDEO-zo-zasahu-kuklacov--Poliaci-podozrivi-zo-zabitia-muza-sa-skryvali-na-Slovensku",
       "title": "Polícia zverejnila VIDEO zo zásahu kukláčov: Poliaci podozriví zo zabitia muža sa skrývali na Slovensku",
       "posted_at": "2026-09-29T22:31:04.833600+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-",
+      "title": "Zlodej v obľúbenej bratislavskej reštaurácii: Po roku ich opäť okradli, majiteľ zúfalo prosí o pomoc!",
+      "posted_at": "2026-09-30T01:29:41.272932+00:00"
     }
   ]
 }
