@@ -1,12 +1,5 @@
 {
   "seen_urls": {
-    "https://www.pravda.sk/spravy/regiony/clanok/2042469-revizori-pripravili-bratislavu-o-pol-miliona-eur-tvrdi-winkler-hrube-zavadzanie-reaguje-dpb-a-pripustil-vypovede": "2026-09-16T22:03:09.114288+00:00",
-    "https://www.topky.sk/cl/10/9469483/Niektorym-vodicom-lezie-krkom-TATO-technologia--Pozor-na-nove-pravidla-EU--mozete-prist-o-technicak-": "2026-09-16T22:03:12.114503+00:00",
-    "https://www.aktuality.sk/clanok/tBV5W10/trump-vyskrtol-venezuelu-zo-zoznamu-krajin-ktore-nezvladaju-boj-proti-drogam/": "2026-09-16T22:03:12.114528+00:00",
-    "https://www.aktuality.sk/clanok/VeoJQvc/na-slovensko-mieri-oblacnost-a-dazd-v-tychto-krajoch-si-pripravte-dazdniky-uz-v-noci/": "2026-09-16T22:03:12.114532+00:00",
-    "https://bratislavskykraj.sk/bratislavsky-samospravny-kraj-pripravuje-nove-specializovane-zariadenie-pre-mladych-ludi-s-autizmom/": "2026-09-17T00:45:32.395681+00:00",
-    "https://www.topky.sk/cl/10/9470715/Tento-KVIZ-otestuje--ci-ste-v-obraze--Zistite--ci-mate-prehlad-o-top-udalostiach": "2026-09-17T00:45:35.395943+00:00",
-    "https://www.topky.sk/cl/10/9494883/Nemecky-gigant-stavil-na-Slovensko--Investicia-za-80-MILIONOV-prinesie-desiatky-pracovnych-miest-": "2026-09-17T00:45:35.395969+00:00",
     "https://www.teraz.sk/regiony/nova-scena-uvedie-v-slovenskej-premie/992731-clanok.html": "2026-09-17T02:52:17.162223+00:00",
     "https://www.topky.sk/cl/10/9471269/Obrovske-plamene-pri-Bratislave--Nicivy-poziar-zasiahol-chaty--Skody-presiahli-stvrt-MILIONA-eur": "2026-09-17T09:05:37.149587+00:00",
     "https://bratislavskykraj.sk/ziaci-bratislavskych-strednych-skol-sa-ucia-vedu-a-technologie-priamo-na-univerzitach-a-vo-vyskumnych-pracoviskach/": "2026-09-17T09:05:40.149899+00:00",
@@ -2277,14 +2270,28 @@
     "https://www.aktuality.sk/clanok/m3dIOrI/poziar-v-stanici-paralyzoval-uzol-zilina-vlaky-idu-v-mimoriadnom-rezime/": "2026-09-30T21:33:14.876661+00:00",
     "https://www.aktuality.sk/clanok/FOxSZLL/britania-stopla-dohodu-s-francuzskom-o-vracani-migrantov-kritici-varuju-pred-dalsim-chaosom-v-lamansskom-prielive/": "2026-09-30T21:33:14.876663+00:00",
     "https://www.aktuality.sk/clanok/qzHbBNv/tiche-znamenia-na-pokozke-ociach-a-slachach-ako-spoznat-vysoky-cholesterol-skor-nez-bude-neskoro/": "2026-09-30T21:33:14.876665+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2050839-zeleznicny-uzol-v-ziline-ochromil-poziar-vlaky-meskaju-niektore-nahradili-autobusy": "2026-09-30T21:33:14.876666+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2050839-zeleznicny-uzol-v-ziline-ochromil-poziar-vlaky-meskaju-niektore-nahradili-autobusy": "2026-09-30T21:33:14.876666+00:00",
+    "https://www.pravda.sk/spravy/regiony/clanok/2050573-kupele-grossling-cakali-30-rokov-na-obnovu-z-chatrajucej-ikony-bude-opat-bazen-pozname-termin-otvorenia": "2026-10-01T01:03:09.240632+00:00",
+    "https://www.topky.sk/cl/10/9482141/Slovaci--POZOR--Zacnite-sa-pomaly-lucit-s-papierovymi-blockami--zmenu-uz-realizuju-a-zvazuju-znami-hraci-": "2026-10-01T01:03:12.240863+00:00",
+    "https://www.topky.sk/cl/10/9482583/Kamenicky-odmieta-kritiku-za-neznizovanie-dlhu--Radu-obvinil-z-politickeho-aktivizmu": "2026-10-01T01:03:12.240890+00:00",
+    "https://www.topky.sk/cl/10/9482537/Cele-Slovensko-pod-vystrahou-pred-burkami--Nepriaznive-pocasie-potrva-do-noci": "2026-10-01T01:03:12.240893+00:00",
+    "https://www.topky.sk/cl/10/9482487/Pellegrini-chce-hlasnejsiu-strednu-Europu--Na-fore-v-Blede-sa-nezhodol-so-slovinskou-prezidentkou": "2026-10-01T01:03:12.240896+00:00",
+    "https://www.topky.sk/cl/10/9482527/Tragicke-popoludnie-na-ceste-pri-Sladkovicove--Po-nehode-vyhasol-zivot-vodica": "2026-10-01T01:03:12.240899+00:00",
+    "https://www.topky.sk/cl/10/9482479/Slovensko-chce-prehlbit-vztahy-s-Japonskom--Fico-ma-ambiciu-vytvorit-strategicke-partnerstvo": "2026-10-01T01:03:12.240902+00:00",
+    "https://www.topky.sk/cl/10/9482451/Muza-napadol--jemu-aj-zene-sa-vyhrazal-smrtou--Vysetrovatel-vzniesol-obvinenie": "2026-10-01T01:03:12.240907+00:00",
+    "https://www.topky.sk/cl/10/9482187/Policia-skontrolovala-desattisice-cestujucich--Na-letiskach-riesila-aj-zaznamy-v-databazach": "2026-10-01T01:03:12.240910+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2050329-winkler-po-odstupeni-z-kandidatury-na-primatora-bratislavy-radsej-budem-silna-dvojka-nez-necham-vyhrat-valla": "2026-10-01T01:03:12.240913+00:00",
+    "https://www.topky.sk/cl/10/9482609/Vodici--pozor-na-problemy-na-D1--Tunel-Branisko-je-v-smere-na-Poprad-neprejazdny": "2026-10-01T01:03:12.240916+00:00",
+    "https://www.topky.sk/cl/10/9482475/Tragedia-vo-Vysokych-Tatrach--Polsky-turista-nahle-skolaboval--zachranari-mu-uz-nedokazali-pomoct": "2026-10-01T01:03:12.240918+00:00",
+    "https://www.topky.sk/cl/10/9482433/O-vedenie-Muzea-Betliar-mala-zaujem-jedina-uchadzacka--Vo-vyberovom-konani-uspela-Zsuzsanna-Nagy": "2026-10-01T01:03:12.240921+00:00",
+    "https://www.topky.sk/cl/10/9482421/Na-vychode-Slovenska-bojuju-s-rozsiahlym-poziarom--Hori-priblizne-osem-hektarov-lesa": "2026-10-01T01:03:12.240923+00:00",
+    "https://www.topky.sk/cl/10/9482415/Vodici--pozor-na-uplnu-uzaveru--Cesta-pri-Povazskej-Bystrici-je-po-nehode-neprejazdna": "2026-10-01T01:03:12.240925+00:00",
+    "https://www.topky.sk/cl/10/9481929/Obec-VAROVALA-obyvatelov-pred-medvedom--Bizarne-ODHALENIE----FOTO-Ved-to-nie-je-ani-zviera-": "2026-10-01T01:03:12.240927+00:00",
+    "https://www.topky.sk/cl/10/9482271/Deti-pri-hre-v-lese-nasli-nebezpecne-vyzerajucu-municiu--Na-mieste-zasahovali-pyrotechnici": "2026-10-01T01:03:12.240929+00:00",
+    "https://www.topky.sk/cl/10/9482259/Vodici--pozor--Auto-v-plamenoch-na-dialnici-D1--usek-smerom-na-Poprad-uplne-uzavreli": "2026-10-01T01:03:12.240931+00:00",
+    "https://www.topky.sk/cl/10/9482211/Opity-vodic-havaroval-v-Kezmarku--Nafukal-viac-ako-dve-promile": "2026-10-01T01:03:12.240933+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9504209/AKTUALNE-Tragedia-vo-Vajnoroch--Vlak-usmrtil-muza--zeleznicnu-premavku-pozastavili",
-      "title": "AKTUÁLNE Tragédia vo Vajnoroch: Vlak usmrtil muža, železničnú premávku pozastavili",
-      "posted_at": "2026-09-27T22:32:19.254901+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9479555/Nelegalna-skladka-v-chranenej-oblasti-v-Bratislave--Skoda-sa-vysplhala-na-viac-ako-6-MILIONOV-eur",
       "title": "Nelegálna skládka v chránenej oblasti v Bratislave: Škoda sa vyšplhala na viac ako 6 MILIÓNOV eur",
@@ -2359,6 +2366,11 @@
       "url": "https://www.pravda.sk/auto/doprava/clanok/2050763-na-moste-lanfranconi-v-bratislave-sa-zrazilo-pat-aut-treba-ratat-so-zdrzanim",
       "title": "Na Moste Lanfranconi v Bratislave sa zrazilo päť áut, treba rátať so zdržaním",
       "posted_at": "2026-09-30T21:33:11.876495+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/regiony/clanok/2050573-kupele-grossling-cakali-30-rokov-na-obnovu-z-chatrajucej-ikony-bude-opat-bazen-pozname-termin-otvorenia",
+      "title": "Najvýraznejší progres za mnoho rokov. Z chátrajúcej ikony Bratislavy bude opäť pýcha, poznáme termín otvorenia",
+      "posted_at": "2026-10-01T01:03:09.240650+00:00"
     }
   ]
 }
