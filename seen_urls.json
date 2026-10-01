@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.teraz.sk/regiony/nova-scena-uvedie-v-slovenskej-premie/992731-clanok.html": "2026-09-17T02:52:17.162223+00:00",
     "https://www.topky.sk/cl/10/9471269/Obrovske-plamene-pri-Bratislave--Nicivy-poziar-zasiahol-chaty--Skody-presiahli-stvrt-MILIONA-eur": "2026-09-17T09:05:37.149587+00:00",
     "https://bratislavskykraj.sk/ziaci-bratislavskych-strednych-skol-sa-ucia-vedu-a-technologie-priamo-na-univerzitach-a-vo-vyskumnych-pracoviskach/": "2026-09-17T09:05:40.149899+00:00",
     "https://www.teraz.sk/regiony/j-droba-klucovym-slovom-pri-rozvoj/992860-clanok.html": "2026-09-17T09:05:40.149925+00:00",
@@ -2289,19 +2288,12 @@
     "https://www.topky.sk/cl/10/9481929/Obec-VAROVALA-obyvatelov-pred-medvedom--Bizarne-ODHALENIE----FOTO-Ved-to-nie-je-ani-zviera-": "2026-10-01T01:03:12.240927+00:00",
     "https://www.topky.sk/cl/10/9482271/Deti-pri-hre-v-lese-nasli-nebezpecne-vyzerajucu-municiu--Na-mieste-zasahovali-pyrotechnici": "2026-10-01T01:03:12.240929+00:00",
     "https://www.topky.sk/cl/10/9482259/Vodici--pozor--Auto-v-plamenoch-na-dialnici-D1--usek-smerom-na-Poprad-uplne-uzavreli": "2026-10-01T01:03:12.240931+00:00",
-    "https://www.topky.sk/cl/10/9482211/Opity-vodic-havaroval-v-Kezmarku--Nafukal-viac-ako-dve-promile": "2026-10-01T01:03:12.240933+00:00"
+    "https://www.topky.sk/cl/10/9482211/Opity-vodic-havaroval-v-Kezmarku--Nafukal-viac-ako-dve-promile": "2026-10-01T01:03:12.240933+00:00",
+    "https://www.topky.sk/cl/10/9482351/Nocna-nahanacka-ulicami-Bratislavy--Motorkar-unikal-viacerym-hliadkam--zastavili-ho-az-na-D1": "2026-10-01T03:33:09.709277+00:00",
+    "https://www.topky.sk/cl/10/9482221/Policia-pritvrdila-na-cestach--Za-par-hodin-odhalila-vyse-1500-priestupkov-": "2026-10-01T03:33:12.709478+00:00",
+    "https://www.aktuality.sk/clanok/7t1vAJ8/po-utoku-v-staskove-bije-do-oci-pocet-skol-s-kamerami-mimoriadnou-tragediou-je-vsak-problem-o-ktorom-sa-zvacsa-mlci/": "2026-10-01T03:33:12.709506+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9479555/Nelegalna-skladka-v-chranenej-oblasti-v-Bratislave--Skoda-sa-vysplhala-na-viac-ako-6-MILIONOV-eur",
-      "title": "Nelegálna skládka v chránenej oblasti v Bratislave: Škoda sa vyšplhala na viac ako 6 MILIÓNOV eur",
-      "posted_at": "2026-09-28T01:07:11.788768+00:00"
-    },
-    {
-      "url": "https://www.pravda.sk/spravy/domace/clanok/2047525-stojime-v-kolonach-na-vlastny-byt-nemame-napriek-tomu-sme-s-bratislavou-prekvapivo-spokojni",
-      "title": "71 hodín v zápchach, drahé byty a lístok za 263 eur. Bratislava prekvapila Prahu, Viedeň aj Varšavu",
-      "posted_at": "2026-09-28T03:01:28.953156+00:00"
-    },
     {
       "url": "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2049011-martin-winkler-sa-vzdal-kandidatury-na-post-primatora-bratislavy",
       "title": "Winkler sa vzdal kandidatúry. Ešte v júni to odmietal. Ak v Bratislave vyhrá Ráž, dostane pozíciu viceprimátora, Vallo bije na poplach",
@@ -2371,6 +2363,11 @@
       "url": "https://www.pravda.sk/spravy/regiony/clanok/2050573-kupele-grossling-cakali-30-rokov-na-obnovu-z-chatrajucej-ikony-bude-opat-bazen-pozname-termin-otvorenia",
       "title": "Najvýraznejší progres za mnoho rokov. Z chátrajúcej ikony Bratislavy bude opäť pýcha, poznáme termín otvorenia",
       "posted_at": "2026-10-01T01:03:09.240650+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9482351/Nocna-nahanacka-ulicami-Bratislavy--Motorkar-unikal-viacerym-hliadkam--zastavili-ho-az-na-D1",
+      "title": "Nočná naháňačka ulicami Bratislavy: Motorkár unikal viacerým hliadkam, zastavili ho až na D1",
+      "posted_at": "2026-10-01T03:33:09.709294+00:00"
     }
   ]
 }
