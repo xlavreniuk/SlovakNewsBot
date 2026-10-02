@@ -476,6 +476,7 @@ Return STRICTLY a JSON object with this structure:
     @staticmethod
     def _build_model_candidates(preferred: str) -> List[str]:
         standard = [
+            "gemini-3.8-flash",
             "gemini-3.5-flash-lite",
             "gemini-flash-lite-latest",
             "gemini-3.5-flash",
