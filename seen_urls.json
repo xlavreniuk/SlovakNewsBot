@@ -1,7 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9471579/Opity-vodic-chcel-ujst-policajtom--Nafukal-1-77-promile-a-soferoval-napriek-zakazu": "2026-09-18T00:35:22.797084+00:00",
-    "https://www.teraz.sk/regiony/world-music-festival-bratislava-otvorila/993099-clanok.html": "2026-09-18T02:38:30.844454+00:00",
     "https://www.teraz.sk/regiony/vodici-pozor-cestu-od-bratislavy-smer/993168-clanok.html": "2026-09-18T08:40:00.381883+00:00",
     "https://bratislavskykraj.sk/informacny-den-k-fondu-malych-projektov-interreg-madarsko-slovensko-bude-aj-v-bratislave/": "2026-09-18T08:40:03.382094+00:00",
     "https://bratislavskykraj.sk/xxv-zasadnutie-zastupitelstva-bratislavskeho-samospravneho-kraja-18-9-2026/": "2026-09-18T08:40:03.382118+00:00",
@@ -2250,14 +2248,13 @@
     "https://www.pravda.sk/spravy/domace/clanok/2051393-taraba-po-navrate-do-parlamentu-odkryl-karty-kriza-v-koalicii-sa-prehlbuje": "2026-10-01T23:00:05.605953+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2051343-clanok": "2026-10-01T23:00:05.605954+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2051325-policajtom-unikal-smerom-na-sninu-ked-ho-zastavili-v-aute-nasli-pat-ukrajincov": "2026-10-01T23:00:05.605956+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2051269-opozicia-spaja-sily-proti-ficovej-vlade-spor-o-miliardy-a-vyrovnany-rozpocet-mieri-na-ustavny-sud": "2026-10-01T23:00:05.605959+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2051269-opozicia-spaja-sily-proti-ficovej-vlade-spor-o-miliardy-a-vyrovnany-rozpocet-mieri-na-ustavny-sud": "2026-10-01T23:00:05.605959+00:00",
+    "https://www.topky.sk/cl/10/9483227/Policia-patra-po-maskovanych-pachateloch--Zo-stanku-s-obcerstvenim-zmizli-stovky-eur": "2026-10-02T03:33:53.831289+00:00",
+    "https://www.topky.sk/cl/10/9507681/Pozor-na-NOVU-FINTU-podvodnikov--Stranku-Socialne-poistovne-napodobnili-takmer-do-posledneho-detailu-": "2026-10-02T03:33:56.831534+00:00",
+    "https://www.topky.sk/cl/10/9483271/Politici-vystafirovali-svoje-deti-na-prvy-skolsky-den--Huliak-a-Simeckovci-ukazali-prvacky--Mazgut-vytiahol-uniformy": "2026-10-02T03:33:56.831561+00:00",
+    "https://www.aktuality.sk/clanok/MyQK85d/policia-zacala-so-zatykanim-orbanovych-ludi-spominaju-sa-skody-ktore-si-bezny-clovek-sotva-vie-predstavit/": "2026-10-02T03:33:56.831566+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/domace/clanok/2049245-ukradol-land-cruiser-priamo-z-pumpy-utek-cez-bratislavu-ukoncila-zrazka-s-autom",
-      "title": "Ukradol Land Cruiser priamo z pumpy. Útek cez Bratislavu ukončila zrážka s autom",
-      "posted_at": "2026-09-29T00:18:00.533021+00:00"
-    },
     {
       "url": "https://www.pravda.sk/spravy/regiony/clanok/2048971-pri-bytovke-v-bratislave-nasli-mrtveho-muza",
       "title": "Pri bytovke v Bratislave našli mŕtveho muža",
@@ -2337,6 +2334,11 @@
       "url": "https://www.topky.sk/cl/10/9507847/Nocny-vpad-do-domu-v-Bratislave--Mladik-narobil-skodu-za-tisice-eur",
       "title": "Nočný vpád do domu v Bratislave: Mladík narobil škodu za tisíce eur",
       "posted_at": "2026-10-01T23:00:02.605562+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9483227/Policia-patra-po-maskovanych-pachateloch--Zo-stanku-s-obcerstvenim-zmizli-stovky-eur",
+      "title": "Polícia pátra po maskovaných páchateľoch: Zo stánku s občerstvením zmizli stovky eur",
+      "posted_at": "2026-10-02T03:33:53.831305+00:00"
     }
   ]
 }
