@@ -11,6 +11,11 @@ from scraper import Article
 logger = logging.getLogger(__name__)
 
 
+class AIUnavailableError(Exception):
+    """Raised when Gemini API is completely unavailable after all retries and model fallbacks."""
+    pass
+
+
 @dataclass
 class ScoredArticle:
     article: Article
@@ -44,7 +49,7 @@ class AIEngine:
         """
         Evaluates a list of candidate articles in batches to score suitability and check for duplicate events.
         Returns a tuple of (qualified_articles, explicitly_rejected_urls).
-        Raises RuntimeError if Gemini API fails to prevent discarding un-evaluated articles.
+        Raises AIUnavailableError if Gemini API fails after all retries.
         """
         scored_results: List[ScoredArticle] = []
         rejected_urls: List[str] = []
@@ -59,8 +64,20 @@ class AIEngine:
             response_json = self._call_gemini_json(batch_prompt)
 
             if not response_json or not isinstance(response_json, list):
-                logger.error("Batch evaluation returned invalid response from Gemini API. Aborting batch to protect candidates.")
-                raise RuntimeError("Gemini API batch evaluation failed. Aborting to avoid discarding candidates.")
+                logger.warning("Batch evaluation returned invalid response for chunk of %d articles. Attempting fallback...", len(chunk))
+                # Fallback to single item evaluation for this chunk
+                response_json = []
+                for item_idx, single_art in enumerate(chunk):
+                    single_prompt = self._build_single_eval_prompt(single_art, recent_posted_titles)
+                    single_res = self._call_gemini_json(single_prompt)
+                    if isinstance(single_res, dict):
+                        single_res["id"] = item_idx
+                        response_json.append(single_res)
+                    time.sleep(1.0)
+
+            if not response_json:
+                logger.error("AI evaluation failed for chunk after all fallbacks.")
+                raise AIUnavailableError("Gemini API evaluation temporarily unavailable.")
 
             for item in response_json:
                 try:
@@ -190,12 +207,19 @@ class AIEngine:
         return clean
 
     def _call_gemini_json(self, prompt: str) -> Optional[Any]:
-        """Calls Gemini API with JSON enforcement, handling model fallbacks."""
+        """Calls Gemini API with JSON enforcement, safety settings, and exponential backoff retry."""
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY is not set. Cannot call AI engine.")
 
         # Put active model first
         ordered_models = [self.active_model] + [m for m in self.candidate_models if m != self.active_model]
+
+        safety_settings = [
+            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_ONLY_HIGH"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_ONLY_HIGH"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_ONLY_HIGH"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_ONLY_HIGH"}
+        ]
 
         for model in ordered_models:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.api_key}"
@@ -210,46 +234,81 @@ class AIEngine:
                 "generationConfig": {
                     "responseMimeType": "application/json",
                     "temperature": self.temperature
-                }
+                },
+                "safetySettings": safety_settings
             }
 
             try:
-                resp = requests.post(url, headers=headers, json=payload, timeout=20)
+                resp = requests.post(url, headers=headers, json=payload, timeout=25)
+
+                # Retry on 503 (model overloaded)
+                if resp.status_code == 503:
+                    logger.warning("Model %s returned 503 (overloaded). Waiting 3s before retrying...", model)
+                    time.sleep(3)
+                    resp = requests.post(url, headers=headers, json=payload, timeout=25)
+
+                # Exponential backoff on 429 (rate limit)
+                if resp.status_code == 429:
+                    for attempt in range(1, 4):
+                        wait_seconds = attempt * 5  # 5s, 10s, 15s
+                        logger.warning("Gemini rate limit (429) on %s. Waiting %ds (retry %d/3)...", model, wait_seconds, attempt)
+                        time.sleep(wait_seconds)
+                        resp = requests.post(url, headers=headers, json=payload, timeout=25)
+                        if resp.status_code == 200:
+                            break
+
                 if resp.status_code == 200:
                     self.active_model = model
                     result = resp.json()
-                    raw_text = (
-                        result.get("candidates", [{}])[0]
-                        .get("content", {})
-                        .get("parts", [{}])[0]
-                        .get("text", "")
-                    )
-                    return self._parse_json_safe(raw_text)
+                    candidates = result.get("candidates", [])
+                    if not candidates:
+                        logger.warning("Gemini returned empty candidates list (model=%s)", model)
+                        continue
+                    first_cand = candidates[0]
+                    parts = first_cand.get("content", {}).get("parts", [])
+                    if not parts:
+                        logger.warning(
+                            "Gemini returned candidate without content parts (model=%s, finishReason=%s)",
+                            model, first_cand.get("finishReason")
+                        )
+                        continue
+                    raw_text = parts[0].get("text", "")
+                    parsed = self._parse_json_safe(raw_text)
+                    if parsed is not None:
+                        return parsed
 
                 if resp.status_code in (404, 503):
                     logger.warning("Model %s returned status %d, trying next candidate...", model, resp.status_code)
                     continue
 
-                if resp.status_code == 429:
-                    logger.warning("Gemini rate limit (429) hit. Waiting 4s before retrying...")
-                    time.sleep(4)
-                    resp = requests.post(url, headers=headers, json=payload, timeout=20)
-                    if resp.status_code == 200:
-                        self.active_model = model
-                        result = resp.json()
-                        raw_text = (
-                            result.get("candidates", [{}])[0]
-                            .get("content", {})
-                            .get("parts", [{}])[0]
-                            .get("text", "")
-                        )
-                        return self._parse_json_safe(raw_text)
-
-                logger.error("Gemini API error (model=%s, status=%d): %s", model, resp.status_code, resp.text)
+                logger.error("Gemini API error (model=%s, status=%d): %s", model, resp.status_code, resp.text[:200])
             except Exception as e:
                 logger.error("Request to Gemini model %s failed: %s", model, e)
 
         return None
+
+    def _build_single_eval_prompt(self, article: Article, recent_posted_titles: List[str]) -> str:
+        """Prompt to evaluate a single article if batch evaluation fails."""
+        snippet = article.summary[:200] if article.summary else ""
+        return f"""You are an editorial assistant for a Telegram channel dedicated EXCLUSIVELY to BRATISLAVA, Slovakia.
+Channel theme: "{self.config.content_theme}"
+
+Title: {article.title}
+Summary: {snippet}
+
+Task:
+Evaluate this single article.
+- score: 0 to 10 (STRICTLY 0 if not occurring in Bratislava or Bratislava boroughs)
+- is_duplicate: false
+- reason: one short phrase
+
+Respond with valid JSON:
+{{
+  "score": 5,
+  "is_duplicate": false,
+  "reason": "local news"
+}}
+"""
 
     def _build_batch_prompt(self, articles: List[Article], recent_posted_titles: List[str]) -> str:
         articles_formatted = []
@@ -418,8 +477,9 @@ Return STRICTLY a JSON object with this structure:
     def _build_model_candidates(preferred: str) -> List[str]:
         standard = [
             "gemini-3.5-flash-lite",
-            "gemini-3.1-flash-lite",
+            "gemini-flash-lite-latest",
             "gemini-3.5-flash",
+            "gemini-3-flash-preview",
             "gemini-flash-latest"
         ]
         candidates = [preferred] if preferred else []

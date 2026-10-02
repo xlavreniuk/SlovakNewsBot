@@ -28,7 +28,7 @@ class OutputConfig:
 @dataclass
 class AIConfig:
     provider: str = "gemini"
-    model: str = "gemini-2.5-flash"
+    model: str = "gemini-3.5-flash-lite"
     temperature: float = 0.3
     batch_size: int = 10
 
@@ -106,7 +106,7 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
     ai_data = data.get("ai", {})
     ai_cfg = AIConfig(
         provider=ai_data.get("provider", "gemini"),
-        model=ai_data.get("model", "gemini-2.5-flash"),
+        model=ai_data.get("model", "gemini-3.5-flash-lite"),
         temperature=float(ai_data.get("temperature", 0.3)),
         batch_size=int(ai_data.get("batch_size", 10))
     )

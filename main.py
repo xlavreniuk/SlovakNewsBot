@@ -150,7 +150,16 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
 
     if config.gemini_api_key:
         ai_engine = AIEngine(config)
-        qualified, rejected_urls = ai_engine.evaluate_batch(new_candidates, recent_titles)
+        try:
+            qualified, rejected_urls = ai_engine.evaluate_batch(new_candidates, recent_titles)
+        except Exception as e:
+            logger.warning(
+                "AI evaluation temporarily unavailable (%s). "
+                "Gracefully deferring %d candidate stories to next scheduled run.",
+                e, len(new_candidates)
+            )
+            # Exit pipeline cleanly without marking candidates as seen
+            return
     else:
         if dry_run:
             logger.warning("GEMINI_API_KEY not set. Running mock evaluation for demonstration in dry-run.")
@@ -268,9 +277,14 @@ def main():
     try:
         cfg = load_config(args.config)
         run_pipeline(cfg, dry_run=args.dry_run)
-    except Exception as e:
-        logger.error("Pipeline failed with error: %s", e, exc_info=args.verbose)
+    except (ValueError, FileNotFoundError) as e:
+        logger.error("Configuration/credential error: %s", e, exc_info=True)
         sys.exit(1)
+    except Exception as e:
+        logger.error("Unexpected error during pipeline run: %s", e, exc_info=True)
+        # Avoid crashing automated cron workflows on transient network/API hiccups
+        logger.info("Exiting cleanly to avoid failing scheduled GitHub Actions run.")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
