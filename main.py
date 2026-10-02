@@ -70,13 +70,19 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         retention_days=config.settings.history_retention_days
     )
 
-    # 2. Fetch new articles from sources
+    # 2. Fetch new articles from sources with fair-share distribution and age filtering
     scraper = NewsScraper(timeout=config.settings.request_timeout_seconds)
     new_candidates: List[Article] = []
     skipped_non_target_urls: List[str] = []
+    skipped_stale_urls: List[str] = []
 
     enabled_sources = [s for s in config.sources if s.enabled]
     logger.info("Scanning %d enabled sources...", len(enabled_sources))
+
+    now_ts = time.time()
+    max_age_seconds = config.settings.max_article_age_hours * 3600.0
+    # Allow balanced representation from each source
+    max_per_source = max(6, config.settings.max_articles_per_run // max(len(enabled_sources), 1) + 2)
 
     for source in enabled_sources:
         is_dedicated = (
@@ -84,34 +90,54 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             "bratislav" in source.rss_url.lower()
         )
         articles = scraper.fetch_articles_from_source(source.name, source.rss_url)
+        source_candidates = 0
+
         for art in articles:
             if state.is_seen(art.url):
                 continue
+
+            # Check article freshness: filter out stale articles
+            if art.published_timestamp is not None:
+                age_sec = now_ts - art.published_timestamp
+                if age_sec > max_age_seconds:
+                    logger.debug(
+                        "Skipping stale article from %s (%.1f hours old > %d max): '%s'",
+                        source.name, age_sec / 3600.0, config.settings.max_article_age_hours, art.title
+                    )
+                    skipped_stale_urls.append(art.url)
+                    continue
 
             text_to_check = f"{art.title} {art.summary}".lower()
             is_relevant = is_dedicated or any(kw in text_to_check for kw in BRATISLAVA_KEYWORDS)
 
             if is_relevant:
                 new_candidates.append(art)
-                if len(new_candidates) >= config.settings.max_articles_per_run:
-                    logger.info("Reached maximum candidate articles limit (%d).", config.settings.max_articles_per_run)
+                source_candidates += 1
+                if source_candidates >= max_per_source:
+                    logger.debug("Reached cap of %d candidate articles from %s.", max_per_source, source.name)
                     break
             else:
                 # Mark non-target articles so future runs do not re-scan them
                 skipped_non_target_urls.append(art.url)
 
-        if len(new_candidates) >= config.settings.max_articles_per_run:
-            break
+    # Sort all candidates newest first (prioritize fresh breaking news)
+    new_candidates.sort(key=lambda a: a.published_timestamp or 0, reverse=True)
+
+    if len(new_candidates) > config.settings.max_articles_per_run:
+        new_candidates = new_candidates[:config.settings.max_articles_per_run]
 
     logger.info(
-        "Discovered %d relevant Bratislava candidates (%d skipped as non-target).",
+        "Discovered %d fresh Bratislava candidates (%d skipped as non-target, %d skipped as stale).",
         len(new_candidates),
-        len(skipped_non_target_urls)
+        len(skipped_non_target_urls),
+        len(skipped_stale_urls)
     )
     if not new_candidates:
         logger.info("No new Bratislava articles to process. Everything up to date!")
         if not dry_run:
             for u in skipped_non_target_urls:
+                state.mark_seen(u)
+            for u in skipped_stale_urls:
                 state.mark_seen(u)
             state.prune()
             state.save()
@@ -141,8 +167,18 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             scraper.enrich_image(
                 q.article,
                 min_width=config.settings.min_image_width,
-                min_height=config.settings.min_image_height
+                min_height=config.settings.min_image_height,
+                max_images=config.settings.max_images_per_post
             )
+
+            # Re-check freshness if timestamp was enriched from webpage metadata
+            if q.article.published_timestamp is not None:
+                age_sec = now_ts - q.article.published_timestamp
+                if age_sec > max_age_seconds:
+                    logger.info("Filtered qualified article as stale (%.1f hours old): '%s'", age_sec / 3600.0, q.article.title)
+                    skipped_stale_urls.append(q.article.url)
+                    continue
+
             if q.article.image_url:
                 valid_qualified.append(q)
             else:
@@ -187,7 +223,10 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         if dry_run:
             print("\n" + "=" * 60)
             print(f"DRY-RUN POST PREVIEW (Score: {item.score}/10 | Source: {art.source_name})")
-            print(f"Image URL: {art.image_url or 'None'}")
+            print(f"Published: {art.published_at or 'Unknown'}")
+            print(f"Images count: {len(art.image_urls)}")
+            for idx, u in enumerate(art.image_urls):
+                print(f"  Photo #{idx + 1}: {u}")
             print("-" * 60)
             print(post.caption)
             print("=" * 60 + "\n")
@@ -195,6 +234,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             success = poster.post(
                 caption=post.caption,
                 image_url=art.image_url,
+                image_urls=art.image_urls,
                 require_image=config.settings.require_image
             )
             if success:
@@ -204,7 +244,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             else:
                 logger.error("Failed to post story to channel: '%s'", art.title)
 
-    # 7. State management: Mark seen only for posted, rejected, and non-target articles.
+    # 7. State management: Mark seen only for posted, rejected, stale, and non-target articles.
     # Unposted qualified articles remain unseen so they are posted in subsequent runs.
     if not dry_run:
         for u in rejected_urls:
@@ -212,6 +252,8 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         for u in no_image_urls:
             state.mark_seen(u)
         for u in skipped_non_target_urls:
+            state.mark_seen(u)
+        for u in skipped_stale_urls:
             state.mark_seen(u)
         state.save()
 

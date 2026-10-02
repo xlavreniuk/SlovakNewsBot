@@ -42,6 +42,21 @@ sources:
   - name: "Bratislavský Kraj"
     rss_url: "https://bratislavskykraj.sk/feed/"
     enabled: true
+  - name: "Bratislava Zoznam"
+    rss_url: "https://bratislava.zoznam.sk/feed/"
+    enabled: true
+  - name: "Denník N Bratislava"
+    rss_url: "https://dennikn.sk/tema/bratislava/rss/"
+    enabled: true
+  - name: "RTVS Regióny"
+    rss_url: "https://spravy.rtvs.sk/kategoria/regiony/feed/"
+    enabled: true
+  - name: "TV Noviny Domáce"
+    rss_url: "https://tvnoviny.sk/domace/rss"
+    enabled: true
+  - name: "Startitup"
+    rss_url: "https://www.startitup.sk/feed/"
+    enabled: true
   - name: "Pravda Regióny"
     rss_url: "https://spravy.pravda.sk/regiony/rss/xml/"
     enabled: true
@@ -63,8 +78,10 @@ sources:
 
 # 5. Pipeline Tuning
 settings:
-  max_articles_per_run: 30    # Maximum total new articles to evaluate per run
+  max_articles_per_run: 40    # Maximum total new articles to evaluate per run
   max_posts_per_run: 1        # Optimal pacing: 1 top story per run (e.g. 1 per hour)
+  max_article_age_hours: 36   # Maximum article age in hours (filters out old stale news)
+  max_images_per_post: 4      # Multi-image album support (sends up to 4 high-res photos via sendMediaGroup)
   require_image: true         # Only post articles that have an image (no plain text posts)
   min_image_width: 600        # Minimum image width in pixels for high quality posts
   min_image_height: 350       # Minimum image height in pixels

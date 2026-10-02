@@ -1,10 +1,13 @@
+import calendar
+import datetime
+import email.utils
 import html
 import io
 import json
 import logging
 import re
 import warnings
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set, Tuple
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
@@ -30,11 +33,25 @@ class Article:
     summary: str
     source_name: str
     published_at: Optional[str] = None
+    published_timestamp: Optional[float] = None
     image_url: Optional[str] = None
+    image_urls: List[str] = field(default_factory=list)
 
 
 class NewsScraper:
     """Universal RSS & high-resolution metadata scraper for any news source."""
+
+    PLACEHOLDER_PATTERNS = [
+        re.compile(p, re.IGNORECASE) for p in [
+            r"ilustrac", r"placeholder", r"fb[-_]share", r"share[-_]image", r"social[-_]share",
+            r"default[-_]image", r"symbolic", r"/logos?/", r"avatar", r"author[-_]",
+            r"static/images/", r"pravda-fallback", r"logo[-_]", r"[-_]logo", r"no[-_]image",
+            r"weather[-_]box", r"sample\.png", r"blank\.", r"transparent\.", r"spacer\.",
+            r"pixel\.", r"icon[-_]", r"widget", r"banner[-_]", r"tasr[-_]logo",
+            r"sita[-_]logo", r"zoznam[-_]logo", r"fb_share", r"fallback", r"preview-default",
+            r"sme-logo", r"aktuality-logo"
+        ]
+    ]
 
     def __init__(self, user_agent: str = DEFAULT_USER_AGENT, timeout: int = 15):
         self.user_agent = user_agent
@@ -74,19 +91,20 @@ class NewsScraper:
                 continue
 
             summary = self._extract_summary(entry)
-            published = entry.get("published") or entry.get("updated")
+            published_str, published_ts = self._extract_date_info(entry)
             image_url = self._extract_image(entry)
 
-            articles.append(
-                Article(
-                    url=clean_url,
-                    title=title,
-                    summary=summary,
-                    source_name=name,
-                    published_at=published,
-                    image_url=image_url
-                )
+            art = Article(
+                url=clean_url,
+                title=title,
+                summary=summary,
+                source_name=name,
+                published_at=published_str,
+                published_timestamp=published_ts,
+                image_url=image_url,
+                image_urls=[image_url] if image_url else []
             )
+            articles.append(art)
 
         logger.info("Retrieved %d entries from %s", len(articles), name)
         return articles
@@ -163,27 +181,116 @@ class NewsScraper:
         self._image_cache[url] = None
         return None
 
-    def _collect_page_candidates(self, page_url: str) -> List[Tuple[str, str]]:
-        """Scrapes article webpage to discover OpenGraph, Twitter, JSON-LD, srcset, and lead images."""
+    def _extract_date_info(self, entry) -> Tuple[Optional[str], Optional[float]]:
+        """Extracts publication string and Unix epoch timestamp from feed entry."""
+        st = entry.get("published_parsed") or entry.get("updated_parsed")
+        ts: Optional[float] = None
+        if st:
+            try:
+                ts = float(calendar.timegm(st))
+            except Exception:
+                ts = None
+
+        raw_date = entry.get("published") or entry.get("updated") or entry.get("dc_date") or entry.get("created")
+
+        if ts is None and raw_date and isinstance(raw_date, str):
+            # Try RFC 2822 format (e.g. Fri, 02 Oct 2026 14:00:00 +0200)
+            try:
+                dt = email.utils.parsedate_to_datetime(raw_date)
+                ts = dt.timestamp()
+            except Exception:
+                pass
+            # Try ISO 8601 format (e.g. 2026-10-02T14:00:00+02:00)
+            if ts is None:
+                try:
+                    dt = datetime.datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
+                    ts = dt.timestamp()
+                except Exception:
+                    pass
+
+        if ts is not None and not raw_date:
+            dt = datetime.datetime.fromtimestamp(ts, tz=datetime.timezone.utc)
+            raw_date = dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+
+        return raw_date, ts
+
+    def _is_placeholder_image(self, url: str, alt_text: str = "") -> bool:
+        """Detects whether an image URL or alt-text is a generic stock/placeholder, logo, or icon."""
+        if not url:
+            return True
+        combined = f"{url} {alt_text}".lower()
+        return any(pattern.search(combined) for pattern in self.PLACEHOLDER_PATTERNS)
+
+    @staticmethod
+    def _image_dedup_key(url: str) -> str:
+        """Normalizes an image URL into a base filename key to avoid duplicate crops of the same photo."""
+        clean = url.split("?")[0].lower()
+        clean = re.sub(r'-\d+x\d+(\.[a-zA-Z0-9]+)$', r'\1', clean)
+        clean = re.sub(r'/(?:4x3|16x9)-(?:medium|small|big)/', '/', clean)
+        clean = re.sub(r'/(?:640px|1280px)/', '/', clean)
+        parts = clean.split("/")
+        return parts[-1] if parts else clean
+
+    def _collect_page_candidates(self, page_url: str) -> Tuple[List[Tuple[str, str]], Optional[str], Optional[float]]:
+        """
+        Scrapes article webpage to discover OpenGraph, Twitter, JSON-LD, gallery, and lead images,
+        and optionally publication date if missing from RSS.
+        """
         candidates: List[Tuple[str, str]] = []
+        page_date_str: Optional[str] = None
+        page_date_ts: Optional[float] = None
+
         try:
             resp = self.session.get(page_url, timeout=8)
             if resp.status_code != 200:
-                return candidates
+                return candidates, page_date_str, page_date_ts
 
             soup = BeautifulSoup(resp.content, "html.parser")
+
+            # Extract page publication date from HTML metadata if present
+            for attr in [
+                {"property": "article:published_time"},
+                {"name": "article:published_time"},
+                {"name": "pubdate"},
+                {"property": "og:article:published_time"}
+            ]:
+                tag = soup.find("meta", attrs=attr)
+                if tag and tag.get("content"):
+                    c_val = tag.get("content").strip()
+                    try:
+                        dt = datetime.datetime.fromisoformat(c_val.replace("Z", "+00:00"))
+                        page_date_str = c_val
+                        page_date_ts = dt.timestamp()
+                        break
+                    except Exception:
+                        pass
+
+            if not page_date_ts:
+                time_el = soup.find("time")
+                if time_el and time_el.get("datetime"):
+                    c_val = time_el.get("datetime").strip()
+                    try:
+                        dt = datetime.datetime.fromisoformat(c_val.replace("Z", "+00:00"))
+                        page_date_str = c_val
+                        page_date_ts = dt.timestamp()
+                    except Exception:
+                        pass
 
             # 1. OpenGraph meta (highest editorial quality)
             for attr in [{"property": "og:image"}, {"property": "og:image:secure_url"}, {"name": "og:image"}]:
                 tag = soup.find("meta", attrs=attr)
                 if tag and tag.get("content"):
-                    candidates.append(("og:image", tag.get("content").strip()))
+                    u = tag.get("content").strip()
+                    if not self._is_placeholder_image(u):
+                        candidates.append(("og:image", u))
 
             # 2. Twitter Card meta
             for attr in [{"name": "twitter:image"}, {"property": "twitter:image"}, {"name": "twitter:image:src"}]:
                 tag = soup.find("meta", attrs=attr)
                 if tag and tag.get("content"):
-                    candidates.append(("twitter:image", tag.get("content").strip()))
+                    u = tag.get("content").strip()
+                    if not self._is_placeholder_image(u):
+                        candidates.append(("twitter:image", u))
 
             # 3. Schema.org JSON-LD structured data
             for script in soup.find_all("script", type="application/ld+json"):
@@ -192,20 +299,28 @@ class NewsScraper:
 
                     def extract_jsonld_images(obj):
                         if isinstance(obj, dict):
-                            if "image" in obj:
+                            # Skip publisher or author logos inside JSON-LD
+                            if obj.get("@type") in ("Organization", "Person") and "logo" in obj:
+                                pass
+                            elif "image" in obj:
                                 img = obj["image"]
-                                if isinstance(img, str):
+                                if isinstance(img, str) and not self._is_placeholder_image(img):
                                     candidates.append(("json-ld", img.strip()))
                                 elif isinstance(img, list):
                                     for item in img:
-                                        if isinstance(item, str):
+                                        if isinstance(item, str) and not self._is_placeholder_image(item):
                                             candidates.append(("json-ld", item.strip()))
                                         elif isinstance(item, dict) and "url" in item:
-                                            candidates.append(("json-ld", str(item["url"]).strip()))
+                                            u = str(item["url"]).strip()
+                                            if not self._is_placeholder_image(u):
+                                                candidates.append(("json-ld", u))
                                 elif isinstance(img, dict) and "url" in img:
-                                    candidates.append(("json-ld", str(img["url"]).strip()))
-                            for val in obj.values():
-                                extract_jsonld_images(val)
+                                    u = str(img["url"]).strip()
+                                    if not self._is_placeholder_image(u):
+                                        candidates.append(("json-ld", u))
+                            for k, val in obj.items():
+                                if k not in ("publisher", "author", "creator"):
+                                    extract_jsonld_images(val)
                         elif isinstance(obj, list):
                             for elem in obj:
                                 extract_jsonld_images(elem)
@@ -214,8 +329,17 @@ class NewsScraper:
                 except Exception:
                     pass
 
+            # Decompose irrelevant navigation, sidebar, footer, side articles, and promo/read-more boxes to prevent unrelated thumbnails
+            for unwanted in soup.select(
+                "nav, footer, header, aside, .sidebar, .widget, .comments, .related, .recommended, "
+                ".menu, .ad, .advertisement, .most-read, .footer, article.article--side, .detail_text_item_readmore, "
+                ".detail_related_list, [class*='readmore'], [class*='read-more'], [class*='related'], "
+                "[class*='promo'], [class*='recommend'], [class*='najcitanejsie']"
+            ):
+                unwanted.decompose()
+
             # 4. srcset descriptors on picture/figure/article images
-            for el in soup.select("article img, figure img, .lead-image img, picture source, picture img"):
+            for el in soup.select("article img, figure img, .lead-image img, picture source, picture img, .gallery img, .fotogaleria img"):
                 srcset = el.get("srcset")
                 if srcset:
                     parts = [p.strip() for p in srcset.split(",") if p.strip()]
@@ -223,38 +347,63 @@ class NewsScraper:
                         tokens = p.split()
                         if tokens:
                             resolved = urljoin(page_url, tokens[0])
-                            candidates.append(("srcset", resolved))
+                            if not self._is_placeholder_image(resolved, el.get("alt", "")):
+                                candidates.append(("srcset", resolved))
 
-            # 5. Lead figures and article images
+            # 5. Lead figures, article body images, and gallery links
             for selector in [
                 "figure img", "article img", ".lead-image img",
-                ".article-body img", "img[data-src]", "img[data-full-src]", "img[data-original]"
+                ".article-body img", ".entry-content img", ".post-content img",
+                ".gallery img", ".fotogaleria img", "img[data-src]", "img[data-full-src]",
+                "img[data-original]", "img[data-highres]"
             ]:
                 for el in soup.select(selector):
-                    src = el.get("src") or el.get("data-src") or el.get("data-full-src") or el.get("data-original")
+                    src = (
+                        el.get("data-full-src") or
+                        el.get("data-highres") or
+                        el.get("data-original") or
+                        el.get("data-src") or
+                        el.get("src")
+                    )
                     if src and not src.startswith("data:"):
                         resolved = urljoin(page_url, src.strip())
-                        candidates.append(("lead-img", resolved))
+                        if not self._is_placeholder_image(resolved, el.get("alt", "")):
+                            candidates.append(("article-img", resolved))
+
+            # 6. Direct image links in galleries (e.g. <a href="photo.jpg">)
+            for a_el in soup.select(".gallery a[href], .fotogaleria a[href], figure a[href], article a[href]"):
+                href = a_el.get("href", "")
+                if self._is_image_url(href):
+                    resolved = urljoin(page_url, href.strip())
+                    if not self._is_placeholder_image(resolved):
+                        candidates.append(("gallery-link", resolved))
 
         except Exception as e:
             logger.debug("Failed to collect page candidates for %s: %s", page_url, e)
 
-        return candidates
+        return candidates, page_date_str, page_date_ts
 
-    def enrich_image(self, article: Article, min_width: int = 500, min_height: int = 300) -> None:
+    def enrich_image(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
         """
-        Extracts, verifies, and upgrades images to ensure the highest resolution photo is selected.
-        Uses Pillow to probe dimensions and reject blurry thumbnails or tracking icons.
+        Extracts, verifies, and upgrades images to ensure high-resolution photos are selected.
+        Filters out generic stock placeholders and publisher logos.
+        Populates article.image_url with the best photo, and article.image_urls with up to max_images distinct photos.
         """
         raw_candidates: List[Tuple[str, str]] = []
 
-        # If RSS provided an image, include it as initial candidate
-        if article.image_url:
+        # If RSS provided an image, include it if not a placeholder
+        if article.image_url and not self._is_placeholder_image(article.image_url):
             raw_candidates.append(("rss", article.image_url))
 
-        # Scrape article webpage to discover high-resolution options
-        page_candidates = self._collect_page_candidates(article.url)
+        # Scrape article webpage to discover high-resolution and gallery options
+        page_candidates, page_date_str, page_date_ts = self._collect_page_candidates(article.url)
         raw_candidates.extend(page_candidates)
+
+        # Backfill timestamp if RSS lacked one
+        if article.published_timestamp is None and page_date_ts is not None:
+            article.published_timestamp = page_date_ts
+            article.published_at = page_date_str
+            logger.info("Enriched publication date for '%s': %s (ts=%s)", article.title[:30], page_date_str, page_date_ts)
 
         # Expand all candidates into high-res URL variants
         all_variants: List[Tuple[str, str]] = []
@@ -263,7 +412,7 @@ class NewsScraper:
         for tag, url in raw_candidates:
             variants = self.upgrade_url_variants(url)
             for v in variants:
-                if v not in seen_urls and v.startswith("http"):
+                if v not in seen_urls and v.startswith("http") and not self._is_placeholder_image(v):
                     seen_urls.add(v)
                     all_variants.append((tag, v))
 
@@ -278,7 +427,7 @@ class NewsScraper:
             width, height, fmt, byte_size = info
 
             # Strictly require minimum HD dimensions and valid image size
-            if width < min_width or height < min_height or byte_size < 8000:
+            if width < min_width or height < min_height or byte_size < 10000:
                 continue
 
             # Filter out extreme aspect ratios (thin separator banners or ultra-tall ribbons)
@@ -302,26 +451,43 @@ class NewsScraper:
         if scored_candidates:
             # Sort highest score first
             scored_candidates.sort(key=lambda x: x[0], reverse=True)
+
+            # Collect up to max_images distinct photos
+            selected_urls: List[str] = []
+            seen_dedup_keys: Set[str] = set()
+
+            for item in scored_candidates:
+                u = item[5]
+                k = self._image_dedup_key(u)
+                if k not in seen_dedup_keys:
+                    seen_dedup_keys.add(k)
+                    selected_urls.append(u)
+                    if len(selected_urls) >= max_images:
+                        break
+
+            article.image_url = selected_urls[0]
+            article.image_urls = selected_urls
+
             best = scored_candidates[0]
-            article.image_url = best[5]
             logger.info(
-                "Selected high-res image for '%s': %dx%d (%s, %d bytes) -> %s",
-                article.title[:40], best[1], best[2], best[3], best[4], best[5]
+                "Selected high-res photo(s) for '%s' (total %d): best %dx%d (%s, %d bytes) -> %s",
+                article.title[:40], len(selected_urls), best[1], best[2], best[3], best[4], best[5]
             )
         else:
             logger.warning("No suitable high-resolution image found for '%s'", article.title[:40])
-            # If the original image was accessible, keep as fallback
-            if article.image_url and not self._verify_image_url(article.image_url):
-                article.image_url = None
+            article.image_url = None
+            article.image_urls = []
 
     def enrich_image_if_missing(self, article: Article) -> None:
         """Backwards-compatible alias for enrich_image."""
         self.enrich_image(article)
 
     def _verify_image_url(self, url: str) -> bool:
-        """Verifies that an image URL is live, returns HTTP 200, and is a valid image >= 500x300."""
+        """Verifies that an image URL is live, returns HTTP 200, and is a valid image >= 600x350."""
+        if not url or self._is_placeholder_image(url):
+            return False
         info = self.probe_image(url)
-        return info is not None and info[0] >= 500 and info[1] >= 300
+        return info is not None and info[0] >= 600 and info[1] >= 350
 
     def _extract_summary(self, entry) -> str:
         """Extracts and strips HTML tags from description or summary."""
@@ -330,6 +496,7 @@ class NewsScraper:
 
     def _extract_image(self, entry) -> Optional[str]:
         """Extracts image URL from enclosures, media_content, media_thumbnail, or HTML body."""
+        candidate = None
         # 1. Check enclosures
         enclosures = entry.get("enclosures", [])
         if enclosures:
@@ -337,7 +504,9 @@ class NewsScraper:
                 href = enc.get("href")
                 enc_type = enc.get("type", "")
                 if href and ("image" in enc_type or self._is_image_url(href)):
-                    return href.strip()
+                    candidate = href.strip()
+                    if not self._is_placeholder_image(candidate):
+                        return candidate
 
         # 2. Check media_content
         media_content = entry.get("media_content", [])
@@ -346,7 +515,9 @@ class NewsScraper:
                 url = m.get("url")
                 m_type = m.get("type", "")
                 if url and ("image" in m_type or self._is_image_url(url)):
-                    return url.strip()
+                    u = url.strip()
+                    if not self._is_placeholder_image(u):
+                        return u
 
         # 3. Check media_thumbnail
         media_thumbnail = entry.get("media_thumbnail", [])
@@ -354,7 +525,9 @@ class NewsScraper:
             for t in media_thumbnail:
                 url = t.get("url")
                 if url:
-                    return url.strip()
+                    u = url.strip()
+                    if not self._is_placeholder_image(u):
+                        return u
 
         # 4. Check <img> tag inside summary/content
         content_text = entry.get("summary", "")
@@ -365,7 +538,7 @@ class NewsScraper:
             match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', content_text, re.IGNORECASE)
             if match:
                 img_url = match.group(1).strip()
-                if self._is_image_url(img_url) or img_url.startswith("http"):
+                if (self._is_image_url(img_url) or img_url.startswith("http")) and not self._is_placeholder_image(img_url):
                     return img_url
 
         return None

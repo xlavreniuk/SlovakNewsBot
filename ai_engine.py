@@ -306,26 +306,63 @@ Respond STRICTLY with a valid JSON array of objects:
 
     def _build_generation_prompt(self, article: Article) -> str:
         return f"""You are a professional copywriter for a Telegram news channel dedicated EXCLUSIVELY to BRATISLAVA.
-Adapt this Bratislava news article into {self.config.output.target_language}.
+Adapt this Bratislava news article into natural, flawless {self.config.output.target_language}.
 
 ARTICLE DETAILS:
 Source: {article.source_name}
 Title: {article.title}
+Published: {article.published_at or 'Recently'}
 Summary: {article.summary}
 
 STYLE AND TONE GUIDE:
 {self.config.output.style_guide}
 
-STRICT FORMATTING AND FACTUAL REQUIREMENTS:
-1. Output language: {self.config.output.target_language}.
+STRICT FORMATTING, GRAMMAR, AND FACTUAL REQUIREMENTS:
+1. Output language: Flawless, natural {self.config.output.target_language}.
 2. Use valid HTML for formatting (<b>bold</b>, <i>italic</i>). Do NOT use Markdown (no asterisks, no hash headers).
 3. The post must start with a concise bold headline (<b>...</b>) with at most 1 relevant emoji (or no emoji).
-4. Specify the exact Bratislava borough or street where it occurred in natural Ukrainian (e.g. 'У Братиславі...', 'У Петржалці...', 'У Ружинові...', 'У Старому місті...').
-5. EMOJI RULE: Use at most ONE relevant emoji in the entire post (e.g. at the start of the headline or in the text). Do NOT use multiple emojis or informal emoji spam.
-6. TONE: Informative, professional, calm, but simple and easily understandable for the average reader. Avoid tabloid sensationalism, vulgarity, sarcasm, or trash clickbait.
-7. TRANSLATION QUALITY: Write completely in clean, natural Ukrainian. Fully translate all Slovak institutions, words, and terms into Ukrainian (e.g. 'mestské zastupiteľstvo' -> 'міська рада', 'polícia' -> 'поліція', 'magistrát' -> 'магістрат / мерія'). Never leave untranslated Slovak words in the Ukrainian text.
-8. Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
-9. STRICT FACTUAL INTEGRITY: Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. Real news only.
+4. LOCATION & DECLENSIONS IN UKRAINIAN:
+   - Always decline Bratislava locations accurately according to standard Ukrainian grammar:
+     * 'у Братиславі' (not 'в Братиславе')
+     * 'у Петржалці' (not 'в Петржалке', 'в Петржялці')
+     * 'у Ружинові' (not 'в Ружинове')
+     * 'у Старому місті' (not 'в Старе Место')
+     * 'у Новому місті' (Nové Mesto)
+     * 'у Дубравці' (Dúbravka)
+     * 'у Карловій Весі' (Karlova Ves)
+     * 'у Рачі' (Rača)
+     * 'у Ламачі' (Lamač)
+     * 'у Девіні' (Devín)
+     * 'у Вракуні' (Vrakuňa)
+     * 'у Подунайських Біскупицях' (Podunajské Biskupice)
+     * 'на Золотих пісках' (Zlaté piesky)
+     * 'на Набережній / Дунайській набережній' (Nábrežie)
+     * 'на Головному вокзалі' (Hlavná stanica)
+5. TERMINOLOGY & TRANSLATION QUALITY:
+   - Fully translate Slovak institutional terms into standard Ukrainian:
+     * 'Dopravný podnik Bratislava (DPB)' -> 'транспортне підприємство Братислави (DPB)'
+     * 'magistrát / mestské zastupiteľstvo' -> 'мерія / магістрат / міська рада Братислави'
+     * 'mestská polícia' -> 'муніципальна поліція'
+     * 'krajské riaditeľstvo PZ' -> 'поліція Братиславського краю'
+     * 'hasiči' -> 'рятувальники' or 'пожежники'
+     * 'nehoda' -> 'аварія' or 'ДТП'
+     * 'vodič' -> 'водій'
+     * 'záchranári' -> 'медики' or 'лікарі швидкої'
+   - Eliminate any literal Slovakisms or calques. Maintain Ukrainian phonetic euphony (чергування у/в, і/й).
+6. TEMPORAL GROUNDING:
+   - Check the publication time ({article.published_at or 'recently'}).
+   - If the event occurred on a specific day or time (e.g. 'у середу', 'у п'ятницю вранці', 'цими вихідними'), state it accurately.
+   - Do NOT say 'сьогодні' if the story happened yesterday or earlier.
+7. EMOJI RULE:
+   - Use at most ONE relevant emoji in the entire post (e.g. 📍, 🏛️, 🚗, ⚠️ at the start of the headline, or no emoji).
+   - Never use multiple emojis or informal emoji clutter.
+8. TONE:
+   - Informative, professional, calm, but simple and easily understandable for the average reader.
+   - Avoid tabloid sensationalism, vulgarity, sarcasm, or trash clickbait.
+9. LENGTH:
+   - Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
+10. STRICT FACTUAL INTEGRITY:
+   - Base the summary 100% on the facts reported in the source. NEVER invent details, do NOT exaggerate facts into falsehoods, and do NOT make up quotes or unverified rumors. Real news only.
 
 Return STRICTLY a JSON object with this structure:
 {{

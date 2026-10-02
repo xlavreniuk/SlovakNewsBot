@@ -35,11 +35,13 @@ class AIConfig:
 
 @dataclass
 class SettingsConfig:
-    max_articles_per_run: int = 30
+    max_articles_per_run: int = 40
     max_posts_per_run: int = 1
+    max_article_age_hours: int = 36
+    max_images_per_post: int = 4
     require_image: bool = True
-    min_image_width: int = 500
-    min_image_height: int = 300
+    min_image_width: int = 600
+    min_image_height: int = 350
     history_retention_days: int = 14
     post_delay_seconds: int = 3
     request_timeout_seconds: int = 15
@@ -121,11 +123,13 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
 
     settings_data = data.get("settings", {})
     settings_cfg = SettingsConfig(
-        max_articles_per_run=int(settings_data.get("max_articles_per_run", 30)),
+        max_articles_per_run=int(settings_data.get("max_articles_per_run", 40)),
         max_posts_per_run=int(settings_data.get("max_posts_per_run", 1)),
+        max_article_age_hours=int(settings_data.get("max_article_age_hours", 36)),
+        max_images_per_post=int(settings_data.get("max_images_per_post", 4)),
         require_image=bool(settings_data.get("require_image", True)),
-        min_image_width=int(settings_data.get("min_image_width", 500)),
-        min_image_height=int(settings_data.get("min_image_height", 300)),
+        min_image_width=int(settings_data.get("min_image_width", 600)),
+        min_image_height=int(settings_data.get("min_image_height", 350)),
         history_retention_days=int(settings_data.get("history_retention_days", 14)),
         post_delay_seconds=int(settings_data.get("post_delay_seconds", 3)),
         request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15))

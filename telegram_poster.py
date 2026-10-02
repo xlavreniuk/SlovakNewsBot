@@ -1,9 +1,10 @@
 import html
 import io
+import json
 import logging
 import re
 import time
-from typing import Optional
+from typing import List, Optional, Tuple
 from PIL import Image, ImageOps
 import requests
 
@@ -11,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class TelegramPoster:
-    """Dispatches formatted articles to a Telegram channel with photo support and fallback resilience."""
+    """Dispatches formatted articles to a Telegram channel with photo/album support and fallback resilience."""
 
     def __init__(self, bot_token: str, channel_id: str, timeout: int = 15):
         self.bot_token = bot_token
@@ -19,24 +20,44 @@ class TelegramPoster:
         self.timeout = timeout
         self.base_url = f"https://api.telegram.org/bot{self.bot_token}"
 
-    def post(self, caption: str, image_url: Optional[str] = None, require_image: bool = True) -> bool:
+    def post(
+        self,
+        caption: str,
+        image_url: Optional[str] = None,
+        image_urls: Optional[List[str]] = None,
+        require_image: bool = True
+    ) -> bool:
         """
         Posts article to Telegram.
-        If require_image is True, it MUST succeed as sendPhoto, and will NEVER fall back to plain text.
+        Supports multi-image albums (sendMediaGroup) when image_urls has >= 2 items.
+        If require_image is True, it MUST succeed as photo/album, and will NEVER fall back to plain text.
         """
         clean_caption = self._sanitize_html(caption)
 
-        if image_url:
-            success = self._send_photo(image_url, clean_caption)
+        # Consolidate candidate image URLs
+        all_images: List[str] = []
+        if image_urls:
+            all_images.extend([u for u in image_urls if u])
+        if not all_images and image_url:
+            all_images.append(image_url)
+
+        if len(all_images) >= 2:
+            success = self._send_media_group(all_images, clean_caption)
+            if success:
+                return True
+            logger.warning("sendMediaGroup failed, attempting single photo fallback...")
+            success = self._send_photo(all_images[0], clean_caption)
+            if success:
+                return True
+
+        elif len(all_images) == 1:
+            success = self._send_photo(all_images[0], clean_caption)
             if success:
                 return True
             logger.warning("sendPhoto failed or image was inaccessible.")
-            if require_image:
-                logger.error("require_image is True: refusing to fall back to plain text.")
-                return False
 
         if require_image:
-            logger.error("No image provided and require_image is True: refusing to post plain text.")
+            logger.error("No valid image/album posted and require_image is True: refusing to post plain text.")
             return False
 
         return self._send_message(clean_caption)
@@ -51,10 +72,9 @@ class TelegramPoster:
         text = re.sub(r"<\s*/\s*p\s*>", "\n\n", text, flags=re.IGNORECASE)
         return text.strip()
 
-    def _send_photo(self, photo_url: str, caption: str) -> bool:
-        url = f"{self.base_url}/sendPhoto"
+    def _prepare_photo(self, photo_url: str) -> Optional[Tuple[str, bytes, str]]:
+        """Downloads, verifies, and optimizes an image for Telegram upload."""
         try:
-            # Download image bytes directly using browser headers to bypass CDN blocks and verify valid image
             img_resp = requests.get(
                 photo_url,
                 headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"},
@@ -65,46 +85,52 @@ class TelegramPoster:
                 filename = "photo.jpg"
                 mime_type = "image/jpeg"
 
-                try:
-                    img = Image.open(io.BytesIO(img_resp.content))
-                    img = ImageOps.exif_transpose(img)
-                    logger.info("Image verified: %dx%d (%s, %d bytes) for Telegram upload", img.width, img.height, img.format, len(upload_bytes))
+                img = Image.open(io.BytesIO(img_resp.content))
+                img = ImageOps.exif_transpose(img)
 
-                    if img.width < 500 or img.height < 300:
-                        logger.error("Image resolution (%dx%d) below acceptable quality threshold (500x300)! Refusing upload.", img.width, img.height)
-                        return False
+                if img.width < 500 or img.height < 300:
+                    logger.warning("Image resolution (%dx%d) below acceptable quality threshold! Skipping.", img.width, img.height)
+                    return None
 
-                    # Preserve PNG or convert to highest-quality sRGB JPEG (quality=95, subsampling=0)
-                    if img.format == "PNG" and img.mode in ("RGB", "RGBA"):
-                        filename = "photo.png"
-                        mime_type = "image/png"
-                    else:
-                        out_io = io.BytesIO()
-                        rgb_img = img.convert("RGB")
-                        rgb_img.save(out_io, format="JPEG", quality=95, subsampling=0, optimize=True)
-                        upload_bytes = out_io.getvalue()
-                        filename = "photo.jpg"
-                        mime_type = "image/jpeg"
-                except Exception as e:
-                    logger.warning("Pillow processing error: %s", e)
-                    return False
+                # Preserve PNG or convert to highest-quality sRGB JPEG (quality=95, subsampling=0)
+                if img.format == "PNG" and img.mode in ("RGB", "RGBA"):
+                    filename = "photo.png"
+                    mime_type = "image/png"
+                else:
+                    out_io = io.BytesIO()
+                    rgb_img = img.convert("RGB")
+                    rgb_img.save(out_io, format="JPEG", quality=95, subsampling=0, optimize=True)
+                    upload_bytes = out_io.getvalue()
+                    filename = "photo.jpg"
+                    mime_type = "image/jpeg"
 
-                files = {"photo": (filename, upload_bytes, mime_type)}
-                data = {
-                    "chat_id": self.channel_id,
-                    "caption": caption,
-                    "parse_mode": "HTML"
-                }
+                return (filename, upload_bytes, mime_type)
+        except Exception as e:
+            logger.warning("Error preparing photo %s: %s", photo_url, e)
+        return None
+
+    def _send_photo(self, photo_url: str, caption: str) -> bool:
+        url = f"{self.base_url}/sendPhoto"
+        prep = self._prepare_photo(photo_url)
+        if prep:
+            filename, upload_bytes, mime_type = prep
+            files = {"photo": (filename, upload_bytes, mime_type)}
+            data = {
+                "chat_id": self.channel_id,
+                "caption": caption,
+                "parse_mode": "HTML"
+            }
+            try:
                 resp = requests.post(url, data=data, files=files, timeout=self.timeout)
                 res_data = resp.json()
                 if res_data.get("ok"):
                     logger.info("Successfully uploaded and posted photo message to %s", self.channel_id)
                     return True
                 logger.warning("Telegram sendPhoto upload error (%d): %s", resp.status_code, res_data.get("description"))
-        except Exception as e:
-            logger.warning("Exception during photo download/upload: %s", e)
+            except Exception as e:
+                logger.warning("Exception during photo upload: %s", e)
 
-        # Fallback to direct URL if download failed
+        # Fallback to direct URL if upload failed
         payload = {
             "chat_id": self.channel_id,
             "photo": photo_url,
@@ -120,6 +146,50 @@ class TelegramPoster:
             logger.warning("Telegram sendPhoto URL error (%d): %s", resp.status_code, data.get("description"))
         except Exception as e:
             logger.warning("Network exception during sendPhoto: %s", e)
+        return False
+
+    def _send_media_group(self, photo_urls: List[str], caption: str) -> bool:
+        """Dispatches a multi-photo album to Telegram using sendMediaGroup."""
+        url = f"{self.base_url}/sendMediaGroup"
+        prepared: List[Tuple[str, bytes, str]] = []
+        for u in photo_urls[:10]:
+            p = self._prepare_photo(u)
+            if p:
+                prepared.append(p)
+
+        if len(prepared) < 2:
+            logger.info("Fewer than 2 valid photos for media group (got %d), falling back to single photo.", len(prepared))
+            return False
+
+        media = []
+        files = {}
+        for idx, (filename, upload_bytes, mime_type) in enumerate(prepared):
+            attach_id = f"photo_{idx}"
+            item: dict = {
+                "type": "photo",
+                "media": f"attach://{attach_id}"
+            }
+            if idx == 0:
+                item["caption"] = caption
+                item["parse_mode"] = "HTML"
+            media.append(item)
+            files[attach_id] = (filename, upload_bytes, mime_type)
+
+        data = {
+            "chat_id": self.channel_id,
+            "media": json.dumps(media)
+        }
+
+        try:
+            resp = requests.post(url, data=data, files=files, timeout=self.timeout * 2)
+            res_data = resp.json()
+            if res_data.get("ok"):
+                logger.info("Successfully uploaded and posted %d-photo album to %s", len(prepared), self.channel_id)
+                return True
+            logger.warning("Telegram sendMediaGroup error (%d): %s", resp.status_code, res_data.get("description"))
+        except Exception as e:
+            logger.warning("Exception during sendMediaGroup: %s", e)
+
         return False
 
     def _send_message(self, text: str) -> bool:
