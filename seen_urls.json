@@ -1,9 +1,5 @@
 {
   "seen_urls": {
-    "https://www.teraz.sk/regiony/policia-ziada-o-pomoc-pri-patrani-po/993295-clanok.html": "2026-09-18T23:27:05.785568+00:00",
-    "https://bratislavskykraj.sk/otvoreny-atelier-pokracuje-na-jesen-klee-durer-a-giotto/": "2026-09-18T23:27:08.786151+00:00",
-    "https://www.topky.sk/cl/10/9496183/KVIZ-Ako-dobre-zvladanie-pisanie-i-a-y--Plny-pocet-ziskaju-len-skutocni-znalci-slovenciny--Pozor-na-CHYTAKY": "2026-09-18T23:27:08.786176+00:00",
-    "https://www.topky.sk/cl/10/9472213/Caka-nas-dalsi-sviatok-v-robote--TABULKA-Kolko--kedy-a-za-co-dostanete-zaplatene-": "2026-09-18T23:27:08.786181+00:00",
     "https://bratislavskykraj.sk/bratislavska-zupa-pokracuje-v-prevencii-dalsi-ockovaci-den-proti-hpv-bude-uz-v-piatok/": "2026-09-19T02:37:53.159869+00:00",
     "https://bratislavskykraj.sk/gymnazium-alberta-einsteina-dostalo-po-70-rokoch-novu-tvar/": "2026-09-19T08:26:27.737864+00:00",
     "https://www.topky.sk/cl/10/9497347/Z-trhu-stahuju-nevyhovujucu-sarzu-MEDU--TOTO-je-dovod--Nemate-ju-doma--Predavala-sa-tristvrte-roka": "2026-09-19T08:26:30.738104+00:00",
@@ -2358,14 +2354,25 @@
     "https://www.topky.sk/cl/10/9484373/Boj-o-zivot-po-ustipnuti-srsnom--Muz-utrpel-anafylakticky-sok--zasahoval-vrtulnik-": "2026-10-02T21:25:05.738333+00:00",
     "https://www.topky.sk/cl/10/9483919/Snazia-sa-poslanci-o-svadobny-BOOM--V-plene-svieti-navrh-na-peniaze-pre-zosobasene-pary--pozrite-sa-na-tu-sumu": "2026-10-02T21:25:05.738336+00:00",
     "https://www.topky.sk/cl/10/9484237/Roman-Michelko-navrhuje-zvysit-prispevok-pre-FPU-o-pat-milionov-eur": "2026-10-02T21:25:05.738339+00:00",
-    "https://www.topky.sk/cl/10/9484203/Nocny-ZLODEJ-vycinal-v-uliciach-Trnavy--Policia-mu-ide-po-krku--z-osvetlenia-si-mal-jednoducho-ukradnut-kable": "2026-10-02T21:25:05.738342+00:00"
+    "https://www.topky.sk/cl/10/9484203/Nocny-ZLODEJ-vycinal-v-uliciach-Trnavy--Policia-mu-ide-po-krku--z-osvetlenia-si-mal-jednoducho-ukradnut-kable": "2026-10-02T21:25:05.738342+00:00",
+    "https://www.startitup.sk/bratislavu-strasia-nebezpecne-plostice-mestska-cast-hlasi-zamorene-bytovky-starosta-varuje-pred-nezodpovednymi-susedmi/": "2026-10-03T00:36:50.783542+00:00",
+    "https://www.topky.sk/cl/10/9506371/Co-ak-vam-chybny-vyrobok-sposobi-poziar-ci-zranenie--Novy-zakon-meni-pravidla--mysli-aj-na-moderne-technologie": "2026-10-03T00:36:53.784093+00:00",
+    "https://www.pravda.sk/spravy/kultura/clanok/2052037-foto-v-bratislave-sa-zacala-biela-noc-predstavi-vyse-30-umeleckych-projektov": "2026-10-03T00:36:53.784120+00:00",
+    "https://www.teraz.sk/regiony/zive-namestie-v-bratislave-oziva-ko/996878-clanok.html": "2026-10-03T00:36:53.784126+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2051391-ziadna-elektricka-popred-snd-ale-za-to-tunel-zo-safarikovho-namestia-na-filialku-navrhuje-koalicia-siestich-stran": "2026-10-03T00:36:53.784129+00:00",
+    "https://bratislava.zoznam.sk/aktualne-po-nehode-uzavreli-dialnicu-doprava-je-presmerovana/": "2026-10-03T00:36:53.784132+00:00",
+    "https://bratislava.zoznam.sk/aktualne-kamion-sa-prevratil-na-d1-pri-trnave-doprava-je-ciastocne-obmedzena-policia-vyzyva-na-zvysenu-opatrnost/": "2026-10-03T00:36:53.784138+00:00",
+    "https://bratislava.zoznam.sk/mimoriadne-studenta-18-videli-pri-dunaji-zmizol-bez-stopy-zufale-patranie-trva-uz-3-dni-kazda-info-pomoze/": "2026-10-03T00:36:53.784142+00:00",
+    "https://bratislava.zoznam.sk/v-bratislave-odstartoval-festival-novotvar-2026-styri-dni-literatury-umenia-a-hudby/": "2026-10-03T00:36:53.784145+00:00",
+    "https://bratislava.zoznam.sk/na-hrade-cerveny-kamen-oziju-pribehy-siedmich-osobnosti-slovenskych-dejin-uz-tento-vikend/": "2026-10-03T00:36:53.784147+00:00",
+    "https://bratislava.zoznam.sk/policia-zadrzala-zlodejov-kablov-v-nemocnici-ruzinov-skody-aj-na-zavlazovani-pri-senci/": "2026-10-03T00:36:53.784150+00:00",
+    "https://regiony.zoznam.sk/obrovska-rana-pre-slovensky-hudobny-svet-zomrel-vyznamny-skladatel-a-muzikant/": "2026-10-03T00:36:53.784153+00:00",
+    "https://regiony.zoznam.sk/predpoved-pocasia-pre-slovensko-sa-zmenila-bude-to-horsie-ako-sme-ocakavali/": "2026-10-03T00:36:53.784155+00:00",
+    "https://bratislava.zoznam.sk/dolezita-oprava-d2-medzi-jarovcami-a-hranicou-s-madarskom-cakaju-vodicov-zmeny-v-doprave/": "2026-10-03T00:36:53.784157+00:00",
+    "https://bratislava.zoznam.sk/incident-pri-skole-v-bratislave-17-rocny-mladik-napadol-chlapca-policia-pripad-vysetruje/": "2026-10-03T00:36:53.784160+00:00",
+    "https://bratislava.zoznam.sk/bookbot-posilnuje-svoju-poziciu-na-slovensku-po-uspesnej-predajni-vyraza-aj-do-ulic-bratislavy/": "2026-10-03T00:36:53.784162+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9480931/Policia-zverejnila-VIDEO-zo-zasahu-kuklacov--Poliaci-podozrivi-zo-zabitia-muza-sa-skryvali-na-Slovensku",
-      "title": "Polícia zverejnila VIDEO zo zásahu kukláčov: Poliaci podozriví zo zabitia muža sa skrývali na Slovensku",
-      "posted_at": "2026-09-29T22:31:04.833600+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-",
       "title": "Zlodej v obľúbenej bratislavskej reštaurácii: Po roku ich opäť okradli, majiteľ zúfalo prosí o pomoc!",
@@ -2445,6 +2452,11 @@
       "url": "https://www.pravda.sk/spravy/domace/clanok/2052013-kratko-po-tragedii-v-staskove-utok-v-bratislave-muz-s-nozom-zautocil-na-studentov-na-zastavke",
       "title": "Krátko po tragédii v Staškove útok v Bratislave: Muž s nožom zaútočil na študentov na zastávke",
       "posted_at": "2026-10-02T21:25:02.737943+00:00"
+    },
+    {
+      "url": "https://www.startitup.sk/bratislavu-strasia-nebezpecne-plostice-mestska-cast-hlasi-zamorene-bytovky-starosta-varuje-pred-nezodpovednymi-susedmi/",
+      "title": "Bratislavu strašia nebezpečné ploštice: Mestská časť hlási zamorené bytovky, starosta varuje pred nezodpovednými susedmi",
+      "posted_at": "2026-10-03T00:36:50.783559+00:00"
     }
   ]
 }
