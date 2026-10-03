@@ -1,19 +1,5 @@
 {
   "seen_urls": {
-    "https://www.pravda.sk/spravy/regiony/clanok/2044313-medzi-zahorskou-bystricou-a-stupavou-sa-zrazil-motocykel-s-autom-dopravu-riadia-policajti": "2026-09-19T19:27:22.600980+00:00",
-    "https://www.topky.sk/cl/10/9497913/Fico-nalozil-Zapadu-aj-opozicii--Vo-VIDEU-vytiahol-Mnichov-1938----Spojenci-nas-uz-raz-zradili--TOTO-nikdy-nedovoli": "2026-09-19T19:27:25.601995+00:00",
-    "https://www.pravda.sk/spravy/regiony/clanok/2044343-pri-nehode-rogala-medzi-vrbovym-a-prasnikom-zahynul-muz": "2026-09-19T19:27:25.602024+00:00",
-    "https://www.teraz.sk/regiony/priestory-dobrovolnych-hasicov-nesta/993511-clanok.html": "2026-09-19T19:27:25.602029+00:00",
-    "https://www.topky.sk/cl/10/9497945/AKTUALNE-Obrovska-tragedia-pri-Vrbovom--Pri-nehode-rogala-zomrel-muz---68--": "2026-09-19T19:27:25.602034+00:00",
-    "https://www.topky.sk/cl/10/9473483/Nestastie-v-Malej-Fatre--Turistka-si-pocas-tury-poranila-clenok": "2026-09-19T19:27:25.602037+00:00",
-    "https://www.aktuality.sk/clanok/fSA4u58/pokojna-a-chladna-nedelna-noc-teploty-v-udoliach-klesnu-az-k-dvom-stupnom/": "2026-09-19T19:27:25.602041+00:00",
-    "https://www.aktuality.sk/clanok/YqrU4ZQ/nejasne-umrtia-v-ruzomberku-policajna-razia-spor-o-tarabu-aj-nove-otazky-v-politike-tyzdenny-vyber/": "2026-09-19T19:27:25.602045+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2044333-kdh-rastislav-kratky-ekonomika-program-strana-politika": "2026-09-19T19:27:25.602049+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2044317-robert-fico-politika-nato-rusko-clanok-5-vojaci": "2026-09-19T19:27:25.602052+00:00",
-    "https://www.pravda.sk/spravy/regiony/clanok/2044389-v-bratislave-na-cyklotrase-nasli-muza-bez-znamok-zivota": "2026-09-19T21:36:50.592191+00:00",
-    "https://www.topky.sk/cl/10/9497973/SOKUJUCI-nalez-na-oblubenej-cyklotrase--Nedaleko-bufetu-objavili-telo-muza-": "2026-09-19T21:36:53.592450+00:00",
-    "https://www.topky.sk/cl/10/9497875/Slovensko-caka-v-nedelu-teplotny-SOK--Teploty-vyletia-vysoko--no-potom----Vecer-sa-pocasie-prudko-zmeni-": "2026-09-19T21:36:53.592475+00:00",
-    "https://www.aktuality.sk/clanok/Hxn57OK/medzi-zahorskou-bystricou-a-stupavou-doslo-k-zrazke-motocykla-s-osobnym-autom/": "2026-09-19T21:36:53.592480+00:00",
     "https://www.topky.sk/cl/10/9473395/Pito-vzal-spat-ziadost-o-miernejsi-rezim--Stratil-doveru-v-rozhodovanie-sudu": "2026-09-19T23:51:10.980198+00:00",
     "https://www.teraz.sk/regiony/bratislavska-petrzalka-sa-cez-vikend/993418-clanok.html": "2026-09-20T02:49:47.442581+00:00",
     "https://bratislavskykraj.sk/novy-medzinarodny-festival-franz-liszt-festival3cities-prinesie-seriu-koncertov-ktore-predstavia-skladatelovu-hudbu-v-celej-jej-rozmanitosti/": "2026-09-20T08:58:12.788368+00:00",
@@ -2424,14 +2410,15 @@
     "https://www.topky.sk/cl/10/9485399/Simkovicova-zasahuje-do-volby-sefa-FPU--Ziada-novu-vyzvu--Odvolani-clenovia-spominaju-odpocuvanie": "2026-10-03T18:46:34.769442+00:00",
     "https://www.topky.sk/cl/10/9485411/Plamene-v-Slovenskom-raji-sa-uz-nesiria--Zasah-v-tazkom-terene-komplikoval-mlady-porast": "2026-10-03T18:46:34.769444+00:00",
     "https://www.topky.sk/cl/10/9485131/Nova-automobilka-na-Slovensku--Robert-Fico-potvrdil-rokovania-o-masivnej-investicii-s-Cinanmi": "2026-10-03T18:46:34.769445+00:00",
-    "https://www.topky.sk/cl/10/9484347/Drza-kradez-v-Bratislave--Z-predajne-zmizol-vysavac-za-tisic-eur--poznate-zeny-z-VIDEA-": "2026-10-03T18:46:34.769447+00:00"
+    "https://www.topky.sk/cl/10/9484347/Drza-kradez-v-Bratislave--Z-predajne-zmizol-vysavac-za-tisic-eur--poznate-zeny-z-VIDEA-": "2026-10-03T18:46:34.769447+00:00",
+    "https://bratislava.zoznam.sk/karlova-ves-si-pripomenie-800-rokov-od-smrti-sv-frantiska-z-assisi-chystaju-slavnostnu-omsu-aj-program-na-namesti/": "2026-10-03T21:57:57.131801+00:00",
+    "https://www.startitup.sk/jedla-huba-sa-siri-coraz-blizsie-k-slovensku-povodne-druhy-moze-vytlacat/": "2026-10-03T21:58:00.132109+00:00",
+    "https://www.startitup.sk/rusko-zasiahla-vlna-utokov-medvedov-na-slovensku-hlasia-vyskyt-selmy-aj-pri-obyvanych-oblastiach/": "2026-10-03T21:58:00.132136+00:00",
+    "https://www.aktuality.sk/clanok/p4j8idA/caka-nas-jasna-a-chladna-noc-na-vacsine-uzemia-teploty-klesnu-k-nule/": "2026-10-03T21:58:00.132139+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2052331-po-tragedii-v-staskove-prisli-vyhrazky-riaditelke-matka-utocnika-udajne-skoncila-vo-vazbe": "2026-10-03T21:58:00.132142+00:00",
+    "https://bratislava.zoznam.sk/sest-stran-zaklada-alianciu-krajina-nova-sila-pre-bratislavu-a-kraj-toto-su-ich-plany/": "2026-10-03T21:58:00.132144+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/auto/doprava/clanok/2050763-na-moste-lanfranconi-v-bratislave-sa-zrazilo-pat-aut-treba-ratat-so-zdrzanim",
-      "title": "Na Moste Lanfranconi v Bratislave sa zrazilo päť áut, treba rátať so zdržaním",
-      "posted_at": "2026-09-30T21:33:11.876495+00:00"
-    },
     {
       "url": "https://www.pravda.sk/spravy/regiony/clanok/2050573-kupele-grossling-cakali-30-rokov-na-obnovu-z-chatrajucej-ikony-bude-opat-bazen-pozname-termin-otvorenia",
       "title": "Najvýraznejší progres za mnoho rokov. Z chátrajúcej ikony Bratislavy bude opäť pýcha, poznáme termín otvorenia",
@@ -2511,6 +2498,11 @@
       "url": "https://www.teraz.sk/regiony/petrzalka-chysta-otvorenie-sportovej/997050-clanok.html",
       "title": "Petržalka chystá otvorenie športovej haly Draždiak",
       "posted_at": "2026-10-03T18:46:31.769077+00:00"
+    },
+    {
+      "url": "https://bratislava.zoznam.sk/karlova-ves-si-pripomenie-800-rokov-od-smrti-sv-frantiska-z-assisi-chystaju-slavnostnu-omsu-aj-program-na-namesti/",
+      "title": "Karlova Ves si pripomenie 800 rokov od smrti sv. Františka z Assisi: Chystajú slávnostnú omšu aj program na námestí",
+      "posted_at": "2026-10-03T21:57:57.131820+00:00"
     }
   ]
 }
