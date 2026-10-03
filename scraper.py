@@ -36,6 +36,8 @@ class Article:
     published_timestamp: Optional[float] = None
     image_url: Optional[str] = None
     image_urls: List[str] = field(default_factory=list)
+    full_text: Optional[str] = None
+    is_paywalled: bool = False
 
 
 class NewsScraper:
@@ -50,6 +52,44 @@ class NewsScraper:
             r"pixel\.", r"icon[-_]", r"widget", r"banner[-_]", r"tasr[-_]logo",
             r"sita[-_]logo", r"zoznam[-_]logo", r"fb_share", r"fallback", r"preview-default",
             r"sme-logo", r"aktuality-logo"
+        ]
+    ]
+
+    PAYWALL_PATTERNS = [
+        re.compile(p, re.IGNORECASE) for p in [
+            r"iba pre predplatiteľov",
+            r"článok je zamknutý",
+            r"zamknutý obsah",
+            r"predplatitelia",
+            r"kúpte si predplatné",
+            r"piano predplatné",
+            r"odomknite si článok",
+            r"získajte prístup",
+            r"obsah je spoplatnený",
+            r"čítajte viac s predplatným",
+            r"tento text je dostupný iba",
+            r"vstúpte do klubu",
+            r"predplatné denníka",
+            r"predplatné sme",
+            r"predplatné n",
+            r"zamknute"
+        ]
+    ]
+
+    BOILERPLATE_PATTERNS = [
+        re.compile(p, re.IGNORECASE) for p in [
+            r"^čítajte tiež:",
+            r"^sledujte nás",
+            r"^pozrite si viac",
+            r"^viac k téme",
+            r"^reklama",
+            r"^zdroj:",
+            r"^foto:",
+            r"^tasr",
+            r"^sita",
+            r"všetky práva vyhradené",
+            r"autorské práva vyhradené",
+            r"^čítajte viac:"
         ]
     ]
 
@@ -231,21 +271,70 @@ class NewsScraper:
         parts = clean.split("/")
         return parts[-1] if parts else clean
 
-    def _collect_page_candidates(self, page_url: str) -> Tuple[List[Tuple[str, str]], Optional[str], Optional[float]]:
+    def _extract_page_text(self, soup: BeautifulSoup) -> Tuple[Optional[str], bool]:
+        """
+        Extracts verified factual paragraphs from article webpage.
+        Detects paywalled articles and filters out promo boilerplate.
+        """
+        is_paywalled = False
+
+        # 1. Check known paywall class indicators
+        paywall_selectors = [
+            ".c-locked-article", ".paywall", ".piano-article", ".spoplatnene",
+            "[class*='locked']", "[class*='paywall']", "[class*='piano']",
+            ".article-locked", "#paywall"
+        ]
+        if soup.select(", ".join(paywall_selectors)):
+            is_paywalled = True
+
+        # 2. Select main content container
+        content_containers = soup.select(
+            "article, [itemprop='articleBody'], .article-body, .article__content, "
+            ".entry-content, .post-content, .detail-text, .detail_text, .c-article-content, .text-content"
+        )
+        container = content_containers[0] if content_containers else soup
+
+        paragraphs: List[str] = []
+        for p in container.find_all("p"):
+            p_text = self._clean_text(p.get_text())
+            if len(p_text) < 25:
+                continue
+            if any(pat.search(p_text) for pat in self.PAYWALL_PATTERNS):
+                is_paywalled = True
+                break
+            if any(pat.search(p_text) for pat in self.BOILERPLATE_PATTERNS):
+                continue
+            paragraphs.append(p_text)
+
+        full_text = " ".join(paragraphs).strip() if paragraphs else None
+
+        # If text is very short and paywall was triggered, treat as paywalled
+        if is_paywalled and (not full_text or len(full_text) < 180):
+            return None, True
+
+        return full_text, is_paywalled
+
+    def _collect_page_candidates(
+        self,
+        page_url: str
+    ) -> Tuple[List[Tuple[str, str]], Optional[str], Optional[float], Optional[str], bool]:
         """
         Scrapes article webpage to discover OpenGraph, Twitter, JSON-LD, gallery, and lead images,
-        and optionally publication date if missing from RSS.
+        extracts publication date metadata, full article text, and checks for paywalls.
         """
         candidates: List[Tuple[str, str]] = []
         page_date_str: Optional[str] = None
         page_date_ts: Optional[float] = None
+        page_full_text: Optional[str] = None
+        is_paywalled: bool = False
 
         try:
             resp = self.session.get(page_url, timeout=8)
             if resp.status_code != 200:
-                return candidates, page_date_str, page_date_ts
+                return candidates, page_date_str, page_date_ts, page_full_text, is_paywalled
 
             soup = BeautifulSoup(resp.content, "html.parser")
+            page_full_text, is_paywalled = self._extract_page_text(soup)
 
             # Extract page publication date from HTML metadata if present
             for attr in [
@@ -381,11 +470,12 @@ class NewsScraper:
         except Exception as e:
             logger.debug("Failed to collect page candidates for %s: %s", page_url, e)
 
-        return candidates, page_date_str, page_date_ts
+        return candidates, page_date_str, page_date_ts, page_full_text, is_paywalled
 
-    def enrich_image(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
+    def enrich_article(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
         """
-        Extracts, verifies, and upgrades images to ensure high-resolution photos are selected.
+        Enriches article with full body text, checks against paywalls,
+        and extracts, verifies, and upgrades images to ensure high-resolution photos are selected.
         Filters out generic stock placeholders and publisher logos.
         Populates article.image_url with the best photo, and article.image_urls with up to max_images distinct photos.
         """
@@ -395,9 +485,15 @@ class NewsScraper:
         if article.image_url and not self._is_placeholder_image(article.image_url):
             raw_candidates.append(("rss", article.image_url))
 
-        # Scrape article webpage to discover high-resolution and gallery options
-        page_candidates, page_date_str, page_date_ts = self._collect_page_candidates(article.url)
+        # Scrape article webpage to discover full text, paywall status, high-resolution and gallery options
+        page_candidates, page_date_str, page_date_ts, page_full_text, is_paywalled = self._collect_page_candidates(article.url)
         raw_candidates.extend(page_candidates)
+
+        # Update full text and paywall status
+        if page_full_text:
+            article.full_text = page_full_text
+            logger.debug("Enriched full article text for '%s' (%d chars)", article.title[:30], len(page_full_text))
+        article.is_paywalled = is_paywalled
 
         # Backfill timestamp if RSS lacked one
         if article.published_timestamp is None and page_date_ts is not None:
@@ -478,9 +574,13 @@ class NewsScraper:
             article.image_url = None
             article.image_urls = []
 
+    def enrich_image(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
+        """Backwards-compatible alias for enrich_article."""
+        self.enrich_article(article, min_width=min_width, min_height=min_height, max_images=max_images)
+
     def enrich_image_if_missing(self, article: Article) -> None:
-        """Backwards-compatible alias for enrich_image."""
-        self.enrich_image(article)
+        """Backwards-compatible alias for enrich_article."""
+        self.enrich_article(article)
 
     def _verify_image_url(self, url: str) -> bool:
         """Verifies that an image URL is live, returns HTTP 200, and is a valid image >= 600x350."""
@@ -554,6 +654,12 @@ class NewsScraper:
             return ""
         # Remove HTML tags
         soup = BeautifulSoup(raw_html, "html.parser")
+        for el in soup.find_all(["script", "style"]):
+            el.decompose()
+        for a in soup.find_all("a"):
+            a_text = a.get_text().lower()
+            if any(w in a_text for w in ["čítaj", "viac", "read more", "celý článok"]):
+                a.decompose()
         text = soup.get_text(separator=" ")
         # Unescape HTML entities (&quot;, &amp;, etc.)
         text = html.unescape(text)

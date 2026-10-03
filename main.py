@@ -168,39 +168,54 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         else:
             raise ValueError("GEMINI_API_KEY must be provided to run live evaluation.")
 
-    # 4. Enrich and verify images for qualified articles
+    # 4. Enrich full text, check paywalls, and verify images for qualified articles
     no_image_urls: List[str] = []
-    if config.settings.require_image:
-        valid_qualified: List[ScoredArticle] = []
-        for q in qualified:
-            scraper.enrich_image(
-                q.article,
-                min_width=config.settings.min_image_width,
-                min_height=config.settings.min_image_height,
-                max_images=config.settings.max_images_per_post
-            )
+    skipped_paywall_urls: List[str] = []
+    skipped_thin_urls: List[str] = []
+    valid_qualified: List[ScoredArticle] = []
 
-            # Re-check freshness if timestamp was enriched from webpage metadata
-            if q.article.published_timestamp is not None:
-                age_sec = now_ts - q.article.published_timestamp
-                if age_sec > max_age_seconds:
-                    logger.info("Filtered qualified article as stale (%.1f hours old): '%s'", age_sec / 3600.0, q.article.title)
-                    skipped_stale_urls.append(q.article.url)
-                    continue
+    for q in qualified:
+        scraper.enrich_article(
+            q.article,
+            min_width=config.settings.min_image_width,
+            min_height=config.settings.min_image_height,
+            max_images=config.settings.max_images_per_post
+        )
 
+        # Filter out paywalled articles (prevent hallucinations from locked stubs)
+        if q.article.is_paywalled:
+            logger.info("Filtered qualified article as paywalled: '%s'", q.article.title)
+            skipped_paywall_urls.append(q.article.url)
+            continue
+
+        # Filter out thin/empty content (require at least 80 chars of factual substance)
+        content_len = len((q.article.full_text or q.article.summary or "").strip())
+        if content_len < 80:
+            logger.info("Filtered qualified article as thin/insufficient text (%d chars): '%s'", content_len, q.article.title)
+            skipped_thin_urls.append(q.article.url)
+            continue
+
+        # Re-check freshness if timestamp was enriched from webpage metadata
+        if q.article.published_timestamp is not None:
+            age_sec = now_ts - q.article.published_timestamp
+            if age_sec > max_age_seconds:
+                logger.info("Filtered qualified article as stale (%.1f hours old): '%s'", age_sec / 3600.0, q.article.title)
+                skipped_stale_urls.append(q.article.url)
+                continue
+
+        if config.settings.require_image:
             if q.article.image_url:
                 valid_qualified.append(q)
             else:
                 logger.info("Filtered qualified article lacking verified image: '%s'", q.article.title)
                 no_image_urls.append(q.article.url)
-        qualified = valid_qualified
+        else:
+            valid_qualified.append(q)
 
-    logger.info("%d articles ready to post (score >= %d with images)", len(qualified), config.min_score)
+    qualified = valid_qualified
+    logger.info("%d verified articles ready to post (score >= %d, with text & images)", len(qualified), config.min_score)
 
-    # 5. Limit to max posts per run
-    selected = qualified[:config.settings.max_posts_per_run]
-
-    # 6. Generate Styled Posts & Dispatch
+    # 5. Initialize Telegram Poster
     poster = None
     if not dry_run:
         config.validate_secrets(dry_run=False)
@@ -210,7 +225,12 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             timeout=config.settings.request_timeout_seconds
         )
 
-    for item in selected:
+    # 6. Generate Styled Posts & Dispatch (iterating until max_posts_per_run reached)
+    posts_sent = 0
+    for item in qualified:
+        if posts_sent >= config.settings.max_posts_per_run:
+            break
+
         art = item.article
         logger.info("Processing winning story [score=%d]: '%s' (%s)", item.score, art.title, art.source_name)
 
@@ -227,6 +247,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             post = GeneratedPost(article=art, headline=art.title, caption=post_caption)
 
         if not post:
+            logger.warning("Post generation or factual validation failed for '%s'. Trying next candidate.", art.title)
             continue
 
         if dry_run:
@@ -239,6 +260,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             print("-" * 60)
             print(post.caption)
             print("=" * 60 + "\n")
+            posts_sent += 1
         else:
             success = poster.post(
                 caption=post.caption,
@@ -249,16 +271,20 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             if success:
                 state.record_posted_story(art.url, art.title)
                 logger.info("Successfully posted to channel: '%s'", art.title)
+                posts_sent += 1
                 time.sleep(config.settings.post_delay_seconds)
             else:
                 logger.error("Failed to post story to channel: '%s'", art.title)
 
-    # 7. State management: Mark seen only for posted, rejected, stale, and non-target articles.
-    # Unposted qualified articles remain unseen so they are posted in subsequent runs.
+    # 7. State management: Mark seen for rejected, stale, paywalled, thin, and non-target articles.
     if not dry_run:
         for u in rejected_urls:
             state.mark_seen(u)
         for u in no_image_urls:
+            state.mark_seen(u)
+        for u in skipped_paywall_urls:
+            state.mark_seen(u)
+        for u in skipped_thin_urls:
             state.mark_seen(u)
         for u in skipped_non_target_urls:
             state.mark_seen(u)
