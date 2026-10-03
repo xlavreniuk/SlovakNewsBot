@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://bratislavskykraj.sk/bratislavska-zupa-pokracuje-v-prevencii-dalsi-ockovaci-den-proti-hpv-bude-uz-v-piatok/": "2026-09-19T02:37:53.159869+00:00",
     "https://bratislavskykraj.sk/gymnazium-alberta-einsteina-dostalo-po-70-rokoch-novu-tvar/": "2026-09-19T08:26:27.737864+00:00",
     "https://www.topky.sk/cl/10/9497347/Z-trhu-stahuju-nevyhovujucu-sarzu-MEDU--TOTO-je-dovod--Nemate-ju-doma--Predavala-sa-tristvrte-roka": "2026-09-19T08:26:30.738104+00:00",
     "https://www.topky.sk/cl/10/9497559/Hrabko-otvorene-o-Pellegrinim--Pomenoval-problemy--ale-nepovedal--ako-ich-riesit": "2026-09-19T08:26:30.738128+00:00",
@@ -2370,14 +2369,10 @@
     "https://regiony.zoznam.sk/predpoved-pocasia-pre-slovensko-sa-zmenila-bude-to-horsie-ako-sme-ocakavali/": "2026-10-03T00:36:53.784155+00:00",
     "https://bratislava.zoznam.sk/dolezita-oprava-d2-medzi-jarovcami-a-hranicou-s-madarskom-cakaju-vodicov-zmeny-v-doprave/": "2026-10-03T00:36:53.784157+00:00",
     "https://bratislava.zoznam.sk/incident-pri-skole-v-bratislave-17-rocny-mladik-napadol-chlapca-policia-pripad-vysetruje/": "2026-10-03T00:36:53.784160+00:00",
-    "https://bratislava.zoznam.sk/bookbot-posilnuje-svoju-poziciu-na-slovensku-po-uspesnej-predajni-vyraza-aj-do-ulic-bratislavy/": "2026-10-03T00:36:53.784162+00:00"
+    "https://bratislava.zoznam.sk/bookbot-posilnuje-svoju-poziciu-na-slovensku-po-uspesnej-predajni-vyraza-aj-do-ulic-bratislavy/": "2026-10-03T00:36:53.784162+00:00",
+    "https://bratislava.zoznam.sk/pozor-vodici-na-dialnici-d2-cakaju-pocas-oktobra-rozsiahle-dopravne-obmedzenia-a-uzavery/": "2026-10-03T03:17:42.568307+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-",
-      "title": "Zlodej v obľúbenej bratislavskej reštaurácii: Po roku ich opäť okradli, majiteľ zúfalo prosí o pomoc!",
-      "posted_at": "2026-09-30T01:29:41.272932+00:00"
-    },
     {
       "url": "https://bratislavskykraj.sk/ids-bk-otestuje-nove-cezhranicne-autobusove-spojenie/",
       "title": "IDS BK otestuje nové cezhraničné autobusové spojenie",
@@ -2457,6 +2452,11 @@
       "url": "https://www.startitup.sk/bratislavu-strasia-nebezpecne-plostice-mestska-cast-hlasi-zamorene-bytovky-starosta-varuje-pred-nezodpovednymi-susedmi/",
       "title": "Bratislavu strašia nebezpečné ploštice: Mestská časť hlási zamorené bytovky, starosta varuje pred nezodpovednými susedmi",
       "posted_at": "2026-10-03T00:36:50.783559+00:00"
+    },
+    {
+      "url": "https://bratislava.zoznam.sk/pozor-vodici-na-dialnici-d2-cakaju-pocas-oktobra-rozsiahle-dopravne-obmedzenia-a-uzavery/",
+      "title": "Pozor, vodiči: Na diaľnici D2 čakajú počas októbra rozsiahle dopravné obmedzenia a uzávery",
+      "posted_at": "2026-10-03T03:17:42.568322+00:00"
     }
   ]
 }
