@@ -1,26 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9473039/Bratislavu-cakaju-dopravne-obmedzenia--V-meste-zasiahnu-hliadky-kvoli-zapasu-Ligy-majstrov": "2026-09-19T10:12:53.723499+00:00",
-    "https://www.teraz.sk/regiony/zahorske-muzeum-v-skalici-otvorilo-sv/993453-clanok.html": "2026-09-19T10:12:56.724158+00:00",
-    "https://www.topky.sk/cl/10/9497357/Najvacsia-banka-bude-mat-velku-ODSTAVKU--Klientom-odporuca-si-vopred-vybrat-HOTOVOST-": "2026-09-19T10:12:56.724183+00:00",
-    "https://www.topky.sk/cl/10/9497689/SaS-rozsiruje-svoj-tim--TITO-dvaja-poslanci-vstupuju-do-strany--Maju-plan-s-nazvom-Restart-Slovenska": "2026-09-19T10:12:56.724188+00:00",
-    "https://www.topky.sk/cl/10/9472901/Rodne-cisla--podpisy-aj-adresy--Mame-tu-dalsi-SKANDAL--Citlive-udaje-v-obchodnom-registri-moze-vidiet-KAZDY": "2026-09-19T10:12:56.724192+00:00",
-    "https://www.topky.sk/cl/10/9472917/Taraba-pritvrdil-pri-veternych-parkoch--Envirorezort-ich-nepodporuje--politikom-poslal-ostry-odkaz-": "2026-09-19T10:12:56.724195+00:00",
-    "https://www.topky.sk/cl/10/9472785/Prve-rozhodnutia-vlady-po-prestavke--Stopka-pre-odvolanie-parlamentu-a-zelena-pre-letecke-dni": "2026-09-19T10:12:56.724198+00:00",
-    "https://www.topky.sk/cl/10/9472985/Milionovy-spor-o-akcie-v-jadre-graduje--Ceska-firma-sa-ohradila--Spekulacie-ich-URAZAJU": "2026-09-19T10:12:56.724203+00:00",
-    "https://www.teraz.sk/regiony/lucenec-chce-synagogu-nadalej-prevad/993445-clanok.html": "2026-09-19T10:12:56.724209+00:00",
-    "https://www.teraz.sk/regiony/podvodnici-pripravili-obec-v-okrese-zi/993439-clanok.html": "2026-09-19T10:12:56.724215+00:00",
-    "https://www.teraz.sk/regiony/poziar-skladovych-priestorov-v-areali/993431-clanok.html": "2026-09-19T10:12:56.724259+00:00",
-    "https://www.topky.sk/cl/10/9497695/Podvodnici-obrali-obec-o-viac-ako-77-tisic-eur--Vydavali-sa-za-policajtov-a-pracovnikov-NBU": "2026-09-19T10:12:56.724263+00:00",
-    "https://www.topky.sk/cl/10/9497633/SOK--Legendarny-zavod-na-Dolnom-Povazi-KONCI--O-pracu-pridu-desiatky-ludi": "2026-09-19T10:12:56.724267+00:00",
-    "https://www.topky.sk/cl/10/9497669/Dramaticky-piatok-v-Nitre--Byvale-kasarne-pohltili-plamene--zasahovali-desiatky-hasicov": "2026-09-19T10:12:56.724270+00:00",
-    "https://www.topky.sk/cl/10/9472995/Tragedia-na-dovolenke-v-Bulharsku--Mlady-slovensky-hasic-sa-z-mora-uz-nevynoril--Rodine-poslal-este-posledne-FOTO": "2026-09-19T10:12:56.724273+00:00",
-    "https://www.topky.sk/cl/10/9473029/Dopravna-nehoda-v-Trencine-blokovala-cestu--Motorkar-po-zrazke-s-autobusom-skoncil-v-nemocnici": "2026-09-19T10:12:56.724276+00:00",
-    "https://www.topky.sk/cl/10/9473003/Nechal-sucku-TRPIET-bez-vody-a-potravy--Mladik-zo-Sale-dostal-za-tyranie-psa-nekompromisny-trest": "2026-09-19T10:12:56.724279+00:00",
-    "https://www.aktuality.sk/clanok/PbMDeRI/peter-svec-ostava-predsedom-klubu-slovenskych-turistov-delegati-neschvalili-jeho-odvolanie/": "2026-09-19T10:12:56.724281+00:00",
-    "https://www.aktuality.sk/clanok/Gk47cpc/festival-living-city-zmenil-kosice-na-centrum-realit-a-investicii-navstevnici-riesili-byvanie-pod-jednou-strechou/": "2026-09-19T10:12:56.724284+00:00",
-    "https://www.aktuality.sk/clanok/IDT1E0j/ruska-bomba-zasiahla-obytny-dom-v-meste-sumy-zachranari-stale-patraju-po-uviaznutych-osobach/": "2026-09-19T10:12:56.724287+00:00",
-    "https://www.aktuality.sk/clanok/MHWbzhw/poziar-v-areali-byvalych-kasarni-v-nitre-si-vyziadal-celonocny-zasah-hasicov/": "2026-09-19T10:12:56.724290+00:00",
     "https://www.topky.sk/cl/10/9473197/Prisla-o-takmer-14-tisic-eur--Seniorku-zlakali-podvodnici-na-falosne-vynosy": "2026-09-19T13:58:09.417179+00:00",
     "https://www.topky.sk/cl/10/9497781/Nova-MAPA-vyskytu-medvedov-na-Slovensku--TU-ich-hlasia-najcastejsie--Ochranari-eviduju-10-UMRTI-za-9-dni": "2026-09-19T13:58:12.417566+00:00",
     "https://www.topky.sk/cl/10/9497769/Kto-ma-byt-novym-sefom-envirorezortu--Danko-uviedol-TOTO-meno--V-pondelok-ho-caka-Fico": "2026-09-19T13:58:12.417599+00:00",
@@ -2381,14 +2360,27 @@
     "https://www.aktuality.sk/clanok/yCxh06l/tragedia-pred-finale-ragbyovej-ligy-v-australii-auto-vrazilo-do-davu-fanusikov-medzi-zranenymi-su-aj-deti/": "2026-10-03T09:35:42.998599+00:00",
     "https://www.aktuality.sk/clanok/83yQXaU/severny-a-juzny-most-v-kyjeve-su-poskodene-po-masivnych-utokoch-dronov-na-infrastrukturu/": "2026-10-03T09:35:42.998601+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2052099-premier-sa-pre-virozu-nezucastni-oslav-82-vyrocia-karpatsko-duklianskej-operacie": "2026-10-03T09:35:42.998605+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2051099-video-26-medvedov-na-jednom-poli-takyto-pohlad-pri-ocovej-nikto-necakal": "2026-10-03T09:35:42.998608+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2051099-video-26-medvedov-na-jednom-poli-takyto-pohlad-pri-ocovej-nikto-necakal": "2026-10-03T09:35:42.998608+00:00",
+    "https://www.topky.sk/cl/10/9504717/Byty-za-viac-ako-milion-eur--Takto-vyzera-tichy-luxus-v-novom-centre-Bratislavy": "2026-10-03T11:01:27.838191+00:00",
+    "https://www.topky.sk/cl/10/9509313/Rozpocet-rozdeluje-politikov--KDH-kritizuje-dohodu-koalicie-a-varuje-pred-stavom-financii": "2026-10-03T11:01:30.838496+00:00",
+    "https://www.topky.sk/cl/10/9507285/Velka-novinka-v-slovenskych-lekarnach--TOTO-uz-coskoro-vybavite-bez-navstevy-lekara-": "2026-10-03T11:01:30.838521+00:00",
+    "https://www.topky.sk/cl/10/9509299/Seniori-nad-85-rokov-mozu-dostat-VYSSIE-dochodky--SNS-prichadza-s-novym-navrhom": "2026-10-03T11:01:30.838526+00:00",
+    "https://www.topky.sk/cl/10/9509231/Psychologicka-o-nasili-mladych--Ked-sa-nahromadi-osamelost--frustracia-a-pocit-odmietnutia": "2026-10-03T11:01:30.838530+00:00",
+    "https://www.topky.sk/cl/10/9509159/Premier-Robert-Fico-nahle-meni-program--Zdravotne-problemy-": "2026-10-03T11:01:30.838533+00:00",
+    "https://bratislava.zoznam.sk/elektrickova-linka-1-sa-v-bratislave-vracia-na-namestie-snp-rychlejsie-spojenie-s-centrom-uz-od-soboty/": "2026-10-03T11:01:30.838537+00:00",
+    "https://www.startitup.sk/tato-lacna-superpotravina-ma-9-benefitov-slovaci-ju-dobre-poznaju/": "2026-10-03T11:01:30.838544+00:00",
+    "https://www.startitup.sk/fabrika-z-dubnice-vyraba-diely-pre-hufnicu-zuzana-jej-majitel-zarobil-310-milionov-eur-ona-skoncila-v-strate/": "2026-10-03T11:01:30.838549+00:00",
+    "https://www.teraz.sk/regiony/policia-podujatie-rally-presov-uzavre/996984-clanok.html": "2026-10-03T11:01:30.838552+00:00",
+    "https://www.topky.sk/cl/10/9509327/Pellegrini-varuje-pred-eskalaciou--Zbrojenie-podla-prezidenta-neprinesie-zmiernenie-napatia": "2026-10-03T11:01:30.838555+00:00",
+    "https://www.topky.sk/cl/10/9509315/Rally-Presov-komplikuje-dopravu--Viacere-cesty-su-uzavrete--vodicov-cakaju-obchadzky": "2026-10-03T11:01:30.838558+00:00",
+    "https://www.topky.sk/cl/10/9509207/AKTUALNE-Dalsia-tragicka-nehoda--Auto-skoncilo-v-priekope--Hrozny-nalez-po-prichode-policie": "2026-10-03T11:01:30.838561+00:00",
+    "https://www.aktuality.sk/clanok/JPmSSzg/usa-odobrali-slovensku-vojenske-miliony-peniaze-presmerovali-do-latinskej-ameriky-a-hovoria-o-prioritach/": "2026-10-03T11:01:30.838564+00:00",
+    "https://www.aktuality.sk/clanok/7lQGDmn/v-slovenskych-dejinach-dukla-periferiou-nikdy-nebola-vravi-richard-rasi/": "2026-10-03T11:01:30.838567+00:00",
+    "https://www.aktuality.sk/clanok/KShr3sO/peter-pellegrini-na-dukle-apeloval-na-mier-a-varoval-pred-zvysovanim-zbrojenia-v-europe/": "2026-10-03T11:01:30.838570+00:00",
+    "https://www.aktuality.sk/clanok/YHoI5Qn/severna-korea-odpalila-balisticku-raketu-po-ostrej-vymene-medzi-soulom-a-pchjongjangom/": "2026-10-03T11:01:30.838573+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2052155-oslavy-82-vyrocia-karpatsko-duklianskej-operacie-pellegrini-rasi-zuna-zbrojenie-vojaci-ukrajina": "2026-10-03T11:01:30.838576+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/regiony/clanok/2048025-hlavna-stanica-v-bratislave-sa-meni-nove-toalety-su-otvorene-dalsie-prace-sa-predlzia",
-      "title": "Hlavná stanica v Bratislave má nové toalety. Expert: Je smutné, že kvôli tomu minister Ráž zvoláva tlačovku",
-      "posted_at": "2026-09-30T10:12:38.724168+00:00"
-    },
     {
       "url": "https://www.pravda.sk/spravy/regiony/clanok/2050557-vlna-nasilia-pokracuje-v-dubravke-mladik-bezdovodne-napadol-chlapca",
       "title": "Vlna násilia pokračuje. v Dúbravke mladík bezdôvodne napadol chlapca",
@@ -2468,6 +2460,11 @@
       "url": "https://bratislava.zoznam.sk/bratislava-slavnostne-otvorila-zrekonstruovane-zive-namestie-koncerty-atrakcie-a-navrat-elektriciek/",
       "title": "Bratislava slávnostne otvorila zrekonštruované Živé námestie: Koncerty, atrakcie a návrat električiek",
       "posted_at": "2026-10-03T09:35:39.998148+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9504717/Byty-za-viac-ako-milion-eur--Takto-vyzera-tichy-luxus-v-novom-centre-Bratislavy",
+      "title": "Byty za viac ako milión eur: Takto vyzerá tichý luxus v novom centre Bratislavy",
+      "posted_at": "2026-10-03T11:01:27.838209+00:00"
     }
   ]
 }
