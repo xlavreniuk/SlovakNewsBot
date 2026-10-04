@@ -213,8 +213,25 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
         else:
             valid_qualified.append(q)
 
+    # Freshness-weighted ranking: prioritize the latest breaking news published right now
+    def story_freshness_priority(item: ScoredArticle) -> float:
+        base = float(item.score)
+        ts = item.article.published_timestamp
+        if ts:
+            age_hours = max(0.0, (now_ts - ts) / 3600.0)
+            if age_hours <= 2.0:
+                base += 2.5   # Massive bonus for breaking news in the last 2 hours
+            elif age_hours <= 6.0:
+                base += 1.5   # Bonus for fresh news in the last 6 hours
+            elif age_hours <= 12.0:
+                base += 0.5
+            elif age_hours > 20.0:
+                base -= 1.0   # Demote older day-old stories
+        return base
+
+    valid_qualified.sort(key=story_freshness_priority, reverse=True)
     qualified = valid_qualified
-    logger.info("%d verified articles ready to post (score >= %d, with text & images)", len(qualified), config.min_score)
+    logger.info("%d verified articles ranked by freshness & score ready to post (score >= %d, with text & images)", len(qualified), config.min_score)
 
     # 5. Initialize Telegram Poster
     poster = None
@@ -233,6 +250,12 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             break
 
         art = item.article
+
+        # In-batch deduplication: guarantee image has never been posted in prior runs or earlier in this run
+        if state.is_image_seen(art.image_url, art.image_hash):
+            logger.warning("Skipping '%s': image already used in channel!", art.title)
+            continue
+
         logger.info("Processing winning story [score=%d]: '%s' (%s)", item.score, art.title, art.source_name)
 
         if config.gemini_api_key:
@@ -275,6 +298,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
                 for idx, img_u in enumerate(art.image_urls):
                     img_h = art.image_hashes[idx] if idx < len(art.image_hashes) else None
                     state.record_posted_image(img_u, img_h)
+                state.save()  # Immediately persist so state is guaranteed saved
                 logger.info("Successfully posted to channel: '%s'", art.title)
                 posts_sent += 1
                 time.sleep(config.settings.post_delay_seconds)

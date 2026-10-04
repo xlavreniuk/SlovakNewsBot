@@ -373,7 +373,8 @@ class NewsScraper:
         # 2. Select main content container
         content_containers = soup.select(
             "article, [itemprop='articleBody'], .article-body, .article__content, "
-            ".entry-content, .post-content, .detail-text, .detail_text, .c-article-content, .text-content"
+            ".entry-content, .post-content, .detail-text, .detail_text, .c-article-content, .text-content, "
+            ".article-content, .c-content, .article__body, .c-article__body, .story-body, .c-article"
         )
         container = content_containers[0] if content_containers else soup
 
@@ -478,8 +479,24 @@ class NewsScraper:
                 try:
                     data = json.loads(script.string or "")
 
-                    def extract_jsonld_images(obj):
+                    def extract_jsonld_data(obj):
+                        nonlocal page_date_str, page_date_ts, article_year
                         if isinstance(obj, dict):
+                            # Extract publication date if not yet extracted
+                            if not page_date_ts:
+                                for date_key in ("datePublished", "dateCreated", "dateModified"):
+                                    if date_key in obj and isinstance(obj[date_key], str):
+                                        d_str = obj[date_key].strip()
+                                        try:
+                                            dt = datetime.datetime.fromisoformat(d_str.replace("Z", "+00:00"))
+                                            page_date_str = d_str
+                                            page_date_ts = dt.timestamp()
+                                            if not article_year:
+                                                article_year = dt.year
+                                            break
+                                        except Exception:
+                                            pass
+
                             # Skip publisher or author logos inside JSON-LD
                             if obj.get("@type") in ("Organization", "Person") and "logo" in obj:
                                 pass
@@ -501,12 +518,12 @@ class NewsScraper:
                                         lead_candidates.append(("json-ld", u))
                             for k, val in obj.items():
                                 if k not in ("publisher", "author", "creator"):
-                                    extract_jsonld_images(val)
+                                    extract_jsonld_data(val)
                         elif isinstance(obj, list):
                             for elem in obj:
-                                extract_jsonld_images(elem)
+                                extract_jsonld_data(elem)
 
-                    extract_jsonld_images(data)
+                    extract_jsonld_data(data)
                 except Exception:
                     pass
 

@@ -371,8 +371,9 @@ Respond with valid JSON:
         articles_formatted = []
         for idx, a in enumerate(articles):
             snippet = a.summary[:200] if a.summary else ""
+            pub = a.published_at or "Recently"
             articles_formatted.append(
-                f"ID: {idx}\nSource: {a.source_name}\nTitle: {a.title}\nSummary: {snippet}"
+                f"ID: {idx}\nSource: {a.source_name}\nPublished: {pub}\nTitle: {a.title}\nSummary: {snippet}"
             )
         articles_text = "\n\n---\n\n".join(articles_formatted)
 
@@ -394,8 +395,11 @@ SCORING CRITERIA FOR BRATISLAVA STORIES:
 - 0: Not in Bratislava / outside Bratislava region (STRICTLY 0).
 - 1-2: Extremely boring / dull bureaucratic announcements, dry administrative notices, obscure procurement tenders, routine statistical tables.
 - 3-5: Standard interesting local news: culture, city events, festivals, concerts, weather alerts, transport changes, local improvements, urban life, community stories.
-- 6-8: Notable crime blotters, road accidents, police actions, bizarre situations, disputes, funny/viral incidents.
-- 9-10: Huge, sensational, extraordinary, or viral event in Bratislava.
+- 6-8: Notable crime blotters, road accidents, police actions, bizarre situations, disputes, funny/viral incidents, fresh breaking events.
+- 9-10: Huge, sensational, extraordinary, or viral breaking event in Bratislava.
+
+FRESHNESS & BREAKING NEWS PRIORITY:
+- ALWAYS prioritize fresh, breaking events happening TODAY or RECENTLY over older multi-day background recaps. Award +1 to +2 extra points to fresh breaking news (accidents, transport disruptions, crime blotters, today's events).
 
 Recently posted stories on the channel (AVOID DUPLICATE REPORTING OF THE SAME EVENT):
 {recent_text}

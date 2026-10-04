@@ -39,11 +39,23 @@ ai:
 
 # 4. RSS Feed Sources (Bratislava-focused + National/Regional feeds)
 sources:
+  - name: "BratislavaDeň"
+    rss_url: "https://bratislavaden.sk/feed/"
+    enabled: true
   - name: "Bratislavský Kraj"
     rss_url: "https://bratislavskykraj.sk/feed/"
     enabled: true
   - name: "Bratislava Zoznam"
     rss_url: "https://bratislava.zoznam.sk/feed/"
+    enabled: true
+  - name: "Pravda Krimi"
+    rss_url: "https://spravy.pravda.sk/krimi/rss/xml/"
+    enabled: true
+  - name: "Pravda Ekonomika"
+    rss_url: "https://spravy.pravda.sk/ekonomika/rss/xml/"
+    enabled: true
+  - name: "Teraz Wire"
+    rss_url: "https://www.teraz.sk/rss/vsetky-spravy.rss"
     enabled: true
   - name: "Denník N Bratislava"
     rss_url: "https://dennikn.sk/tema/bratislava/rss/"
@@ -56,6 +68,9 @@ sources:
     enabled: true
   - name: "Startitup"
     rss_url: "https://www.startitup.sk/feed/"
+    enabled: true
+  - name: "Refresher SK"
+    rss_url: "https://refresher.sk/rss"
     enabled: true
   - name: "Pravda Regióny"
     rss_url: "https://spravy.pravda.sk/regiony/rss/xml/"
@@ -78,9 +93,9 @@ sources:
 
 # 5. Pipeline Tuning
 settings:
-  max_articles_per_run: 40    # Maximum total new articles to evaluate per run
+  max_articles_per_run: 50    # Maximum total new articles to evaluate per run
   max_posts_per_run: 1        # Optimal pacing: 1 top story per run (e.g. 1 per hour)
-  max_article_age_hours: 36   # Maximum article age in hours (filters out old stale news)
+  max_article_age_hours: 24   # Strict 24-hour freshness limit (filters out old stale news)
   max_images_per_post: 4      # Multi-image album support (sends up to 4 high-res photos via sendMediaGroup)
   require_image: true         # Only post articles that have an image (no plain text posts)
   min_image_width: 600        # Minimum image width in pixels for high quality posts

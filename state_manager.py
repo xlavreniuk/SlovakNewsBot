@@ -224,10 +224,12 @@ class StateManager:
             return f"{parts[-2]}/{parts[-1]}"
         return parts[-1] if parts else clean
 
+    MAX_HAMMING_DISTANCE = 6  # Strictly catches duplicate, re-compressed, re-cropped, or watermarked wire photos
+
     def is_image_seen(self, url: Optional[str] = None, img_hash: Optional[str] = None) -> bool:
         """
         Checks if an image has already been posted in a prior post.
-        Checks canonical image key, base filename, and visual dHash perceptual distance <= 4.
+        Checks canonical image key, base filename, and visual dHash perceptual distance <= MAX_HAMMING_DISTANCE.
         """
         if url:
             key = self.canonicalize_image_key(url)
@@ -244,7 +246,7 @@ class StateManager:
                 target_int = int(img_hash, 16)
                 for seen_h in self.seen_hashes:
                     dist = bin(target_int ^ int(seen_h, 16)).count('1')
-                    if dist <= 4:
+                    if dist <= self.MAX_HAMMING_DISTANCE:
                         return True
             except Exception:
                 pass
