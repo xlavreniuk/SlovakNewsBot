@@ -8,12 +8,14 @@ logger = logging.getLogger(__name__)
 
 
 class StateManager:
-    """Manages persistent deduplication state (seen URLs and recently posted story titles)."""
+    """Manages persistent deduplication state (seen URLs, seen images, and recently posted story titles)."""
 
     def __init__(self, filepath: str = "seen_urls.json", retention_days: int = 14):
         self.filepath = filepath
         self.retention_days = retention_days
         self.seen_urls: Dict[str, str] = {}  # url -> ISO timestamp
+        self.seen_images: Dict[str, str] = {}  # canonical image key -> ISO timestamp
+        self.seen_hashes: Dict[str, str] = {}  # 16-hex perceptual dHash -> ISO timestamp
         self.recent_posts: List[Dict[str, str]] = []  # list of {url, title, posted_at}
         self._dirty = False
         self.load()
@@ -32,19 +34,30 @@ class StateManager:
                 # Backward compatibility: legacy format was a simple list of URLs
                 now_iso = datetime.now(timezone.utc).isoformat()
                 self.seen_urls = {url: now_iso for url in data if isinstance(url, str)}
+                self.seen_images = {}
+                self.seen_hashes = {}
                 self.recent_posts = []
             elif isinstance(data, dict):
                 self.seen_urls = data.get("seen_urls", {})
+                self.seen_images = data.get("seen_images", {})
+                self.seen_hashes = data.get("seen_hashes", {})
                 self.recent_posts = data.get("recent_posts", [])
             else:
                 logger.warning("Unrecognized format in %s, resetting state.", self.filepath)
                 self.seen_urls = {}
+                self.seen_images = {}
+                self.seen_hashes = {}
                 self.recent_posts = []
 
-            logger.info("Loaded state: %d seen URLs, %d recent posts.", len(self.seen_urls), len(self.recent_posts))
+            logger.info(
+                "Loaded state: %d seen URLs, %d seen images, %d seen hashes, %d recent posts.",
+                len(self.seen_urls), len(self.seen_images), len(self.seen_hashes), len(self.recent_posts)
+            )
         except Exception as e:
             logger.error("Failed to load state from %s: %s. Starting fresh.", self.filepath, e)
             self.seen_urls = {}
+            self.seen_images = {}
+            self.seen_hashes = {}
             self.recent_posts = []
 
     def is_seen(self, url: str) -> bool:
@@ -127,6 +140,42 @@ class StateManager:
             self._dirty = True
             logger.info("Pruned %d stale URLs from state.", initial_seen_count - len(self.seen_urls))
 
+        # Prune seen_images (keep for retention_days)
+        initial_seen_images_count = len(self.seen_images)
+        pruned_images = {}
+        for img_key, ts_str in self.seen_images.items():
+            try:
+                ts = datetime.fromisoformat(ts_str)
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                if ts >= cutoff:
+                    pruned_images[img_key] = ts_str
+            except Exception:
+                pruned_images[img_key] = ts_str
+        self.seen_images = pruned_images
+
+        if len(self.seen_images) != initial_seen_images_count:
+            self._dirty = True
+            logger.info("Pruned %d stale images from state.", initial_seen_images_count - len(self.seen_images))
+
+        # Prune seen_hashes (keep for retention_days)
+        initial_seen_hashes_count = len(self.seen_hashes)
+        pruned_hashes = {}
+        for h_key, ts_str in self.seen_hashes.items():
+            try:
+                ts = datetime.fromisoformat(ts_str)
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                if ts >= cutoff:
+                    pruned_hashes[h_key] = ts_str
+            except Exception:
+                pruned_hashes[h_key] = ts_str
+        self.seen_hashes = pruned_hashes
+
+        if len(self.seen_hashes) != initial_seen_hashes_count:
+            self._dirty = True
+            logger.info("Pruned %d stale hashes from state.", initial_seen_hashes_count - len(self.seen_hashes))
+
     def save(self) -> bool:
         """Atomically saves state to disk if modified."""
         if not self._dirty:
@@ -135,6 +184,8 @@ class StateManager:
         self.prune()
         data = {
             "seen_urls": self.seen_urls,
+            "seen_images": self.seen_images,
+            "seen_hashes": self.seen_hashes,
             "recent_posts": self.recent_posts
         }
 
@@ -154,6 +205,66 @@ class StateManager:
                 except OSError:
                     pass
             return False
+
+    @staticmethod
+    def canonicalize_image_key(url: str) -> str:
+        """
+        Normalizes image URL into a base filename or key to prevent duplicate images
+        across different query params, CDN resize suffixes, or protocols.
+        """
+        if not url:
+            return ""
+        import re
+        clean = url.split("?")[0].lower()
+        clean = re.sub(r'-\d+x\d+(\.[a-zA-Z0-9]+)$', r'\1', clean)
+        clean = re.sub(r'/(?:4x3|16x9)-(?:medium|small|big)/', '/', clean)
+        clean = re.sub(r'/(?:640px|1280px|1600px)/', '/', clean)
+        parts = [p for p in clean.split("/") if p and p not in ("http:", "https:")]
+        if len(parts) >= 2:
+            return f"{parts[-2]}/{parts[-1]}"
+        return parts[-1] if parts else clean
+
+    def is_image_seen(self, url: Optional[str] = None, img_hash: Optional[str] = None) -> bool:
+        """
+        Checks if an image has already been posted in a prior post.
+        Checks canonical image key, base filename, and visual dHash perceptual distance <= 4.
+        """
+        if url:
+            key = self.canonicalize_image_key(url)
+            if key in self.seen_images:
+                return True
+            basename = key.split("/")[-1]
+            if len(basename) > 6 and basename in self.seen_images:
+                return True
+
+        if img_hash:
+            if img_hash in self.seen_hashes:
+                return True
+            try:
+                target_int = int(img_hash, 16)
+                for seen_h in self.seen_hashes:
+                    dist = bin(target_int ^ int(seen_h, 16)).count('1')
+                    if dist <= 4:
+                        return True
+            except Exception:
+                pass
+
+        return False
+
+    def record_posted_image(self, url: Optional[str] = None, img_hash: Optional[str] = None) -> None:
+        """Marks an image as posted to ensure images NEVER repeat in future posts."""
+        if not url and not img_hash:
+            return
+        now_iso = datetime.now(timezone.utc).isoformat()
+        if url:
+            key = self.canonicalize_image_key(url)
+            self.seen_images[key] = now_iso
+            basename = key.split("/")[-1]
+            if len(basename) > 6:
+                self.seen_images[basename] = now_iso
+        if img_hash:
+            self.seen_hashes[img_hash] = now_iso
+        self._dirty = True
 
     @staticmethod
     def _canonicalize_url(url: str) -> str:

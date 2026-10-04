@@ -179,7 +179,8 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             q.article,
             min_width=config.settings.min_image_width,
             min_height=config.settings.min_image_height,
-            max_images=config.settings.max_images_per_post
+            max_images=config.settings.max_images_per_post,
+            is_seen_func=state.is_image_seen
         )
 
         # Filter out paywalled articles (prevent hallucinations from locked stubs)
@@ -204,10 +205,10 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
                 continue
 
         if config.settings.require_image:
-            if q.article.image_url:
+            if q.article.image_url and not state.is_image_seen(q.article.image_url, q.article.image_hash):
                 valid_qualified.append(q)
             else:
-                logger.info("Filtered qualified article lacking verified image: '%s'", q.article.title)
+                logger.info("Filtered qualified article lacking verified unseen image: '%s'", q.article.title)
                 no_image_urls.append(q.article.url)
         else:
             valid_qualified.append(q)
@@ -256,7 +257,8 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             print(f"Published: {art.published_at or 'Unknown'}")
             print(f"Images count: {len(art.image_urls)}")
             for idx, u in enumerate(art.image_urls):
-                print(f"  Photo #{idx + 1}: {u}")
+                h = art.image_hashes[idx] if idx < len(art.image_hashes) else "N/A"
+                print(f"  Photo #{idx + 1} (hash: {h}): {u}")
             print("-" * 60)
             print(post.caption)
             print("=" * 60 + "\n")
@@ -270,6 +272,9 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
             )
             if success:
                 state.record_posted_story(art.url, art.title)
+                for idx, img_u in enumerate(art.image_urls):
+                    img_h = art.image_hashes[idx] if idx < len(art.image_hashes) else None
+                    state.record_posted_image(img_u, img_h)
                 logger.info("Successfully posted to channel: '%s'", art.title)
                 posts_sent += 1
                 time.sleep(config.settings.post_delay_seconds)

@@ -36,6 +36,8 @@ class Article:
     published_timestamp: Optional[float] = None
     image_url: Optional[str] = None
     image_urls: List[str] = field(default_factory=list)
+    image_hash: Optional[str] = None
+    image_hashes: List[str] = field(default_factory=list)
     full_text: Optional[str] = None
     is_paywalled: bool = False
 
@@ -51,7 +53,45 @@ class NewsScraper:
             r"weather[-_]box", r"sample\.png", r"blank\.", r"transparent\.", r"spacer\.",
             r"pixel\.", r"icon[-_]", r"widget", r"banner[-_]", r"tasr[-_]logo",
             r"sita[-_]logo", r"zoznam[-_]logo", r"fb_share", r"fallback", r"preview-default",
-            r"sme-logo", r"aktuality-logo"
+            r"sme-logo", r"aktuality-logo",
+            # Generic numbered uploads / CMS placeholders
+            r"image[-_]?\d+\.(?:jpe?g|png|webp)",
+            r"fotka[-_]?\d+\.(?:jpe?g|png|webp)",
+            r"snimka[-_]?\d+\.(?:jpe?g|png|webp)",
+            r"obrazok[-_]?\d+\.(?:jpe?g|png|webp)",
+            r"img[-_]?\d+\.(?:jpe?g|png|webp)",
+            r"screenshot[-_]?\d*",
+            r"snimka[-_]?obrazovky",
+            # Stock photo agencies & generic photobanks
+            r"shutterstock", r"depositphotos", r"istock", r"getty", r"dreamstime",
+            r"adobe[-_]?stock", r"freepik", r"unsplash", r"pixabay", r"profimedia",
+            r"fotobanka", r"stock[-_]?photo", r"brianajackson",
+            # Money / cash / currency filler graphics
+            r"peniaz", r"peniaze", r"bankovk", r"euro[-_]?peniaze", r"cash[-_]", r"mena[-_]?euro",
+            r"stoeurov", r"tisic[-_]?eur", r"valuty", r"dolare",
+            # Senior / scam / fraud stock themes
+            r"podvod[-_]na[-_]senior", r"podvodnik", r"fiktivn",
+            r"dochodkyn", r"starenk", r"babick", r"babk", r"starec",
+            # Generic police / handcuffs / courtroom / prison stock
+            r"policia[-_]ilustr", r"puta[-_]na[-_]ruk", r"sud[-_]kladiv", r"vazenie[-_]mrez"
+        ]
+    ]
+
+    STOCK_CAPTION_PATTERNS = [
+        re.compile(p, re.IGNORECASE) for p in [
+            r"ilustra[čc]n",
+            r"symbolick",
+            r"profimedia",
+            r"shutterstock",
+            r"getty",
+            r"istock",
+            r"depositphoto",
+            r"fotobanka",
+            r"brianajackson",
+            r"peniaze",
+            r"bankovk",
+            r"arch[ií]v",
+            r"stock"
         ]
     ]
 
@@ -198,10 +238,27 @@ class NewsScraper:
                 ordered.append(v)
         return ordered
 
-    def probe_image(self, url: str) -> Optional[Tuple[int, int, str, int]]:
+    @staticmethod
+    def compute_image_hash(img: Image.Image) -> Optional[str]:
+        """Computes a 64-bit difference hash (dHash) as a 16-hex character string."""
+        try:
+            resized = img.convert('L').resize((9, 8), Image.Resampling.LANCZOS)
+            pixels = list(resized.getdata())
+            diff = []
+            for row in range(8):
+                row_offset = row * 9
+                for col in range(8):
+                    pixel_left = pixels[row_offset + col]
+                    pixel_right = pixels[row_offset + col + 1]
+                    diff.append('1' if pixel_left > pixel_right else '0')
+            return hex(int(''.join(diff), 2))[2:].zfill(16)
+        except Exception:
+            return None
+
+    def probe_image(self, url: str) -> Optional[Tuple[int, int, str, int, Optional[str]]]:
         """
         Probes image URL using Pillow.
-        Returns (width, height, format, byte_size) or None if inaccessible or invalid.
+        Returns (width, height, format, byte_size, hash_hex) or None if inaccessible or invalid.
         """
         if not url or not url.startswith("http"):
             return None
@@ -212,7 +269,8 @@ class NewsScraper:
             resp = self.session.get(url, timeout=6)
             if resp.status_code == 200 and len(resp.content) > 3000:
                 img = Image.open(io.BytesIO(resp.content))
-                info = (img.width, img.height, img.format or "JPEG", len(resp.content))
+                img_hash = self.compute_image_hash(img)
+                info = (img.width, img.height, img.format or "JPEG", len(resp.content), img_hash)
                 self._image_cache[url] = info
                 return info
         except Exception:
@@ -254,12 +312,37 @@ class NewsScraper:
 
         return raw_date, ts
 
-    def _is_placeholder_image(self, url: str, alt_text: str = "") -> bool:
-        """Detects whether an image URL or alt-text is a generic stock/placeholder, logo, or icon."""
+    def _is_placeholder_image(self, url: str, alt_text: str = "", caption_text: str = "") -> bool:
+        """Detects whether an image URL, alt-text, or caption is a generic stock/placeholder, logo, or icon."""
         if not url:
             return True
-        combined = f"{url} {alt_text}".lower()
-        return any(pattern.search(combined) for pattern in self.PLACEHOLDER_PATTERNS)
+        combined = f"{url} {alt_text} {caption_text}".lower()
+        if any(pattern.search(combined) for pattern in self.PLACEHOLDER_PATTERNS):
+            return True
+        if (alt_text or caption_text) and any(pattern.search(f"{alt_text} {caption_text}".lower()) for pattern in self.STOCK_CAPTION_PATTERNS):
+            return True
+        return False
+
+    @staticmethod
+    def _is_stale_archive_image(url: str, article_year: Optional[int] = None) -> bool:
+        """
+        Detects whether an image is a stale archive upload from a previous year.
+        CMSs (WordPress, Topky, Zoznam) embed upload dates in URL paths (e.g. /uploads/2024/08/...).
+        For breaking local news, images uploaded 1+ years before publication are recycled stock fillers.
+        """
+        if not url:
+            return False
+        m = re.search(r'/(20[12]\d)(?:[/-]|\b)', url)
+        if not m:
+            return False
+        try:
+            upload_year = int(m.group(1))
+            curr_year = article_year or datetime.datetime.now(datetime.timezone.utc).year
+            if upload_year <= (curr_year - 2) or upload_year < 2025:
+                return True
+        except Exception:
+            pass
+        return False
 
     @staticmethod
     def _image_dedup_key(url: str) -> str:
@@ -316,22 +399,27 @@ class NewsScraper:
 
     def _collect_page_candidates(
         self,
-        page_url: str
-    ) -> Tuple[List[Tuple[str, str]], Optional[str], Optional[float], Optional[str], bool]:
+        page_url: str,
+        article_year: Optional[int] = None
+    ) -> Tuple[List[Tuple[str, str]], List[Tuple[str, str]], Optional[str], Optional[float], Optional[str], bool, bool]:
         """
-        Scrapes article webpage to discover OpenGraph, Twitter, JSON-LD, gallery, and lead images,
-        extracts publication date metadata, full article text, and checks for paywalls.
+        Scrapes article webpage to discover:
+        1. Editorial lead images (OpenGraph, Twitter, JSON-LD, top lead figure).
+        2. Genuine photo gallery images (STRICTLY inside .fotogaleria, .gallery containers).
+        Also extracts publication date metadata, full article text, and checks for paywalls.
         """
-        candidates: List[Tuple[str, str]] = []
+        lead_candidates: List[Tuple[str, str]] = []
+        gallery_candidates: List[Tuple[str, str]] = []
         page_date_str: Optional[str] = None
         page_date_ts: Optional[float] = None
         page_full_text: Optional[str] = None
         is_paywalled: bool = False
+        has_genuine_gallery: bool = False
 
         try:
             resp = self.session.get(page_url, timeout=8)
             if resp.status_code != 200:
-                return candidates, page_date_str, page_date_ts, page_full_text, is_paywalled
+                return lead_candidates, gallery_candidates, page_date_str, page_date_ts, page_full_text, is_paywalled, has_genuine_gallery
 
             soup = BeautifulSoup(resp.content, "html.parser")
             page_full_text, is_paywalled = self._extract_page_text(soup)
@@ -350,6 +438,8 @@ class NewsScraper:
                         dt = datetime.datetime.fromisoformat(c_val.replace("Z", "+00:00"))
                         page_date_str = c_val
                         page_date_ts = dt.timestamp()
+                        if not article_year:
+                            article_year = dt.year
                         break
                     except Exception:
                         pass
@@ -362,26 +452,28 @@ class NewsScraper:
                         dt = datetime.datetime.fromisoformat(c_val.replace("Z", "+00:00"))
                         page_date_str = c_val
                         page_date_ts = dt.timestamp()
+                        if not article_year:
+                            article_year = dt.year
                     except Exception:
                         pass
 
-            # 1. OpenGraph meta (highest editorial quality)
+            # 1. OpenGraph meta (highest editorial quality lead image)
             for attr in [{"property": "og:image"}, {"property": "og:image:secure_url"}, {"name": "og:image"}]:
                 tag = soup.find("meta", attrs=attr)
                 if tag and tag.get("content"):
                     u = tag.get("content").strip()
-                    if not self._is_placeholder_image(u):
-                        candidates.append(("og:image", u))
+                    if not self._is_placeholder_image(u) and not self._is_stale_archive_image(u, article_year):
+                        lead_candidates.append(("og:image", u))
 
             # 2. Twitter Card meta
             for attr in [{"name": "twitter:image"}, {"property": "twitter:image"}, {"name": "twitter:image:src"}]:
                 tag = soup.find("meta", attrs=attr)
                 if tag and tag.get("content"):
                     u = tag.get("content").strip()
-                    if not self._is_placeholder_image(u):
-                        candidates.append(("twitter:image", u))
+                    if not self._is_placeholder_image(u) and not self._is_stale_archive_image(u, article_year):
+                        lead_candidates.append(("twitter:image", u))
 
-            # 3. Schema.org JSON-LD structured data
+            # 3. Schema.org JSON-LD structured data primary image
             for script in soup.find_all("script", type="application/ld+json"):
                 try:
                     data = json.loads(script.string or "")
@@ -393,20 +485,20 @@ class NewsScraper:
                                 pass
                             elif "image" in obj:
                                 img = obj["image"]
-                                if isinstance(img, str) and not self._is_placeholder_image(img):
-                                    candidates.append(("json-ld", img.strip()))
+                                if isinstance(img, str) and not self._is_placeholder_image(img) and not self._is_stale_archive_image(img, article_year):
+                                    lead_candidates.append(("json-ld", img.strip()))
                                 elif isinstance(img, list):
                                     for item in img:
-                                        if isinstance(item, str) and not self._is_placeholder_image(item):
-                                            candidates.append(("json-ld", item.strip()))
+                                        if isinstance(item, str) and not self._is_placeholder_image(item) and not self._is_stale_archive_image(item, article_year):
+                                            lead_candidates.append(("json-ld", item.strip()))
                                         elif isinstance(item, dict) and "url" in item:
                                             u = str(item["url"]).strip()
-                                            if not self._is_placeholder_image(u):
-                                                candidates.append(("json-ld", u))
+                                            if not self._is_placeholder_image(u) and not self._is_stale_archive_image(u, article_year):
+                                                lead_candidates.append(("json-ld", u))
                                 elif isinstance(img, dict) and "url" in img:
                                     u = str(img["url"]).strip()
-                                    if not self._is_placeholder_image(u):
-                                        candidates.append(("json-ld", u))
+                                    if not self._is_placeholder_image(u) and not self._is_stale_archive_image(u, article_year):
+                                        lead_candidates.append(("json-ld", u))
                             for k, val in obj.items():
                                 if k not in ("publisher", "author", "creator"):
                                     extract_jsonld_images(val)
@@ -418,7 +510,7 @@ class NewsScraper:
                 except Exception:
                     pass
 
-            # Decompose irrelevant navigation, sidebar, footer, side articles, and promo/read-more boxes to prevent unrelated thumbnails
+            # Decompose irrelevant navigation, sidebar, footer, side articles, and promo/read-more boxes
             for unwanted in soup.select(
                 "nav, footer, header, aside, .sidebar, .widget, .comments, .related, .recommended, "
                 ".menu, .ad, .advertisement, .most-read, .footer, article.article--side, .detail_text_item_readmore, "
@@ -427,26 +519,51 @@ class NewsScraper:
             ):
                 unwanted.decompose()
 
-            # 4. srcset descriptors on picture/figure/article images
-            for el in soup.select("article img, figure img, .lead-image img, picture source, picture img, .gallery img, .fotogaleria img"):
-                srcset = el.get("srcset")
-                if srcset:
-                    parts = [p.strip() for p in srcset.split(",") if p.strip()]
-                    for p in parts:
-                        tokens = p.split()
-                        if tokens:
-                            resolved = urljoin(page_url, tokens[0])
-                            if not self._is_placeholder_image(resolved, el.get("alt", "")):
-                                candidates.append(("srcset", resolved))
+            # 4. Check for genuine event photo gallery containers (STRICTLY dedicated galleries)
+            gallery_containers = soup.select(
+                ".fotogaleria, .fotogalerie, .gallery, .c-gallery, [class*='gallery-'], "
+                "[class*='fotogaleri'], .image-gallery, .wp-block-gallery, [id*='gallery']"
+            )
+            if gallery_containers:
+                has_genuine_gallery = True
+                for g_box in gallery_containers:
+                    for g_img in g_box.select("img"):
+                        alt = g_img.get("alt", "")
+                        title = g_img.get("title", "")
+                        fig = g_img.find_parent("figure")
+                        caption = fig.find("figcaption").get_text() if (fig and fig.find("figcaption")) else ""
+                        src = (
+                            g_img.get("data-full-src") or
+                            g_img.get("data-highres") or
+                            g_img.get("data-original") or
+                            g_img.get("data-src") or
+                            g_img.get("src")
+                        )
+                        if src and not src.startswith("data:"):
+                            resolved = urljoin(page_url, src.strip())
+                            if not self._is_placeholder_image(resolved, alt, f"{title} {caption}") and not self._is_stale_archive_image(resolved, article_year):
+                                gallery_candidates.append(("gallery-img", resolved))
 
-            # 5. Lead figures, article body images, and gallery links
-            for selector in [
-                "figure img", "article img", ".lead-image img",
-                ".article-body img", ".entry-content img", ".post-content img",
-                ".gallery img", ".fotogaleria img", "img[data-src]", "img[data-full-src]",
-                "img[data-original]", "img[data-highres]"
-            ]:
+                    # Direct high-res image links inside gallery
+                    for a_el in g_box.select("a[href]"):
+                        href = a_el.get("href", "")
+                        if self._is_image_url(href):
+                            resolved = urljoin(page_url, href.strip())
+                            if not self._is_placeholder_image(resolved) and not self._is_stale_archive_image(resolved, article_year):
+                                gallery_candidates.append(("gallery-link", resolved))
+
+            # 5. Editorial lead figure on page (e.g. figure.lead, .lead-image)
+            lead_selectors = [
+                ".lead-image img", "figure.lead img", "picture.lead img",
+                ".detail_text_image_lead img", "[itemprop='image']",
+                "article > figure:first-of-type img", ".article-header img"
+            ]
+            for selector in lead_selectors:
                 for el in soup.select(selector):
+                    alt = el.get("alt", "")
+                    title = el.get("title", "")
+                    fig = el.find_parent("figure")
+                    caption = fig.find("figcaption").get_text() if (fig and fig.find("figcaption")) else ""
                     src = (
                         el.get("data-full-src") or
                         el.get("data-highres") or
@@ -456,38 +573,75 @@ class NewsScraper:
                     )
                     if src and not src.startswith("data:"):
                         resolved = urljoin(page_url, src.strip())
-                        if not self._is_placeholder_image(resolved, el.get("alt", "")):
-                            candidates.append(("article-img", resolved))
+                        if not self._is_placeholder_image(resolved, alt, f"{title} {caption}") and not self._is_stale_archive_image(resolved, article_year):
+                            lead_candidates.append(("lead-elem", resolved))
 
-            # 6. Direct image links in galleries (e.g. <a href="photo.jpg">)
-            for a_el in soup.select(".gallery a[href], .fotogaleria a[href], figure a[href], article a[href]"):
-                href = a_el.get("href", "")
-                if self._is_image_url(href):
-                    resolved = urljoin(page_url, href.strip())
-                    if not self._is_placeholder_image(resolved):
-                        candidates.append(("gallery-link", resolved))
+                    srcset = el.get("srcset")
+                    if srcset:
+                        for p in [x.strip() for x in srcset.split(",") if x.strip()]:
+                            tokens = p.split()
+                            if tokens:
+                                resolved = urljoin(page_url, tokens[0])
+                                if not self._is_placeholder_image(resolved, alt, f"{title} {caption}") and not self._is_stale_archive_image(resolved, article_year):
+                                    lead_candidates.append(("lead-srcset", resolved))
+
+            # 6. Fallback: If no lead candidates found yet, check the first figure/img in article body
+            if not lead_candidates:
+                first_body_img = soup.select_one("article figure img, article picture img, .article-body figure img, .article-body img")
+                if first_body_img:
+                    alt = first_body_img.get("alt", "")
+                    src = (
+                        first_body_img.get("data-full-src") or
+                        first_body_img.get("data-highres") or
+                        first_body_img.get("data-original") or
+                        first_body_img.get("data-src") or
+                        first_body_img.get("src")
+                    )
+                    if src and not src.startswith("data:"):
+                        resolved = urljoin(page_url, src.strip())
+                        if not self._is_placeholder_image(resolved, alt) and not self._is_stale_archive_image(resolved, article_year):
+                            lead_candidates.append(("fallback-lead", resolved))
 
         except Exception as e:
             logger.debug("Failed to collect page candidates for %s: %s", page_url, e)
 
-        return candidates, page_date_str, page_date_ts, page_full_text, is_paywalled
+        return lead_candidates, gallery_candidates, page_date_str, page_date_ts, page_full_text, is_paywalled, has_genuine_gallery
 
-    def enrich_article(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
+    def enrich_article(
+        self,
+        article: Article,
+        min_width: int = 600,
+        min_height: int = 350,
+        max_images: int = 4,
+        is_seen_func: Optional[callable] = None
+    ) -> None:
         """
         Enriches article with full body text, checks against paywalls,
         and extracts, verifies, and upgrades images to ensure high-resolution photos are selected.
-        Filters out generic stock placeholders and publisher logos.
-        Populates article.image_url with the best photo, and article.image_urls with up to max_images distinct photos.
+        Eliminates generic stock placeholders, currency fillers, and stale CMS archive placeholders.
+        Default: Exactly ONE verified lead image.
+        Albums (image_urls > 1): ONLY enabled if a genuine event photo gallery is present.
         """
-        raw_candidates: List[Tuple[str, str]] = []
+        raw_lead_candidates: List[Tuple[str, str]] = []
 
-        # If RSS provided an image, include it if not a placeholder
-        if article.image_url and not self._is_placeholder_image(article.image_url):
-            raw_candidates.append(("rss", article.image_url))
+        # Determine article publication year
+        article_year = None
+        if article.published_timestamp:
+            try:
+                article_year = datetime.datetime.fromtimestamp(article.published_timestamp, tz=datetime.timezone.utc).year
+            except Exception:
+                pass
 
-        # Scrape article webpage to discover full text, paywall status, high-resolution and gallery options
-        page_candidates, page_date_str, page_date_ts, page_full_text, is_paywalled = self._collect_page_candidates(article.url)
-        raw_candidates.extend(page_candidates)
+        # Scrape article webpage to discover full text, paywalls, lead photos, and genuine galleries
+        (
+            page_lead_candidates,
+            gallery_candidates,
+            page_date_str,
+            page_date_ts,
+            page_full_text,
+            is_paywalled,
+            has_genuine_gallery
+        ) = self._collect_page_candidates(article.url, article_year=article_year)
 
         # Update full text and paywall status
         if page_full_text:
@@ -499,28 +653,35 @@ class NewsScraper:
         if article.published_timestamp is None and page_date_ts is not None:
             article.published_timestamp = page_date_ts
             article.published_at = page_date_str
+            article_year = datetime.datetime.fromtimestamp(page_date_ts, tz=datetime.timezone.utc).year
             logger.info("Enriched publication date for '%s': %s (ts=%s)", article.title[:30], page_date_str, page_date_ts)
 
-        # Expand all candidates into high-res URL variants
-        all_variants: List[Tuple[str, str]] = []
-        seen_urls: Set[str] = set()
+        # If RSS provided an image, include if not a placeholder or stale archive
+        if article.image_url and not self._is_placeholder_image(article.image_url) and not self._is_stale_archive_image(article.image_url, article_year):
+            raw_lead_candidates.append(("rss", article.image_url))
 
-        for tag, url in raw_candidates:
+        raw_lead_candidates.extend(page_lead_candidates)
+
+        # Expand lead candidates into high-res URL variants
+        all_lead_variants: List[Tuple[str, str]] = []
+        seen_lead_variant_urls: Set[str] = set()
+
+        for tag, url in raw_lead_candidates:
             variants = self.upgrade_url_variants(url)
             for v in variants:
-                if v not in seen_urls and v.startswith("http") and not self._is_placeholder_image(v):
-                    seen_urls.add(v)
-                    all_variants.append((tag, v))
+                if v not in seen_lead_variant_urls and v.startswith("http") and not self._is_placeholder_image(v) and not self._is_stale_archive_image(v, article_year):
+                    seen_lead_variant_urls.add(v)
+                    all_lead_variants.append((tag, v))
 
-        # Probe candidate variants with Pillow and score them
-        scored_candidates: List[Tuple[float, int, int, str, int, str]] = []
+        # Probe candidate lead variants with Pillow and score them
+        scored_lead_candidates: List[Tuple[float, int, int, str, int, Optional[str], str]] = []
 
-        for tag, url in all_variants:
+        for tag, url in all_lead_variants:
             info = self.probe_image(url)
             if not info:
                 continue
 
-            width, height, fmt, byte_size = info
+            width, height, fmt, byte_size, hash_hex = info
 
             # Strictly require minimum HD dimensions and valid image size
             if width < min_width or height < min_height or byte_size < 10000:
@@ -531,8 +692,12 @@ class NewsScraper:
             if ratio > 4.5 or ratio < 0.25:
                 continue
 
-            pixel_area = width * height
-            score = float(pixel_area)
+            # Cross-post deduplication: reject if image was already posted previously
+            if is_seen_func and is_seen_func(url, hash_hex):
+                logger.info("Skipping candidate image as already seen in channel: %s (hash=%s)", url, hash_hex)
+                continue
+
+            score = float(width * height)
 
             # Strong boost for candidates meeting minimum HD dimensions
             if width >= min_width and height >= min_height:
@@ -542,37 +707,102 @@ class NewsScraper:
             if tag in ("og:image", "twitter:image", "json-ld"):
                 score += 500_000.0
 
-            scored_candidates.append((score, width, height, fmt, byte_size, url))
+            scored_lead_candidates.append((score, width, height, fmt, byte_size, hash_hex, url))
 
-        if scored_candidates:
-            # Sort highest score first
-            scored_candidates.sort(key=lambda x: x[0], reverse=True)
-
-            # Collect up to max_images distinct photos
-            selected_urls: List[str] = []
-            seen_dedup_keys: Set[str] = set()
-
-            for item in scored_candidates:
-                u = item[5]
-                k = self._image_dedup_key(u)
-                if k not in seen_dedup_keys:
-                    seen_dedup_keys.add(k)
-                    selected_urls.append(u)
-                    if len(selected_urls) >= max_images:
-                        break
-
-            article.image_url = selected_urls[0]
-            article.image_urls = selected_urls
-
-            best = scored_candidates[0]
-            logger.info(
-                "Selected high-res photo(s) for '%s' (total %d): best %dx%d (%s, %d bytes) -> %s",
-                article.title[:40], len(selected_urls), best[1], best[2], best[3], best[4], best[5]
-            )
-        else:
-            logger.warning("No suitable high-resolution image found for '%s'", article.title[:40])
+        if not scored_lead_candidates:
+            logger.warning("No suitable high-resolution unseen image found for '%s'", article.title[:40])
             article.image_url = None
             article.image_urls = []
+            article.image_hash = None
+            article.image_hashes = []
+            return
+
+        # Sort highest score first to pick the premier lead photo
+        scored_lead_candidates.sort(key=lambda x: x[0], reverse=True)
+        best_lead = scored_lead_candidates[0]
+        _, best_w, best_h, best_fmt, best_bytes, best_lead_hash, best_lead_url = best_lead
+
+        # DEFAULT: Exactly ONE lead image
+        article.image_url = best_lead_url
+        article.image_urls = [best_lead_url]
+        article.image_hash = best_lead_hash
+        article.image_hashes = [best_lead_hash] if best_lead_hash else []
+
+        # Genuine photo gallery handling: ONLY if explicit gallery was found and max_images > 1
+        if has_genuine_gallery and max_images > 1:
+            all_gallery_variants: List[Tuple[str, str]] = []
+            seen_gallery_variant_urls: Set[str] = set()
+
+            for tag, url in gallery_candidates:
+                variants = self.upgrade_url_variants(url)
+                for v in variants:
+                    if v not in seen_gallery_variant_urls and v.startswith("http") and not self._is_placeholder_image(v) and not self._is_stale_archive_image(v, article_year):
+                        seen_gallery_variant_urls.add(v)
+                        all_gallery_variants.append((tag, v))
+
+            lead_dedup_key = self._image_dedup_key(best_lead_url)
+            seen_gallery_keys: Set[str] = {lead_dedup_key}
+            accepted_gallery: List[Tuple[str, Optional[str]]] = []
+
+            for tag, url in all_gallery_variants:
+                k = self._image_dedup_key(url)
+                if k in seen_gallery_keys:
+                    continue
+
+                info = self.probe_image(url)
+                if not info:
+                    continue
+
+                w, h, fmt, b_size, h_hex = info
+                if w < min_width or h < min_height or b_size < 10000:
+                    continue
+
+                ratio = w / max(h, 1)
+                if ratio > 4.5 or ratio < 0.25:
+                    continue
+
+                # Check visual similarity against lead image (dHash Hamming distance <= 4 means duplicate)
+                if best_lead_hash and h_hex:
+                    try:
+                        if bin(int(best_lead_hash, 16) ^ int(h_hex, 16)).count('1') <= 4:
+                            continue
+                    except Exception:
+                        pass
+
+                # Check visual similarity against already accepted gallery photos
+                is_duplicate = False
+                for _, prev_h in accepted_gallery:
+                    if prev_h and h_hex:
+                        try:
+                            if bin(int(prev_h, 16) ^ int(h_hex, 16)).count('1') <= 4:
+                                is_duplicate = True
+                                break
+                        except Exception:
+                            pass
+                if is_duplicate:
+                    continue
+
+                # Check against channel history
+                if is_seen_func and is_seen_func(url, h_hex):
+                    continue
+
+                seen_gallery_keys.add(k)
+                accepted_gallery.append((url, h_hex))
+
+                if len(accepted_gallery) >= (max_images - 1):
+                    break
+
+            if accepted_gallery:
+                article.image_urls = [best_lead_url] + [p[0] for p in accepted_gallery]
+                article.image_hashes = ([best_lead_hash] if best_lead_hash else []) + [p[1] for p in accepted_gallery if p[1]]
+                logger.info(
+                    "Selected genuine photo gallery (%d photos) for '%s'",
+                    len(article.image_urls), article.title[:40]
+                )
+            else:
+                logger.info("Selected single lead photo for '%s': %dx%d -> %s", article.title[:40], best_w, best_h, best_lead_url)
+        else:
+            logger.info("Selected single lead photo (no gallery present) for '%s': %dx%d -> %s", article.title[:40], best_w, best_h, best_lead_url)
 
     def enrich_image(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
         """Backwards-compatible alias for enrich_article."""
