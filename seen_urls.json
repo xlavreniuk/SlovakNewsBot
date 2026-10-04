@@ -1,27 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9474295/Burka-ochromila-dopravu-v-Bratislave--Cesty-blokuju-popadane-stromy--problemy-ma-aj-MHD": "2026-09-20T17:35:03.035684+00:00",
-    "https://www.topky.sk/cl/10/9498361/Fico-celi-ostrej-kritike-pre-slova-o-clanku-5-NATO--Mikulec-hovori-o-ohrozeni-bezpecnosti-Slovenska": "2026-09-20T17:35:06.036081+00:00",
-    "https://www.topky.sk/cl/10/9474279/Trnavsky-kraj-bicuju-burky-a-silny-vietor--Policia-posiela-vodicom-dolezite-varovanie": "2026-09-20T17:35:06.036106+00:00",
-    "https://www.topky.sk/cl/10/9474167/Korcok-reaguje-na-otazky-okolo-svojich-odmien--Riesenim-ma-byt-vlastna-firma": "2026-09-20T17:35:06.036116+00:00",
-    "https://www.topky.sk/cl/10/9474159/Byvaly-bos-pitovcov-prehovoril-o-obstrukciach--Prokuratura-sa-ostro-ohradila": "2026-09-20T17:35:06.036120+00:00",
-    "https://www.topky.sk/cl/10/9474069/Kym-pride-dazd--este-sa-poriadne-zapotime--Dnes-nas-cakaju-horucavy-az-do-vecera": "2026-09-20T17:35:06.036124+00:00",
-    "https://www.aktuality.sk/clanok/2rhylso/tunel-sitina-caka-dalsia-uzavera-v-oboch-smeroch-vodici-sa-musia-pripravit-na-obchadzkove-trasy/": "2026-09-20T17:35:06.036127+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2044591-pochod-za-zivot-kdh-bratislava-rodina-podpora": "2026-09-20T17:35:06.036133+00:00",
-    "https://www.teraz.sk/regiony/ttsk-ocenil-osobnosti-a-kolektivy-za-pr/993662-clanok.html": "2026-09-20T17:35:06.036139+00:00",
-    "https://www.teraz.sk/regiony/literarna-banska-bystrica-prinesie-pre/993655-clanok.html": "2026-09-20T17:35:06.036181+00:00",
-    "https://www.teraz.sk/regiony/vodicka-bez-opravnenia-narazila-do-zap/993648-clanok.html": "2026-09-20T17:35:06.036188+00:00",
-    "https://www.teraz.sk/regiony/letna-sezona-bola-v-podhori-tatier-le/993636-clanok.html": "2026-09-20T17:35:06.036191+00:00",
-    "https://www.teraz.sk/regiony/halic-v-muzeu-csontvary-planuju-wo/993633-clanok.html": "2026-09-20T17:35:06.036194+00:00",
-    "https://www.topky.sk/cl/10/9498375/Bez-vodicaku-a-za-volantom-sportiaku--FOTO-Riskantna-jazda-mladej-zeny-mala-tvrdy-koniec": "2026-09-20T17:35:06.036197+00:00",
-    "https://www.topky.sk/cl/10/9498347/Huliak-na-zanedbanom-ihrisku-nalozil-SFZ--VIDEO-Na-TOMTO-maju-hravat-nase-deti---Minister-oznamil-velku-zmenu": "2026-09-20T17:35:06.036200+00:00",
-    "https://www.topky.sk/cl/10/9474247/Po-utoku-na-Indov-v-Nitre-uz-zadrzali-podozrivych--Policia-si-prisla-pre-styroch-mladistvych-": "2026-09-20T17:35:06.036204+00:00",
-    "https://www.aktuality.sk/clanok/cXgKLgD/v-centre-kosic-pribudol-bronzovy-model-domu-sv-alzbety-fotoriport/": "2026-09-20T17:35:06.036218+00:00",
-    "https://www.aktuality.sk/clanok/wFevvLp/cesky-prezident-pavel-upozornuje-na-vaznost-ficovych-vyjadreni-o-clanku-5-zmluvy-o-nato/": "2026-09-20T17:35:06.036221+00:00",
-    "https://www.aktuality.sk/clanok/STZ6l49/luxembursko-posilnuje-ochranu-neba-po-vyskyte-neautorizovanych-dronov-pri-letisku/": "2026-09-20T17:35:06.036224+00:00",
-    "https://www.aktuality.sk/clanok/eLXThiP/historicka-bosakova-banka-v-presove-ukaze-vzacny-poklad-desatdolarovku-s-podpisom-vychodniara-fotoriport/": "2026-09-20T17:35:06.036227+00:00",
-    "https://www.aktuality.sk/clanok/veNYhmC/problemy-po-vypiti-mlieka-nemusi-sposobovat-len-laktoza-vedci-ukazuju-na-prinos-mlieka-a2/": "2026-09-20T17:35:06.036229+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2044603-politika-preferencie-prieskum-volby-infostat-volby-politicke-strany": "2026-09-20T17:35:06.036232+00:00",
     "https://www.pravda.sk/spravy/regiony/clanok/2044703-muz-hodil-kamen-do-celneho-skla-elektricky-na-zlatych-pieskoch-policia-po-nom-patra": "2026-09-20T20:13:32.082200+00:00",
     "https://www.topky.sk/cl/10/9498461/DUSNO-medzi-Ficom-a-ceskym-prezidentom-kvoli-vyroku-o-NATO--Premier-poslal-Pavlovi-stiplavy-odkaz-na-jeho-slova": "2026-09-20T20:13:35.082489+00:00",
     "https://www.topky.sk/cl/10/9498411/Policia-ziada-verejnost-o-pomoc--Hlada-muza--ktory-po-vystupeni-zautocil-na-elektricku": "2026-09-20T20:13:35.082525+00:00",
@@ -2510,7 +2488,52 @@
     "https://www.pravda.sk/spravy/ekonomika/clanok/2046575-az-800-tisic-eur-na-projekt-slovenske-firmy-mozu-ziskat-podporu-na-vyvoj-strategickych-technologii": "2026-10-04T16:21:42.806366+00:00",
     "https://www.pravda.sk/spravy/ekonomika/clanok/2050461-byvanie-je-tazko-dostupne-nie-je-realne-aby-kazdy-vlastnil-byt-ako-je-to-s-najomnymi-bytmi": "2026-10-04T16:21:42.806368+00:00",
     "https://www.pravda.sk/spravy/ekonomika/clanok/2050489-slovenska-ekonomika-ma-prekvapit-vlada-hovori-o-zlepseni-prognozy-o-20-percent-cisla-vsak-ukazuju-aj-druhu-stranku": "2026-10-04T16:21:42.806370+00:00",
-    "https://www.pravda.sk/spravy/ekonomika/clanok/2050347-odisiel-muz-ktory-prekoval-slovenske-polnohospodarstvo-julius-medved-veril-v-silu-slovenskej-pody": "2026-10-04T16:21:42.806371+00:00"
+    "https://www.pravda.sk/spravy/ekonomika/clanok/2050347-odisiel-muz-ktory-prekoval-slovenske-polnohospodarstvo-julius-medved-veril-v-silu-slovenskej-pody": "2026-10-04T16:21:42.806371+00:00",
+    "https://bratislavaden.sk/uhadnete-kde-sa-v-bratislave-nachadzaju-tieto-miesta-len-zo-starych-fotografii-ukryvaju-zaujimave-hadanky/": "2026-10-04T19:44:34.964001+00:00",
+    "https://www.topky.sk/cl/10/9510031/ZMOS-kritizuje-stat-za-rozpocet--Sposob-jeho-prerokovania-oznacil-za-neakceptovatelny": "2026-10-04T19:44:37.969148+00:00",
+    "https://www.topky.sk/cl/10/9509981/Mrazive-varovanie-z-Ruska-pre-diplomatov--Pozrite-sa--na-ktoru-stranu-sa-pridalo-Slovensko": "2026-10-04T19:44:37.969174+00:00",
+    "https://www.startitup.sk/z-letusky-zakladatelka-kliniky-z-asistentky-sefka-hotelov-5-sloveniek-ktore-si-vybudovali-meno-vo-svetovom-biznise/": "2026-10-04T19:44:37.969180+00:00",
+    "https://www.teraz.sk/sport/hokejisti-spisskej-novej-vsi-zdolali-sl/997196-clanok.html": "2026-10-04T19:44:37.969184+00:00",
+    "https://www.topky.sk/cl/10/9509805/Grohling-vyzyva-opoziciu--Chce--aby-sa-zhodli-na-dolezitych-temach-pre-Slovensko-a-odlozili-sporne-veci": "2026-10-04T19:44:37.969187+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2052639-filipiny-armada-lod-rybari-dynamit-cina": "2026-10-04T19:44:37.969192+00:00",
+    "https://www.pravda.sk/spravy/regiony/clanok/2052635-mladika-ktory-sa-so-sekerou-v-celadiciach-vyhrazal-ziakovi-vzali-do-vazby": "2026-10-04T19:44:37.969197+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2052611-pivo-cigara-a-ostry-odkaz-tarabovi-chcel-vydierat-nevyslo-mu-to-vyhlasil-danko-z-prahy": "2026-10-04T19:44:37.969202+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2052589-spor-o-bezpecnost-slovenska-kalinak-veri-vladnej-politike-krupa-spojencom": "2026-10-04T19:44:37.969206+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2052583-mam-jedno-z-najvyssich-iq-na-svete-vychvaluje-sa-trump-z-vitazstiev-je-vraj-uz-unaveny": "2026-10-04T19:44:37.969210+00:00",
+    "https://www.teraz.sk/sport/vlci-zilina-podlahli-hc-05-tam-bans/997208-clanok.html": "2026-10-04T19:44:37.969214+00:00",
+    "https://www.teraz.sk/zahranicie/pri-utoku-na-vozidla-s-potravinovou-po/997213-clanok.html": "2026-10-04T19:44:37.969217+00:00",
+    "https://www.teraz.sk/sport/hadzanarky-hk-slovan-duslo-sala-zvi/997212-clanok.html": "2026-10-04T19:44:37.969219+00:00",
+    "https://www.teraz.sk/regiony/horiaci-les-pri-smolnikupoziar-lokali/997211-clanok.html": "2026-10-04T19:44:37.969223+00:00",
+    "https://www.teraz.sk/regiony/sekerou-sa-vyhrazal-deviatakovi-nebez/997210-clanok.html": "2026-10-04T19:44:37.969225+00:00",
+    "https://www.teraz.sk/zahranicie/iransky-minister-ropneho-priemyslu-ods/997209-clanok.html": "2026-10-04T19:44:37.969228+00:00",
+    "https://www.teraz.sk/zahranicie/ukrajina-opat-poslala-dronmi-pomoc-do/997207-clanok.html": "2026-10-04T19:44:37.969231+00:00",
+    "https://www.teraz.sk/sport/hokejisti-nitry-zdolali-hkm-zvolen-cal/997206-clanok.html": "2026-10-04T19:44:37.969235+00:00",
+    "https://www.teraz.sk/sport/slovaci-obsadili-18-miesto-na-motokros/997205-clanok.html": "2026-10-04T19:44:37.969237+00:00",
+    "https://www.teraz.sk/slovensko/zmos-je-neakceptovatelne-ako-stat/997204-clanok.html": "2026-10-04T19:44:37.969240+00:00",
+    "https://www.teraz.sk/zahranicie/pikeova-zostava-po-neuspesnej-poprav/997203-clanok.html": "2026-10-04T19:44:37.969242+00:00",
+    "https://www.teraz.sk/sport/fasko-rudas-rozhodol-o-vyhre-liberca/997202-clanok.html": "2026-10-04T19:44:37.969245+00:00",
+    "https://www.teraz.sk/sport/hokejisti-presova-zvitazili-nad-hk-du/997201-clanok.html": "2026-10-04T19:44:37.969248+00:00",
+    "https://www.teraz.sk/zahranicie/medvedev-zablokovanie-ruskych-satelito/997200-clanok.html": "2026-10-04T19:44:37.969252+00:00",
+    "https://spravy.stvr.sk/2026/10/v-minulosti-ich-boli-stovky-ostalo-ich-len-par-vyse-storocny-sennik-pri-vychodnej-zachranuju-dobrovolnici/": "2026-10-04T19:44:37.969254+00:00",
+    "https://www.startitup.sk/nove-pravidla-pre-majitelov-studni-za-bezny-zvyk-pri-odbere-vody-ti-hrozi-pokuta-165-eur-novela-sprisni-povinnosti/": "2026-10-04T19:44:37.969257+00:00",
+    "https://www.startitup.sk/rychly-trik-proti-stresu-znizit-kortizol-dokazes-za-20-sekund-a-celkom-bez-pomocok/": "2026-10-04T19:44:37.969260+00:00",
+    "https://www.startitup.sk/trzby-jej-vyleteli-na-57-miliona-eur-teraz-je-v-konkurze-slovenska-potravinarska-firma-dlhuje-statu-vyse-miliona/": "2026-10-04T19:44:37.969263+00:00",
+    "https://www.startitup.sk/slovenka-nici-svetovu-konkurenciu-v-pretlacani-barbora-bajciova-lame-superky-ale-za-uspechy-si-casto-plati-sama/": "2026-10-04T19:44:37.969265+00:00",
+    "https://refresher.sk/212375-Tito-psikovia-si-stale-hladaju-domov-Spoznaj-ich": "2026-10-04T19:44:37.969269+00:00",
+    "https://www.topky.sk/cl/10/9510059/Plamene-pohltili-les-pri-Smolniku--Zistovali-sme--ci-este-hrozi-nebezpecenstvo": "2026-10-04T19:44:37.969273+00:00",
+    "https://www.topky.sk/cl/10/9510055/AKTUALNE--Mladik--ktory-sa-v-Celadiciach-vyhrazal-ziakovi-so-sekerou-v-ruke--ide-za-mreze-": "2026-10-04T19:44:37.969276+00:00",
+    "https://www.aktuality.sk/clanok/bG7E9WP/pocasie-na-noc-caka-nas-jasna-a-chladna-noc-v-udoliach-hrozi-mraz-aj-hmla/": "2026-10-04T19:44:37.969279+00:00",
+    "https://www.aktuality.sk/clanok/H6qxPLV/vrati-nas-umela-inteligencia-do-jaskyn-nazor-nicolasa-girouxa/": "2026-10-04T19:44:37.969282+00:00",
+    "https://www.aktuality.sk/clanok/VFiymhy/ludia-s-depresiou-sa-vyhybaju-tymto-4-cinnostiam-pozrite-si-varovne-signaly-ktore-si-mnohi-vsimnu-az-ako-posledne/": "2026-10-04T19:44:37.969285+00:00",
+    "https://www.topky.sk/cl/10/9485115/META-ohlasila-velke-zmeny-uz-od-oktobra--PLATENIE-uz-aj-pri-znamej-appke-WhatsApp--o-co-ide-": "2026-10-04T19:44:37.969290+00:00",
+    "https://www.topky.sk/cl/10/9486233/Slovensko-caka-veterny-vikend--Na-horach-hrozi-vichrica--vystrahy-platia-uz-od-dnesneho-vecera": "2026-10-04T19:44:37.969292+00:00",
+    "https://www.topky.sk/cl/10/9486217/Spor-o-miliony-z-eurofondov--Ministerstvo-skolstva-sa-brani-kritike--ukazuje-prstom-na-iny-rezort": "2026-10-04T19:44:37.969295+00:00",
+    "https://www.topky.sk/cl/10/9486175/Policia-varuje-pred-podvodnymi-telefonatmi--Falosni-policajti-cielia-najma-na-seniorov--takto-ich-chcu-oklamat": "2026-10-04T19:44:37.969298+00:00",
+    "https://www.topky.sk/cl/10/9485853/Je-to-JASNE--Novy-obchod-otvori-svoje-brany-aj-na-Slovensku--pozname-prvu-lokalitu-": "2026-10-04T19:44:37.969302+00:00",
+    "https://www.topky.sk/cl/2005793/9485813/V-Medzilaborciach-znova-otvorili-Warholovo-muzeum--Rekonstrukcia-stala-15-9-miliona-eur": "2026-10-04T19:44:37.969305+00:00",
+    "https://www.topky.sk/cl/10/9486095/Vodici--pripravte-sa-na-obmedzenie--Tunel-Visnove-ciastocne-UZAVRU--Tyka-sa-to-smeru-na-Bratislavu": "2026-10-04T19:44:37.969308+00:00",
+    "https://www.topky.sk/cl/10/9486079/Hroziva-nehoda-na-dialnici--Motorkar-havaroval--zasahoval-vrtulnik--Cestu-museli-uzavriet": "2026-10-04T19:44:37.969310+00:00",
+    "https://www.topky.sk/cl/10/9486063/Vyber-riaditela-FPU-sa-moze-zacat-odznova--Ministerstvo-odporuca-zrusit-aktualnu-vyzvu": "2026-10-04T19:44:37.969313+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -2536,7 +2559,9 @@
     "09/55336037143_983b36e9fb_k.jpg": "2026-10-04T14:47:26.756791+00:00",
     "55336037143_983b36e9fb_k.jpg": "2026-10-04T14:47:26.756791+00:00",
     "article/aac6583939588c6a675f.jpg": "2026-10-04T16:21:39.584223+00:00",
-    "aac6583939588c6a675f.jpg": "2026-10-04T16:21:39.584223+00:00"
+    "aac6583939588c6a675f.jpg": "2026-10-04T16:21:39.584223+00:00",
+    "09/bratislava-gisi-fleischmann.jpg": "2026-10-04T19:44:34.964023+00:00",
+    "bratislava-gisi-fleischmann.jpg": "2026-10-04T19:44:34.964023+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -2550,7 +2575,8 @@
     "d2e2ca42222062f2": "2026-10-04T14:47:22.874177+00:00",
     "d2d2d4d979e0c861": "2026-10-04T14:47:23.544076+00:00",
     "cda4e6c041461f27": "2026-10-04T14:47:26.756791+00:00",
-    "f3f4a4b09c736d2f": "2026-10-04T16:21:39.584223+00:00"
+    "f3f4a4b09c736d2f": "2026-10-04T16:21:39.584223+00:00",
+    "c4242dad9ec7e744": "2026-10-04T19:44:34.964023+00:00"
   },
   "recent_posts": [
     {
@@ -2632,6 +2658,11 @@
       "url": "https://news.refresher.sk/212369-REBRICEK-najlepsich-zakladnych-skol-na-Slovensku-Na-prve-miesto-poskocila-skola-z-piatej-priecky",
       "title": "REBRÍČEK najlepších základných škôl na Slovensku: Na prvé miesto poskočila škola z piatej priečky",
       "posted_at": "2026-10-04T16:21:39.584215+00:00"
+    },
+    {
+      "url": "https://bratislavaden.sk/uhadnete-kde-sa-v-bratislave-nachadzaju-tieto-miesta-len-zo-starych-fotografii-ukryvaju-zaujimave-hadanky/",
+      "title": "Uhádnete, kde sa v Bratislave nachádzajú tieto miesta len zo starých fotografii? Ukrývajú zaujímavé hádanky",
+      "posted_at": "2026-10-04T19:44:34.964016+00:00"
     }
   ]
 }
