@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.teraz.sk/regiony/bratislavska-petrzalka-sa-cez-vikend/993418-clanok.html": "2026-09-20T02:49:47.442581+00:00",
     "https://bratislavskykraj.sk/novy-medzinarodny-festival-franz-liszt-festival3cities-prinesie-seriu-koncertov-ktore-predstavia-skladatelovu-hudbu-v-celej-jej-rozmanitosti/": "2026-09-20T08:58:12.788368+00:00",
     "https://www.topky.sk/cl/10/9497095/Hubari-ukazali-na-najplodnejsie-LOKALITY--Pravidelni-zberaci-biju-na-poplach--takuto-sezonu-vraj-este-nezazili-": "2026-09-20T08:58:15.788618+00:00",
     "https://www.topky.sk/cl/10/9497899/O-par-dni-zacne-platit-PRISNA-zmena--Bez-TOHTO-uz-vozidlo-neprejde-STK--Hrozia-mastne-POKUTY": "2026-09-20T08:58:15.788649+00:00",
@@ -2417,19 +2416,11 @@
     "https://www.pravda.sk/spravy/domace/clanok/2052331-po-tragedii-v-staskove-prisli-vyhrazky-riaditelke-matka-utocnika-udajne-skoncila-vo-vazbe": "2026-10-03T21:58:00.132142+00:00",
     "https://bratislava.zoznam.sk/sest-stran-zaklada-alianciu-krajina-nova-sila-pre-bratislavu-a-kraj-toto-su-ich-plany/": "2026-10-03T21:58:00.132144+00:00",
     "https://www.teraz.sk/regiony/deep-purple-sa-po-rokoch-opat-predstav/997027-clanok.html": "2026-10-04T00:23:16.625301+00:00",
-    "https://bratislava.zoznam.sk/vynimocny-ukaz-saturn-bude-v-nedelu-najblizsie-k-zemi/": "2026-10-04T00:23:19.625654+00:00"
+    "https://bratislava.zoznam.sk/vynimocny-ukaz-saturn-bude-v-nedelu-najblizsie-k-zemi/": "2026-10-04T00:23:19.625654+00:00",
+    "https://bratislavskykraj.sk/oktobrovy-program-v-ekocentre-cunovo/": "2026-10-04T03:45:25.917380+00:00",
+    "https://www.aktuality.sk/clanok/P6rYfX5/slovaci-z-rakuska-odhalili-sokujucu-pravdu-o-veternych-elektrarnach/": "2026-10-04T03:45:28.917617+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/regiony/clanok/2050573-kupele-grossling-cakali-30-rokov-na-obnovu-z-chatrajucej-ikony-bude-opat-bazen-pozname-termin-otvorenia",
-      "title": "Najvýraznejší progres za mnoho rokov. Z chátrajúcej ikony Bratislavy bude opäť pýcha, poznáme termín otvorenia",
-      "posted_at": "2026-10-01T01:03:09.240650+00:00"
-    },
-    {
-      "url": "https://www.topky.sk/cl/10/9482351/Nocna-nahanacka-ulicami-Bratislavy--Motorkar-unikal-viacerym-hliadkam--zastavili-ho-az-na-D1",
-      "title": "Nočná naháňačka ulicami Bratislavy: Motorkár unikal viacerým hliadkam, zastavili ho až na D1",
-      "posted_at": "2026-10-01T03:33:09.709294+00:00"
-    },
     {
       "url": "https://www.aktuality.sk/clanok/wTxuwz7/uz-tento-vikend-sa-do-bratislavy-vrati-biela-noc-z-kamzika-vysle-svetelny-signal-mestu-vrati-vyzu-velku-ulice-pretvori-futuristickymi-zasahmi/",
       "title": "Už tento víkend sa do Bratislavy vráti Biela noc – z Kamzíka vyšle svetelný signál, mestu vráti vyzu veľkú, ulice pretvorí futuristickými zásahmi",
@@ -2509,6 +2500,11 @@
       "url": "https://www.teraz.sk/regiony/deep-purple-sa-po-rokoch-opat-predstav/997027-clanok.html",
       "title": "Deep Purple sa po rokoch opäť predstavia v Bratislave",
       "posted_at": "2026-10-04T00:23:16.625317+00:00"
+    },
+    {
+      "url": "https://bratislavskykraj.sk/oktobrovy-program-v-ekocentre-cunovo/",
+      "title": "Októbrový program v Ekocentre Čunovo",
+      "posted_at": "2026-10-04T03:45:25.917397+00:00"
     }
   ]
 }
