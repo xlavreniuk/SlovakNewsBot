@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9473395/Pito-vzal-spat-ziadost-o-miernejsi-rezim--Stratil-doveru-v-rozhodovanie-sudu": "2026-09-19T23:51:10.980198+00:00",
     "https://www.teraz.sk/regiony/bratislavska-petrzalka-sa-cez-vikend/993418-clanok.html": "2026-09-20T02:49:47.442581+00:00",
     "https://bratislavskykraj.sk/novy-medzinarodny-festival-franz-liszt-festival3cities-prinesie-seriu-koncertov-ktore-predstavia-skladatelovu-hudbu-v-celej-jej-rozmanitosti/": "2026-09-20T08:58:12.788368+00:00",
     "https://www.topky.sk/cl/10/9497095/Hubari-ukazali-na-najplodnejsie-LOKALITY--Pravidelni-zberaci-biju-na-poplach--takuto-sezonu-vraj-este-nezazili-": "2026-09-20T08:58:15.788618+00:00",
@@ -2416,7 +2415,9 @@
     "https://www.startitup.sk/rusko-zasiahla-vlna-utokov-medvedov-na-slovensku-hlasia-vyskyt-selmy-aj-pri-obyvanych-oblastiach/": "2026-10-03T21:58:00.132136+00:00",
     "https://www.aktuality.sk/clanok/p4j8idA/caka-nas-jasna-a-chladna-noc-na-vacsine-uzemia-teploty-klesnu-k-nule/": "2026-10-03T21:58:00.132139+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2052331-po-tragedii-v-staskove-prisli-vyhrazky-riaditelke-matka-utocnika-udajne-skoncila-vo-vazbe": "2026-10-03T21:58:00.132142+00:00",
-    "https://bratislava.zoznam.sk/sest-stran-zaklada-alianciu-krajina-nova-sila-pre-bratislavu-a-kraj-toto-su-ich-plany/": "2026-10-03T21:58:00.132144+00:00"
+    "https://bratislava.zoznam.sk/sest-stran-zaklada-alianciu-krajina-nova-sila-pre-bratislavu-a-kraj-toto-su-ich-plany/": "2026-10-03T21:58:00.132144+00:00",
+    "https://www.teraz.sk/regiony/deep-purple-sa-po-rokoch-opat-predstav/997027-clanok.html": "2026-10-04T00:23:16.625301+00:00",
+    "https://bratislava.zoznam.sk/vynimocny-ukaz-saturn-bude-v-nedelu-najblizsie-k-zemi/": "2026-10-04T00:23:19.625654+00:00"
   },
   "recent_posts": [
     {
@@ -2503,6 +2504,11 @@
       "url": "https://bratislava.zoznam.sk/karlova-ves-si-pripomenie-800-rokov-od-smrti-sv-frantiska-z-assisi-chystaju-slavnostnu-omsu-aj-program-na-namesti/",
       "title": "Karlova Ves si pripomenie 800 rokov od smrti sv. Františka z Assisi: Chystajú slávnostnú omšu aj program na námestí",
       "posted_at": "2026-10-03T21:57:57.131820+00:00"
+    },
+    {
+      "url": "https://www.teraz.sk/regiony/deep-purple-sa-po-rokoch-opat-predstav/997027-clanok.html",
+      "title": "Deep Purple sa po rokoch opäť predstavia v Bratislave",
+      "posted_at": "2026-10-04T00:23:16.625317+00:00"
     }
   ]
 }
