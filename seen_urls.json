@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.teraz.sk/regiony/vitazkou-zenskeho-behu-v-bratislave/993607-clanok.html": "2026-09-21T02:46:58.869243+00:00",
     "https://bratislavskykraj.sk/ruzovy-oktober-v-poliklinike-karlova-ves-prevencia-za-zvyhodnenu-cenu-a-dlhsie-utorkove-terminy/": "2026-09-21T09:30:05.963192+00:00",
     "https://bratislavskykraj.sk/den-a-noc-v-rovnovahe-zacina-sa-jesen/": "2026-09-21T09:30:08.963421+00:00",
     "https://www.topky.sk/cl/10/9498739/Rasi-reaguje-na-clanok-5-Severoatlantickej-zmluvy--Nie-je-automatickym-prikazom-na-vojnu--odkazuje": "2026-09-21T09:30:08.963449+00:00",
@@ -2536,7 +2535,13 @@
     "https://www.startitup.sk/radiovy-signal-z-planety-vzdialenej-63-svetelnych-rokov-vedci-zachytili-fenomen-ktory-meni-vyskum-vo-vesmire/": "2026-10-04T22:41:07.272715+00:00",
     "https://www.topky.sk/cl/10/9483867/Novy-mobil-ci-kabelka--Odbornici-vystrihaju-pred-podozrivo-vyhodnymi-ponukami--pozor-na-FEJKY-a-falosne-recenzie-": "2026-10-04T22:41:07.272720+00:00",
     "https://www.topky.sk/cl/11/9485867/Slovensky-hudobnik-zazil-poriadny-sok--V-Taliansku-prisiel-o-vzacny-nastroj--ponuka-odmenu": "2026-10-04T22:41:07.272722+00:00",
-    "https://www.topky.sk/cl/10/9486367/Slovensko-si-predvola-ruskeho-velvyslanca--Blanar-reaguje-na-utok-nedaleko-nasho-pracoviska-v-Kyjeve": "2026-10-04T22:41:07.272725+00:00"
+    "https://www.topky.sk/cl/10/9486367/Slovensko-si-predvola-ruskeho-velvyslanca--Blanar-reaguje-na-utok-nedaleko-nasho-pracoviska-v-Kyjeve": "2026-10-04T22:41:07.272725+00:00",
+    "https://www.pravda.sk/spravy/ekonomika/clanok/2052491-psychologia-v-nakupnom-voziku-toto-je-pat-figlov-ktorymi-retazce-utocia-na-penazenky-slovakov": "2026-10-05T03:28:58.303966+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2052681-mjanmarsko-malajzia-armada-obcianska-vojna-navrat-imigracia": "2026-10-05T03:28:58.303987+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2052243-putin-dal-na-vojnu-uz-tolko-penazi-co-by-stacilo-slovensku-aby-dobre-fungovalo-takmer-dve-desatrocia-co-caka-rusov-v-roku-2027": "2026-10-05T03:28:58.303993+00:00",
+    "https://www.teraz.sk/magazin/viery-su-vytrvale/996817-clanok.html": "2026-10-05T03:28:58.303998+00:00",
+    "https://www.teraz.sk/slovensko/svetovy-den-ludskych-sidiel-v-tomto/997118-clanok.html": "2026-10-05T03:28:58.304003+00:00",
+    "https://www.teraz.sk/import/zaciatok-tyzdna-bude-jasny-ojedine/997141-clanok.html": "2026-10-05T03:28:58.304007+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -2585,11 +2590,6 @@
     "c6c50d0b17070703": "2026-10-04T22:41:04.267302+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9507847/Nocny-vpad-do-domu-v-Bratislave--Mladik-narobil-skodu-za-tisice-eur",
-      "title": "Nočný vpád do domu v Bratislave: Mladík narobil škodu za tisíce eur",
-      "posted_at": "2026-10-01T23:00:02.605562+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9483227/Policia-patra-po-maskovanych-pachateloch--Zo-stanku-s-obcerstvenim-zmizli-stovky-eur",
       "title": "Polícia pátra po maskovaných páchateľoch: Zo stánku s občerstvením zmizli stovky eur",
