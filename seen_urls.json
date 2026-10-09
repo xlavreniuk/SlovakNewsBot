@@ -1,6 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9476903/Vyluka-na-bratislavskej-hlavnej-stanici-potrva-tri-mesiace--Pripravte-sa-na-zmeny-aj-rusenie-spojov": "2026-09-25T02:56:09.521148+00:00",
     "https://www.topky.sk/cl/10/9502641/AKTUALNE-Generalnemu-prokuratorovi-Marosovi-Zilinkovi-a-jeho-zene-sa-vyhrazaju-BOMBOVYM-utokom": "2026-09-25T09:18:53.821613+00:00",
     "https://bratislavskykraj.sk/prihlaste-sa-do-vyberoveho-kola-sutaze-beniakove-chynorany-2026/": "2026-09-25T09:18:56.821814+00:00",
     "https://www.topky.sk/cl/10/9502585/La-Catering-preniesol-hosti-na-pobrezie-Amalfi--Taliansky-vecer-nedaleko-Bratislavy-mal-obrovsky-uspech": "2026-09-25T09:18:56.821840+00:00",
@@ -3183,7 +3182,41 @@
     "https://www.startitup.sk/pripravujes-sa-o-kvalitny-spanok-aj-zdrave-travenie-odbornici-urcili-presny-casovy-odstup-medzi-vecerou-a-postelou/": "2026-10-08T23:52:04.942415+00:00",
     "https://refresher.sk/212781-Do-vily-mieri-Beata-a-Demi-Akeho-partnera-hladaju-novi-bombshells": "2026-10-08T23:52:04.942418+00:00",
     "https://glowandknow.sk/magazin/212786-SOS-PRE-PODRAZDENU-PLET-K-beauty-topky-na-obnovu-bariery-Teraz-v-zlavach-do-60": "2026-10-08T23:52:04.942421+00:00",
-    "https://www.aktuality.sk/clanok/VcgoGJ9/pocasie-predpoved-na-piatok/": "2026-10-08T23:52:04.942425+00:00"
+    "https://www.aktuality.sk/clanok/VcgoGJ9/pocasie-predpoved-na-piatok/": "2026-10-08T23:52:04.942425+00:00",
+    "https://bratislava.zoznam.sk/policia-nasla-v-bratislave-muza-hladaneho-dva-roky-ukryval-sa-pod-schodmi-pomahala-mu-zena/": "2026-10-09T04:03:16.586697+00:00",
+    "https://www.topky.sk/cl/10/9513505/Varovanie-zamestnavatelov--Dlh-Slovenska-moze-do-roku-2029-vzrast-az-na-118-miliard-eur": "2026-10-09T04:03:19.593119+00:00",
+    "https://www.topky.sk/cl/10/9513427/Ministerstvo-vyplacalo-odmeny--vyvoleni-dostali-vyse-160-tisic--VIDEO-Taraba-ostro-reaguje": "2026-10-09T04:03:19.593153+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2055655-gaspar-pripustil-predcasne-volby-takac-prekvapil-tvrdenim-o-sefovi-nku-dubeci-s-matovicom-stabilna-vlada-nevznikne": "2026-10-09T04:03:19.593159+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2055439-expert-putin-sa-chce-zapadu-pomstit-ale-este-nie-je-pripraveny-na-konvencnu-vojnu": "2026-10-09T04:03:19.593163+00:00",
+    "https://www.teraz.sk/import/v-piatok-bude-polooblacno-ojedinele-m/998201-clanok.html": "2026-10-09T04:03:19.593166+00:00",
+    "https://www.teraz.sk/slovensko/svetovy-den-posty-2026-kampanuje-nek/998172-clanok.html": "2026-10-09T04:03:19.593170+00:00",
+    "https://www.teraz.sk/magazin/dionyz-je-tichy/998097-clanok.html": "2026-10-09T04:03:19.593175+00:00",
+    "https://www.teraz.sk/slovensko/lubomir-feldek-ma-90-rokov-jeho-tvor/997857-clanok.html": "2026-10-09T04:03:19.593179+00:00",
+    "https://spravy.stvr.sk/2026/10/na-nadvori-robotnickeho-domu-v-banskej-bystrici-ulozili-casovu-schranku-otvoria-ju-az-o-sto-rokov/": "2026-10-09T04:03:19.593183+00:00",
+    "https://www.aktuality.sk/clanok/qKIyzfB/zvrat-v-trestnej-veci-roberta-fica-premiera-v-kauze-matky-simecku-policajtka-ani-len-nepredvolala-zasiahol-prokurator/": "2026-10-09T04:03:19.593186+00:00",
+    "https://www.aktuality.sk/clanok/BOcOryQ/fico-nebezpecne-bluzni-tvrdi-profesor-batora-sme-pripraveni-branit-vlast-videopodcast/": "2026-10-09T04:03:19.593189+00:00",
+    "https://www.aktuality.sk/clanok/EyDiRVu/robertovi-ficovi-napokon-asi-vsetko-zdemoluju-emmanuel-macron-alebo-donald-trump/": "2026-10-09T04:03:19.593193+00:00",
+    "https://bratislava.zoznam.sk/hladate-novu-pracu-alebo-premyslate-nad-zmenou-toto-vsetko-zazijete-na-kariera-expo-v-bratislave-3/": "2026-10-09T04:03:19.593198+00:00",
+    "https://www.topky.sk/cl/10/9488787/Bratislavcania-boli-v-SOKU--Desive-FOTO-z-pristavu--nezvycajne-NAKLONENY-zeriav-a-okamzite-vysvetlenie-": "2026-10-09T04:03:19.593201+00:00",
+    "https://www.topky.sk/cl/10/9489121/Nasrdeny-Grohling-o-Sulikovi--Co-je-toto-za-KOTRMELEC--Naklad-byvalemu-sefovi--strana-ako-trojsky-kon-Fica-": "2026-10-09T04:03:19.593204+00:00",
+    "https://www.topky.sk/cl/10/9487877/Ponorte-sa-s-KVIZOM-do-detstva-socializmu--Husakove-deti--spominate-si-este-na-tieto-zabavky-a-neznicitelne-hracky-": "2026-10-09T04:03:19.593208+00:00",
+    "https://www.topky.sk/cl/10/9489123/Teplota-v-stredu-vo-viacerych-lokalitach-moze-dosiahnut-az-33-stupnov-Celzia": "2026-10-09T04:03:19.593211+00:00",
+    "https://www.topky.sk/cl/10/9489089/Minister-Blanar-v-Alzirsku--Historicka-sanca-na-nove-dodavky-plynu-pre-Slovensko": "2026-10-09T04:03:19.593215+00:00",
+    "https://www.topky.sk/cl/10/9489071/Premier-sa-snazi-poistit-pred-spravodlivostou--uviedol-Igor-Matovic": "2026-10-09T04:03:19.593218+00:00",
+    "https://www.topky.sk/cl/10/9488525/Je-tu-najvacsia-BOMBA-politickej-jesene--Kollar-a-Sulik-v-raznom-TANDEME-a-menia-nazov-hnutia-": "2026-10-09T04:03:19.593221+00:00",
+    "https://www.topky.sk/cl/10/9488743/Podvodnici-pritvrdzuju--Slovaci-prichadzaju-o-tisice-eur--Utocnikom-pomaha-umela-inteligencia": "2026-10-09T04:03:19.593224+00:00",
+    "https://www.topky.sk/cl/10/9488983/Fico-vyzyva-generalneho-prokuratora-Marosa-Zilinku-na-odstupenie-z-funkcie--SaS-kritizuje-snahu-ovladnut-prokuraturu": "2026-10-09T04:03:19.593226+00:00",
+    "https://www.topky.sk/cl/10/9488963/Podvodne-e-maily-o-preplatkoch--Policia-varuje-obcanov-pred-kliknutim-na-podozrive-odkazy": "2026-10-09T04:03:19.593230+00:00",
+    "https://www.topky.sk/cl/10/9488921/Vikendova-uzavera-dialnice-D3--Usek-Horelica---Podzavoz-bude-cez-vikend-mimo-prevadzky": "2026-10-09T04:03:19.593234+00:00",
+    "https://www.topky.sk/cl/10/9488863/Pohar-vraj-pretiekol--Premier-vyzval-na-odchod-ZILINKU-a-oprel-sa-do-pripadu-exsefa-SIS--Generalny-prokurator-VRACIA-UDER": "2026-10-09T04:03:19.593237+00:00",
+    "https://www.topky.sk/cl/10/9488931/Hlohovcan-sa-priznal-k-distribucii-drog--Policia-ho-zadrzala--stihany-bude-vazobne": "2026-10-09T04:03:19.593240+00:00",
+    "https://www.topky.sk/cl/2005793/9488583/Emmerova-vila-presla-rozsiahlou-obnovou--pocas-Trnavskeho-jarmoku-otvori-brany-verejnosti": "2026-10-09T04:03:19.593244+00:00",
+    "https://www.topky.sk/cl/10/9488969/Tragicka-udalost-na-juhu-Slovenska--V-rodinnom-dome-nasli-telo-bez-zivota--podozrenie-na-vrazdu-": "2026-10-09T04:03:19.593247+00:00",
+    "https://www.topky.sk/cl/10/9488865/ZVRAT-v-kauze-Burka-a-Vichrica--Trestne-stihanie-voci-Marianovi-Kocnerovi-pokracuje": "2026-10-09T04:03:19.593249+00:00",
+    "https://www.topky.sk/cl/10/9488807/Winkler-otvoril-citlivu-temu--V-hre-su-miliony-aj-buducnost-Predstanicneho-namestia": "2026-10-09T04:03:19.593253+00:00",
+    "https://www.topky.sk/cl/10/9488845/Projekt-Online-ziak-neriesi-skutocne-problemy-deti-v-hmotnej-nudzi--uviedla-Veronika-Remisova": "2026-10-09T04:03:19.593256+00:00",
+    "https://www.topky.sk/cl/10/9488751/Odbornik-varuje-pred-novymi-trikmi--Podvodnici-zneuzivaju-zname-tvare--pomaha-im-aj-AI": "2026-10-09T04:03:19.593259+00:00",
+    "https://www.topky.sk/cl/10/9488577/Sokujuci-HAZARD-na-priecesti--Muz-s-dvoma-detmi-obisiel-spustene-zavory--VIDEO--z-ktoreho-tuhne-krv-v-zilach": "2026-10-09T04:03:19.593262+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -3249,7 +3282,9 @@
     "img.topky.sk/9051835.jpg": "2026-10-08T19:13:56.776044+00:00",
     "9051835.jpg": "2026-10-08T19:13:56.776044+00:00",
     "img.topky.sk/9052327.jpg": "2026-10-08T23:52:01.936134+00:00",
-    "9052327.jpg": "2026-10-08T23:52:01.936134+00:00"
+    "9052327.jpg": "2026-10-08T23:52:01.936134+00:00",
+    "06/facebook-policia-sr.jpg": "2026-10-09T04:03:16.586720+00:00",
+    "facebook-policia-sr.jpg": "2026-10-09T04:03:16.586720+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -3283,14 +3318,10 @@
     "139239f8ec6a74b1": "2026-10-08T11:09:12.415898+00:00",
     "4edcca979ecb4e1e": "2026-10-08T12:43:10.833427+00:00",
     "db9b893c5b59949c": "2026-10-08T19:13:56.776044+00:00",
-    "27e7eb3938181e36": "2026-10-08T23:52:01.936134+00:00"
+    "27e7eb3938181e36": "2026-10-08T23:52:01.936134+00:00",
+    "0f0f1e9892a6b6f4": "2026-10-09T04:03:16.586720+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://bratislava.zoznam.sk/mlady-motocyklista-bez-opravnenia-jazdil-v-protismere-na-pezinskej-babe-policia-zasahovala/",
-      "title": "Mladý motocyklista bez oprávnenia jazdil v protismere na Pezinskej Babe – polícia zasahovala",
-      "posted_at": "2026-10-06T01:49:47.437655+00:00"
-    },
     {
       "url": "https://www.teraz.sk/regiony/v-bratislave-odhalili-vodicov-pod-vplyv/997439-clanok.html",
       "title": "V Bratislave odhalili vodičov pod vplyvom alkoholu aj drog",
@@ -3360,6 +3391,11 @@
       "url": "https://www.topky.sk/cl/10/9513485/SOKUJUCE-pripady-nasilia-rastu--Dvaja-chlapci-z-Bratislavy-chceli-zavrazdit-spoluziaka--13---vraj-je-gej-a-zid-",
       "title": "ŠOKUJÚCE prípady násilia rastú: Dvaja chlapci z Bratislavy chceli zavraždiť spolužiaka (13), vraj je gej a žid!",
       "posted_at": "2026-10-08T23:52:01.936127+00:00"
+    },
+    {
+      "url": "https://bratislava.zoznam.sk/policia-nasla-v-bratislave-muza-hladaneho-dva-roky-ukryval-sa-pod-schodmi-pomahala-mu-zena/",
+      "title": "Polícia našla v Bratislave muža hľadaného dva roky – ukrýval sa pod schodmi, pomáhala mu žena",
+      "posted_at": "2026-10-09T04:03:16.586713+00:00"
     }
   ]
 }
