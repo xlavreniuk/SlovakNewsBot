@@ -1,11 +1,5 @@
 {
   "seen_urls": {
-    "https://www.pravda.sk/spravy/domace/clanok/2048081-sudca-ktory-odmietol-obzalobu-na-curillovcov-dostal-padaka-z-bratislavy-takto-pracuje-mafia-reaguje-kubina": "2026-09-26T23:45:41.536730+00:00",
-    "https://www.topky.sk/cl/10/9501909/Vyssie-dane-namiesto-prijmov-prinasaju-odliv-mozgov--Priemysel-vola-po-navrate-k-rovnej-dani": "2026-09-26T23:45:44.536969+00:00",
-    "https://www.topky.sk/cl/10/9503671/Gaspar-varuje-pred-unahlenymi-zavermi--Informacie-o-ruskej-GRU-na-Slovensku-zatial-nie-su-potvrdene": "2026-09-26T23:45:44.537001+00:00",
-    "https://www.topky.sk/cl/10/9478477/Pridavky-na-deti-cakaju-ZMENY--Vyplacat-sa-maju-dlhsie--no-sprisnia-sa-kontroly--Na-TOTO-pozor": "2026-09-26T23:45:44.537004+00:00",
-    "https://www.topky.sk/cl/10/9477557/REVOLUCNA-operacia-na-Kramaroch--Premiera-prelomoveho-zakroku-rukami-zahranicneho-EXPERTA-": "2026-09-27T03:03:33.185326+00:00",
-    "https://www.topky.sk/cl/10/9478741/Slovensko-caka-poriadne-horuci-stvrtok--Teploty-sa-vysplhaju-az-na-33-stupnov-v-juznych-okresoch": "2026-09-27T03:03:36.185650+00:00",
     "https://www.topky.sk/cl/10/9479013/Hororova-jazda-cez-aplikaciu--Vodic-v-Bratislave-mal-zamknut-auto--vziat-zene-mobil-a-napadnut-ju-": "2026-09-27T09:45:33.693033+00:00",
     "https://www.topky.sk/cl/10/9503833/Vodici--zbystrite-pozornost--Tunel-Sitina-bude-uzatvoreny-v-oboch-smeroch": "2026-09-27T09:45:36.693273+00:00",
     "https://www.topky.sk/cl/10/9500861/Agresivne-OSY-utocia-na-nasich-zahradach--Zacina-ich-SEZONA--zabudnite-na-zihadla-a-otestujte-tieto-RADY-": "2026-09-27T09:45:36.693302+00:00",
@@ -3477,7 +3471,10 @@
     "https://www.topky.sk/cl/10/9451591/Praca-v-priestoroch-s-nadychom-historie--Unikatne-kancelarie-v-narodnej-kulturnej-pamiatke-su-k-dispozicii": "2026-10-10T20:27:24.570625+00:00",
     "https://www.topky.sk/cl/10/9515361/Dovercivost-ju-stala-majetok--Bratislavcanka-sa-stala-obetou-podvodu--z-uctu-jej-zmizlo-21-tisic-eur": "2026-10-10T23:43:23.408844+00:00",
     "https://www.pravda.sk/spravy/svet/clanok/2056747-babis-reagoval-na-vysledky-ceskych-volieb-ano-podla-neho-zostane-natrvalo-v-prahe-vsak-straca": "2026-10-10T23:43:26.415365+00:00",
-    "https://www.topky.sk/cl/10/9490615/NOVINKY-Male-hotoleve-sampony-aj-mini-balenia-cukru-ci-kecupu-dostali-STOPKU--Zabudnite-aj-na-poloprazdne-skatule": "2026-10-10T23:43:26.415389+00:00"
+    "https://www.topky.sk/cl/10/9490615/NOVINKY-Male-hotoleve-sampony-aj-mini-balenia-cukru-ci-kecupu-dostali-STOPKU--Zabudnite-aj-na-poloprazdne-skatule": "2026-10-10T23:43:26.415389+00:00",
+    "https://bratislava.zoznam.sk/nove-mesto-v-bratislave-spusta-podnetovnik-obyvatelia-mozu-nahlasovat-problemy-online/": "2026-10-11T03:21:14.101153+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2056721-trump-kope-do-zelenskeho-a-zatajil-mu-chystanu-dohodu-s-putinom-v-com-ho-podrazil-uz-v-septembri": "2026-10-11T03:21:17.105391+00:00",
+    "https://www.topky.sk/cl/10/9490697/Sef-SaSky-v-stave--v-akom-ho-nepoznate--Namiesto-poslaneckeho-obleku-zaprasene-lesenie-a-MONTERKY--co-tam-robil-": "2026-10-11T03:21:17.105422+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -3569,7 +3566,9 @@
     "10/zachranny-system-slovensko2.jpg": "2026-10-10T20:27:21.563708+00:00",
     "zachranny-system-slovensko2.jpg": "2026-10-10T20:27:21.563708+00:00",
     "img.topky.sk/9054311.jpg": "2026-10-10T23:43:23.408865+00:00",
-    "9054311.jpg": "2026-10-10T23:43:23.408865+00:00"
+    "9054311.jpg": "2026-10-10T23:43:23.408865+00:00",
+    "07/mirovic.jpg": "2026-10-11T03:21:14.101178+00:00",
+    "mirovic.jpg": "2026-10-11T03:21:14.101178+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -3616,7 +3615,8 @@
     "e60391372d6d2d93": "2026-10-10T20:27:21.563682+00:00",
     "c7614d8c9a1d5d58": "2026-10-10T20:27:21.563695+00:00",
     "57231d3b83d08810": "2026-10-10T20:27:21.563708+00:00",
-    "544674340f200209": "2026-10-10T23:43:23.408865+00:00"
+    "544674340f200209": "2026-10-10T23:43:23.408865+00:00",
+    "883c39997c185236": "2026-10-11T03:21:14.101178+00:00"
   },
   "recent_posts": [
     {
@@ -3693,6 +3693,11 @@
       "url": "https://www.topky.sk/cl/10/9515361/Dovercivost-ju-stala-majetok--Bratislavcanka-sa-stala-obetou-podvodu--z-uctu-jej-zmizlo-21-tisic-eur",
       "title": "Dôverčivosť ju stála majetok: Bratislavčanka sa stala obeťou podvodu, z účtu jej zmizlo 21-tisíc eur",
       "posted_at": "2026-10-10T23:43:23.408858+00:00"
+    },
+    {
+      "url": "https://bratislava.zoznam.sk/nove-mesto-v-bratislave-spusta-podnetovnik-obyvatelia-mozu-nahlasovat-problemy-online/",
+      "title": "Nové Mesto v Bratislave spúšťa Podnetovník: Obyvatelia môžu nahlasovať problémy online",
+      "posted_at": "2026-10-11T03:21:14.101171+00:00"
     }
   ]
 }
