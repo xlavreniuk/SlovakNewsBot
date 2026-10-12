@@ -1,8 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9479555/Nelegalna-skladka-v-chranenej-oblasti-v-Bratislave--Skoda-sa-vysplhala-na-viac-ako-6-MILIONOV-eur": "2026-09-28T01:07:11.788746+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2048875-tragedia-na-kolajniciach-pri-bratislave-osobu-zrazil-vlak-premavku-zastavili": "2026-09-28T01:07:14.789028+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2047525-stojime-v-kolonach-na-vlastny-byt-nemame-napriek-tomu-sme-s-bratislavou-prekvapivo-spokojni": "2026-09-28T03:01:28.953137+00:00",
     "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2049011-martin-winkler-sa-vzdal-kandidatury-na-post-primatora-bratislavy": "2026-09-28T10:25:27.926476+00:00",
     "https://bratislavskykraj.sk/divadlo-rozpravkovy-gasparko-miesto-kde-dobro-vitazi-a-rodiny-zazivaju-rozpravkove-dobrodruzstva/": "2026-09-28T10:25:30.926713+00:00",
     "https://www.topky.sk/cl/10/9504379/MIMORIADNE-Situacia-okolo-Tarabu-eskaluje--Danko-vyslovil-ultimatum--chysta-zasadny-krok--Koalicia-sa-otriasa-v-zakladoch": "2026-09-28T10:25:30.926740+00:00",
@@ -3610,7 +3607,12 @@
     "https://www.topky.sk/cl/10/9491917/MIMORIADNA-tragedia-pri-Beckove--Mlady-muz---23--nemal-uz-po-naraze-do-stromu-sancu-prezit-": "2026-10-11T21:25:07.010845+00:00",
     "https://www.teraz.sk/sport/hokejisti-hc-slovan-bratislava-porazili/998912-clanok.html": "2026-10-12T00:41:00.140447+00:00",
     "https://www.topky.sk/cl/10/9515689/KVIZ--ktory-otestuje--ci-mate-prehlad-o-top-udalostiach--Skontrolujte-si-vedomosti-z-minuleho-tyzdna": "2026-10-12T00:41:03.147264+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2056165-najprv-58-km-dialnic-teraz-pad-slovensko-caka-dopravne-sucho-dalsia-velka-vlna-pride-az-po-roku-2030": "2026-10-12T00:41:03.147291+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2056165-najprv-58-km-dialnic-teraz-pad-slovensko-caka-dopravne-sucho-dalsia-velka-vlna-pride-az-po-roku-2030": "2026-10-12T00:41:03.147291+00:00",
+    "https://bratislavskykraj.sk/historicke-vlaky-aj-130-rocny-parny-rusen-na-rendezi-sa-rozlucili-s-muzejnou-sezonou/": "2026-10-12T03:44:33.550393+00:00",
+    "https://www.aktuality.sk/clanok/BaKWLQG/byvaly-sef-telerozhlasu-jaroslav-reznik-kupil-vilu-za-900-tisic-sefuje-firme-ktora-vyvija-lieky/": "2026-10-12T03:44:36.557502+00:00",
+    "https://www.pravda.sk/spravy/kultura/clanok/2055941-miliony-dolarov-pre-zachranu-jedineho-cloveka": "2026-10-12T03:44:36.557528+00:00",
+    "https://www.aktuality.sk/clanok/RACapHq/unava-z-vojny-ukrajinci-ju-vypnut-nemozu-tvrdi-humanitarny-pracovnik-fric-v-tieni-vojny/": "2026-10-12T03:44:36.557533+00:00",
+    "https://www.aktuality.sk/clanok/0ZGlBr7/jozef-raz-zatienil-pri-otvarani-dialnice-aj-vladimira-meciara-s-claudiou-schifferovou/": "2026-10-12T03:44:36.557537+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -3714,7 +3716,15 @@
     "10/devin-politika-508299-rw9esv7i.jpg": "2026-10-11T21:25:04.002597+00:00",
     "devin-politika-508299-rw9esv7i.jpg": "2026-10-11T21:25:04.002597+00:00",
     "socialmedia/3f4e996fbb91b0789db8f9dd2562fc716872b91f.jpg": "2026-10-12T00:41:00.140466+00:00",
-    "3f4e996fbb91b0789db8f9dd2562fc716872b91f.jpg": "2026-10-12T00:41:00.140466+00:00"
+    "3f4e996fbb91b0789db8f9dd2562fc716872b91f.jpg": "2026-10-12T00:41:00.140466+00:00",
+    "10/rendez_rozlucka_so_sezonou_img_20261010_165142.jpg": "2026-10-12T03:44:33.550417+00:00",
+    "rendez_rozlucka_so_sezonou_img_20261010_165142.jpg": "2026-10-12T03:44:33.550417+00:00",
+    "10/rendez_rozlucka_so_sezonou_img_20261010_164935.jpg": "2026-10-12T03:44:33.550456+00:00",
+    "rendez_rozlucka_so_sezonou_img_20261010_164935.jpg": "2026-10-12T03:44:33.550456+00:00",
+    "10/rendez_rozlucka_so_sezonou_img_20261010_125256.jpg": "2026-10-12T03:44:33.550468+00:00",
+    "rendez_rozlucka_so_sezonou_img_20261010_125256.jpg": "2026-10-12T03:44:33.550468+00:00",
+    "10/rendez_rozlucka_so_sezonou_img_20261010_130502.jpg": "2026-10-12T03:44:33.550477+00:00",
+    "rendez_rozlucka_so_sezonou_img_20261010_130502.jpg": "2026-10-12T03:44:33.550477+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -3767,7 +3777,11 @@
     "4b8b93b376a1c10f": "2026-10-11T12:00:38.792648+00:00",
     "6c662381c881998b": "2026-10-11T17:39:32.455781+00:00",
     "3efffde6c4e71303": "2026-10-11T21:25:04.002597+00:00",
-    "c0f1676767e26040": "2026-10-12T00:41:00.140466+00:00"
+    "c0f1676767e26040": "2026-10-12T00:41:00.140466+00:00",
+    "b336266636b273bc": "2026-10-12T03:44:33.550417+00:00",
+    "d46f3333c7d3731f": "2026-10-12T03:44:33.550456+00:00",
+    "261b191909c19888": "2026-10-12T03:44:33.550468+00:00",
+    "d0c0c08185410ae6": "2026-10-12T03:44:33.550477+00:00"
   },
   "recent_posts": [
     {
@@ -3849,6 +3863,11 @@
       "url": "https://www.teraz.sk/sport/hokejisti-hc-slovan-bratislava-porazili/998912-clanok.html",
       "title": "Hokejisti HC Slovan Bratislava porazili HC Prešov",
       "posted_at": "2026-10-12T00:41:00.140460+00:00"
+    },
+    {
+      "url": "https://bratislavskykraj.sk/historicke-vlaky-aj-130-rocny-parny-rusen-na-rendezi-sa-rozlucili-s-muzejnou-sezonou/",
+      "title": "Historické vlaky aj 130-ročný parný rušeň. Na Rendezi sa rozlúčili s múzejnou sezónou",
+      "posted_at": "2026-10-12T03:44:33.550409+00:00"
     }
   ]
 }
