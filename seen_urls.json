@@ -1,33 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9480931/Policia-zverejnila-VIDEO-zo-zasahu-kuklacov--Poliaci-podozrivi-zo-zabitia-muza-sa-skryvali-na-Slovensku": "2026-09-29T22:31:04.833584+00:00",
-    "https://www.teraz.sk/regiony/pokracuje-vysetrovanie-milionoveho-p/995919-clanok.html": "2026-09-29T22:31:07.833865+00:00",
-    "https://www.topky.sk/cl/10/9506119/Minister-Taraba-odvolany-z-funkcie--Parlamentna-matematika-bola-jednoducha--vycerpali-sme-vsetky-moznosti": "2026-09-29T22:31:07.833890+00:00",
-    "https://www.topky.sk/cl/10/9506117/Koalicna-kriza--SNS-odvolala-vlastneho-nominanta--po-konflikte-s-premierom-Ficom": "2026-09-29T22:31:07.833895+00:00",
-    "https://www.aktuality.sk/clanok/C6tl66O/styria-iracania-celia-obzalobe-v-drazdanoch-dovodom-su-ciny-zo-sluzieb-islamskeho-statu/": "2026-09-29T22:31:07.833898+00:00",
-    "https://www.aktuality.sk/clanok/08rRRRK/ruske-bomby-zasiahli-skolu-v-sumach-pocas-vyucovania-deti-prezili-len-vdaka-uteku-do-krytu/": "2026-09-29T22:31:07.833902+00:00",
-    "https://www.aktuality.sk/clanok/VrxESOh/europska-unia-vyzyva-ukrajinu-na-reformy-podpora-eu-zavisi-od-splnenia-podmienok/": "2026-09-29T22:31:07.833906+00:00",
-    "https://www.aktuality.sk/clanok/aJxSoK9/jasna-a-chladna-noc-na-obzore-v-udoliach-hrozi-prizemny-mraz-teplota-klesne-az-pod-nulu/": "2026-09-29T22:31:07.833912+00:00",
-    "https://www.aktuality.sk/clanok/dsMAJUZ/ai-obisla-ochranu-a-dostala-sa-k-zdravotnym-udajom-australia-nariaduje-tvrdy-audit-vsetkych-statnych-systemov/": "2026-09-29T22:31:07.833917+00:00",
-    "https://www.aktuality.sk/clanok/mE9TdtP/vo-washingtone-diskutovali-rusko-a-usa-o-spolupraci-v-energetike-i-mierovom-urovnani-konfliktu/": "2026-09-29T22:31:07.833921+00:00",
-    "https://www.aktuality.sk/clanok/oEXVRhj/maroko-pise-historiu-vo-funkcii-premierky-bude-prvykrat-zena-kral-ju-poveril-zostavenim-vlady/": "2026-09-29T22:31:07.833924+00:00",
-    "https://www.aktuality.sk/clanok/Nlbx2d0/spanielsko-otrasil-pripad-87-rocnej-seniorky-z-madridu-po-masovych-protestoch-sa-moze-vratit-do-bytu/": "2026-09-29T22:31:07.833927+00:00",
-    "https://www.aktuality.sk/clanok/4xEfghQ/odsudit-musime-aj-utoky-hamasu-aj-konanie-izraelskej-vlady-voci-palestinskym-civilistom-nazor-lucie-yar/": "2026-09-29T22:31:07.833930+00:00",
-    "https://www.aktuality.sk/clanok/WB5Hudd/madarsko-sa-pripravuje-na-vstup-do-europskej-prokuratury-legislativne-upravy-zacnu-uz-buduci-rok/": "2026-09-29T22:31:07.833933+00:00",
-    "https://www.aktuality.sk/clanok/btkvGVQ/izrael-zostruje-bezpecnostne-opatrenia-izraelsky-premier-hovori-o-hrozbe-pred-volbami/": "2026-09-29T22:31:07.833936+00:00",
-    "https://www.aktuality.sk/clanok/FAUNSBh/cievna-mozgova-prihoda-rozhoduje-v-minutach-ako-rozpoznat-varovne-signaly-a-zachranit-zivot/": "2026-09-29T22:31:07.833939+00:00",
-    "https://www.aktuality.sk/clanok/YGuMVpi/slovensko-prislo-o-vyznamneho-architekta-zomrel-ivan-gojdic-muz-ktory-zachranoval-nase-pamiatky/": "2026-09-29T22:31:07.833942+00:00",
-    "https://www.aktuality.sk/clanok/YZHAlqb/babisova-vlada-celi-pokusu-o-zvrhnutie-ceska-opozicia-hovori-o-rozpoctovom-armagedone-a-podvode-volicov/": "2026-09-29T22:31:07.833945+00:00",
-    "https://www.aktuality.sk/clanok/toEXX5W/lacnejsia-mhd-ma-prvy-hacik-termin-1-oktober-je-nerealizovatelny-odkazuju-primatori/": "2026-09-29T22:31:07.833948+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2050119-fico-reaguje-na-revoltu-sns-zvolava-predsednictvo-smeru-rozhodne-sa-o-dalsom-osude-koalicie": "2026-09-29T22:31:07.833951+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2050095-hlas-po-tarabovom-pade-varuje-koalicia-vykrocila-na-nebezpecnu-cestu": "2026-09-29T22:31:07.833954+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2050039-parlament-rozhoduje-o-tarabovi-prejde-opozicny-navrh-na-jeho-odvolanie": "2026-09-29T22:31:07.833956+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2050013-fico-zvolava-bezpecnostnu-radu-k-vymyslenym-pucom-musi-ju-aj-teraz-k-realnym-hrozbam-hovori-opozicia-po-staskove": "2026-09-29T22:31:07.833960+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049917-fico-vyjadrenia-koalicna-kriza": "2026-09-29T22:31:07.833962+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049993-fico-reaguje-na-tragediu-v-staskove-chce-vratit-ucitelom-autoritu-varuje-aj-pred-nasilim-vo-filmoch-a-hrach": "2026-09-29T22:31:07.833966+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049947-video-spoluziaci-prehovorili-o-utocnikovi-vraj-sa-zamotal-do-problemov-pre-jednu-zlu-fotku": "2026-09-29T22:31:07.833969+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049933-opozicia-ma-sancu-ukazat-sa-na-poslancov-je-vyvijany-tlak-tvrdi-dubeci-konanie-ciganikovej-ukazala-kam-patri": "2026-09-29T22:31:07.833972+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049915-hlas-sa-pridal-k-sns-premier-fico-neodolanim-tarabu-porusil-koalicnu-zmluvu": "2026-09-29T22:31:07.833974+00:00",
     "https://www.topky.sk/cl/10/9481147/Zlodej-v-oblubenej-bratislavskej-restauracii--Po-roku-ich-opat-okradli--majitel-zufalo-prosi-o-pomoc-": "2026-09-30T01:29:41.272913+00:00",
     "https://www.topky.sk/cl/10/9505601/Nejasne-peniaze-mozu-zamiesat-komunalnymi-volbami--Vacsina-volicov-by-pri-kandidatovi-zvazovala-inu-volbu": "2026-09-30T01:29:44.273169+00:00",
     "https://bratislavskykraj.sk/ids-bk-otestuje-nove-cezhranicne-autobusove-spojenie/": "2026-09-30T03:28:54.423408+00:00",
@@ -3957,7 +3929,30 @@
     "https://www.aktuality.sk/clanok/bImsKMB/nobelova-laureatka-navi-pillayova-vyzvala-usa-aby-sa-vratili-k-obhajobe-ludskych-prav/": "2026-10-13T19:55:49.563349+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2058325-taraba-ide-vlastnou-cestou-zaklada-stranu-ktora-ponesie-jeho-meno": "2026-10-13T19:55:49.563392+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2058307-chmelar-po-zhliadnuti-filmu-general-golian-vybuchol-toto-uz-bolo-privela-hovori-o-falsovani-historie-a-zhanobeni-pamiatky": "2026-10-13T19:55:49.563395+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2058213-oddlzovanie-nemocnic-kolko-pojde-na-pacientov-aj-sukromne-rozpocet": "2026-10-13T19:55:49.563398+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2058213-oddlzovanie-nemocnic-kolko-pojde-na-pacientov-aj-sukromne-rozpocet": "2026-10-13T19:55:49.563398+00:00",
+    "https://bratislavaden.sk/dramaticke-chvile-na-moste-snp-v-bratislave-mestski-policajti-pomohli-zene-v-tazkej-chvili-zachranili-jej-zivot/": "2026-10-13T23:35:03.001532+00:00",
+    "https://www.topky.sk/cl/10/9516999/Boli-doma-s-detmi-a-maju-nizsi-dochodok--Statisice-penzistov-si-mozu-prilepsit-o-stovky-eur-": "2026-10-13T23:35:06.009102+00:00",
+    "https://www.topky.sk/cl/10/9517603/KDH-kritizuje-konsolidaciu-vlady--Vyssia-DPH--transakcna-dan-a-nizsie-prispevky-pre-rodiny": "2026-10-13T23:35:06.009132+00:00",
+    "https://www.topky.sk/cl/10/9517141/Skandal-na-vychode--Policajti-ponukli-dievcatu-odvoz-z-diskoteky--Vsetko-sa-malo-zvrtnut--zena-si-natocila-VIDEO": "2026-10-13T23:35:06.009138+00:00",
+    "https://www.topky.sk/cl/10/9517561/AKTUALNE-Nova-politicka-strana-na-Slovensku--Taraba-oznamil-zber-podpisov": "2026-10-13T23:35:06.009141+00:00",
+    "https://www.topky.sk/cl/10/9517059/Ivana-v-Ruzinove-najskor-vo-vani--utopila-jednu-dceru--potom-druhu--DETAILY-strasneho-dna--sud-rozhodol": "2026-10-13T23:35:06.009145+00:00",
+    "https://regiony.zoznam.sk/budu-mat-bratislava-a-kosice-novych-primatorov-novy-prieskum-ukazal-pozoruhodne-cisla/": "2026-10-13T23:35:06.009149+00:00",
+    "https://spravy.stvr.sk/2026/10/tragedia-v-ruzinove-zena-ktora-vlani-usmrtila-svoje-dve-deti-spoznala-svoj-trest/": "2026-10-13T23:35:06.009155+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2057901-kandidat-na-zilinskeho-zupana-kapitulik-hovori-o-reforme-krajskeho-skolstva": "2026-10-13T23:35:06.009161+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2057539-stovky-eur-za-izbu-alebo-hodiny-na-cestach-studenti-si-vyberaju-medzi-byvanim-a-vysokoskolskym-zivotom": "2026-10-13T23:35:06.009165+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2058571-spionazny-skandal-v-openai-v-kancelarii-objavili-skryte-odpocuvacie-zariadenie-zamestnanca-zatkla-fbi": "2026-10-13T23:35:06.009168+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2058565-kyjevom-otriasla-mohutna-seria-vybuchov-sireny-mlcali-co-sa-stalo-s-varovanim": "2026-10-13T23:35:06.009171+00:00",
+    "https://www.teraz.sk/sport/prolog-na-eneco-tour-vyhral-soderqvist/999515-clanok.html": "2026-10-13T23:35:06.009175+00:00",
+    "https://www.teraz.sk/zahranicie/enrique-dufa-ze-mancity-nepride-spa/999514-clanok.html": "2026-10-13T23:35:06.009178+00:00",
+    "https://www.teraz.sk/zahranicie/eu-otvorila-dalsie-dva-tematicke-cel/999513-clanok.html": "2026-10-13T23:35:06.009181+00:00",
+    "https://www.startitup.sk/papez-lev-xiv-ma-rakovinu-lekari-mu-odstranili-zhubny-nador-z-pluc/": "2026-10-13T23:35:06.009184+00:00",
+    "https://www.startitup.sk/britska-baronka-prehovorila-v-parlamente-vlastnym-hlasom-po-rokoch-jej-ho-vratila-ai/": "2026-10-13T23:35:06.009187+00:00",
+    "https://news.refresher.sk/213135-Papezovi-diagnostikovali-rakovinu-Aktualne-je-po-operacii": "2026-10-13T23:35:06.009190+00:00",
+    "https://www.topky.sk/cl/10/9517839/Patranie-po-srsnovi-azijskom-ma-koniec--Hniezdo-na-Slovensku-uz-zlikvidovali": "2026-10-13T23:35:06.009193+00:00",
+    "https://www.topky.sk/cl/10/9517609/Hadka-v-nitrianskom-podniku-sa-skoncila-strelbou--Muz-zranil-dvoch-ludi": "2026-10-13T23:35:06.009197+00:00",
+    "https://www.topky.sk/cl/10/9517549/Policajti-z-Kosic-celia-obvineniu--Nasilne-odobratie-telefonu-a-obmedzovanie-slobody": "2026-10-13T23:35:06.009200+00:00",
+    "https://www.topky.sk/cl/10/9517539/Muz-sa-opakovane-vyhrazal-zene--Sud-rozhodol-o-jeho-vazobnom-stihani": "2026-10-13T23:35:06.009202+00:00",
+    "https://www.aktuality.sk/clanok/ZypIJwA/koniec-30-rocnej-zahady-byvaly-boss-gangu-dostal-40-rokov-za-zosnovanie-vrazdy-legendarneho-rapera-tupaca/": "2026-10-13T23:35:06.009205+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -4083,7 +4078,9 @@
     "03/dsc01284-724521-hvjeir2d-scaled-e1773160666248.jpg": "2026-10-13T13:42:03.297398+00:00",
     "dsc01284-724521-hvjeir2d-scaled-e1773160666248.jpg": "2026-10-13T13:42:03.297398+00:00",
     "08/20250821sudy-vrazda-deti152934.jpg": "2026-10-13T19:55:46.555661+00:00",
-    "20250821sudy-vrazda-deti152934.jpg": "2026-10-13T19:55:46.555661+00:00"
+    "20250821sudy-vrazda-deti152934.jpg": "2026-10-13T19:55:46.555661+00:00",
+    "10/552926882_1203561501792313_7240878854758955204_n.jpg": "2026-10-13T23:35:03.001554+00:00",
+    "552926882_1203561501792313_7240878854758955204_n.jpg": "2026-10-13T23:35:03.001554+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -4147,14 +4144,10 @@
     "f7db7361cbecd0ec": "2026-10-13T03:07:00.095904+00:00",
     "7774351f17cf1733": "2026-10-13T04:56:24.902150+00:00",
     "120c0c6c60584426": "2026-10-13T13:42:03.297398+00:00",
-    "6dcb9ba6a3a60c4d": "2026-10-13T19:55:46.555661+00:00"
+    "6dcb9ba6a3a60c4d": "2026-10-13T19:55:46.555661+00:00",
+    "0f3a1a5f22bb2e07": "2026-10-13T23:35:03.001554+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://regiony.zoznam.sk/neskutocna-tragedia-zmizol-student-andrej-18-po-12-dnoch-ho-nasli-mrtveho-zo-slov-mamy-trha-srdce/",
-      "title": "NESKUTOČNÁ TRAGÉDIA Zmizol študent Andrej (†18), po 12 dňoch ho našli mŕtveho! Zo SLOV mamy trhá srdce",
-      "posted_at": "2026-10-10T20:27:21.563637+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9515361/Dovercivost-ju-stala-majetok--Bratislavcanka-sa-stala-obetou-podvodu--z-uctu-jej-zmizlo-21-tisic-eur",
       "title": "Dôverčivosť ju stála majetok: Bratislavčanka sa stala obeťou podvodu, z účtu jej zmizlo 21-tisíc eur",
@@ -4229,6 +4222,11 @@
       "url": "https://bratislava.zoznam.sk/tragedia-v-ruzinove-ivana-f-dostala-19-rokov-vazenia-za-vrazdu-dvoch-deti-sud-rozhodol/",
       "title": "Tragédia v Ružinove: Ivana F. dostala 19 rokov väzenia za vraždu dvoch detí, súd rozhodol",
       "posted_at": "2026-10-13T19:55:46.555654+00:00"
+    },
+    {
+      "url": "https://bratislavaden.sk/dramaticke-chvile-na-moste-snp-v-bratislave-mestski-policajti-pomohli-zene-v-tazkej-chvili-zachranili-jej-zivot/",
+      "title": "Dramatické chvíle na Moste SNP v Bratislave. Mestskí policajti pomohli žene v ťažkej chvíli, zachránili jej život",
+      "posted_at": "2026-10-13T23:35:03.001546+00:00"
     }
   ]
 }
