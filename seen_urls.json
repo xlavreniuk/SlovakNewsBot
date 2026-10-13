@@ -1,9 +1,5 @@
 {
   "seen_urls": {
-    "https://www.pravda.sk/spravy/regiony/clanok/2048971-pri-bytovke-v-bratislave-nasli-mrtveho-muza": "2026-09-29T03:42:19.772241+00:00",
-    "https://www.topky.sk/cl/10/9504823/Akcna-nahanacka-v-hlavnom-meste--Cudzinec-ukradol-auto-na-pumpe-priamo-pred-ocami-majitela": "2026-09-29T03:42:22.772420+00:00",
-    "https://www.topky.sk/cl/10/9480603/V-slovenskej-obci-sa-objavila-tuberkuloza--Vyskyt-pripadov-potvrdili-hygienici": "2026-09-29T03:42:22.772445+00:00",
-    "https://www.aktuality.sk/clanok/yBinJtO/boj-o-ropu-este-len-startuje-do-hry-bude-vtiahnuta-klucova-mocnost/": "2026-09-29T03:42:22.772450+00:00",
     "https://www.pravda.sk/spravy/regiony/clanok/2048963-drama-v-bratislave-policajti-vytiahli-z-dunaja-topiacu-sa-zenu": "2026-09-29T10:19:55.498653+00:00",
     "https://bratislavskykraj.sk/uspech-na-medzinarodnej-vytvarnej-sutazi-lenka-ziskala-ocenenie-za-tancujuce-kvety/": "2026-09-29T10:19:58.498878+00:00",
     "https://www.teraz.sk/regiony/kriminalna-policia-vysetruje-nalez-t/995820-clanok.html": "2026-09-29T10:19:58.498930+00:00",
@@ -3796,7 +3792,54 @@
     "https://www.topky.sk/cl/10/9516645/Zmeny-v-socialnych-sluzbach--Prezident-podpisal-novelu--zariadenia-budu-moct-prijat-viac-ludi": "2026-10-13T03:07:03.102191+00:00",
     "https://www.topky.sk/cl/10/9516657/Policia-odhalila-takmer-2200-priestupkov--Vodici-najcastejsie-porusovali-TIETO-pravidla": "2026-10-13T03:07:03.102194+00:00",
     "https://www.pravda.sk/spravy/svet/clanok/2057605-pomaha-trump-rusku-po-ropnej-dohode-s-putinom-sa-vratila-stara-otazka": "2026-10-13T03:07:03.102199+00:00",
-    "https://www.topky.sk/cl/10/9516675/Vlaky-v-Ziline-sa-vratia-do-bezneho-rezimu--Zmena-nastane-uz-v-utorok-rano": "2026-10-13T03:07:03.102203+00:00"
+    "https://www.topky.sk/cl/10/9516675/Vlaky-v-Ziline-sa-vratia-do-bezneho-rezimu--Zmena-nastane-uz-v-utorok-rano": "2026-10-13T03:07:03.102203+00:00",
+    "https://bratislava.zoznam.sk/aktualne-poziar-kamiona-na-d2-v-bratislave-dialnica-do-cr-je-uz-prejazdna-v-jednom-pruhu/": "2026-10-13T04:56:24.902128+00:00",
+    "https://www.topky.sk/cl/10/9516261/Dve-autosedacky-dopadli-tak-zle--ze-kontrolori-nepockali-ani-na-koniec-testov--Okamzite-VAROVANIE--Reaguju-aj-vyrobcovia": "2026-10-13T04:56:27.909609+00:00",
+    "https://www.topky.sk/cl/10/9516643/Rada-vlady-schvalila-novu-koncepciu--Sustredi-sa-najma-na-dusevne-zdravie-deti": "2026-10-13T04:56:27.909634+00:00",
+    "https://www.topky.sk/cl/10/9511155/Neskutocne-stastie-Slovakov--Traja-trafili-jackpot--peniaze-im-budu-chodit-cele-roky": "2026-10-13T04:56:27.909639+00:00",
+    "https://bratislavskykraj.sk/prihlasovanie-do-sutaze-malokarpatsky-slavik-2026-je-otvorene/": "2026-10-13T04:56:27.909643+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2057853-pri-nehode-v-zabavnom-parku-v-usa-zahynul-clovek-niekolko-dalsich-bolo-zranenych": "2026-10-13T04:56:27.909648+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2057849-chaos-po-neuspesnej-poprave-pikeovej-pomoc-sa-znacne-oneskorila": "2026-10-13T04:56:27.909651+00:00",
+    "https://www.pravda.sk/spravy/kultura/clanok/2056923-martin-tapak-by-dnes-mal-sto-rokov-v-rodine-mal-aj-popolvara": "2026-10-13T04:56:27.909657+00:00",
+    "https://www.teraz.sk/zahranicie/urady-sa-vyjadrili-k-zadrzaniu-ukrajin/999185-clanok.html": "2026-10-13T04:56:27.909661+00:00",
+    "https://www.teraz.sk/zahranicie/panamu-zasiahlo-dalsie-zemetrasenie/999184-clanok.html": "2026-10-13T04:56:27.909664+00:00",
+    "https://www.teraz.sk/zahranicie/usa-varovali-iran-po-incidente-na-brits/999183-clanok.html": "2026-10-13T04:56:27.909667+00:00",
+    "https://www.teraz.sk/zahranicie/pri-ruskom-udere-zahynuli-v-kyjeve-dve/999182-clanok.html": "2026-10-13T04:56:27.909670+00:00",
+    "https://www.teraz.sk/kultura/kinematografia-si-pripomina-storocnicu/999003-clanok.html": "2026-10-13T04:56:27.909672+00:00",
+    "https://www.teraz.sk/import/utorok-bude-prevazne-polooblacny-na/999022-clanok.html": "2026-10-13T04:56:27.909675+00:00",
+    "https://www.teraz.sk/magazin/koloman-je-disciplinovany/998947-clanok.html": "2026-10-13T04:56:27.909678+00:00",
+    "https://spravy.stvr.sk/2026/10/ranne-teploty-na-severe-slovenska-uz-klesaju-pod-nulu-mesta-sa-pripravuju-na-zimnu-udrzbu-ciest/": "2026-10-13T04:56:27.909681+00:00",
+    "https://news.refresher.sk/213002-Nakupovanie-zo-zahranicnych-e-shopov-sa-moze-predrazit-Od-novembra-ma-pribudnut-novy-poplatok-vo-vyske-2-eur": "2026-10-13T04:56:27.909683+00:00",
+    "https://www.topky.sk/cl/10/9514331/Pomahaju-Slovakom-starat-sa-o-klby--Anna-s-Martinom-predstavuju-novu-vyzivu--ktora-sa-vyraba-u-nas": "2026-10-13T04:56:27.909686+00:00",
+    "https://www.topky.sk/cl/10/9516633/Kauza-Ocistec-pokracuje--Boris-T--vypovedal--prokurator-Santa-hovoril-aj-o-vysetrovani-Vahostavu": "2026-10-13T04:56:27.909689+00:00",
+    "https://www.topky.sk/cl/10/9516623/NEHODA-deti-na-kolobezke--Desatrocny-chlapec-viezol-kamarata--potom-prisiel-strasny-naraz-s-autom": "2026-10-13T04:56:27.909691+00:00",
+    "https://www.aktuality.sk/clanok/0PdpwWO/rusny-utorok-v-politike-vlada-riesi-dobudovanie-jadra-sas-a-kdh-utocia-na-statny-dlh-prehlad-ocakavanych-udalosti/": "2026-10-13T04:56:27.909694+00:00",
+    "https://www.aktuality.sk/clanok/wfm5rvU/bulharsko-ziada-eu-a-nato-o-pomoc-chce-objasnit-dronove-utoky-na-lode-v-ciernom-mori/": "2026-10-13T04:56:27.909697+00:00",
+    "https://www.aktuality.sk/clanok/ZGDZn3k/maso-kazdy-druhy-den-slovensko-je-medzi-styrmi-najhorsimi-krajinami-eu-grafy/": "2026-10-13T04:56:27.909700+00:00",
+    "https://www.aktuality.sk/clanok/SZEoW8i/ake-pocasie-nas-caka-dnes-teploty-vystupia-do-18-stupnov-na-severe-bude-chladnejsie/": "2026-10-13T04:56:27.909702+00:00",
+    "https://www.aktuality.sk/clanok/h4QTuev/grohlingove-slova-o-13-dochodkoch-poburili-koaliciu-chysta-sa-socialny-masaker-alebo-zaznela-neprijemna-pravda/": "2026-10-13T04:56:27.909705+00:00",
+    "https://www.aktuality.sk/clanok/qkxfSjP/coraz-zretelnejsie-vidno-kde-hrozi-rusom-rozhodujuca-porazka-celej-vojny-vsetko-tam-hra-proti-putinovi/": "2026-10-13T04:56:27.909708+00:00",
+    "https://www.aktuality.sk/clanok/uDdAodv/v-staskovskej-skole-sa-vrazdit-nemuselo-nemame-garancie-ze-sa-to-nezopakuje-tvrdi-radovan-branik-videopodcast/": "2026-10-13T04:56:27.909711+00:00",
+    "https://www.topky.sk/cl/1005417/9495805/TEST-OSOBNOSTI-odhali--aky-typ-studenta-si--Odpovedz-uprimne-a-zisti--ako-sa-vyrovnavas-so-skolou": "2026-10-13T04:56:27.909715+00:00",
+    "https://www.topky.sk/cl/10/9490363/Slovaci-prichadzaju-o-roky-zivota-v-zdravi--V-EU-uz-patrime-medzi-NAJHORSICH--odbornici-biju-na-poplach-": "2026-10-13T04:56:27.909718+00:00",
+    "https://www.topky.sk/cl/10/9490271/V-zilinskej-nemocnici-sa-na-konci-leta-ujali-velmi-netradicne-mena--Rodicia-vybrali-Baronku--Millera-ci-Zariyu-": "2026-10-13T04:56:27.909720+00:00",
+    "https://www.topky.sk/cl/10/9492077/Laska-kvitne-aj-v-BASE--Taketo-ZABERY-ste-zrejme-este-nikdy-nevideli--SOBAS-vo-vazenskom-mundure-a-ta-nevesta-": "2026-10-13T04:56:27.909722+00:00",
+    "https://www.topky.sk/cl/10/9492365/Razny-Fico-v-tradicnom-vikendovom-videu--Obvykly-naklad-opozicii-a-pokarhal-HLAS--zakony-na-billboardoch--": "2026-10-13T04:56:27.909725+00:00",
+    "https://www.topky.sk/cl/10/9490295/Mrazive-sekundy--ktore-rozhodli-o-vsetkom--Hrdina-z-tiesnovej-linky-pomohol-zufalej-manzelke--takmer-stratila-muza-": "2026-10-13T04:56:27.909728+00:00",
+    "https://www.topky.sk/cl/10/9492313/Meteorologovia-varuju-pred-mrazom--Teploty-v-noci-klesnu-az-na--3-stupne": "2026-10-13T04:56:27.909731+00:00",
+    "https://www.topky.sk/cl/10/9492295/Takac-potesil-vcelarov--Na-ich-podporu-ministerstvo-vyclenilo-1-2-miliona-eur": "2026-10-13T04:56:27.909734+00:00",
+    "https://www.topky.sk/cl/10/9492173/Slovaci-v-apokalypse-vysokych-cien-za-pohonne-hmoty-opat-vybabrali-so-systemom--Uz-nasli-lacnejsi-variant-": "2026-10-13T04:56:27.909736+00:00",
+    "https://www.topky.sk/cl/10/9492017/CHAOS-v-nemocnicnej-izbe-pod-Tatrami--Opity-chlapec--13--si-na-JIS-ke-z-ruky-vytrhol-vsetko-a-nastala-pohroma-": "2026-10-13T04:56:27.909739+00:00",
+    "https://www.topky.sk/cl/10/9492267/Bankrotove-hrozby-nekoncia--V-dlhovej-PASCI-je-dalsia-firma--mavala-az-1200-odberatelov--teraz-ziada-ochranu-": "2026-10-13T04:56:27.909741+00:00",
+    "https://www.topky.sk/cl/10/9492255/Poziar-domu-si-vyziadal-zraneneho--Skoda-sa-vysplhala-na-300-tisic-eur": "2026-10-13T04:56:27.909744+00:00",
+    "https://www.topky.sk/cl/10/9492239/Takmer-190-priestupkov-za-jediny-den--Policia-odhalila-rychlost--telefony-aj-alkohol": "2026-10-13T04:56:27.909746+00:00",
+    "https://www.topky.sk/cl/10/9492181/Napatie-eskaluje--Blanarovci-sa-pre-KRYM-opreli-do-vystavy-RUSOV-v-Bratislave--s-tymto-nebudeme-suhlasit-": "2026-10-13T04:56:27.909749+00:00",
+    "https://www.topky.sk/cl/10/9492179/Policia-obvinila-muza-z-prechovavania-drog--v-auguste-dostal-podmienku": "2026-10-13T04:56:27.909751+00:00",
+    "https://www.topky.sk/cl/10/9492135/SNS-vyzvala-Tarabu-na-zastavenie-predaja-majetku--aj-hotela-Bobrovnik--Prisla-razna-protireakcia-": "2026-10-13T04:56:27.909754+00:00",
+    "https://www.topky.sk/cl/10/9492101/Seniori-a-casto-chori-ludia--davajte-velky-POZOR--Zasadna-zmena-v-lekarnach--s-tymito-liekmi-sa-rozlucte-": "2026-10-13T04:56:27.909756+00:00",
+    "https://www.topky.sk/cl/10/9489467/Poznate-Slovensko-ako-vlastnu-dlan--Slepa-mapa-okresov-preveri-aj-skutocnych-znalcov--Otestujte-sa-v-KVIZE": "2026-10-13T04:56:27.909759+00:00",
+    "https://www.topky.sk/cl/10/9492089/Ohnive-PEKLO-v-Martine--Nicivy-poziar-strechy-sposobil-skodu-astronomickych-150-tisic-EUR-": "2026-10-13T04:56:27.909762+00:00",
+    "https://www.topky.sk/cl/10/9490811/Milionova-cyklotrasa-na-Zempline-sa-rok-po-otvoreni-doslova-trha--Sokujuce-FOTO--vyzera-ako-po-zemetraseni-": "2026-10-13T04:56:27.909764+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -3916,7 +3959,9 @@
     "04/gb-1-2-930774-iqfpi8su-scaled.jpg": "2026-10-12T22:12:14.746851+00:00",
     "gb-1-2-930774-iqfpi8su-scaled.jpg": "2026-10-12T22:12:14.746851+00:00",
     "10/843117348_1420612753604176_1016431444599712901_n.png-e1791731364777.jpeg": "2026-10-13T03:07:00.095904+00:00",
-    "843117348_1420612753604176_1016431444599712901_n.png-e1791731364777.jpeg": "2026-10-13T03:07:00.095904+00:00"
+    "843117348_1420612753604176_1016431444599712901_n.png-e1791731364777.jpeg": "2026-10-13T03:07:00.095904+00:00",
+    "10/fb-img-1791786457312.jpg": "2026-10-13T04:56:24.902150+00:00",
+    "fb-img-1791786457312.jpg": "2026-10-13T04:56:24.902150+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -3977,14 +4022,10 @@
     "43371fc95b6e2f1f": "2026-10-12T11:33:12.567346+00:00",
     "d0c1465e3cdd1999": "2026-10-12T14:16:42.360078+00:00",
     "374fcd4b2f1d1d0b": "2026-10-12T22:12:14.746851+00:00",
-    "f7db7361cbecd0ec": "2026-10-13T03:07:00.095904+00:00"
+    "f7db7361cbecd0ec": "2026-10-13T03:07:00.095904+00:00",
+    "7774351f17cf1733": "2026-10-13T04:56:24.902150+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9514723/SMUTNA-SPRAVA-Zomrel-VYZNAMNY-architekt--Stal-za-vystavbou-dominanty-Bratislavy",
-      "title": "SMUTNÁ SPRÁVA Zomrel VÝZNAMNÝ architekt: Stál za výstavbou dominanty Bratislavy",
-      "posted_at": "2026-10-10T03:48:21.490132+00:00"
-    },
     {
       "url": "https://bratislavaden.sk/predaj-drog-aj-zanedbane-priestory-bratislavska-mestska-cast-nastartovala-buracie-stroje-a-pokracuje-v-zasahoch/",
       "title": "Predaj drog aj zanedbané priestory? Bratislavská mestská časť naštartovala búracie stroje a pokračuje v zásahoch",
@@ -4064,6 +4105,11 @@
       "url": "https://bratislavaden.sk/policajti-z-bratislavy-pomohli-s-rychlou-prepravou-choreho-chlapceka-do-nemocnice-matka-im-poslala-dojimavy-odkaz/",
       "title": "Policajti z Bratislavy pomohli s rýchlou prepravou chorého chlapčeka do nemocnice. Matka im poslala dojímavý odkaz",
       "posted_at": "2026-10-13T03:07:00.095897+00:00"
+    },
+    {
+      "url": "https://bratislava.zoznam.sk/aktualne-poziar-kamiona-na-d2-v-bratislave-dialnica-do-cr-je-uz-prejazdna-v-jednom-pruhu/",
+      "title": "AKTUÁLNE Požiar kamióna na D2 v Bratislave – diaľnica do ČR je už prejazdná v jednom pruhu",
+      "posted_at": "2026-10-13T04:56:24.902143+00:00"
     }
   ]
 }
