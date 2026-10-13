@@ -1,44 +1,5 @@
 {
   "seen_urls": {
-    "https://www.pravda.sk/spravy/domace/clanok/2049245-ukradol-land-cruiser-priamo-z-pumpy-utek-cez-bratislavu-ukoncila-zrazka-s-autom": "2026-09-29T00:18:00.533007+00:00",
-    "https://www.topky.sk/cl/10/9504391/Slovenska-univerzita-neskryva-HRDOST--Obrovsky-milnik-a-zisk-dolezitej-akreditacie--TATO-fakulta-z-nej-vytazi-": "2026-09-29T00:18:03.533238+00:00",
-    "https://www.topky.sk/cl/10/9478349/Pred-komunalnymi-volbami-HUSTNE-atmosfera--Bookmakeri-uz-vypisali-kurzy-na-kandidatov--napinavy-vychod-": "2026-09-29T00:18:03.533262+00:00",
-    "https://www.topky.sk/cl/10/9480569/Dolezite-projekty-na-zelezniciach-su-hotove--ZSR-potvrdili-splnenie-klucovych-terminov": "2026-09-29T00:18:03.533267+00:00",
-    "https://www.topky.sk/cl/10/9480491/Velky-navrat-po-viac-ako-troch-rokoch--Na-Slovensku-opat-rozbiehaju-vyrobu-hlinika--investuju-100-milionov-eur": "2026-09-29T00:18:03.533271+00:00",
-    "https://www.topky.sk/cl/10/9480409/Taraba-narazil--Sporne-uznesenia-o-narodnych-parkoch-padli--Minister-musel-cuvnut": "2026-09-29T00:18:03.533274+00:00",
-    "https://www.topky.sk/cl/10/9480345/Zdruzenie-vlastnikov-pody-vyzyva-Richarda-Takaca-na-prijatie-stabilizacnych-opatreni": "2026-09-29T00:18:03.533277+00:00",
-    "https://www.aktuality.sk/clanok/6EbWeBC/prehlad-dna-platy-policajtov-koalicny-spor-o-tarabu-a-politicke-boje-doma-aj-v-madarsku/": "2026-09-29T00:18:03.533283+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049287-rezignacia-ci-hlasy-z-trucu-vilagi-spory-v-koalicii-nie-su-dobrym-signalom-pre-volicov-vladnych-stran": "2026-09-29T00:18:03.533287+00:00",
-    "https://www.topky.sk/cl/10/9504659/Tvrdy-a-RAZNY-krok-sudu-pri-SPACKANEJ-milionovej-cyklotrase--Mesto-prehralo-dolezity-spor--co-bude-nasledovat-": "2026-09-29T00:18:03.533292+00:00",
-    "https://www.topky.sk/cl/10/9480397/Velke-problemy-onkologie-v-Trebisove--Nemocnica-nema-lekarov--docasny-KONIEC--Pacienti-musiet-cestovat-inde": "2026-09-29T00:18:03.533295+00:00",
-    "https://www.topky.sk/cl/2005793/9480223/Legendarna-zubacka-oslavuje-130-rokov--Horehronie-a-Gemer-spoji-vynimocna-jazda-parneho-vlaku": "2026-09-29T00:18:03.533298+00:00",
-    "https://www.topky.sk/cl/10/9480443/Slovensko-po-rokoch-opat-vyraba-hlinik--Slovalco-preinvestuje-najmenej-100-milionov--pracu-ziska-cez-200-ludi-": "2026-09-29T00:18:03.533301+00:00",
-    "https://www.aktuality.sk/clanok/OtAiwAb/rusko-planuje-rekordny-obranny-rozpocet-vydavky-na-armadu-stupnu-o-niekolko-percent/": "2026-09-29T00:18:03.533304+00:00",
-    "https://www.aktuality.sk/clanok/re5jA5A/takto-spravne-zamrazite-chlieb-aby-neskor-chutil-ako-cerstvy/": "2026-09-29T00:18:03.533307+00:00",
-    "https://www.aktuality.sk/clanok/cyLXHDR/jasna-a-chladna-noc-na-slovensku-v-udoliach-hrozi-prizemny-mraz-pozor-aj-na-ranne-hmly/": "2026-09-29T00:18:03.533310+00:00",
-    "https://www.aktuality.sk/clanok/Gtk8Daj/slovensko-caka-slnecny-a-teply-utorok-pozor-vsak-na-ranny-prizemny-mraz/": "2026-09-29T00:18:03.533313+00:00",
-    "https://www.aktuality.sk/clanok/VYyTc0g/wadephul-odmieta-dalsie-rokovania-s-ruskom-kym-moskva-neprejavi-ustretovost/": "2026-09-29T00:18:03.533316+00:00",
-    "https://www.aktuality.sk/clanok/0jT7nC1/ruske-utoky-v-kyjeve-zasiahli-akademiu-vied-aj-kliniku-zahynulo-najmenej-sedem-ludi/": "2026-09-29T00:18:03.533319+00:00",
-    "https://www.aktuality.sk/clanok/pCVsddj/rusky-dron-zasiahol-hranicny-priechod-na-ukrajine-len-kusok-od-polska/": "2026-09-29T00:18:03.533323+00:00",
-    "https://www.aktuality.sk/clanok/qW5iahT/krajne-pravicove-narodne-zdruzenie-marine-le-penovej-po-prvykrat-vytvori-vlastny-klub-v-senate/": "2026-09-29T00:18:03.533326+00:00",
-    "https://www.aktuality.sk/clanok/cXewuBS/pat-muzov-zadrzanych-pri-leteckej-zakladni-fairford-prepustia-na-kauciu/": "2026-09-29T00:18:03.533329+00:00",
-    "https://www.aktuality.sk/clanok/CXF9qnF/tri-roky-nonstop-konfliktov-v-koalicii-fico-hovori-o-stabilite-no-krizy-smeru-hlasu-a-sns-nemaju-konca/": "2026-09-29T00:18:03.533333+00:00",
-    "https://www.aktuality.sk/clanok/GfoRacL/moskva-bez-vysvetlenia-prebera-docasnu-spravu-nad-ruskymi-aktivami-retazca-metro/": "2026-09-29T00:18:03.533336+00:00",
-    "https://www.aktuality.sk/clanok/MgxsFo5/v-kosiciach-obvinili-51-rocneho-muza-z-extremizmu-po-zasahu-policie-skoncil-vo-vazbe/": "2026-09-29T00:18:03.533339+00:00",
-    "https://www.aktuality.sk/clanok/5K6WCng/novacikovia-v-eu-bez-prava-veta-brusel-chysta-bic-na-krajiny-ktore-by-chceli-napodobnit-madarsko/": "2026-09-29T00:18:03.533342+00:00",
-    "https://www.aktuality.sk/clanok/o71PHWp/litva-lotyssko-a-estonsko-uvalili-vlastne-sankcie-na-ruskych-oligarchov/": "2026-09-29T00:18:03.533345+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049267-fico-danko-gp": "2026-09-29T00:18:03.533360+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049355-kocner-lexa-bodor-gaspar-rusko-a-mafiani-ficov-poradca-para-zaluje-poslankynu-holeckovu-za-status-ziada-verejne-ospravedlnenie": "2026-09-29T00:18:03.533363+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049343-bitto-ciganikova-nezahlasuje-za-odvolanie-tarabu-neschovavajte-sa-pod-moju-suknu-odkazala-dankovi": "2026-09-29T00:18:03.533366+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049303-zeleznice-pre-incident-z-augusta-posielaju-do-problemovych-vlakov-dalsich-esbeskaro": "2026-09-29T00:18:03.533369+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049215-skody-su-v-stovkach-milionov-eur-financna-sprava-hlasi-rekordne-odhalenia-kriminality": "2026-09-29T00:18:03.533372+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049193-chmelar-fico-hra-vabank-predcasne-volby-su-stale-v-hre-koalicia-sa-dostala-na-hranu": "2026-09-29T00:18:03.533375+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049187-fico-stiahol-navrh-na-odvolanie-tarabu": "2026-09-29T00:18:03.533378+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049139-zilinka-rozhodol-druhym-prokuratorom-kauzy-ocistec-sa-stal-ondrej-repa-vracia-sa-k-celemu-pripadu": "2026-09-29T00:18:03.533381+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049043-danko-kriza-vyzva-tarabovi-vyzva-ficovi": "2026-09-29T00:18:03.533384+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049053-sng-hasi-problem-s-navstevnostou-a-ponuka-vstupy-zadarmo-pre-vsetkych": "2026-09-29T00:18:03.533387+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2049015-sns-vyzyva-tarabu-na-odstupenie-ak-tak-neurobi-v-parlamente-ho-odvola": "2026-09-29T00:18:03.533389+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2046587-napodobnia-vase-telefonne-cislo-a-vyzvanaju-inym-podvodnici-otravuju-slovakov-znamym-trikom": "2026-09-29T00:18:03.533392+00:00",
     "https://www.pravda.sk/spravy/regiony/clanok/2048971-pri-bytovke-v-bratislave-nasli-mrtveho-muza": "2026-09-29T03:42:19.772241+00:00",
     "https://www.topky.sk/cl/10/9504823/Akcna-nahanacka-v-hlavnom-meste--Cudzinec-ukradol-auto-na-pumpe-priamo-pred-ocami-majitela": "2026-09-29T03:42:22.772420+00:00",
     "https://www.topky.sk/cl/10/9480603/V-slovenskej-obci-sa-objavila-tuberkuloza--Vyskyt-pripadov-potvrdili-hygienici": "2026-09-29T03:42:22.772445+00:00",
@@ -3826,7 +3787,16 @@
     "https://www.pravda.sk/spravy/domace/clanok/2057627-policia-si-posvietila-na-slovenskych-vodicov-vysledky-su-zarazajuce-ktory-priestupok-dominoval": "2026-10-12T22:12:17.753233+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2057615-zilina-zeleznice-dopravny-uzol-doprava": "2026-10-12T22:12:17.753235+00:00",
     "https://www.pravda.sk/spravy/domace/clanok/2057597-ocistec-okracuje-podnikatel-trantalic-odmietol-uplatok-prokurator-santa-kritizoval-kovacika": "2026-10-12T22:12:17.753236+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2057259-zdravotnictvo-sasko-rozpocet-asociacia-nemocnic": "2026-10-12T22:12:17.753238+00:00"
+    "https://www.pravda.sk/spravy/domace/clanok/2057259-zdravotnictvo-sasko-rozpocet-asociacia-nemocnic": "2026-10-12T22:12:17.753238+00:00",
+    "https://bratislavaden.sk/policajti-z-bratislavy-pomohli-s-rychlou-prepravou-choreho-chlapceka-do-nemocnice-matka-im-poslala-dojimavy-odkaz/": "2026-10-13T03:07:00.095880+00:00",
+    "https://www.topky.sk/cl/10/9516321/Trojeurove-clo-bol-len-zaciatok--Prichadza-dalsi-POPLATOK-pre-nakupy-z-Ciny--Toto-je-klucovy-datum": "2026-10-13T03:07:03.102129+00:00",
+    "https://www.topky.sk/cl/10/9516683/Do-nemocnic-ma-ist-900-milionov-eur--Minister-predstavil-priority-zdravotnictva-na-buduci-rok": "2026-10-13T03:07:03.102179+00:00",
+    "https://www.topky.sk/cl/10/9516659/Slovensky-dlh-rastie-nekontrolovane--Uroky-stupnu-na-miliardy-uz-buduci-rok": "2026-10-13T03:07:03.102185+00:00",
+    "https://www.topky.sk/cl/10/9516661/Zmluva-za-viac-ako-90-milionov-eur-pod-drobnohladom--Urad-preveri-modernizaciu-Slovensko-sk": "2026-10-13T03:07:03.102188+00:00",
+    "https://www.topky.sk/cl/10/9516645/Zmeny-v-socialnych-sluzbach--Prezident-podpisal-novelu--zariadenia-budu-moct-prijat-viac-ludi": "2026-10-13T03:07:03.102191+00:00",
+    "https://www.topky.sk/cl/10/9516657/Policia-odhalila-takmer-2200-priestupkov--Vodici-najcastejsie-porusovali-TIETO-pravidla": "2026-10-13T03:07:03.102194+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2057605-pomaha-trump-rusku-po-ropnej-dohode-s-putinom-sa-vratila-stara-otazka": "2026-10-13T03:07:03.102199+00:00",
+    "https://www.topky.sk/cl/10/9516675/Vlaky-v-Ziline-sa-vratia-do-bezneho-rezimu--Zmena-nastane-uz-v-utorok-rano": "2026-10-13T03:07:03.102203+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -3944,7 +3914,9 @@
     "img.topky.sk/9055211.jpg": "2026-10-12T14:16:42.360078+00:00",
     "9055211.jpg": "2026-10-12T14:16:42.360078+00:00",
     "04/gb-1-2-930774-iqfpi8su-scaled.jpg": "2026-10-12T22:12:14.746851+00:00",
-    "gb-1-2-930774-iqfpi8su-scaled.jpg": "2026-10-12T22:12:14.746851+00:00"
+    "gb-1-2-930774-iqfpi8su-scaled.jpg": "2026-10-12T22:12:14.746851+00:00",
+    "10/843117348_1420612753604176_1016431444599712901_n.png-e1791731364777.jpeg": "2026-10-13T03:07:00.095904+00:00",
+    "843117348_1420612753604176_1016431444599712901_n.png-e1791731364777.jpeg": "2026-10-13T03:07:00.095904+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -4004,14 +3976,10 @@
     "d0c0c08185410ae6": "2026-10-12T03:44:33.550477+00:00",
     "43371fc95b6e2f1f": "2026-10-12T11:33:12.567346+00:00",
     "d0c1465e3cdd1999": "2026-10-12T14:16:42.360078+00:00",
-    "374fcd4b2f1d1d0b": "2026-10-12T22:12:14.746851+00:00"
+    "374fcd4b2f1d1d0b": "2026-10-12T22:12:14.746851+00:00",
+    "f7db7361cbecd0ec": "2026-10-13T03:07:00.095904+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://refresher.sk/212831-Bratislavsky-Mirror-Bar-sa-umiestnil-v-zozname-50-najlepsich-barov-sveta",
-      "title": "Bratislavský Mirror Bar sa umiestnil v zozname 50 najlepších barov sveta",
-      "posted_at": "2026-10-09T22:50:05.546052+00:00"
-    },
     {
       "url": "https://www.topky.sk/cl/10/9514723/SMUTNA-SPRAVA-Zomrel-VYZNAMNY-architekt--Stal-za-vystavbou-dominanty-Bratislavy",
       "title": "SMUTNÁ SPRÁVA Zomrel VÝZNAMNÝ architekt: Stál za výstavbou dominanty Bratislavy",
@@ -4091,6 +4059,11 @@
       "url": "https://www.startitup.sk/bratislava-predbehla-vieden-prebojovala-sa-do-svetoveho-rebricka-top-30-v-kvalite-zivota/",
       "title": "Bratislava predbehla Viedeň: Prebojovala sa do svetového rebríčka TOP 30 v kvalite života",
       "posted_at": "2026-10-12T22:12:14.746845+00:00"
+    },
+    {
+      "url": "https://bratislavaden.sk/policajti-z-bratislavy-pomohli-s-rychlou-prepravou-choreho-chlapceka-do-nemocnice-matka-im-poslala-dojimavy-odkaz/",
+      "title": "Policajti z Bratislavy pomohli s rýchlou prepravou chorého chlapčeka do nemocnice. Matka im poslala dojímavý odkaz",
+      "posted_at": "2026-10-13T03:07:00.095897+00:00"
     }
   ]
 }
