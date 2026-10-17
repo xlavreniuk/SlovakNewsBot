@@ -1,11 +1,5 @@
 {
   "seen_urls": {
-    "https://bratislava.zoznam.sk/karlova-ves-si-pripomenie-800-rokov-od-smrti-sv-frantiska-z-assisi-chystaju-slavnostnu-omsu-aj-program-na-namesti/": "2026-10-03T21:57:57.131801+00:00",
-    "https://www.startitup.sk/jedla-huba-sa-siri-coraz-blizsie-k-slovensku-povodne-druhy-moze-vytlacat/": "2026-10-03T21:58:00.132109+00:00",
-    "https://www.startitup.sk/rusko-zasiahla-vlna-utokov-medvedov-na-slovensku-hlasia-vyskyt-selmy-aj-pri-obyvanych-oblastiach/": "2026-10-03T21:58:00.132136+00:00",
-    "https://www.aktuality.sk/clanok/p4j8idA/caka-nas-jasna-a-chladna-noc-na-vacsine-uzemia-teploty-klesnu-k-nule/": "2026-10-03T21:58:00.132139+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2052331-po-tragedii-v-staskove-prisli-vyhrazky-riaditelke-matka-utocnika-udajne-skoncila-vo-vazbe": "2026-10-03T21:58:00.132142+00:00",
-    "https://bratislava.zoznam.sk/sest-stran-zaklada-alianciu-krajina-nova-sila-pre-bratislavu-a-kraj-toto-su-ich-plany/": "2026-10-03T21:58:00.132144+00:00",
     "https://www.teraz.sk/regiony/deep-purple-sa-po-rokoch-opat-predstav/997027-clanok.html": "2026-10-04T00:23:16.625301+00:00",
     "https://bratislava.zoznam.sk/vynimocny-ukaz-saturn-bude-v-nedelu-najblizsie-k-zemi/": "2026-10-04T00:23:19.625654+00:00",
     "https://bratislavskykraj.sk/oktobrovy-program-v-ekocentre-cunovo/": "2026-10-04T03:45:25.917380+00:00",
@@ -4640,7 +4634,14 @@
     "https://www.teraz.sk/sport/stolne-tenistky-kukulkova-s-bajorovou/1000643-clanok.html": "2026-10-17T21:22:42.391281+00:00",
     "https://www.startitup.sk/nezabudni-si-nieco-priat-pozostatky-halleyho-komety-prinesu-magicke-divadlo-nepotrebujes-ani-dalekohlad/": "2026-10-17T21:22:42.391307+00:00",
     "https://www.startitup.sk/uroky-na-maximach-za-20-rokov-znama-europska-velmoc-sa-potapa-v-dlhoch-lagardova-bali-kufre/": "2026-10-17T21:22:42.391314+00:00",
-    "https://www.aktuality.sk/clanok/PWckJLk/vychod-slovenska-cakaju-v-nedelu-zrazky-na-severe-bude-chladnejsie/": "2026-10-17T21:22:42.391322+00:00"
+    "https://www.aktuality.sk/clanok/PWckJLk/vychod-slovenska-cakaju-v-nedelu-zrazky-na-severe-bude-chladnejsie/": "2026-10-17T21:22:42.391322+00:00",
+    "https://www.topky.sk/cl/10/9518219/Zimne-ci-celorocne-pneumatiky--Nezavisle-testy-ukazali--ktore-modely-uspeli-najviac": "2026-10-17T23:17:48.916401+00:00",
+    "https://www.pravda.sk/vat/technologie/clanok/2060313-priblbly-sprievodca-slovnikom-slovenciny-top-10-slov-pri-ktorych-cudzinci-kolabuju-a-my-sa-uskrname": "2026-10-17T23:17:51.924070+00:00",
+    "https://www.pravda.sk/spravy/inzercia/clanok/2060025-prepojena-kuchyna-s-obyvackou-ako-zjednotit-dizajn-celeho-interieru": "2026-10-17T23:17:51.924098+00:00",
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2060285-kapitulik-nemocnice-su-pre-mna-nedotknutelne-co-dalsie-slubuje-kandidat-na-zupana": "2026-10-17T23:17:51.924102+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2060215-tajomny-nalez-na-dne-rieky-ozivil-janosika-pod-hladinou-kysuce-sa-ukryval-300-rocny-most-prekvapil-aj-historikov": "2026-10-17T23:17:51.924104+00:00",
+    "https://www.pravda.sk/spravy/ekonomika/clanok/2060441-slovaci-pred-volbami-vo-velkom-vyplnaju-tikety-kolko-vam-zarobi-vitazstvo-valla-raza-ci-basku": "2026-10-17T23:17:51.924107+00:00",
+    "https://www.topky.sk/cl/10/9495779/Prisla-vam-vyzva-za-nevyzdvihnuty-balik--Pozor--nemusite-automaticky-platit-pozadovanu-sumu": "2026-10-17T23:17:51.924113+00:00"
   },
   "seen_images": {
     "2539261/prevrateny-kamion-na-d1.jpg": "2026-10-04T14:47:14.696898+00:00",
@@ -4830,7 +4831,9 @@
     "socialmedia/9b7a018dbca21296a5bce73cbc54507720ac6ead.jpg": "2026-10-17T19:00:14.436386+00:00",
     "9b7a018dbca21296a5bce73cbc54507720ac6ead.jpg": "2026-10-17T19:00:14.436386+00:00",
     "socialmedia/0c3afc6333c0b086e2229532169410fbbba27882.jpg": "2026-10-17T21:22:39.382763+00:00",
-    "0c3afc6333c0b086e2229532169410fbbba27882.jpg": "2026-10-17T21:22:39.382763+00:00"
+    "0c3afc6333c0b086e2229532169410fbbba27882.jpg": "2026-10-17T21:22:39.382763+00:00",
+    "img.topky.sk/9056973.jpg": "2026-10-17T23:17:48.916428+00:00",
+    "9056973.jpg": "2026-10-17T23:17:48.916428+00:00"
   },
   "seen_hashes": {
     "90616464e5e7cd9a": "2026-10-04T14:47:14.696898+00:00",
@@ -4926,14 +4929,10 @@
     "9d262f9bc2cda432": "2026-10-17T13:50:52.899043+00:00",
     "1f862525758f8e27": "2026-10-17T16:49:12.098012+00:00",
     "73448696960d2194": "2026-10-17T19:00:14.436386+00:00",
-    "2f5757251731fb3e": "2026-10-17T21:22:39.382763+00:00"
+    "2f5757251731fb3e": "2026-10-17T21:22:39.382763+00:00",
+    "72e3c188869abfb9": "2026-10-17T23:17:48.916428+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://bratislavaden.sk/video-neznamy-muz-nebezpecne-zdrziaval-elektricku-v-centre-bratislavy-a-zmizol-policia-hlada-muza-z-videa/",
-      "title": "VIDEO: Neznámy muž nebezpečne zdržiaval električku v centre Bratislavy a zmizol. Polícia hľadá muža z videa",
-      "posted_at": "2026-10-14T22:59:36.415379+00:00"
-    },
     {
       "url": "https://www.teraz.sk/regiony/v-bratislave-a-okoli-sa-tvoria-kolony/999801-clanok.html",
       "title": "V Bratislave a okolí sa tvoria kolóny, vodiči si postoja aj 40 minút",
@@ -5023,6 +5022,11 @@
       "url": "https://www.teraz.sk/sport/vk-slovan-bratislava-zdolal-rieker-ujs-k/1000646-clanok.html",
       "title": "VK Slovan Bratislava zdolal Rieker UJS Komárno 3:1",
       "posted_at": "2026-10-17T21:22:39.382756+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9518219/Zimne-ci-celorocne-pneumatiky--Nezavisle-testy-ukazali--ktore-modely-uspeli-najviac",
+      "title": "Zimné či celoročné pneumatiky? Nezávislé testy ukázali, ktoré modely uspeli najviac",
+      "posted_at": "2026-10-17T23:17:48.916420+00:00"
     }
   ]
 }
