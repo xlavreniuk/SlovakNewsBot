@@ -4711,7 +4711,8 @@
     "https://refresher.sk/213512-Zoo-Bratislava-privitala-osem-dzelad-Prezyvaju-ich-opice-s-krvacajucim-srdcom": "2026-10-19T00:20:53.582823+00:00",
     "https://www.topky.sk/cl/10/9533319/Ste-v-obraze--Otestujte-svoje-vedomosti-v-nasom--KVIZE-o-top-udalostiach-minuleho-tyzdna-": "2026-10-19T00:20:56.739607+00:00",
     "https://www.pravda.sk/spravy/inzercia/clanok/2060027-sudne-preklady-firemnych-dokumentov-v-bratislave-rychlo-a-spolahlivo": "2026-10-19T00:20:56.739636+00:00",
-    "https://spravy.stvr.sk/2026/10/v-minulosti-ich-boli-stovky-ostalo-ich-len-par-vyse-storocny-sennik-pri-vychodnej-zachranuju-dobrovolnici/": "2026-10-19T00:20:56.739640+00:00"
+    "https://spravy.stvr.sk/2026/10/v-minulosti-ich-boli-stovky-ostalo-ich-len-par-vyse-storocny-sennik-pri-vychodnej-zachranuju-dobrovolnici/": "2026-10-19T00:20:56.739640+00:00",
+    "https://www.pravda.sk/spravy/inzercia/clanok/2060007-pod-slavinom-oziva-mint-nova-restauracia-v-hoteli-albrecht": "2026-10-19T02:46:01.379040+00:00"
   },
   "seen_images": {
     "05/672330167_1269653305362100_1866821522371042856_n.jpg": "2026-10-05T11:05:23.649629+00:00",
@@ -4897,7 +4898,11 @@
     "10/zmijovec-1x1-highres.jpg": "2026-10-18T22:11:45.943947+00:00",
     "zmijovec-1x1-highres.jpg": "2026-10-18T22:11:45.943947+00:00",
     "article/zoo-bratislava-privitala-osem-dzelad-prezyvaju-ich-opice-s-krvacajucim-srdcom~a0d0tkpfakj9dphv.jpg": "2026-10-19T00:20:53.582848+00:00",
-    "zoo-bratislava-privitala-osem-dzelad-prezyvaju-ich-opice-s-krvacajucim-srdcom~a0d0tkpfakj9dphv.jpg": "2026-10-19T00:20:53.582848+00:00"
+    "zoo-bratislava-privitala-osem-dzelad-prezyvaju-ich-opice-s-krvacajucim-srdcom~a0d0tkpfakj9dphv.jpg": "2026-10-19T00:20:53.582848+00:00",
+    "2546813/mint-albrecht.jpg": "2026-10-19T02:46:01.379063+00:00",
+    "mint-albrecht.jpg": "2026-10-19T02:46:01.379063+00:00",
+    "2546817/mint-albrecht-01.jpg": "2026-10-19T02:46:01.379103+00:00",
+    "mint-albrecht-01.jpg": "2026-10-19T02:46:01.379103+00:00"
   },
   "seen_hashes": {
     "63334a4e86f6b69e": "2026-10-05T11:05:23.649629+00:00",
@@ -4991,14 +4996,11 @@
     "2bd9b076efddfdf5": "2026-10-18T17:28:12.847490+00:00",
     "db4a67e18cec5afe": "2026-10-18T19:33:33.992420+00:00",
     "359fcd6cac2cc635": "2026-10-18T22:11:45.943947+00:00",
-    "0b6b63e4e4cecece": "2026-10-19T00:20:53.582848+00:00"
+    "0b6b63e4e4cecece": "2026-10-19T00:20:53.582848+00:00",
+    "b012911d0d5a464b": "2026-10-19T02:46:01.379063+00:00",
+    "37bf9fdf6f3ebc18": "2026-10-19T02:46:01.379103+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.pravda.sk/spravy/domace/clanok/2059417-bratislava-putac-kfc-slavin-pamatnik-reklama",
-      "title": "Obrovská reklama narúša pohľad na Slavín, upozorňuje fotograf. Obáva sa aj o bezpečnosť chodcov",
-      "posted_at": "2026-10-16T02:39:34.535471+00:00"
-    },
     {
       "url": "https://news.refresher.sk/213350-Utok-na-mladu-sestru-na-bratislavskych-Kramaroch-Prokurator-ziada-pre-opiteho-Rakusana-vazbu",
       "title": "Útok na mladú sestru na bratislavských Kramároch: Prokurátor žiada pre opitého Rakúšana väzbu",
@@ -5098,6 +5100,11 @@
       "url": "https://refresher.sk/213512-Zoo-Bratislava-privitala-osem-dzelad-Prezyvaju-ich-opice-s-krvacajucim-srdcom",
       "title": "Zoo Bratislava privítala osem dželád. Prezývajú ich opice s krvácajúcim srdcom ❤️",
       "posted_at": "2026-10-19T00:20:53.582841+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/inzercia/clanok/2060007-pod-slavinom-oziva-mint-nova-restauracia-v-hoteli-albrecht",
+      "title": "Pod Slavínom ožíva MINT: Nová reštaurácia v hoteli Albrecht",
+      "posted_at": "2026-10-19T02:46:01.379055+00:00"
     }
   ]
 }
