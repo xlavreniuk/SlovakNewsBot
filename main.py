@@ -54,6 +54,16 @@ def parse_args():
     return parser.parse_args()
 
 
+def register_failure(state: StateManager, art: Article, max_attempts: int) -> None:
+    """Counts a failed attempt; after max_attempts the story is marked seen so it stops being retried every run."""
+    attempts = state.record_failure(art.url)
+    if attempts >= max_attempts:
+        logger.warning("Giving up on '%s' after %d failed attempts.", art.title, attempts)
+        state.mark_seen(art.url)
+    else:
+        logger.info("Will retry '%s' in a later run (attempt %d/%d).", art.title, attempts, max_attempts)
+
+
 def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
     logger.info("Starting News Bot pipeline for country: %s", config.country)
     logger.info("Content theme: '%s'", config.content_theme)
@@ -272,6 +282,8 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
 
         if not post:
             logger.warning("Post generation or factual validation failed for '%s'. Trying next candidate.", art.title)
+            if not dry_run:
+                register_failure(state, art, config.settings.max_post_attempts)
             continue
 
         if dry_run:
@@ -304,6 +316,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False) -> None:
                 time.sleep(config.settings.post_delay_seconds)
             else:
                 logger.error("Failed to post story to channel: '%s'", art.title)
+                register_failure(state, art, config.settings.max_post_attempts)
 
     # 7. State management: Mark seen for rejected, stale, paywalled, thin, and non-target articles.
     if not dry_run:

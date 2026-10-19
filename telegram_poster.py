@@ -19,6 +19,8 @@ class TelegramPoster:
         self.channel_id = channel_id
         self.timeout = timeout
         self.base_url = f"https://api.telegram.org/bot{self.bot_token}"
+        self.parse_mode: Optional[str] = "HTML"
+        self._parse_error = False
 
     def post(
         self,
@@ -33,7 +35,37 @@ class TelegramPoster:
         If require_image is True, it MUST succeed as photo/album, and will NEVER fall back to plain text.
         """
         clean_caption = self._sanitize_html(caption)
+        self.parse_mode = "HTML"
+        self._parse_error = False
+        if self._post_once(clean_caption, image_url, image_urls, require_image):
+            return True
+        if self._parse_error:
+            # Telegram rejected the HTML entities: resend once as plain text instead of losing the story
+            logger.warning("Telegram could not parse caption HTML. Retrying with plain-text caption...")
+            self.parse_mode = None
+            plain_caption = html.unescape(re.sub(r"<[^>]+>", "", clean_caption))
+            try:
+                return self._post_once(plain_caption, image_url, image_urls, require_image)
+            finally:
+                self.parse_mode = "HTML"
+        return False
 
+    def _note_error(self, description: Optional[str]) -> None:
+        if description and "can't parse entities" in description.lower():
+            self._parse_error = True
+
+    def _with_parse_mode(self, payload: dict) -> dict:
+        if self.parse_mode:
+            payload["parse_mode"] = self.parse_mode
+        return payload
+
+    def _post_once(
+        self,
+        clean_caption: str,
+        image_url: Optional[str],
+        image_urls: Optional[List[str]],
+        require_image: bool
+    ) -> bool:
         # Consolidate candidate image URLs
         all_images: List[str] = []
         if image_urls:
@@ -115,11 +147,10 @@ class TelegramPoster:
         if prep:
             filename, upload_bytes, mime_type = prep
             files = {"photo": (filename, upload_bytes, mime_type)}
-            data = {
+            data = self._with_parse_mode({
                 "chat_id": self.channel_id,
-                "caption": caption,
-                "parse_mode": "HTML"
-            }
+                "caption": caption
+            })
             try:
                 resp = requests.post(url, data=data, files=files, timeout=self.timeout)
                 res_data = resp.json()
@@ -127,16 +158,18 @@ class TelegramPoster:
                     logger.info("Successfully uploaded and posted photo message to %s", self.channel_id)
                     return True
                 logger.warning("Telegram sendPhoto upload error (%d): %s", resp.status_code, res_data.get("description"))
+                self._note_error(res_data.get("description"))
+                if self._parse_error:
+                    return False
             except Exception as e:
                 logger.warning("Exception during photo upload: %s", e)
 
         # Fallback to direct URL if upload failed
-        payload = {
+        payload = self._with_parse_mode({
             "chat_id": self.channel_id,
             "photo": photo_url,
-            "caption": caption,
-            "parse_mode": "HTML"
-        }
+            "caption": caption
+        })
         try:
             resp = requests.post(url, json=payload, timeout=self.timeout)
             data = resp.json()
@@ -144,6 +177,7 @@ class TelegramPoster:
                 logger.info("Successfully posted photo message via URL to %s", self.channel_id)
                 return True
             logger.warning("Telegram sendPhoto URL error (%d): %s", resp.status_code, data.get("description"))
+            self._note_error(data.get("description"))
         except Exception as e:
             logger.warning("Network exception during sendPhoto: %s", e)
         return False
@@ -171,7 +205,7 @@ class TelegramPoster:
             }
             if idx == 0:
                 item["caption"] = caption
-                item["parse_mode"] = "HTML"
+                self._with_parse_mode(item)
             media.append(item)
             files[attach_id] = (filename, upload_bytes, mime_type)
 
@@ -187,6 +221,7 @@ class TelegramPoster:
                 logger.info("Successfully uploaded and posted %d-photo album to %s", len(prepared), self.channel_id)
                 return True
             logger.warning("Telegram sendMediaGroup error (%d): %s", resp.status_code, res_data.get("description"))
+            self._note_error(res_data.get("description"))
         except Exception as e:
             logger.warning("Exception during sendMediaGroup: %s", e)
 

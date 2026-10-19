@@ -354,35 +354,78 @@ class NewsScraper:
         parts = clean.split("/")
         return parts[-1] if parts else clean
 
-    def _extract_page_text(self, soup: BeautifulSoup) -> Tuple[Optional[str], bool]:
+    PAYWALL_SELECTORS = (
+        ".c-locked-article, .paywall, .piano-article, .spoplatnene, "
+        "[class*='locked'], [class*='paywall'], [class*='piano'], .article-locked, #paywall"
+    )
+
+    CONTENT_CONTAINER_SELECTORS = (
+        "article, [itemprop='articleBody'], .article-body, .article__content, "
+        ".entry-content, .post-content, .detail-text, .detail_text, .c-article-content, .text-content, "
+        ".article-content, .c-content, .article__body, .c-article__body, .story-body, .c-article"
+    )
+
+    @staticmethod
+    def _schema_free_access(soup: BeautifulSoup) -> Optional[bool]:
+        """
+        Reads schema.org `isAccessibleForFree` from JSON-LD (the standard paywall markup Google requires).
+        Returns True/False when the page declares it, None when it does not.
+        """
+        flags: List[bool] = []
+
+        def walk(obj) -> None:
+            if isinstance(obj, dict):
+                val = obj.get("isAccessibleForFree")
+                if isinstance(val, bool):
+                    flags.append(val)
+                elif isinstance(val, str) and val.strip().lower() in ("true", "false"):
+                    flags.append(val.strip().lower() == "true")
+                for v in obj.values():
+                    walk(v)
+            elif isinstance(obj, list):
+                for v in obj:
+                    walk(v)
+
+        for script in soup.find_all("script", type="application/ld+json"):
+            try:
+                walk(json.loads(script.string or ""))
+            except Exception:
+                continue
+        if not flags:
+            return None
+        # Any explicit "not free" declaration wins
+        return all(flags)
+
+    def _paragraph_texts(self, container) -> List[str]:
+        texts = []
+        for p in container.find_all("p"):
+            # Malformed markup (e.g. Pravda) nests <p> inside <p>; the outer one already holds the text
+            if p.find_parent("p"):
+                continue
+            p_text = self._clean_text(p.get_text())
+            if len(p_text) >= 25:
+                texts.append(p_text)
+        return texts
+
+    def _extract_page_text(self, soup: BeautifulSoup, paywall_hint: bool = False) -> Tuple[Optional[str], bool]:
         """
         Extracts verified factual paragraphs from article webpage.
-        Detects paywalled articles and filters out promo boilerplate.
+        Expects navigation/related/promo blocks to be already decomposed from `soup`.
+        `paywall_hint` is the result of the paywall CSS-selector check run before decomposition.
         """
-        is_paywalled = False
+        is_paywalled = paywall_hint
 
-        # 1. Check known paywall class indicators
-        paywall_selectors = [
-            ".c-locked-article", ".paywall", ".piano-article", ".spoplatnene",
-            "[class*='locked']", "[class*='paywall']", "[class*='piano']",
-            ".article-locked", "#paywall"
-        ]
-        if soup.select(", ".join(paywall_selectors)):
-            is_paywalled = True
-
-        # 2. Select main content container
-        content_containers = soup.select(
-            "article, [itemprop='articleBody'], .article-body, .article__content, "
-            ".entry-content, .post-content, .detail-text, .detail_text, .c-article-content, .text-content, "
-            ".article-content, .c-content, .article__body, .c-article__body, .story-body, .c-article"
-        )
-        container = content_containers[0] if content_containers else soup
+        # Pick the container holding the most paragraph text; the first match is often a teaser tile
+        content_containers = soup.select(self.CONTENT_CONTAINER_SELECTORS)
+        container = soup
+        if content_containers:
+            container = max(
+                content_containers,
+                key=lambda c: sum(len(t) for t in self._paragraph_texts(c))
+            )
 
         paragraphs: List[str] = []
-        for p in container.find_all("p"):
-            p_text = self._clean_text(p.get_text())
-            if len(p_text) < 25:
-                continue
+        for p_text in self._paragraph_texts(container):
             if any(pat.search(p_text) for pat in self.PAYWALL_PATTERNS):
                 is_paywalled = True
                 break
@@ -423,7 +466,9 @@ class NewsScraper:
                 return lead_candidates, gallery_candidates, page_date_str, page_date_ts, page_full_text, is_paywalled, has_genuine_gallery
 
             soup = BeautifulSoup(resp.content, "html.parser")
-            page_full_text, is_paywalled = self._extract_page_text(soup)
+            # Paywall signals are read before promo/related blocks get decomposed below
+            schema_free = self._schema_free_access(soup)
+            paywall_hint = bool(soup.select(self.PAYWALL_SELECTORS))
 
             # Extract page publication date from HTML metadata if present
             for attr in [
@@ -529,12 +574,21 @@ class NewsScraper:
 
             # Decompose irrelevant navigation, sidebar, footer, side articles, and promo/read-more boxes
             for unwanted in soup.select(
-                "nav, footer, header, aside, .sidebar, .widget, .comments, .related, .recommended, "
+                "nav, footer, header, aside, dialog, .sidebar, .widget, .comments, .related, .recommended, "
                 ".menu, .ad, .advertisement, .most-read, .footer, article.article--side, .detail_text_item_readmore, "
                 ".detail_related_list, [class*='readmore'], [class*='read-more'], [class*='related'], "
                 "[class*='promo'], [class*='recommend'], [class*='najcitanejsie']"
             ):
                 unwanted.decompose()
+
+            # Extract body text only after sidebars/related/promo boxes are gone,
+            # so other articles' paragraphs never reach the copywriter prompt
+            page_full_text, is_paywalled = self._extract_page_text(soup, paywall_hint=paywall_hint)
+            if schema_free is not None:
+                # Explicit schema.org declaration overrides class-name and phrase heuristics
+                is_paywalled = not schema_free
+                if is_paywalled:
+                    page_full_text = None
 
             # 4. Check for genuine event photo gallery containers (STRICTLY dedicated galleries)
             gallery_containers = soup.select(

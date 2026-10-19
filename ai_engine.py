@@ -1,14 +1,23 @@
+import html
 import json
 import logging
 import re
 import time
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
+from zoneinfo import ZoneInfo
 import requests
 from config import AppConfig
 from scraper import Article
 
 logger = logging.getLogger(__name__)
+
+# Tags Telegram's HTML parse mode accepts that we keep in captions (with an optional quoted href)
+TELEGRAM_TAG_RE = re.compile(
+    r"(</?(?:b|strong|i|em|u|ins|s|strike|del|a)(?:\s+href=\"[^\"]*\"|\s+href='[^']*')?\s*/?>)",
+    re.IGNORECASE
+)
 
 
 class AIUnavailableError(Exception):
@@ -40,6 +49,20 @@ class AIEngine:
         self.active_model = self.candidate_models[0]
         self.temperature = config.ai.temperature
         self.batch_size = config.ai.batch_size
+        self.tz = ZoneInfo(config.timezone)
+
+    def _local_dt(self, ts: Optional[float] = None) -> datetime:
+        return datetime.fromtimestamp(ts if ts is not None else time.time(), tz=timezone.utc).astimezone(self.tz)
+
+    def _now_text(self) -> str:
+        """Current local date/time, so the model can judge 'today' vs 'yesterday' and freshness."""
+        return self._local_dt().strftime(f"%A, %Y-%m-%d %H:%M ({self.config.timezone})")
+
+    def _published_text(self, article: Article) -> str:
+        """Publication time normalized to local time; falls back to the raw feed string."""
+        if article.published_timestamp is not None:
+            return self._local_dt(article.published_timestamp).strftime("%A, %Y-%m-%d %H:%M")
+        return article.published_at or "Unknown"
 
     def evaluate_batch(
         self,
@@ -168,7 +191,7 @@ class AIEngine:
             return False, "Detected template placeholder leak in output"
 
         # 2. Check for minimum substance
-        clean_text = re.sub(r'<[^>]+>', '', generated_text).strip()
+        clean_text = html.unescape(re.sub(r'<[^>]+>', '', generated_text)).strip()
         if len(clean_text) < 50:
             return False, "Generated post is too brief or empty"
 
@@ -203,10 +226,10 @@ class AIEngine:
         """Constructs footer with original source link and channel branding link."""
         footer_parts = []
         if self.config.output.include_source_link and article.url:
-            footer_parts.append(f'<a href="{article.url}">{article.source_name}</a>')
+            footer_parts.append(f'<a href="{html.escape(article.url)}">{html.escape(article.source_name, quote=False)}</a>')
         if self.config.output.channel_link:
             name = self.config.output.channel_name or "Братислава"
-            footer_parts.append(f'<a href="{self.config.output.channel_link}">{name}</a>')
+            footer_parts.append(f'<a href="{html.escape(self.config.output.channel_link)}">{html.escape(name, quote=False)}</a>')
         return " | ".join(footer_parts)
 
     @staticmethod
@@ -256,7 +279,15 @@ class AIEngine:
         # Telegram only allows: b, strong, i, em, u, ins, s, strike, del, span, tg-spoiler, a, tg-emoji, code, pre
         allowed = r"</?(?:b|strong|i|em|u|ins|s|strike|del|a)(?:\s+href=[\"'][^\"']*[\"'])?\s*/?>"
         # Remove any other HTML tag
-        clean = re.sub(r"<[^>]+>", lambda m: m.group(0) if re.match(allowed, m.group(0), re.IGNORECASE) else "", text)
+        # Only things shaped like tags count as tags, so text such as "<5 km" survives (and is escaped below)
+        clean = re.sub(r"</?[a-zA-Z][^<>]*>", lambda m: m.group(0) if re.match(allowed, m.group(0), re.IGNORECASE) else "", text)
+        # Escape stray &, <, > in text (e.g. "AT&T", "<5 km") so Telegram can parse the entities;
+        # unescape first so entities the model already wrote are not double-escaped
+        parts = TELEGRAM_TAG_RE.split(clean)
+        clean = "".join(
+            part if i % 2 else html.escape(html.unescape(part), quote=False)
+            for i, part in enumerate(parts)
+        )
         # Collapse excessive newlines
         clean = re.sub(r"\n{3,}", "\n\n", clean).strip()
         return clean
@@ -349,7 +380,9 @@ class AIEngine:
         snippet = article.summary[:200] if article.summary else ""
         return f"""You are an editorial assistant for a Telegram channel dedicated EXCLUSIVELY to BRATISLAVA, Slovakia.
 Channel theme: "{self.config.content_theme}"
+Current local date and time: {self._now_text()}
 
+Published: {self._published_text(article)}
 Title: {article.title}
 Summary: {snippet}
 
@@ -371,7 +404,7 @@ Respond with valid JSON:
         articles_formatted = []
         for idx, a in enumerate(articles):
             snippet = a.summary[:200] if a.summary else ""
-            pub = a.published_at or "Recently"
+            pub = self._published_text(a)
             articles_formatted.append(
                 f"ID: {idx}\nSource: {a.source_name}\nPublished: {pub}\nTitle: {a.title}\nSummary: {snippet}"
             )
@@ -386,6 +419,9 @@ Respond with valid JSON:
         return f"""You are an editorial assistant for a Telegram channel dedicated EXCLUSIVELY to BRATISLAVA, Slovakia.
 Channel theme:
 "{self.config.content_theme}"
+
+CURRENT LOCAL DATE AND TIME: {self._now_text()}
+(All "Published" times below are in the same local time zone.)
 
 STRICT LOCATION REQUIREMENT - BRATISLAVA ONLY:
 1. The incident/event ITSELF MUST physically take place in Bratislava or its immediate boroughs/districts (Staré Mesto, Petržalka, Ružinov, Nové Mesto, Rača, Dúbravka, Karlova Ves, Devín, Devínska Nová Ves, Vrakuňa, Podunajské Biskupice, Lamač, Záhorská Bystrica, Vajnory, Jarovce, Rusovce, Čunovo, Pezinok, Senec, Malacky).
@@ -433,10 +469,12 @@ Respond STRICTLY with a valid JSON array of objects:
         return f"""You are a professional copywriter for a Telegram news channel dedicated EXCLUSIVELY to BRATISLAVA.
 Adapt this Bratislava news article into natural, flawless {self.config.output.target_language}.
 
+CURRENT LOCAL DATE AND TIME: {self._now_text()}
+
 VERIFIED SOURCE ARTICLE (READ CAREFULLY):
 Source: {article.source_name}
 Title: {article.title}
-Published: {article.published_at or 'Recently'}
+Published (local time): {self._published_text(article)}
 Text:
 {source_content}
 
@@ -480,9 +518,10 @@ CRITICAL ZERO-HALLUCINATION & FACTUAL PRECISION RULES:
      * 'záchranári' -> 'медики' or 'лікарі швидкої'
    - Eliminate any literal Slovakisms or calques. Maintain Ukrainian phonetic euphony (чергування у/в, і/й).
 8. TEMPORAL GROUNDING:
-   - Check the publication time ({article.published_at or 'recently'}).
+   - Compare the publication time ({self._published_text(article)}) and any day mentioned in the text with the CURRENT LOCAL DATE AND TIME above.
    - If the event occurred on a specific day or time (e.g. 'у середу', 'у п'ятницю вранці', 'цими вихідними'), state it accurately.
-   - Do NOT say 'сьогодні' if the story happened yesterday or earlier.
+   - Relative words in the source ('dnes', 'včera', 'zajtra') refer to the PUBLICATION date, not to now: re-anchor them to the current date.
+   - Say 'сьогодні' only if the event happens on the current local date; never if it happened yesterday or earlier.
 9. EMOJI RULE:
    - Use at most ONE relevant emoji in the entire post (e.g. 📍, 🏛️, 🚗, ⚠️ at the start of the headline, or no emoji).
    - Never use multiple emojis or informal emoji clutter.
@@ -504,10 +543,24 @@ Return STRICTLY a JSON object with this structure:
         if allowed_body <= 50:
             return caption[:max_len]
 
-        # Strip html tags before slicing to avoid malformed HTML
-        clean = re.sub(r"<[^>]+>", "", caption)
-        trimmed = clean[:allowed_body] + "..."
-        return f"<b>{trimmed}</b>{footer_tag}"
+        body = caption[:-len(footer_tag)] if footer_tag and caption.endswith(footer_tag) else caption
+
+        # Keep the bold headline intact, then trim the rest as plain text so no tag or entity gets cut in half
+        headline = ""
+        m = re.match(r"\s*<b>(.*?)</b>", body, re.DOTALL)
+        if m and len(m.group(0)) < allowed_body // 2:
+            headline = m.group(0).strip()
+            body = body[m.end():]
+        clean = html.unescape(re.sub(r"<[^>]+>", "", body)).strip()
+        budget = allowed_body - len(headline) - 2
+        cut = budget
+        trimmed = html.escape(clean[:cut].rstrip(), quote=False) + "..."
+        # Escaping lengthens text ("&" -> "&amp;"), so shrink until the escaped body fits
+        while len(trimmed) > budget and cut > 0:
+            cut -= len(trimmed) - budget
+            trimmed = html.escape(clean[:max(cut, 0)].rstrip(), quote=False) + "..."
+        result = f"{headline}\n\n{trimmed}" if headline else trimmed
+        return f"{result}{footer_tag}"
 
     @staticmethod
     def _parse_json_safe(text: str) -> Optional[Any]:

@@ -43,6 +43,7 @@ class SettingsConfig:
     min_image_width: int = 600
     min_image_height: int = 350
     history_retention_days: int = 14
+    max_post_attempts: int = 3
     post_delay_seconds: int = 3
     request_timeout_seconds: int = 15
 
@@ -53,6 +54,7 @@ class AppConfig:
     source_language: str
     content_theme: str
     min_score: int
+    timezone: str
     output: OutputConfig
     ai: AIConfig
     sources: List[SourceConfig]
@@ -131,6 +133,7 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         min_image_width=int(settings_data.get("min_image_width", 600)),
         min_image_height=int(settings_data.get("min_image_height", 350)),
         history_retention_days=int(settings_data.get("history_retention_days", 14)),
+        max_post_attempts=int(settings_data.get("max_post_attempts", 3)),
         post_delay_seconds=int(settings_data.get("post_delay_seconds", 3)),
         request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15))
     )
@@ -140,6 +143,7 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         source_language=data.get("source_language", "Slovak"),
         content_theme=data.get("content_theme", "crazy tabloid news"),
         min_score=int(data.get("min_score", 7)),
+        timezone=data.get("timezone", "Europe/Bratislava"),
         output=output_cfg,
         ai=ai_cfg,
         sources=sources_list,

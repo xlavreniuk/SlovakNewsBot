@@ -17,6 +17,7 @@ class StateManager:
         self.seen_images: Dict[str, str] = {}  # canonical image key -> ISO timestamp
         self.seen_hashes: Dict[str, str] = {}  # 16-hex perceptual dHash -> ISO timestamp
         self.recent_posts: List[Dict[str, str]] = []  # list of {url, title, posted_at}
+        self.failed_attempts: Dict[str, Dict] = {}  # url -> {count, last_failed_at}
         self._dirty = False
         self.load()
 
@@ -42,6 +43,7 @@ class StateManager:
                 self.seen_images = data.get("seen_images", {})
                 self.seen_hashes = data.get("seen_hashes", {})
                 self.recent_posts = data.get("recent_posts", [])
+                self.failed_attempts = data.get("failed_attempts", {})
             else:
                 logger.warning("Unrecognized format in %s, resetting state.", self.filepath)
                 self.seen_urls = {}
@@ -76,12 +78,23 @@ class StateManager:
         """Records a successfully posted story to avoid cross-source duplicate reporting."""
         clean_url = self._canonicalize_url(url)
         self.mark_seen(clean_url)
+        self.failed_attempts.pop(clean_url, None)
         self.recent_posts.append({
             "url": clean_url,
             "title": title.strip(),
             "posted_at": datetime.now(timezone.utc).isoformat()
         })
         self._dirty = True
+
+    def record_failure(self, url: str) -> int:
+        """Counts a failed generation/posting attempt for a story. Returns the total attempts so far."""
+        clean_url = self._canonicalize_url(url)
+        entry = self.failed_attempts.get(clean_url, {"count": 0})
+        entry["count"] = int(entry.get("count", 0)) + 1
+        entry["last_failed_at"] = datetime.now(timezone.utc).isoformat()
+        self.failed_attempts[clean_url] = entry
+        self._dirty = True
+        return entry["count"]
 
     def get_recent_posted_titles(self, hours: int = 48) -> List[str]:
         """Returns titles of stories posted within the given hour window for semantic deduplication."""
@@ -176,6 +189,24 @@ class StateManager:
             self._dirty = True
             logger.info("Pruned %d stale hashes from state.", initial_seen_hashes_count - len(self.seen_hashes))
 
+        # Prune failed_attempts (drop entries for stories that were given up on or went stale)
+        initial_failed_count = len(self.failed_attempts)
+        pruned_failed = {}
+        for url, entry in self.failed_attempts.items():
+            if url in self.seen_urls:
+                continue
+            try:
+                ts = datetime.fromisoformat(entry.get("last_failed_at", ""))
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                if ts >= cutoff:
+                    pruned_failed[url] = entry
+            except Exception:
+                pass
+        self.failed_attempts = pruned_failed
+        if len(self.failed_attempts) != initial_failed_count:
+            self._dirty = True
+
     def save(self) -> bool:
         """Atomically saves state to disk if modified."""
         if not self._dirty:
@@ -186,7 +217,8 @@ class StateManager:
             "seen_urls": self.seen_urls,
             "seen_images": self.seen_images,
             "seen_hashes": self.seen_hashes,
-            "recent_posts": self.recent_posts
+            "recent_posts": self.recent_posts,
+            "failed_attempts": self.failed_attempts
         }
 
         temp_file = f"{self.filepath}.tmp"
