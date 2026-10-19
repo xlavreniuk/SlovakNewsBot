@@ -52,9 +52,12 @@ class SettingsConfig:
     post_delay_seconds: int = 3
     request_timeout_seconds: int = 15
     min_minutes_between_posts: int = 20
+    min_minutes_between_posts_night: int = 60
     breaking_score: int = 8  # Stories scoring this high skip the spacing between posts
-    quiet_hours: str = ""  # e.g. "23-7": posts in this local-time window are sent without notification sound
-    poll_interval_seconds: int = 300  # Pause between checks in --loop mode
+    quiet_hours: str = ""  # e.g. "23-7": night window (local time): silent posts, slower checks, wider spacing
+    poll_minutes_day: int = 15  # Base pause between checks in --loop mode
+    poll_minutes_night: int = 45
+    poll_backoff_max: float = 2.0  # Quiet periods stretch the pause up to this multiple of the base
 
 
 @dataclass
@@ -151,9 +154,12 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         post_delay_seconds=int(settings_data.get("post_delay_seconds", 3)),
         request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15)),
         min_minutes_between_posts=int(settings_data.get("min_minutes_between_posts", 20)),
+        min_minutes_between_posts_night=int(settings_data.get("min_minutes_between_posts_night", 60)),
         breaking_score=int(settings_data.get("breaking_score", 8)),
         quiet_hours=str(settings_data.get("quiet_hours", "") or ""),
-        poll_interval_seconds=int(settings_data.get("poll_interval_seconds", 300))
+        poll_minutes_day=int(settings_data.get("poll_minutes_day", 15)),
+        poll_minutes_night=int(settings_data.get("poll_minutes_night", 45)),
+        poll_backoff_max=float(settings_data.get("poll_backoff_max", 2.0))
     )
 
     return AppConfig(

@@ -2,7 +2,8 @@ name: News Ingestion & Telegram Bot
 
 on:
   schedule:
-    # Each run polls sources every few minutes for ~5h40m (see --loop below).
+    # Each run keeps checking sources for ~5h40m (see --loop below): every 15 min by day,
+    # 45 min at night, longer when nothing new appears (settings in config.yaml).
     # Hourly attempts (at an off-peak minute, which GitHub throttles less) keep one run queued
     # behind the active one, so a new poller starts as soon as the previous one finishes.
     - cron: '17 * * * *'

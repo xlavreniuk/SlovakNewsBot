@@ -66,7 +66,7 @@ def parse_args():
         type=float,
         default=0,
         metavar="MINUTES",
-        help="Keep polling sources for this many minutes (interval: settings.poll_interval_seconds)"
+        help="Keep polling sources for this many minutes (adaptive interval: settings.poll_minutes_day/night)"
     )
     parser.add_argument(
         "--push-state",
@@ -231,8 +231,11 @@ def select_photos(
     return True
 
 
-def run_pipeline(config: AppConfig, dry_run: bool = False, scraper: Optional[NewsScraper] = None) -> int:
-    """Runs one check of all sources. Returns the number of stories posted (or previewed in dry-run)."""
+def run_pipeline(config: AppConfig, dry_run: bool = False, scraper: Optional[NewsScraper] = None) -> Tuple[int, int]:
+    """
+    Runs one check of all sources.
+    Returns (stories posted or previewed, stories that were new since the last check).
+    """
     logger.info("Starting News Bot pipeline (min score %d/10, max age %dh).", config.min_score, config.settings.max_article_age_hours)
     if dry_run:
         logger.info("Running in DRY-RUN mode (no posts will be sent, state won't be saved).")
@@ -287,9 +290,11 @@ def run_pipeline(config: AppConfig, dry_run: bool = False, scraper: Optional[New
     qualified.sort(key=lambda q: ranking_priority(q, now_ts), reverse=True)
     logger.info("%d qualified stories in the queue.", len(qualified))
 
+    night = is_quiet_hour(config)
+    min_spacing = config.settings.min_minutes_between_posts_night if night else config.settings.min_minutes_between_posts
     last_post = state.last_post_time()
     minutes_since_post = (now_ts - last_post.timestamp()) / 60.0 if last_post else float("inf")
-    spacing_ok = minutes_since_post >= config.settings.min_minutes_between_posts
+    spacing_ok = minutes_since_post >= min_spacing
 
     poster = None
     if not dry_run:
@@ -310,7 +315,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False, scraper: Optional[New
         if not dry_run and not spacing_ok and not is_breaking(item, config, now_ts):
             logger.info(
                 "Next story waits: last post %.0f min ago (< %d min) and '%s' is not breaking.",
-                minutes_since_post, config.settings.min_minutes_between_posts, art.title[:60]
+                minutes_since_post, min_spacing, art.title[:60]
             )
             break
 
@@ -384,7 +389,7 @@ def run_pipeline(config: AppConfig, dry_run: bool = False, scraper: Optional[New
             posts_sent += 1
             continue
 
-        silent = is_quiet_hour(config)
+        silent = night
         success = poster.post(
             caption=post.caption,
             image_url=art.image_url,
@@ -413,13 +418,24 @@ def run_pipeline(config: AppConfig, dry_run: bool = False, scraper: Optional[New
         state.save()
 
     logger.info("Pipeline check completed (%d posted).", posts_sent)
-    return posts_sent
+    return posts_sent, len(new_candidates)
+
+
+def next_poll_minutes(config: AppConfig, current: Optional[float], found_new: bool) -> float:
+    """
+    Adaptive pause: base interval by time of day; each check that finds nothing new stretches it by 1.5x
+    up to poll_backoff_max times the base, and any new story resets it.
+    """
+    base = float(config.settings.poll_minutes_night if is_quiet_hour(config) else config.settings.poll_minutes_day)
+    base = max(base, 1.0)
+    if found_new or current is None:
+        return base
+    return min(max(current, base) * 1.5, base * config.settings.poll_backoff_max)
 
 
 def run_loop(config: AppConfig, minutes: float, dry_run: bool, push: bool) -> None:
-    """Polls sources every poll_interval_seconds until `minutes` have passed (or SIGTERM arrives)."""
+    """Checks sources at an adaptive interval until `minutes` have passed (or SIGTERM arrives)."""
     deadline = time.time() + minutes * 60
-    interval = max(60, config.settings.poll_interval_seconds)
     scraper = NewsScraper(timeout=config.settings.request_timeout_seconds)  # keeps feed ETags between checks
     stop = {"flag": False}
 
@@ -429,26 +445,28 @@ def run_loop(config: AppConfig, minutes: float, dry_run: bool, push: bool) -> No
 
     signal.signal(signal.SIGTERM, handle_term)
     last_push = time.time()
+    pause: Optional[float] = None
 
     while not stop["flag"] and time.time() < deadline:
         started = time.time()
         try:
-            posted = run_pipeline(config, dry_run=dry_run, scraper=scraper)
+            posted, new_found = run_pipeline(config, dry_run=dry_run, scraper=scraper)
         except ValueError:
             raise
         except Exception as e:
             logger.error("Check failed: %s", e, exc_info=True)
-            posted = 0
+            posted, new_found = 0, 0
 
         # Push right after posts; otherwise batch the "seen" bookkeeping every 30 minutes
         if push and not dry_run and (posted or time.time() - last_push > 1800):
             push_state()
             last_push = time.time()
 
-        sleep_for = interval - (time.time() - started)
-        while sleep_for > 0 and not stop["flag"] and time.time() < deadline:
-            time.sleep(min(5, sleep_for))
-            sleep_for -= 5
+        pause = next_poll_minutes(config, pause, found_new=bool(posted or new_found))
+        logger.info("Next check in %.0f minutes%s.", pause, " (night)" if is_quiet_hour(config) else "")
+        wake_at = started + pause * 60
+        while not stop["flag"] and time.time() < min(wake_at, deadline):
+            time.sleep(5)
 
     if push and not dry_run:
         push_state()

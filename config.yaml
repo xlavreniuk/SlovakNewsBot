@@ -118,7 +118,10 @@ settings:
   max_post_attempts: 3        # Give up on a story after this many failed generation/posting attempts
   post_delay_seconds: 3       # Sleep between Telegram posts to respect rate limits
   request_timeout_seconds: 15 # Network timeout for scraping and requests
-  min_minutes_between_posts: 20  # Spacing between posts so the channel isn't flooded
+  min_minutes_between_posts: 20        # Daytime spacing between posts so the channel isn't flooded
+  min_minutes_between_posts_night: 60  # Night spacing (within quiet_hours)
   breaking_score: 8           # Stories scoring >= this are posted immediately, ignoring the spacing
-  quiet_hours: "23-7"         # Local hours when posts are sent silently (no notification sound)
-  poll_interval_seconds: 300  # How often sources are checked in --loop mode
+  quiet_hours: "23-7"         # Night window (local time): silent posts, slower checks, wider spacing
+  poll_minutes_day: 15        # --loop mode: check sources every 15 min during the day...
+  poll_minutes_night: 45      # ...and every 45 min at night
+  poll_backoff_max: 2.0       # When checks find nothing new, the pause grows up to 2x (30 min day / 90 min night)

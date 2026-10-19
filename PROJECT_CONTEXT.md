@@ -32,7 +32,7 @@ This document preserves the full context, architecture, operational history, and
 ├── .env.example              # Template for environment secrets
 ├── .env                      # Local environment secrets (git-ignored)
 └── .github/workflows/
-    └── run.yml               # GitHub Actions polling loop (checks every 5 min, restarted hourly)
+    └── run.yml               # GitHub Actions polling loop (adaptive 15-45 min checks, restarted hourly)
 ```
 
 ### Module Responsibilities:
@@ -72,7 +72,7 @@ This document preserves the full context, architecture, operational history, and
 
 6. **`.github/workflows/run.yml`**:
    - Runs 100% autonomously in GitHub Actions cloud ($0/month).
-   - Polling loop: each job runs `python main.py --loop 340 --push-state`, checking sources every 5 minutes and pushing state after each post.
+   - Polling loop: each job runs `python main.py --loop 340 --push-state`, checking sources every 15 min by day / 45 min at night (backing off up to 2x when nothing is new) and pushing state after each post.
    - Hourly schedule (`17 * * * *`) keeps the next job queued behind the active one.
    - Concurrency group prevents overlapping runs.
    - Automatically commits updated `seen_urls.json` back to GitHub if changed.

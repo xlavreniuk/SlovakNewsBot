@@ -40,10 +40,10 @@ Runs **100% autonomously 24/7 in GitHub Actions cloud** at **$0/month hosting co
 - **⏳ Smart Candidate Queue**:
   - Unposted qualified articles remain queued for subsequent runs, ensuring a reliable, continuous flow of news throughout the day even during quiet news cycles.
 - **⏰ Near-Real-Time Polling**:
-  - A GitHub Actions job checks all sources every 5 minutes for ~5h40m (`python main.py --loop 340`); an hourly schedule keeps the next job queued, so stories are posted minutes after publication.
+  - A GitHub Actions job keeps checking sources for ~5h40m (`python main.py --loop 340`) at an adaptive pace: every 15 min by day, 45 min at night, stretching up to 2x when nothing new appears. An hourly schedule keeps the next job queued.
   - Feeds are fetched with ETag/Last-Modified, and AI scores are cached in `seen_urls.json`, so frequent polling stays within the Gemini free tier.
   - Freshness-first ranking (score minus half a point per hour of age), spacing between posts, and instant posting for breaking stories.
-  - Quiet hours: posts at night are delivered without notification sound.
+  - Night (quiet hours): posts are silent and spaced at least 60 minutes apart (20 by day).
   - Unlimited free minutes require a **public** repository (secrets stay hidden in GitHub Actions secrets).
 - **🖼 Clean, Relevant Real Photos**:
   - Drops images whose CDN URL stamps an outlet logo/watermark (Denník N, Topky, Teraz, Aktuality) and looks for the clean original (JSON-LD copies, unwrapped proxy URLs, in-article photos).
@@ -243,8 +243,10 @@ Every behavior of the bot can be tuned in [`config.yaml`](config.yaml) without w
 | `settings.max_article_age_hours` | integer | `12` | Only stories published within this window are considered. |
 | `settings.min_minutes_between_posts` | integer | `20` | Spacing between posts. |
 | `settings.breaking_score` | integer | `8` | Stories with at least this score and under 3 hours old skip the spacing. |
-| `settings.quiet_hours` | string | `"23-7"` | Local hours when posts are sent without notification sound. |
-| `settings.poll_interval_seconds` | integer | `300` | How often sources are checked in `--loop` mode. |
+| `settings.quiet_hours` | string | `"23-7"` | Night window (local time): silent posts, slower checks, wider spacing. |
+| `settings.poll_minutes_day` / `poll_minutes_night` | integer | `15` / `45` | Base pause between checks in `--loop` mode (night = `quiet_hours`). |
+| `settings.poll_backoff_max` | float | `2.0` | Checks that find nothing new stretch the pause up to this multiple; a new story resets it. |
+| `settings.min_minutes_between_posts_night` | integer | `60` | Spacing between posts at night. |
 | `settings.max_image_candidates` | integer | `5` | Photos per story shown to the AI vision check. |
 | `ai.vision_check` | boolean | `true` | Gemini inspects candidate photos for watermarks/logos, burned-in text, stock images and relevance. |
 | `settings.require_image` | boolean | `true` | If `true`, strictly requires a verified lead photo (refuses to fall back to plain text). |
