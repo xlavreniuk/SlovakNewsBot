@@ -1,15 +1,19 @@
+import base64
 import calendar
 import datetime
 import email.utils
+import gzip
 import html
 import io
 import json
 import logging
 import re
+import dataclasses
 import warnings
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set, Tuple
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 from bs4 import BeautifulSoup
 import feedparser
 from PIL import Image
@@ -40,6 +44,8 @@ class Article:
     image_hashes: List[str] = field(default_factory=list)
     full_text: Optional[str] = None
     is_paywalled: bool = False
+    # Verified photo candidates for the AI vision check: dicts with url, hash, width, height, tag, gallery
+    image_candidates: List[Dict] = field(default_factory=list)
 
 
 class NewsScraper:
@@ -133,6 +139,16 @@ class NewsScraper:
         ]
     ]
 
+    # Image CDN parameters that stamp an outlet logo/watermark onto the photo
+    WATERMARK_URL_PATTERNS = [
+        re.compile(p, re.IGNORECASE) for p in [
+            r"[?&](?:mark|markpos|wm|watermark|overlay|logo)=",  # imgix (Denník N), Teraz ?wm=tasr-teraz
+            r"\bl_[a-z0-9_]*(?:watermark|logo)",                # Cloudinary-style overlay layer (Zoznam/Topky)
+            r"watermark",
+            r"/socialmedia/",                                     # Branded social-share renders
+        ]
+    ]
+
     def __init__(self, user_agent: str = DEFAULT_USER_AGENT, timeout: int = 15):
         self.user_agent = user_agent
         self.timeout = timeout
@@ -143,12 +159,101 @@ class NewsScraper:
             "Accept-Language": "en-US,en;q=0.9,sk;q=0.8,cs;q=0.7",
         })
         self._image_cache: Dict[str, Optional[Tuple[int, int, str, int]]] = {}
+        # Small JPEG previews of probed images, reused by the AI vision check
+        self.thumbnails: Dict[str, bytes] = {}
+        # Conditional GET cache for feeds: url -> (etag, last_modified, parsed articles)
+        self._feed_cache: Dict[str, Tuple[Optional[str], Optional[str], List["Article"]]] = {}
+
+    def fetch_articles(self, name: str, url: str, source_type: str = "rss") -> List[Article]:
+        """Fetches a source of any supported type."""
+        if source_type == "sitemap":
+            return self.fetch_articles_from_sitemap(name, url)
+        return self.fetch_articles_from_source(name, url)
+
+    def _remember_feed(self, url: str, resp_headers_source: Optional[requests.Response], articles: List[Article]) -> None:
+        etag = resp_headers_source.headers.get("ETag") if resp_headers_source is not None else None
+        modified = resp_headers_source.headers.get("Last-Modified") if resp_headers_source is not None else None
+        self._feed_cache[url] = (etag, modified, articles)
+
+    def fetch_articles_from_sitemap(self, name: str, sitemap_url: str) -> List[Article]:
+        """
+        Parses a Google News sitemap (news:title, news:publication_date, image:loc).
+        News sitemaps list every article of the last ~48 hours, unlike RSS feeds capped at 10-20 items.
+        """
+        logger.info("Fetching news sitemap: %s (%s)", name, sitemap_url)
+        try:
+            resp = self.session.get(sitemap_url, timeout=self.timeout)
+            resp.raise_for_status()
+            content = resp.content
+            if content[:2] == b"\x1f\x8b":
+                content = gzip.decompress(content)
+            root = ET.fromstring(content)
+        except Exception as e:
+            logger.warning("Failed to fetch/parse sitemap from %s (%s): %s", name, sitemap_url, e)
+            return []
+
+        def local(tag: str) -> str:
+            return tag.rsplit("}", 1)[-1]
+
+        articles = []
+        for node in root:
+            if local(node.tag) != "url":
+                continue
+            fields: Dict[str, str] = {}
+            image_url = None
+            for el in node.iter():
+                tag = local(el.tag)
+                text = (el.text or "").strip()
+                if tag == "loc" and el in list(node) and text:
+                    fields["loc"] = text
+                elif tag == "loc" and image_url is None and text:
+                    image_url = text  # first <image:image><image:loc>
+                elif tag == "title" and "news" in el.tag and text:
+                    fields["title"] = text  # prefer <news:title> over <image:title>
+                elif text and tag not in fields:
+                    fields[tag] = text
+            link = fields.get("loc")
+            title = self._clean_text(fields.get("title", ""))
+            if not link or not title:
+                continue
+            raw_date = fields.get("publication_date") or fields.get("lastmod")
+            ts = None
+            if raw_date:
+                try:
+                    ts = datetime.datetime.fromisoformat(raw_date.replace("Z", "+00:00")).timestamp()
+                except Exception:
+                    ts = None
+            if image_url and self._is_placeholder_image(image_url):
+                image_url = None
+            articles.append(Article(
+                url=link.split("?")[0].split("#")[0].strip(),
+                title=title,
+                summary=self._clean_text(fields.get("keywords", "")),
+                source_name=name,
+                published_at=raw_date,
+                published_timestamp=ts,
+                image_url=image_url,
+                image_urls=[image_url] if image_url else []
+            ))
+
+        logger.info("Retrieved %d entries from %s", len(articles), name)
+        return articles
 
     def fetch_articles_from_source(self, name: str, rss_url: str) -> List[Article]:
         """Fetches and parses a single RSS feed."""
         logger.info("Fetching RSS feed: %s (%s)", name, rss_url)
+        headers = {}
+        cached = self._feed_cache.get(rss_url)
+        if cached:
+            if cached[0]:
+                headers["If-None-Match"] = cached[0]
+            if cached[1]:
+                headers["If-Modified-Since"] = cached[1]
         try:
-            resp = self.session.get(rss_url, timeout=self.timeout)
+            resp = self.session.get(rss_url, timeout=self.timeout, headers=headers)
+            if resp.status_code == 304 and cached:
+                logger.info("Feed unchanged since last check: %s", name)
+                return [dataclasses.replace(a) for a in cached[2]]
             resp.raise_for_status()
         except Exception as e:
             logger.warning("Failed to fetch RSS from %s (%s): %s", name, rss_url, e)
@@ -186,8 +291,26 @@ class NewsScraper:
             )
             articles.append(art)
 
+        self._remember_feed(rss_url, resp, articles)
         logger.info("Retrieved %d entries from %s", len(articles), name)
         return articles
+
+    def is_watermarked_url(self, url: str) -> bool:
+        """True when the image URL asks the CDN to stamp a logo/watermark onto the photo."""
+        if not url:
+            return False
+        if any(p.search(url) for p in self.WATERMARK_URL_PATTERNS):
+            return True
+        # Thumbor-style CDNs (e.g. Aktuality) hide filters in a base64 path segment
+        for seg in urlsplit(url).path.split("/"):
+            if len(seg) >= 24 and re.fullmatch(r"[A-Za-z0-9_\-]+", seg):
+                try:
+                    decoded = base64.urlsafe_b64decode(seg + "=" * (-len(seg) % 4)).decode("utf-8", "ignore")
+                except Exception:
+                    continue
+                if "watermark" in decoded.lower():
+                    return True
+        return False
 
     def upgrade_url_variants(self, url: str) -> List[str]:
         """
@@ -221,7 +344,12 @@ class NewsScraper:
             variants.append(re.sub(r'img\.topky\.sk/(?:640px/)?(\d+\.jpe?g)', r'img.topky.sk/1280px/\1', unwrapped))
             variants.append(unwrapped)
 
-        # 5. Generic query parameter stripping for resizers
+        # 5. Image proxies (fetch/resize services) that wrap the original URL: try the original directly
+        nested = re.search(r'.(https?://[^\s\'"]+)', url[8:])
+        if nested:
+            variants.append(nested.group(1))
+
+        # 6. Generic query parameter stripping for resizers
         if any(param in url for param in ("?w=", "&w=", "width=", "resize=", "fit=")):
             stripped = url.split("?")[0]
             if stripped != url:
@@ -272,12 +400,25 @@ class NewsScraper:
                 img_hash = self.compute_image_hash(img)
                 info = (img.width, img.height, img.format or "JPEG", len(resp.content), img_hash)
                 self._image_cache[url] = info
+                try:
+                    thumb = img.convert("RGB")
+                    thumb.thumbnail((640, 640))
+                    buf = io.BytesIO()
+                    thumb.save(buf, format="JPEG", quality=80)
+                    self.thumbnails[url] = buf.getvalue()
+                except Exception:
+                    pass
                 return info
         except Exception:
             pass
 
         self._image_cache[url] = None
         return None
+
+    def reset_image_caches(self) -> None:
+        """Drops per-run image caches (kept small across --loop iterations)."""
+        self._image_cache.clear()
+        self.thumbnails.clear()
 
     def _extract_date_info(self, entry) -> Tuple[Optional[str], Optional[float]]:
         """Extracts publication string and Unix epoch timestamp from feed entry."""
@@ -407,6 +548,13 @@ class NewsScraper:
                 texts.append(p_text)
         return texts
 
+    def _main_container(self, soup: BeautifulSoup):
+        """The content container holding the most paragraph text; the first match is often a teaser tile."""
+        content_containers = soup.select(self.CONTENT_CONTAINER_SELECTORS)
+        if not content_containers:
+            return soup
+        return max(content_containers, key=lambda c: sum(len(t) for t in self._paragraph_texts(c)))
+
     def _extract_page_text(self, soup: BeautifulSoup, paywall_hint: bool = False) -> Tuple[Optional[str], bool]:
         """
         Extracts verified factual paragraphs from article webpage.
@@ -415,14 +563,7 @@ class NewsScraper:
         """
         is_paywalled = paywall_hint
 
-        # Pick the container holding the most paragraph text; the first match is often a teaser tile
-        content_containers = soup.select(self.CONTENT_CONTAINER_SELECTORS)
-        container = soup
-        if content_containers:
-            container = max(
-                content_containers,
-                key=lambda c: sum(len(t) for t in self._paragraph_texts(c))
-            )
+        container = self._main_container(soup)
 
         paragraphs: List[str] = []
         for p_text in self._paragraph_texts(container):
@@ -656,22 +797,23 @@ class NewsScraper:
                                 if not self._is_placeholder_image(resolved, alt, f"{title} {caption}") and not self._is_stale_archive_image(resolved, article_year):
                                     lead_candidates.append(("lead-srcset", resolved))
 
-            # 6. Fallback: If no lead candidates found yet, check the first figure/img in article body
-            if not lead_candidates:
-                first_body_img = soup.select_one("article figure img, article picture img, .article-body figure img, .article-body img")
-                if first_body_img:
-                    alt = first_body_img.get("alt", "")
-                    src = (
-                        first_body_img.get("data-full-src") or
-                        first_body_img.get("data-highres") or
-                        first_body_img.get("data-original") or
-                        first_body_img.get("data-src") or
-                        first_body_img.get("src")
-                    )
-                    if src and not src.startswith("data:"):
-                        resolved = urljoin(page_url, src.strip())
-                        if not self._is_placeholder_image(resolved, alt) and not self._is_stale_archive_image(resolved, article_year):
-                            lead_candidates.append(("fallback-lead", resolved))
+            # 6. Photos inside the article body: often the clean originals, while og:image is a branded share render
+            body_imgs = self._main_container(soup).select("figure img, picture img, img")
+            for el in body_imgs[:6]:
+                alt = el.get("alt", "")
+                fig = el.find_parent("figure")
+                caption = fig.find("figcaption").get_text() if (fig and fig.find("figcaption")) else ""
+                src = (
+                    el.get("data-full-src") or
+                    el.get("data-highres") or
+                    el.get("data-original") or
+                    el.get("data-src") or
+                    el.get("src")
+                )
+                if src and not src.startswith("data:"):
+                    resolved = urljoin(page_url, src.strip())
+                    if not self._is_placeholder_image(resolved, alt, caption) and not self._is_stale_archive_image(resolved, article_year):
+                        lead_candidates.append(("body-img", resolved))
 
         except Exception as e:
             logger.debug("Failed to collect page candidates for %s: %s", page_url, e)
@@ -684,7 +826,8 @@ class NewsScraper:
         min_width: int = 600,
         min_height: int = 350,
         max_images: int = 4,
-        is_seen_func: Optional[callable] = None
+        is_seen_func: Optional[callable] = None,
+        max_candidates: int = 5
     ) -> None:
         """
         Enriches article with full body text, checks against paywalls,
@@ -740,12 +883,18 @@ class NewsScraper:
         for tag, url in raw_lead_candidates:
             variants = self.upgrade_url_variants(url)
             for v in variants:
-                if v not in seen_lead_variant_urls and v.startswith("http") and not self._is_placeholder_image(v) and not self._is_stale_archive_image(v, article_year):
-                    seen_lead_variant_urls.add(v)
+                if v in seen_lead_variant_urls or not v.startswith("http"):
+                    continue
+                seen_lead_variant_urls.add(v)
+                if self.is_watermarked_url(v):
+                    logger.debug("Skipping watermarked image variant: %s", v)
+                    continue
+                if not self._is_placeholder_image(v) and not self._is_stale_archive_image(v, article_year):
                     all_lead_variants.append((tag, v))
 
         # Probe candidate lead variants with Pillow and score them
-        scored_lead_candidates: List[Tuple[float, int, int, str, int, Optional[str], str]] = []
+        scored_lead_candidates: List[Tuple[float, int, int, str, int, Optional[str], str, str]] = []
+        article.image_candidates = []
 
         for tag, url in all_lead_variants:
             info = self.probe_image(url)
@@ -774,11 +923,11 @@ class NewsScraper:
             if width >= min_width and height >= min_height:
                 score += 5_000_000.0
 
-            # Editorial bonus for OpenGraph, Twitter card, or JSON-LD lead images
-            if tag in ("og:image", "twitter:image", "json-ld"):
+            # Editorial bonus for structured-data and in-article photos (og/twitter images are often branded renders)
+            if tag in ("json-ld", "lead-elem", "lead-srcset", "body-img", "rss"):
                 score += 500_000.0
 
-            scored_lead_candidates.append((score, width, height, fmt, byte_size, hash_hex, url))
+            scored_lead_candidates.append((score, width, height, fmt, byte_size, hash_hex, url, tag))
 
         if not scored_lead_candidates:
             logger.warning("No suitable high-resolution unseen image found for '%s'", article.title[:40])
@@ -791,7 +940,21 @@ class NewsScraper:
         # Sort highest score first to pick the premier lead photo
         scored_lead_candidates.sort(key=lambda x: x[0], reverse=True)
         best_lead = scored_lead_candidates[0]
-        _, best_w, best_h, best_fmt, best_bytes, best_lead_hash, best_lead_url = best_lead
+        _, best_w, best_h, best_fmt, best_bytes, best_lead_hash, best_lead_url, _ = best_lead
+
+        # Distinct photos (by filename key and visual hash) for the AI vision check to choose from
+        for _, w, h, _, _, h_hex, url, tag in scored_lead_candidates:
+            if len(article.image_candidates) >= max_candidates:
+                break
+            key = self._image_dedup_key(url)
+            if any(
+                c["key"] == key or (h_hex and c["hash"] and self._hamming(h_hex, c["hash"]) <= 6)
+                for c in article.image_candidates
+            ):
+                continue
+            article.image_candidates.append(
+                {"url": url, "hash": h_hex, "width": w, "height": h, "tag": tag, "gallery": False, "key": key}
+            )
 
         # DEFAULT: Exactly ONE lead image
         article.image_url = best_lead_url
@@ -807,7 +970,7 @@ class NewsScraper:
             for tag, url in gallery_candidates:
                 variants = self.upgrade_url_variants(url)
                 for v in variants:
-                    if v not in seen_gallery_variant_urls and v.startswith("http") and not self._is_placeholder_image(v) and not self._is_stale_archive_image(v, article_year):
+                    if v not in seen_gallery_variant_urls and v.startswith("http") and not self.is_watermarked_url(v) and not self._is_placeholder_image(v) and not self._is_stale_archive_image(v, article_year):
                         seen_gallery_variant_urls.add(v)
                         all_gallery_variants.append((tag, v))
 
@@ -859,6 +1022,9 @@ class NewsScraper:
 
                 seen_gallery_keys.add(k)
                 accepted_gallery.append((url, h_hex))
+                article.image_candidates.append(
+                    {"url": url, "hash": h_hex, "width": w, "height": h, "tag": tag, "gallery": True, "key": k}
+                )
 
                 if len(accepted_gallery) >= (max_images - 1):
                     break
@@ -874,6 +1040,13 @@ class NewsScraper:
                 logger.info("Selected single lead photo for '%s': %dx%d -> %s", article.title[:40], best_w, best_h, best_lead_url)
         else:
             logger.info("Selected single lead photo (no gallery present) for '%s': %dx%d -> %s", article.title[:40], best_w, best_h, best_lead_url)
+
+    @staticmethod
+    def _hamming(a: str, b: str) -> int:
+        try:
+            return bin(int(a, 16) ^ int(b, 16)).count("1")
+        except Exception:
+            return 64
 
     def enrich_image(self, article: Article, min_width: int = 600, min_height: int = 350, max_images: int = 4) -> None:
         """Backwards-compatible alias for enrich_article."""

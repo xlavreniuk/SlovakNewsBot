@@ -39,9 +39,15 @@ Runs **100% autonomously 24/7 in GitHub Actions cloud** at **$0/month hosting co
   - Automatic 14-day history pruning keeps repository size tiny.
 - **⏳ Smart Candidate Queue**:
   - Unposted qualified articles remain queued for subsequent runs, ensuring a reliable, continuous flow of news throughout the day even during quiet news cycles.
-- **⏰ Autonomous Cloud Schedule**:
-  - ☀️ **Day Hours (08:00 – 00:00 local time):** Runs every 30 minutes.
-  - 🌙 **Night Hours (00:00 – 08:00 local time):** Runs every 2 hours.
+- **⏰ Near-Real-Time Polling**:
+  - A GitHub Actions job checks all sources every 5 minutes for ~5h40m (`python main.py --loop 340`); an hourly schedule keeps the next job queued, so stories are posted minutes after publication.
+  - Feeds are fetched with ETag/Last-Modified, and AI scores are cached in `seen_urls.json`, so frequent polling stays within the Gemini free tier.
+  - Freshness-first ranking (score minus half a point per hour of age), spacing between posts, and instant posting for breaking stories.
+  - Quiet hours: posts at night are delivered without notification sound.
+  - Unlimited free minutes require a **public** repository (secrets stay hidden in GitHub Actions secrets).
+- **🖼 Clean, Relevant Real Photos**:
+  - Drops images whose CDN URL stamps an outlet logo/watermark (Denník N, Topky, Teraz, Aktuality) and looks for the clean original (JSON-LD copies, unwrapped proxy URLs, in-article photos).
+  - A Gemini vision check rejects photos with burned-in logos or text, stock/illustrative pictures, screenshots and unrelated images; stories without an acceptable photo are skipped.
 
 ---
 
@@ -200,14 +206,16 @@ output:
   channel_name: "Prague Daily"
   channel_link: "https://t.me/praguedaily"
 
-# 3. RSS Feed Sources
+# 3. News Sources (type: rss | sitemap; dedicated: true skips the city keyword pre-filter)
 sources:
   - name: "Pražský Patriot"
-    rss_url: "https://www.prazskypatriot.cz/feed/"
-    enabled: true
+    url: "https://www.prazskypatriot.cz/feed/"
+    dedicated: true
   - name: "iDNES Praha"
-    rss_url: "https://servis.idnes.cz/rss.aspx?c=praha"
-    enabled: true
+    url: "https://servis.idnes.cz/rss.aspx?c=praha"
+  - name: "Example news sitemap"
+    url: "https://www.example.cz/sitemap-news.xml"
+    type: sitemap
 ```
 
 Commit and push your changes to `config.yaml` — the pipeline immediately adapts to your new city and language!
@@ -231,7 +239,14 @@ Every behavior of the bot can be tuned in [`config.yaml`](config.yaml) without w
 | `ai.temperature` | float | `0.2` | Low temperature (0.1–0.3) guarantees strictly factual content and eliminates hallucinations. |
 | `ai.batch_size` | integer | `10` | Number of articles evaluated together per prompt to minimize API calls. |
 | `settings.max_articles_per_run` | integer | `30` | Maximum candidate articles to fetch and evaluate per run. |
-| `settings.max_posts_per_run` | integer | `1` | Pacing limit: publishes 1 story per run (e.g. 1 post every 30 minutes). Remaining qualified stories stay queued. |
+| `settings.max_posts_per_run` | integer | `1` | Stories posted per check. Remaining qualified stories stay queued. |
+| `settings.max_article_age_hours` | integer | `12` | Only stories published within this window are considered. |
+| `settings.min_minutes_between_posts` | integer | `20` | Spacing between posts. |
+| `settings.breaking_score` | integer | `8` | Stories with at least this score and under 3 hours old skip the spacing. |
+| `settings.quiet_hours` | string | `"23-7"` | Local hours when posts are sent without notification sound. |
+| `settings.poll_interval_seconds` | integer | `300` | How often sources are checked in `--loop` mode. |
+| `settings.max_image_candidates` | integer | `5` | Photos per story shown to the AI vision check. |
+| `ai.vision_check` | boolean | `true` | Gemini inspects candidate photos for watermarks/logos, burned-in text, stock images and relevance. |
 | `settings.require_image` | boolean | `true` | If `true`, strictly requires a verified lead photo (refuses to fall back to plain text). |
 | `settings.min_image_width` | integer | `500` | Minimum image width in pixels for high quality posts. |
 | `settings.min_image_height` | integer | `300` | Minimum image height in pixels for high quality posts. |

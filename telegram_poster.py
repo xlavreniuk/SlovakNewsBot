@@ -20,6 +20,7 @@ class TelegramPoster:
         self.timeout = timeout
         self.base_url = f"https://api.telegram.org/bot{self.bot_token}"
         self.parse_mode: Optional[str] = "HTML"
+        self.silent = False
         self._parse_error = False
 
     def post(
@@ -27,7 +28,8 @@ class TelegramPoster:
         caption: str,
         image_url: Optional[str] = None,
         image_urls: Optional[List[str]] = None,
-        require_image: bool = True
+        require_image: bool = True,
+        silent: bool = False
     ) -> bool:
         """
         Posts article to Telegram.
@@ -36,6 +38,7 @@ class TelegramPoster:
         """
         clean_caption = self._sanitize_html(caption)
         self.parse_mode = "HTML"
+        self.silent = silent
         self._parse_error = False
         if self._post_once(clean_caption, image_url, image_urls, require_image):
             return True
@@ -54,9 +57,12 @@ class TelegramPoster:
         if description and "can't parse entities" in description.lower():
             self._parse_error = True
 
-    def _with_parse_mode(self, payload: dict) -> dict:
+    def _with_options(self, payload: dict) -> dict:
+        """Adds parse mode and (during quiet hours) silent delivery to a request payload."""
         if self.parse_mode:
             payload["parse_mode"] = self.parse_mode
+        if self.silent:
+            payload["disable_notification"] = True
         return payload
 
     def _post_once(
@@ -147,10 +153,12 @@ class TelegramPoster:
         if prep:
             filename, upload_bytes, mime_type = prep
             files = {"photo": (filename, upload_bytes, mime_type)}
-            data = self._with_parse_mode({
+            data = self._with_options({
                 "chat_id": self.channel_id,
                 "caption": caption
             })
+            # Multipart form fields are strings; the Bot API expects lowercase "true"
+            data = {k: ("true" if v is True else v) for k, v in data.items()}
             try:
                 resp = requests.post(url, data=data, files=files, timeout=self.timeout)
                 res_data = resp.json()
@@ -165,7 +173,7 @@ class TelegramPoster:
                 logger.warning("Exception during photo upload: %s", e)
 
         # Fallback to direct URL if upload failed
-        payload = self._with_parse_mode({
+        payload = self._with_options({
             "chat_id": self.channel_id,
             "photo": photo_url,
             "caption": caption
@@ -205,7 +213,8 @@ class TelegramPoster:
             }
             if idx == 0:
                 item["caption"] = caption
-                self._with_parse_mode(item)
+                if self.parse_mode:
+                    item["parse_mode"] = self.parse_mode
             media.append(item)
             files[attach_id] = (filename, upload_bytes, mime_type)
 
@@ -213,6 +222,8 @@ class TelegramPoster:
             "chat_id": self.channel_id,
             "media": json.dumps(media)
         }
+        if self.silent:
+            data["disable_notification"] = "true"
 
         try:
             resp = requests.post(url, data=data, files=files, timeout=self.timeout * 2)

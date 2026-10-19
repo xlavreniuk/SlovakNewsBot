@@ -1,3 +1,4 @@
+import base64
 import html
 import json
 import logging
@@ -37,6 +38,7 @@ class GeneratedPost:
     article: Article
     headline: str
     caption: str  # HTML formatted text ready for Telegram
+    is_duplicate: bool = False  # Same event as a story the channel already posted
 
 
 class AIEngine:
@@ -132,14 +134,21 @@ class AIEngine:
         scored_results.sort(key=lambda x: x.score, reverse=True)
         return scored_results, rejected_urls
 
-    def generate_styled_post(self, article: Article) -> Optional[GeneratedPost]:
-        """Translates and rewrites an article in the requested target language and style with zero-hallucination validation."""
-        prompt = self._build_generation_prompt(article)
+    def generate_styled_post(self, article: Article, recent_posted_titles: Optional[List[str]] = None) -> Optional[GeneratedPost]:
+        """
+        Translates and rewrites an article in the requested target language and style with zero-hallucination validation.
+        The same call also checks the story against recently posted titles, so cached scores never cause reposts.
+        """
+        prompt = self._build_generation_prompt(article, recent_posted_titles or [])
         response_json = self._call_gemini_json(prompt, forced_temperature=0.1)
 
         if not response_json or not isinstance(response_json, dict):
             logger.error("Failed to generate styled post for '%s'", article.title)
             return None
+
+        if bool(response_json.get("is_duplicate", False)):
+            logger.info("Generation step flagged '%s' as the same event as a recent post.", article.title)
+            return GeneratedPost(article=article, headline="", caption="", is_duplicate=True)
 
         headline = str(response_json.get("headline", "")).strip()
         body = str(response_json.get("caption", "")).strip()
@@ -176,6 +185,68 @@ class AIEngine:
             caption = self._truncate_html_caption(caption, max_len, article)
 
         return GeneratedPost(article=article, headline=headline, caption=caption)
+
+    def review_images(self, article: Article, thumbnails: Dict[str, bytes]) -> Optional[List[Dict[str, Any]]]:
+        """
+        Shows the candidate photos to a vision model together with the story and returns the approved ones,
+        best first. Rejects outlet watermarks/logos, burned-in text, stock or illustrative photos, screenshots
+        and images unrelated to the story. Returns None when the check could not run (caller decides fallback).
+        """
+        candidates = [c for c in article.image_candidates if c["url"] in thumbnails]
+        if not candidates:
+            return []
+
+        story = (article.full_text or article.summary or "")[:700]
+        parts: List[Dict[str, Any]] = [{"text": f"""You are the photo editor of a Telegram news channel about Bratislava.
+Choose photos for this story:
+Title: {article.title}
+Text: {story}
+
+For EACH image below (index from 0), judge:
+- has_watermark_or_logo: any news outlet / agency / TV logo, site name, watermark or "photo:" credit stamped on the image
+- has_text_overlay: headline, caption, banner or other text graphics burned into the image (signs and plates in the scene are fine)
+- is_stock_or_illustrative: generic stock / symbolic / illustrative picture (money, handcuffs, gavel, generic police car, posed models) rather than a real photo of this story's place, people or event
+- is_screenshot_or_graphic: screenshot, social-media post capture, map, infographic, collage or poster
+- relevance: 0-10, how directly the photo shows this story's actual subject, place or event
+- quality: 0-10 sharpness, lighting and composition
+
+Respond STRICTLY with a JSON array:
+[{{"index": 0, "has_watermark_or_logo": false, "has_text_overlay": false, "is_stock_or_illustrative": false, "is_screenshot_or_graphic": false, "relevance": 8, "quality": 7}}]"""}]
+        for idx, cand in enumerate(candidates):
+            parts.append({"text": f"Image {idx}:"})
+            parts.append({"inline_data": {
+                "mime_type": "image/jpeg",
+                "data": base64.b64encode(thumbnails[cand["url"]]).decode("ascii")
+            }})
+
+        verdicts = self._call_gemini_json(
+            "", forced_temperature=0.0, parts=parts,
+            preferred_model=self.config.ai.vision_model or self.active_model
+        )
+        if not isinstance(verdicts, list):
+            logger.warning("Image review unavailable for '%s'", article.title[:40])
+            return None
+
+        approved: List[Dict[str, Any]] = []
+        for v in verdicts:
+            try:
+                idx = int(v.get("index", -1))
+                if not 0 <= idx < len(candidates):
+                    continue
+                cand = candidates[idx]
+                flags = [k for k in ("has_watermark_or_logo", "has_text_overlay", "is_stock_or_illustrative", "is_screenshot_or_graphic") if v.get(k)]
+                relevance = int(v.get("relevance", 0))
+                quality = int(v.get("quality", 0))
+                if flags or relevance < 5:
+                    logger.info("Photo rejected (%s, relevance=%d): %s", ", ".join(flags) or "low relevance", relevance, cand["url"])
+                    continue
+                approved.append({**cand, "relevance": relevance, "quality": quality})
+            except Exception as e:
+                logger.debug("Bad image verdict %s: %s", v, e)
+
+        # Prefer relevance, then quality, then resolution; keep the lead (non-gallery) photo first on ties
+        approved.sort(key=lambda c: (c["relevance"], c["quality"], c["width"] * c["height"]), reverse=True)
+        return approved
 
     def _validate_post_facts(self, generated_text: str, article: Article) -> Tuple[bool, str]:
         """
@@ -292,15 +363,22 @@ class AIEngine:
         clean = re.sub(r"\n{3,}", "\n\n", clean).strip()
         return clean
 
-    def _call_gemini_json(self, prompt: str, forced_temperature: Optional[float] = None) -> Optional[Any]:
+    def _call_gemini_json(
+        self,
+        prompt: str,
+        forced_temperature: Optional[float] = None,
+        parts: Optional[List[Dict[str, Any]]] = None,
+        preferred_model: Optional[str] = None
+    ) -> Optional[Any]:
         """Calls Gemini API with JSON enforcement, safety settings, and exponential backoff retry."""
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY is not set. Cannot call AI engine.")
 
         temp = forced_temperature if forced_temperature is not None else self.temperature
 
-        # Put active model first
-        ordered_models = [self.active_model] + [m for m in self.candidate_models if m != self.active_model]
+        # Put the preferred (or last working) model first
+        first = preferred_model or self.active_model
+        ordered_models = [first] + [m for m in self.candidate_models if m != first]
 
         safety_settings = [
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_ONLY_HIGH"},
@@ -310,13 +388,14 @@ class AIEngine:
         ]
 
         for model in ordered_models:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.api_key}"
-            headers = {"Content-Type": "application/json"}
+            # Key goes in a header, not the URL, so it can never leak into exception messages or logs
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+            headers = {"Content-Type": "application/json", "x-goog-api-key": self.api_key}
             payload = {
                 "contents": [
                     {
                         "role": "user",
-                        "parts": [{"text": prompt}]
+                        "parts": parts or [{"text": prompt}]
                     }
                 ],
                 "generationConfig": {
@@ -327,7 +406,7 @@ class AIEngine:
             }
 
             try:
-                resp = requests.post(url, headers=headers, json=payload, timeout=25)
+                resp = requests.post(url, headers=headers, json=payload, timeout=45 if parts else 25)
 
                 # Retry on 503 (model overloaded)
                 if resp.status_code == 503:
@@ -346,7 +425,8 @@ class AIEngine:
                             break
 
                 if resp.status_code == 200:
-                    self.active_model = model
+                    if preferred_model is None:
+                        self.active_model = model
                     result = resp.json()
                     candidates = result.get("candidates", [])
                     if not candidates:
@@ -460,7 +540,8 @@ Respond STRICTLY with a valid JSON array of objects:
 ]
 """
 
-    def _build_generation_prompt(self, article: Article) -> str:
+    def _build_generation_prompt(self, article: Article, recent_posted_titles: List[str]) -> str:
+        recent_text = "\n".join(f"- {t}" for t in recent_posted_titles[-20:]) or "None yet"
         source_content = (
             article.full_text
             if (article.full_text and len(article.full_text.strip()) > 80)
@@ -528,8 +609,14 @@ CRITICAL ZERO-HALLUCINATION & FACTUAL PRECISION RULES:
 10. LENGTH:
    - Total length of caption must be under {self.config.output.max_caption_length - 100} characters.
 
+RECENTLY POSTED STORIES ON THE CHANNEL:
+{recent_text}
+Set "is_duplicate" to true ONLY if this article reports the same specific event as one of those stories
+(a genuinely new development of that event, e.g. an arrest after an earlier robbery report, is NOT a duplicate).
+
 Return STRICTLY a JSON object with this structure:
 {{
+  "is_duplicate": false,
   "headline": "Short punchy title without HTML tags",
   "caption": "Full formatted post in HTML ready for Telegram (beginning with <b>headline</b> followed by empty line and 2-3 body sentences)"
 }}

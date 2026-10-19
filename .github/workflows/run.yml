@@ -2,10 +2,10 @@ name: News Ingestion & Telegram Bot
 
 on:
   schedule:
-    # DAY: Every 30 minutes between 08:00 and 00:00 Bratislava time (06:00 to 22:00 UTC)
-    - cron: '*/30 6-22 * * *'
-    # NIGHT: Every 2 hours between 00:00 and 08:00 Bratislava time (22:00 to 06:00 UTC)
-    - cron: '0 0,2,4 * * *'
+    # Each run polls sources every few minutes for ~5h40m (see --loop below).
+    # Hourly attempts (at an off-peak minute, which GitHub throttles less) keep one run queued
+    # behind the active one, so a new poller starts as soon as the previous one finishes.
+    - cron: '17 * * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions UI
 
 concurrency:
@@ -18,6 +18,7 @@ permissions:
 jobs:
   run-bot:
     runs-on: ubuntu-24.04
+    timeout-minutes: 358
 
     steps:
       - name: Checkout repository
@@ -36,23 +37,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run news pipeline
+      - name: Configure git for state pushes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run news pipeline (polling loop)
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        # 340 minutes of polling leaves headroom under the 360-minute job limit
         run: |
-          python main.py
+          python main.py --loop 340 --push-state
 
       - name: Commit and push updated seen_urls.json
+        if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add seen_urls.json
           if ! git diff --staged --quiet; then
             git commit -m "chore: update state [skip ci]"
             for i in 1 2 3; do
-              git pull --rebase origin main && git push origin main && break || sleep 5
+              git pull --rebase origin main && git push origin HEAD:main && break || sleep 5
             done
           else
             echo "No state changes to commit."

@@ -11,8 +11,10 @@ load_dotenv()
 @dataclass
 class SourceConfig:
     name: str
-    rss_url: str
+    url: str
+    type: str = "rss"  # "rss" (RSS/Atom feed) or "sitemap" (Google News sitemap: complete, exact timestamps)
     enabled: bool = True
+    dedicated: bool = False  # Source covers only the target city: skip the keyword pre-filter
 
 
 @dataclass
@@ -31,14 +33,17 @@ class AIConfig:
     model: str = "gemini-3.5-flash-lite"
     temperature: float = 0.3
     batch_size: int = 10
+    vision_check: bool = True  # Let the model inspect candidate photos (watermarks, logos, relevance)
+    vision_model: Optional[str] = None  # Defaults to `model`
 
 
 @dataclass
 class SettingsConfig:
     max_articles_per_run: int = 40
     max_posts_per_run: int = 1
-    max_article_age_hours: int = 36
+    max_article_age_hours: int = 12
     max_images_per_post: int = 4
+    max_image_candidates: int = 5
     require_image: bool = True
     min_image_width: int = 600
     min_image_height: int = 350
@@ -46,6 +51,10 @@ class SettingsConfig:
     max_post_attempts: int = 3
     post_delay_seconds: int = 3
     request_timeout_seconds: int = 15
+    min_minutes_between_posts: int = 20
+    breaking_score: int = 8  # Stories scoring this high skip the spacing between posts
+    quiet_hours: str = ""  # e.g. "23-7": posts in this local-time window are sent without notification sound
+    poll_interval_seconds: int = 300  # Pause between checks in --loop mode
 
 
 @dataclass
@@ -110,7 +119,9 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         provider=ai_data.get("provider", "gemini"),
         model=ai_data.get("model", "gemini-3.5-flash-lite"),
         temperature=float(ai_data.get("temperature", 0.3)),
-        batch_size=int(ai_data.get("batch_size", 10))
+        batch_size=int(ai_data.get("batch_size", 10)),
+        vision_check=bool(ai_data.get("vision_check", True)),
+        vision_model=ai_data.get("vision_model") or None
     )
 
     sources_list = []
@@ -118,8 +129,10 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
         sources_list.append(
             SourceConfig(
                 name=s.get("name", "Unknown"),
-                rss_url=s.get("rss_url", ""),
-                enabled=s.get("enabled", True)
+                url=s.get("url") or s.get("rss_url", ""),
+                type=str(s.get("type", "rss")).lower(),
+                enabled=s.get("enabled", True),
+                dedicated=bool(s.get("dedicated", False))
             )
         )
 
@@ -127,15 +140,20 @@ def load_config(config_path: Optional[str] = None) -> AppConfig:
     settings_cfg = SettingsConfig(
         max_articles_per_run=int(settings_data.get("max_articles_per_run", 40)),
         max_posts_per_run=int(settings_data.get("max_posts_per_run", 1)),
-        max_article_age_hours=int(settings_data.get("max_article_age_hours", 36)),
+        max_article_age_hours=int(settings_data.get("max_article_age_hours", 12)),
         max_images_per_post=int(settings_data.get("max_images_per_post", 4)),
+        max_image_candidates=int(settings_data.get("max_image_candidates", 5)),
         require_image=bool(settings_data.get("require_image", True)),
         min_image_width=int(settings_data.get("min_image_width", 600)),
         min_image_height=int(settings_data.get("min_image_height", 350)),
         history_retention_days=int(settings_data.get("history_retention_days", 14)),
         max_post_attempts=int(settings_data.get("max_post_attempts", 3)),
         post_delay_seconds=int(settings_data.get("post_delay_seconds", 3)),
-        request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15))
+        request_timeout_seconds=int(settings_data.get("request_timeout_seconds", 15)),
+        min_minutes_between_posts=int(settings_data.get("min_minutes_between_posts", 20)),
+        breaking_score=int(settings_data.get("breaking_score", 8)),
+        quiet_hours=str(settings_data.get("quiet_hours", "") or ""),
+        poll_interval_seconds=int(settings_data.get("poll_interval_seconds", 300))
     )
 
     return AppConfig(

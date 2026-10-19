@@ -37,67 +37,80 @@ ai:
   model: "gemini-3.5-flash-lite"  # Fast, highly available model on free tier
   temperature: 0.2           # Low temperature for factual accuracy
   batch_size: 10             # Evaluates up to 10 articles per prompt to stay within 15 RPM limits
+  vision_check: true         # AI inspects candidate photos: rejects watermarks/outlet logos, stock and irrelevant images
 
-# 4. RSS Feed Sources (Bratislava-focused + National/Regional feeds)
+# 4. News Sources
+# type: "rss" (RSS/Atom feed, default) or "sitemap" (Google News sitemap: every article of the last ~48h with exact times)
+# dedicated: true = the source only covers Bratislava, so the keyword pre-filter is skipped
 sources:
+  # --- Bratislava-only outlets ---
+  - name: "Bratislavak"
+    url: "https://www.bratislavak.sk/sitemap_news.xml"
+    type: sitemap
+    dedicated: true
   - name: "BratislavaDeň"
-    rss_url: "https://bratislavaden.sk/feed/"
-    enabled: true
-  - name: "Bratislavský Kraj"
-    rss_url: "https://bratislavskykraj.sk/feed/"
-    enabled: true
+    url: "https://bratislavaden.sk/feed/"
+    dedicated: true
   - name: "Bratislava Zoznam"
-    rss_url: "https://bratislava.zoznam.sk/feed/"
-    enabled: true
-  - name: "Pravda Krimi"
-    rss_url: "https://spravy.pravda.sk/krimi/rss/xml/"
-    enabled: true
-  - name: "Pravda Ekonomika"
-    rss_url: "https://spravy.pravda.sk/ekonomika/rss/xml/"
-    enabled: true
-  - name: "Teraz Wire"
-    rss_url: "https://www.teraz.sk/rss/vsetky-spravy.rss"
-    enabled: true
+    url: "https://bratislava.zoznam.sk/feed/"
+    dedicated: true
+  - name: "Bratislavský Kraj"
+    url: "https://bratislavskykraj.sk/feed/"
+    dedicated: true
   - name: "Denník N Bratislava"
-    rss_url: "https://dennikn.sk/tema/bratislava/rss/"
-    enabled: true
-  - name: "RTVS Regióny"
-    rss_url: "https://spravy.rtvs.sk/kategoria/regiony/feed/"
-    enabled: true
-  - name: "TV Noviny Domáce"
-    rss_url: "https://tvnoviny.sk/domace/rss"
-    enabled: true
-  - name: "Startitup"
-    rss_url: "https://www.startitup.sk/feed/"
-    enabled: true
-  - name: "Refresher SK"
-    rss_url: "https://refresher.sk/rss"
-    enabled: true
-  - name: "Pravda Regióny"
-    rss_url: "https://spravy.pravda.sk/regiony/rss/xml/"
-    enabled: true
+    url: "https://dennikn.sk/tema/bratislava/rss/"
+    dedicated: true
+    enabled: false  # Nearly every article is paywalled (schema.org isAccessibleForFree=false)
+
+  # --- National wires and dailies (keyword pre-filter + AI location check) ---
+  - name: "Teraz Wire"
+    url: "https://www.teraz.sk/rss/vsetky-spravy.rss"
   - name: "Teraz Regióny"
-    rss_url: "https://www.teraz.sk/rss/regiony.rss"
-    enabled: true
-  - name: "Topky Domáce"
-    rss_url: "https://www.topky.sk/rss/10/Spravy_-_Domace.rss"
-    enabled: true
-  - name: "Aktuality"
-    rss_url: "https://www.aktuality.sk/rss/"
-    enabled: true
+    url: "https://www.teraz.sk/rss/regiony.rss"
+  - name: "SITA"
+    url: "https://sita.sk/app/plugins/sitemap-generator/google-news.php"
+    type: sitemap
+  - name: "Nový Čas"
+    url: "https://www.cas.sk/google_news.xml"
+    type: sitemap
+  - name: "Plus JEDEN DEŇ"
+    url: "https://www1.pluska.sk/google_news.xml"
+    type: sitemap
+  - name: "Pravda Krimi"
+    url: "https://spravy.pravda.sk/krimi/rss/xml/"
+  - name: "Pravda Regióny"
+    url: "https://spravy.pravda.sk/regiony/rss/xml/"
   - name: "Pravda Správy"
-    rss_url: "https://spravy.pravda.sk/domace/rss/xml/"
-    enabled: true
-  - name: "SME Bratislava"
-    rss_url: "https://bratislava.sme.sk/rss-title"
-    enabled: false
+    url: "https://spravy.pravda.sk/domace/rss/xml/"
+  - name: "Aktuality"
+    url: "https://www.aktuality.sk/rss/"
+  - name: "Aktuality Domáce"
+    url: "https://www.aktuality.sk/rss/domace/"
+  - name: "Aktuality Krimi"
+    url: "https://www.aktuality.sk/rss/krimi/"
+  - name: "Topky Domáce"
+    url: "https://www.topky.sk/rss/10/Spravy_-_Domace.rss"
+  - name: "STVR Regióny"
+    url: "https://spravy.stvr.sk/kategoria/regiony/feed/"
+  - name: "HN Online"
+    url: "https://www.hnonline.sk/feed"
+  - name: "Startitup"
+    url: "https://www.startitup.sk/feed/"
+  - name: "Refresher SK"
+    url: "https://refresher.sk/sitemap/news.xml"
+    type: sitemap
+  - name: "Pravda Ekonomika"
+    url: "https://spravy.pravda.sk/ekonomika/rss/xml/"
+    enabled: false  # Rarely Bratislava-specific
+  # Removed: TV Noviny (feed returns 404), SME Bratislava (blocks bots), RTVS Regióny (moved to STVR)
 
 # 5. Pipeline Tuning
 settings:
   max_articles_per_run: 50    # Maximum total new articles to evaluate per run
   max_posts_per_run: 1        # Optimal pacing: 1 top story per run (e.g. 1 per hour)
-  max_article_age_hours: 24   # Strict 24-hour freshness limit (filters out old stale news)
+  max_article_age_hours: 12   # Only stories published within the last 12 hours are considered
   max_images_per_post: 4      # Multi-image album support (sends up to 4 high-res photos via sendMediaGroup)
+  max_image_candidates: 5     # Photos per story shown to the AI vision check (watermarks, logos, relevance)
   require_image: true         # Only post articles that have an image (no plain text posts)
   min_image_width: 600        # Minimum image width in pixels for high quality posts
   min_image_height: 350       # Minimum image height in pixels
@@ -105,3 +118,7 @@ settings:
   max_post_attempts: 3        # Give up on a story after this many failed generation/posting attempts
   post_delay_seconds: 3       # Sleep between Telegram posts to respect rate limits
   request_timeout_seconds: 15 # Network timeout for scraping and requests
+  min_minutes_between_posts: 20  # Spacing between posts so the channel isn't flooded
+  breaking_score: 8           # Stories scoring >= this are posted immediately, ignoring the spacing
+  quiet_hours: "23-7"         # Local hours when posts are sent silently (no notification sound)
+  poll_interval_seconds: 300  # How often sources are checked in --loop mode

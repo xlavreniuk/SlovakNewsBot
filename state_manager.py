@@ -18,6 +18,7 @@ class StateManager:
         self.seen_hashes: Dict[str, str] = {}  # 16-hex perceptual dHash -> ISO timestamp
         self.recent_posts: List[Dict[str, str]] = []  # list of {url, title, posted_at}
         self.failed_attempts: Dict[str, Dict] = {}  # url -> {count, last_failed_at}
+        self.evaluations: Dict[str, Dict] = {}  # url -> {score, reason, at}: AI scores cached so each story is scored once
         self._dirty = False
         self.load()
 
@@ -44,6 +45,7 @@ class StateManager:
                 self.seen_hashes = data.get("seen_hashes", {})
                 self.recent_posts = data.get("recent_posts", [])
                 self.failed_attempts = data.get("failed_attempts", {})
+                self.evaluations = data.get("evaluations", {})
             else:
                 logger.warning("Unrecognized format in %s, resetting state.", self.filepath)
                 self.seen_urls = {}
@@ -95,6 +97,31 @@ class StateManager:
         self.failed_attempts[clean_url] = entry
         self._dirty = True
         return entry["count"]
+
+    def get_evaluation(self, url: str) -> Optional[Dict]:
+        return self.evaluations.get(self._canonicalize_url(url))
+
+    def record_evaluation(self, url: str, score: int, reason: str) -> None:
+        self.evaluations[self._canonicalize_url(url)] = {
+            "score": int(score),
+            "reason": reason[:120],
+            "at": datetime.now(timezone.utc).isoformat()
+        }
+        self._dirty = True
+
+    def last_post_time(self) -> Optional[datetime]:
+        """When the channel last received a post (from recent_posts)."""
+        latest = None
+        for post in self.recent_posts:
+            try:
+                ts = datetime.fromisoformat(post.get("posted_at", ""))
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                if latest is None or ts > latest:
+                    latest = ts
+            except Exception:
+                continue
+        return latest
 
     def get_recent_posted_titles(self, hours: int = 48) -> List[str]:
         """Returns titles of stories posted within the given hour window for semantic deduplication."""
@@ -207,6 +234,25 @@ class StateManager:
         if len(self.failed_attempts) != initial_failed_count:
             self._dirty = True
 
+        # Prune evaluations: drop decided stories and anything older than 2 days (past any freshness window)
+        eval_cutoff = datetime.now(timezone.utc) - timedelta(days=2)
+        initial_eval_count = len(self.evaluations)
+        pruned_evals = {}
+        for url, entry in self.evaluations.items():
+            if url in self.seen_urls:
+                continue
+            try:
+                ts = datetime.fromisoformat(entry.get("at", ""))
+                if ts.tzinfo is None:
+                    ts = ts.replace(tzinfo=timezone.utc)
+                if ts >= eval_cutoff:
+                    pruned_evals[url] = entry
+            except Exception:
+                pass
+        self.evaluations = pruned_evals
+        if len(self.evaluations) != initial_eval_count:
+            self._dirty = True
+
     def save(self) -> bool:
         """Atomically saves state to disk if modified."""
         if not self._dirty:
@@ -218,7 +264,8 @@ class StateManager:
             "seen_images": self.seen_images,
             "seen_hashes": self.seen_hashes,
             "recent_posts": self.recent_posts,
-            "failed_attempts": self.failed_attempts
+            "failed_attempts": self.failed_attempts,
+            "evaluations": self.evaluations
         }
 
         temp_file = f"{self.filepath}.tmp"
