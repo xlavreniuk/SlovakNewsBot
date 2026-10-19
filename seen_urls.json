@@ -1,20 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9509723/Biela-noc-v-Bratislavce-ponuka-dychberuce-predstavenie--FOTO-Pozrite-sa--ako-vyzerali-tento-vikend-nocne-ulice": "2026-10-04T22:41:04.267272+00:00",
-    "https://www.topky.sk/cl/10/9508231/Ludia-v-Bratislave-si-pocitaju-stipance--Sidliskom-sa-siri-nebezpecny-PARAZIT--moze-dojst-k-zamoreniu": "2026-10-04T22:41:07.272627+00:00",
-    "https://www.topky.sk/cl/10/9510023/Tyzdenny-KVIZ-opat-preveri-vase-vedomosti--Zistite--ako-dobre-sledujete-aktualne-dianie": "2026-10-04T22:41:07.272684+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2051087-kandidatka-na-primatorku-dolneho-kubina-katarina-brunckova-v-meste-chyba-zivot-predchadzajuce-vedenie-neriesilo-mladych-ani-starnutie-mesta": "2026-10-04T22:41:07.272689+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2047905-unik-vody-burky-aj-poziare-ake-rizika-dnes-ohrozuju-bytove-domy-a-ako-sa-pred-nimi-chranit": "2026-10-04T22:41:07.272695+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2050547-usporu-v-domacnosti-prinasa-aj-jednoducha-modernizacia": "2026-10-04T22:41:07.272699+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2052675-bosna-a-hercegovina-volby-nacionalisti-becirovic-dodik": "2026-10-04T22:41:07.272703+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2052671-tragedia-na-polovacke-strelec-zabil-dvoch-ludi-dalsieho-tazko-zranil": "2026-10-04T22:41:07.272707+00:00",
-    "https://www.pravda.sk/vat/vesmir/clanok/2052665-presunie-sa-vojna-aj-do-vesmiru-medvedev-hrozi-utokmi-na-starlink": "2026-10-04T22:41:07.272709+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2052657-trump-alebo-jeho-maketa-zaskoceny-pellegrini-reagoval-na-otazku-o-spolocnej-fotografii": "2026-10-04T22:41:07.272711+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2052651-dokedy-vydrzi-babie-leto-este-par-prijemnych-dni-potom-pride-zlom": "2026-10-04T22:41:07.272713+00:00",
-    "https://www.startitup.sk/radiovy-signal-z-planety-vzdialenej-63-svetelnych-rokov-vedci-zachytili-fenomen-ktory-meni-vyskum-vo-vesmire/": "2026-10-04T22:41:07.272715+00:00",
-    "https://www.topky.sk/cl/10/9483867/Novy-mobil-ci-kabelka--Odbornici-vystrihaju-pred-podozrivo-vyhodnymi-ponukami--pozor-na-FEJKY-a-falosne-recenzie-": "2026-10-04T22:41:07.272720+00:00",
-    "https://www.topky.sk/cl/11/9485867/Slovensky-hudobnik-zazil-poriadny-sok--V-Taliansku-prisiel-o-vzacny-nastroj--ponuka-odmenu": "2026-10-04T22:41:07.272722+00:00",
-    "https://www.topky.sk/cl/10/9486367/Slovensko-si-predvola-ruskeho-velvyslanca--Blanar-reaguje-na-utok-nedaleko-nasho-pracoviska-v-Kyjeve": "2026-10-04T22:41:07.272725+00:00",
     "https://www.pravda.sk/spravy/ekonomika/clanok/2052491-psychologia-v-nakupnom-voziku-toto-je-pat-figlov-ktorymi-retazce-utocia-na-penazenky-slovakov": "2026-10-05T03:28:58.303966+00:00",
     "https://www.pravda.sk/spravy/svet/clanok/2052681-mjanmarsko-malajzia-armada-obcianska-vojna-navrat-imigracia": "2026-10-05T03:28:58.303987+00:00",
     "https://www.pravda.sk/spravy/svet/clanok/2052243-putin-dal-na-vojnu-uz-tolko-penazi-co-by-stacilo-slovensku-aby-dobre-fungovalo-takmer-dve-desatrocia-co-caka-rusov-v-roku-2027": "2026-10-05T03:28:58.303993+00:00",
@@ -4722,11 +4707,13 @@
     "https://www.pravda.sk/spravy/svet/clanok/2061365-zelenskyj-ide-dalej-a-obvinil-trumpa-zo-snahy-vyvinut-tlak-na-ukrajinu-aby-sa-vzdala-rusku": "2026-10-18T22:11:48.953087+00:00",
     "https://www.pravda.sk/spravy/svet/clanok/2061359-trump-podporil-netanjahua-pred-bliziacimi-sa-volbami-oznacil-ho-za-velkeho-bojovnika": "2026-10-18T22:11:48.953094+00:00",
     "https://www.teraz.sk/zahranicie/v-milane-opat-doslo-k-stretom-medzi/1000809-clanok.html": "2026-10-18T22:11:48.953100+00:00",
-    "https://www.startitup.sk/nebezpecna-aplikacia-na-google-play-ma-vyse-10-tisic-stiahnuti-moze-ohrozit-tvoj-bankovy-ucet/": "2026-10-18T22:11:48.953104+00:00"
+    "https://www.startitup.sk/nebezpecna-aplikacia-na-google-play-ma-vyse-10-tisic-stiahnuti-moze-ohrozit-tvoj-bankovy-ucet/": "2026-10-18T22:11:48.953104+00:00",
+    "https://refresher.sk/213512-Zoo-Bratislava-privitala-osem-dzelad-Prezyvaju-ich-opice-s-krvacajucim-srdcom": "2026-10-19T00:20:53.582823+00:00",
+    "https://www.topky.sk/cl/10/9533319/Ste-v-obraze--Otestujte-svoje-vedomosti-v-nasom--KVIZE-o-top-udalostiach-minuleho-tyzdna-": "2026-10-19T00:20:56.739607+00:00",
+    "https://www.pravda.sk/spravy/inzercia/clanok/2060027-sudne-preklady-firemnych-dokumentov-v-bratislave-rychlo-a-spolahlivo": "2026-10-19T00:20:56.739636+00:00",
+    "https://spravy.stvr.sk/2026/10/v-minulosti-ich-boli-stovky-ostalo-ich-len-par-vyse-storocny-sennik-pri-vychodnej-zachranuju-dobrovolnici/": "2026-10-19T00:20:56.739640+00:00"
   },
   "seen_images": {
-    "img.topky.sk/9048045.jpg": "2026-10-04T22:41:04.267302+00:00",
-    "9048045.jpg": "2026-10-04T22:41:04.267302+00:00",
     "05/672330167_1269653305362100_1866821522371042856_n.jpg": "2026-10-05T11:05:23.649629+00:00",
     "672330167_1269653305362100_1866821522371042856_n.jpg": "2026-10-05T11:05:23.649629+00:00",
     "mtiwmhg2mzavc21hcnqvzmlsdgvyczpmb3jtyxqod2vicck6cxvhbgl0esg3mck6d2f0zxjtyxjrkgh0dha6ly9sb2nhbghvc3q6odevaw1nl2frdhvhbgl0ev93yxrlcm1hcmtfdjislti0lc0yncwwks9odhrwoi8vbg9jywxob3n0ojgxl3b1bhnjbxmtdhjhbnnmb3jtcy8x/7ouktkqturbxy8zyzc2mthknmzmztexndq1zdq3ytuyzwuzzjfizge1zi5qcgvnkpudam0bn80eds0cgpuczqfqamld": "2026-10-05T13:27:05.270060+00:00",
@@ -4908,10 +4895,11 @@
     "img.topky.sk/9060569.jpg": "2026-10-18T19:33:33.992420+00:00",
     "9060569.jpg": "2026-10-18T19:33:33.992420+00:00",
     "10/zmijovec-1x1-highres.jpg": "2026-10-18T22:11:45.943947+00:00",
-    "zmijovec-1x1-highres.jpg": "2026-10-18T22:11:45.943947+00:00"
+    "zmijovec-1x1-highres.jpg": "2026-10-18T22:11:45.943947+00:00",
+    "article/zoo-bratislava-privitala-osem-dzelad-prezyvaju-ich-opice-s-krvacajucim-srdcom~a0d0tkpfakj9dphv.jpg": "2026-10-19T00:20:53.582848+00:00",
+    "zoo-bratislava-privitala-osem-dzelad-prezyvaju-ich-opice-s-krvacajucim-srdcom~a0d0tkpfakj9dphv.jpg": "2026-10-19T00:20:53.582848+00:00"
   },
   "seen_hashes": {
-    "c6c50d0b17070703": "2026-10-04T22:41:04.267302+00:00",
     "63334a4e86f6b69e": "2026-10-05T11:05:23.649629+00:00",
     "dd6de5edcdd9cada": "2026-10-05T13:27:05.270060+00:00",
     "df77689696e1cff7": "2026-10-05T21:12:40.349321+00:00",
@@ -5002,14 +4990,10 @@
     "f0d0c1c197a7cdcc": "2026-10-18T14:06:11.149345+00:00",
     "2bd9b076efddfdf5": "2026-10-18T17:28:12.847490+00:00",
     "db4a67e18cec5afe": "2026-10-18T19:33:33.992420+00:00",
-    "359fcd6cac2cc635": "2026-10-18T22:11:45.943947+00:00"
+    "359fcd6cac2cc635": "2026-10-18T22:11:45.943947+00:00",
+    "0b6b63e4e4cecece": "2026-10-19T00:20:53.582848+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.teraz.sk/regiony/hlavni-adepti-na-primatora-bratislavy/1000147-clanok.html",
-      "title": "Hlavní adepti na primátora Bratislavy dostali výzvu na ochranu lesov",
-      "posted_at": "2026-10-15T22:34:11.617741+00:00"
-    },
     {
       "url": "https://www.pravda.sk/spravy/domace/clanok/2059417-bratislava-putac-kfc-slavin-pamatnik-reklama",
       "title": "Obrovská reklama narúša pohľad na Slavín, upozorňuje fotograf. Obáva sa aj o bezpečnosť chodcov",
@@ -5109,6 +5093,11 @@
       "url": "https://spravy.stvr.sk/2026/10/smrdi-ako-hnijuce-maso-v-botanickej-zahrade-v-bratislave-rozkvitol-vzacny-zmijovec/",
       "title": "Smrdí ako hnijúce mäso: V botanickej záhrade v Bratislave rozkvitol vzácny zmijovec",
       "posted_at": "2026-10-18T22:11:45.943939+00:00"
+    },
+    {
+      "url": "https://refresher.sk/213512-Zoo-Bratislava-privitala-osem-dzelad-Prezyvaju-ich-opice-s-krvacajucim-srdcom",
+      "title": "Zoo Bratislava privítala osem dželád. Prezývajú ich opice s krvácajúcim srdcom ❤️",
+      "posted_at": "2026-10-19T00:20:53.582841+00:00"
     }
   ]
 }
