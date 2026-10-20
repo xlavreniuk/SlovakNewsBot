@@ -5569,7 +5569,15 @@
     "https://spravy.stvr.sk/2026/10/policia-zastavila-vysetrovanie-pripadu-injekcnych-striekaciek-v-seredskej-skolke-matka-dvojiciek-ziada-ocistenie-mena/": "2026-10-20T17:37:02.415217+00:00",
     "https://www.startitup.sk/v-tomto-slovenskom-meste-zlacnie-teplo-o-39-domacnosti-usetria-vyse-650-eur-rocne/": "2026-10-20T17:37:02.415220+00:00",
     "https://news.refresher.sk/213623-Blizi-sa-vykurovacia-sezona-Nezabudni-na-jeden-dolezity-krok-inak-na-kureni-preplatis-desiatky-eur": "2026-10-20T17:37:02.415223+00:00",
-    "https://www.topky.sk/cl/10/9498375/Bez-vodicaku-a-za-volantom-sportiaku--FOTO-Riskantna-jazda-mladej-zeny-mala-tvrdy-koniec": "2026-10-20T17:37:02.415227+00:00"
+    "https://www.topky.sk/cl/10/9498375/Bez-vodicaku-a-za-volantom-sportiaku--FOTO-Riskantna-jazda-mladej-zeny-mala-tvrdy-koniec": "2026-10-20T17:37:02.415227+00:00",
+    "https://bratislava.zoznam.sk/ozaj-potrebuje-bratislava-dalsiu-spalovnu-slovnaft-dostal-suhlas-kritici-hovoria-o-ignorovanych-datach/": "2026-10-20T18:07:33.028452+00:00",
+    "https://www.topky.sk/cl/10/9535069/Hrozna-TRAGEDIA-v-Tatrach--Zivot-lekara-Romana---51--vyhasol-pred-ocami-jeho-manzelky-": "2026-10-20T18:07:36.039085+00:00",
+    "https://www.topky.sk/cl/10/9535315/Meteorologovia-varuju-pred-silnym-vetrom-na-horach--Narazy-mozu-dosiahnut-az-135-km-h": "2026-10-20T18:07:36.039111+00:00",
+    "https://www.teraz.sk/zahranicie/bulharsko-vylucilo-svoju-ucast-na-n/1001353-clanok.html": "2026-10-20T18:07:36.039115+00:00",
+    "https://www.teraz.sk/ekonomika/vystavba-obytnych-domov-v-usa-sa-v-sep/1001352-clanok.html": "2026-10-20T18:07:36.039119+00:00",
+    "https://www.aktuality.sk/clanok/RQLzQVD/bulharsko-sa-odmieta-podielat-na-dalsej-pozicke-pre-ukrajinu-na-rok-2027/": "2026-10-20T18:07:36.039122+00:00",
+    "https://spravy.stvr.sk/2026/10/cyklotrasa-za-takmer-25-miliona-eur-vedie-cez-dobyvaci-priestor-rampa-zostava-zatvorena-bansky-urad-chysta-kontrolu/": "2026-10-20T18:07:36.039126+00:00",
+    "https://www.startitup.sk/drony-potopili-dve-lode-a-21-namornikov-je-nezvestnych-nato-vysiela-do-cierneho-mora-posily/": "2026-10-20T18:07:36.039129+00:00"
   },
   "seen_images": {
     "img.topky.sk/9049983.jpg": "2026-10-06T18:45:36.018441+00:00",
@@ -5791,7 +5799,9 @@
     "10/most-vajnory-cierna-voda-4-1.jpg": "2026-10-20T15:23:52.199713+00:00",
     "most-vajnory-cierna-voda-4-1.jpg": "2026-10-20T15:23:52.199713+00:00",
     "img.topky.sk/9062385.jpg": "2026-10-20T17:01:38.455040+00:00",
-    "9062385.jpg": "2026-10-20T17:01:38.455040+00:00"
+    "9062385.jpg": "2026-10-20T17:01:38.455040+00:00",
+    "07/slovnaft2.jpg": "2026-10-20T18:07:33.028474+00:00",
+    "slovnaft2.jpg": "2026-10-20T18:07:33.028474+00:00"
   },
   "seen_hashes": {
     "cbe3f3f4ef1e1d3f": "2026-10-06T18:45:36.018441+00:00",
@@ -5903,7 +5913,8 @@
     "069696bc9c1e5b5b": "2026-10-20T14:15:48.460812+00:00",
     "04f4650e83f07833": "2026-10-20T15:23:52.199670+00:00",
     "b8e064646464300b": "2026-10-20T15:23:52.199713+00:00",
-    "b19c0c5a3ba5ca4c": "2026-10-20T17:01:38.455040+00:00"
+    "b19c0c5a3ba5ca4c": "2026-10-20T17:01:38.455040+00:00",
+    "0bf8f60d4d251edf": "2026-10-20T18:07:33.028474+00:00"
   },
   "recent_posts": [
     {
@@ -6065,6 +6076,11 @@
       "url": "https://www.topky.sk/cl/10/9535277/Policia-spustila-akciu-Kandidat--Protikorupcna-jednotka-zadrzala-dve-osoby",
       "title": "Polícia spustila akciu Kandidát: Protikorupčná jednotka zadržala dve osoby",
       "posted_at": "2026-10-20T17:01:38.455034+00:00"
+    },
+    {
+      "url": "https://bratislava.zoznam.sk/ozaj-potrebuje-bratislava-dalsiu-spalovnu-slovnaft-dostal-suhlas-kritici-hovoria-o-ignorovanych-datach/",
+      "title": "Ozaj potrebuje Bratislava ďalšiu spaľovňu? Slovnaft dostal súhlas, kritici hovoria o ignorovaných dátach",
+      "posted_at": "2026-10-20T18:07:33.028468+00:00"
     }
   ],
   "failed_attempts": {},
@@ -6088,6 +6104,11 @@
       "score": 4,
       "reason": "Eurostat report on Bratislava region poverty statistics",
       "at": "2026-10-20T11:49:54.992342+00:00"
+    },
+    "https://www.topky.sk/cl/10/9535321/Policia-pred-volbami-apeluje-na-volicov--Vyzyva-na-respekt--ohladuplnost-a-bezpecnost": {
+      "score": 4,
+      "reason": "Police appeal regarding upcoming elections in Bratislava",
+      "at": "2026-10-20T18:07:10.066311+00:00"
     }
   }
 }
