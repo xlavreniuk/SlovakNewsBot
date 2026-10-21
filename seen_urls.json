@@ -5856,7 +5856,9 @@
     "https://www.teraz.sk/sport/bernal-dostal-stvorzapasovy-trest-po/1001631-clanok.html": "2026-10-21T17:34:59.748152+00:00",
     "https://www.teraz.sk/zahranicie/na-syna-zadrzaneho-guvernera-madarsk/1001630-clanok.html": "2026-10-21T17:34:59.748154+00:00",
     "https://www.teraz.sk/ekonomika/zasoby-ropy-v-usa-klesli-omnoho-vyrazn/1001629-clanok.html": "2026-10-21T17:34:59.748156+00:00",
-    "https://news.refresher.sk/213717-Od-decembra-stupne-stravne-aj-minimalna-hodnota-gastrolistkov-Pozri-si-nove-sumy-na-pracovne-cesty-aj-obed": "2026-10-21T17:34:59.748159+00:00"
+    "https://news.refresher.sk/213717-Od-decembra-stupne-stravne-aj-minimalna-hodnota-gastrolistkov-Pozri-si-nove-sumy-na-pracovne-cesty-aj-obed": "2026-10-21T17:34:59.748159+00:00",
+    "https://www.teraz.sk/zahranicie/ucitelia-pozaduju-system-ktory-ich/1001635-clanok.html": "2026-10-21T17:49:39.228341+00:00",
+    "https://spravy.stvr.sk/2026/10/bratislava-je-najvacsim-studentskym-mestom-na-slovensku-denne-sa-tu-zdrziava-viac-ako-600-tisic-ludi/": "2026-10-21T17:49:39.228348+00:00"
   },
   "seen_images": {
     "img.topky.sk/9051283.jpg": "2026-10-07T19:11:37.916490+00:00",
@@ -6462,11 +6464,6 @@
       "reason": "Eurostat report on Bratislava region poverty statistics",
       "at": "2026-10-20T11:49:54.992342+00:00"
     },
-    "https://spravy.stvr.sk/2026/10/bratislava-je-najvacsim-studentskym-mestom-na-slovensku-denne-sa-tu-zdrziava-viac-ako-600-tisic-ludi/": {
-      "score": 3,
-      "reason": "General overview of Bratislava as a student and industrial city",
-      "at": "2026-10-21T05:57:35.386209+00:00"
-    },
     "https://www.bratislavak.sk/clanky/15957/nehody-v-bratislave-aj-za-malackam-sposobili-dlhe-kolony-pockate-si-aj-na-d4-aj-d2": {
       "score": 7,
       "reason": "Traffic accidents and jams on D4 and D2 in Bratislava",
@@ -6546,6 +6543,11 @@
       "score": 3,
       "reason": "National ministry website shutdown due to security vulnerabilities",
       "at": "2026-10-21T16:11:11.482134+00:00"
+    },
+    "https://www.teraz.sk/regiony/policia-kontroly-na-dunaji-odhalili-po/1001634-clanok.html": {
+      "score": 6,
+      "reason": "Police checks on the Danube in Bratislava",
+      "at": "2026-10-21T17:49:39.228036+00:00"
     }
   }
 }
