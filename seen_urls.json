@@ -5803,7 +5803,9 @@
     "https://www.topky.sk/cl/10/9499335/Ostra-reakcia-lodnej-spolocnosti--Ziadny-monopol-v-Bratislave-nemame--vsetko-je-to-loz": "2026-10-21T23:39:00.566518+00:00",
     "https://www.topky.sk/cl/10/9498783/Drahe-paliva-trapia-Europu--Nemecko-znizi-vodicom-dane-o-17-centov--na-Slovensku-hrozi-dalsie-zdrazovanie": "2026-10-21T23:39:00.566520+00:00",
     "https://sita.sk/byvaniehrou/ako-dlho-vydrzi-pes-bez-jedla-odpoved-moze-prekvapit-nejedneho-majitela/": "2026-10-22T00:23:52.068409+00:00",
-    "https://spravy.stvr.sk/2026/10/na-kysuciach-sa-naposledy-rozlucili-so-ziackou-nelkou-na-jej-pamiatku-vypustili-spoluziaci-biele-balony/": "2026-10-22T00:23:52.068422+00:00"
+    "https://spravy.stvr.sk/2026/10/na-kysuciach-sa-naposledy-rozlucili-so-ziackou-nelkou-na-jej-pamiatku-vypustili-spoluziaci-biele-balony/": "2026-10-22T00:23:52.068422+00:00",
+    "https://www.topky.sk/cl/10/9536201/Medzinarodna-akcia-na-Dunaji-odhalila-porusenia--Jednu-z-lodi-riadil-kapitan-bez-licencie": "2026-10-22T01:31:27.231545+00:00",
+    "https://refresher.cz/213749-Bratislavske-letisko-tento-rok-vypravilo-4-miliony-cestujucich": "2026-10-22T01:31:30.242277+00:00"
   },
   "seen_images": {
     "img.topky.sk/9048803.jpg": "2026-10-08T03:57:28.095204+00:00",
@@ -6047,7 +6049,9 @@
     "2026-10/1792509941-zapchy-v-okoli-bratislavy-vytacaju-vodicov-pravy-pruh-nie-je-hanba-na-r7-upozornuju-na-neprijemny-zlozvyk.webp": "2026-10-21T17:34:56.735887+00:00",
     "1792509941-zapchy-v-okoli-bratislavy-vytacaju-vodicov-pravy-pruh-nie-je-hanba-na-r7-upozornuju-na-neprijemny-zlozvyk.webp": "2026-10-21T17:34:56.735887+00:00",
     "5/4-5758c059a4a31903b01c662d01bff4789c50ec42.jpg": "2026-10-21T23:38:57.555385+00:00",
-    "4-5758c059a4a31903b01c662d01bff4789c50ec42.jpg": "2026-10-21T23:38:57.555385+00:00"
+    "4-5758c059a4a31903b01c662d01bff4789c50ec42.jpg": "2026-10-21T23:38:57.555385+00:00",
+    "9063381.jpg/policia--kontrola--dunaj.jpg": "2026-10-22T01:31:27.231564+00:00",
+    "policia--kontrola--dunaj.jpg": "2026-10-22T01:31:27.231564+00:00"
   },
   "seen_hashes": {
     "c0cb1b274f69e1e1": "2026-10-08T03:57:28.095204+00:00",
@@ -6170,7 +6174,8 @@
     "fcdc5bdb7fccacac": "2026-10-21T16:26:15.260797+00:00",
     "505b130bde0b3797": "2026-10-21T17:04:50.189719+00:00",
     "1f9f8f4d589a2d7d": "2026-10-21T17:34:56.735887+00:00",
-    "31111c7cecf1e383": "2026-10-21T23:38:57.555385+00:00"
+    "31111c7cecf1e383": "2026-10-21T23:38:57.555385+00:00",
+    "ae5adbcbc0e0f879": "2026-10-22T01:31:27.231564+00:00"
   },
   "recent_posts": [
     {
@@ -6367,6 +6372,11 @@
       "url": "https://www.teraz.sk/regiony/policia-kontroly-na-dunaji-odhalili-po/1001634-clanok.html",
       "title": "KONTROLY NA DUNAJI:Zistili porušenie predpisov pri prevádzke plavidiel",
       "posted_at": "2026-10-21T23:38:57.555378+00:00"
+    },
+    {
+      "url": "https://www.topky.sk/cl/10/9536201/Medzinarodna-akcia-na-Dunaji-odhalila-porusenia--Jednu-z-lodi-riadil-kapitan-bez-licencie",
+      "title": "Medzinárodná akcia na Dunaji odhalila porušenia: Jednu z lodí riadil kapitán bez licencie",
+      "posted_at": "2026-10-22T01:31:27.231560+00:00"
     }
   ],
   "failed_attempts": {
@@ -6421,11 +6431,6 @@
       "reason": "Subway fast food expansion in Slovakia and Bratislava",
       "at": "2026-10-21T12:33:07.569592+00:00"
     },
-    "https://refresher.cz/213749-Bratislavske-letisko-tento-rok-vypravilo-4-miliony-cestujucich": {
-      "score": 4,
-      "reason": "Passenger milestone at Bratislava airport",
-      "at": "2026-10-21T14:03:52.922362+00:00"
-    },
     "https://sita.sk/winkler-vyzyva-bratislavcanov-pridte-v-sobotu-volit/": {
       "score": 4,
       "reason": "Candidate election call to Bratislava voters",
@@ -6435,11 +6440,6 @@
       "score": 3,
       "reason": "National ministry website shutdown due to security vulnerabilities",
       "at": "2026-10-21T16:11:11.482134+00:00"
-    },
-    "https://www.topky.sk/cl/10/9536201/Medzinarodna-akcia-na-Dunaji-odhalila-porusenia--Jednu-z-lodi-riadil-kapitan-bez-licencie": {
-      "score": 5,
-      "reason": "International police control on the Danube in Bratislava",
-      "at": "2026-10-21T23:38:44.152116+00:00"
     },
     "https://bratislava.zoznam.sk/medzinarodna-kontrola-na-dunaji-policia-odhalila-vazne-porusenia-bezpecnostnych-predpisov-na-plavidlach/": {
       "score": 5,
