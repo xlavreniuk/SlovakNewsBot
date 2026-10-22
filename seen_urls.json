@@ -1,33 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9512567/Policia-v-Bratislavskom-kraji-vykonava-akciu-zameranu-na-maloobchodne-prevadzky": "2026-10-07T23:40:39.457574+00:00",
-    "https://bratislava.zoznam.sk/policia-riesi-velku-kradez-v-bratislavskych-potravinach-zlodeji-ukradli-tovar-za-viac-ako-7600-eur/": "2026-10-07T23:40:42.462759+00:00",
-    "https://www.topky.sk/cl/10/9512517/Platy-vo-verejnej-a-statnej-sprave-od-jula-buduceho-roka-vzrastu--Navrh-presiel-vyborom": "2026-10-07T23:40:42.462791+00:00",
-    "https://www.topky.sk/cl/10/9512573/My-sme-les-spusta-novy-projekt--Ma-naucit-verejnost--ako-sa-spravat-v-oblastiach-s-vyskytom-medveda": "2026-10-07T23:40:42.462795+00:00",
-    "https://www.topky.sk/cl/10/9512395/Dialnicu-D2-smerom-do-Ceska-po-nehode-opat-uzavreli--Na-mieste-musel-pristavat-aj-vrtulnik": "2026-10-07T23:40:42.462798+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2054625-maly-nakup-velka-pomoc-potravinova-zbierka-v-kauflande-startuje": "2026-10-07T23:40:42.462801+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2053757-tipos-tam-kde-sa-rozhoduje-o-buducnosti-hernej-a-loteriovej-oblasti": "2026-10-07T23:40:42.462804+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2052873-moze-vam-umela-inteligencia-pomoct-pri-spore-so-spravcom-ano-ale-ma-to-hacik": "2026-10-07T23:40:42.462809+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2053585-po-materskej-spat-medzi-najlepsimi-financnymi-sprostredkovatelmi": "2026-10-07T23:40:42.462813+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2054275-online-bez-rodicov-bez-podmienok-bez-poplatkov-a-zadarmo": "2026-10-07T23:40:42.462816+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2054749-vlastnia-podu-no-su-davno-po-smrti-225-rocni-majitelia-brzdia-aj-dialnice": "2026-10-07T23:40:42.462819+00:00",
-    "https://www.pravda.sk/spravy/ekonomika/clanok/2054733-co-ak-nastane-pre-statnu-kasu-krizovy-scenar-koalicia-si-nan-pripravila-novu-zbran-moze-nou-zasiahnut-aj-buducu-vladu": "2026-10-07T23:40:42.462822+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2054859-chrisa-pikeova-smrtiaca-injekcia-pravnici-poprava-tennessee-trest-smrti": "2026-10-07T23:40:42.462825+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2054843-donald-trump-usa-rusko-laborantka-vladimir-putin-mor-biologicka-zbran": "2026-10-07T23:40:42.462827+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2054829-umrtie-zena-madrid-vystahovanie-spanielsko": "2026-10-07T23:40:42.462830+00:00",
-    "https://www.teraz.sk/sport/slovenky-na-uvod-prehrali-s-favorizovan/998081-clanok.html": "2026-10-07T23:40:42.462833+00:00",
-    "https://www.teraz.sk/zahranicie/zomrela-87-rocna-zena-jej-vystahova/998074-clanok.html": "2026-10-07T23:40:42.462835+00:00",
-    "https://www.teraz.sk/zahranicie/grecko-rubio-vydvihol-silu-usa-a-vyzva/998080-clanok.html": "2026-10-07T23:40:42.462837+00:00",
-    "https://www.teraz.sk/sport/vonnova-je-v-time-usa-pre-nadchadzaj/998079-clanok.html": "2026-10-07T23:40:42.462840+00:00",
-    "https://www.teraz.sk/sport/nove-zamky-nestacili-na-humenne-v-7/998078-clanok.html": "2026-10-07T23:40:42.462842+00:00",
-    "https://www.teraz.sk/sport/nitra-si-na-uvod-pripisala-prehru-818/998077-clanok.html": "2026-10-07T23:40:42.462844+00:00",
-    "https://www.teraz.sk/zahranicie/trump-rusky-mor-zrejme-nesuvisi-s-pr/998076-clanok.html": "2026-10-07T23:40:42.462846+00:00",
-    "https://www.teraz.sk/zahranicie/prokuratura-vypocula-magyara-pre-podoz/998075-clanok.html": "2026-10-07T23:40:42.462848+00:00",
-    "https://www.startitup.sk/zomrel-symbol-boja-za-najomnikov-jej-vystahovanie-vyhnalo-do-ulic-tisice-spanielov/": "2026-10-07T23:40:42.462850+00:00",
-    "https://www.startitup.sk/slovensko-hryzie-ruku-ktora-ho-krmi-vieme-vobec-co-chceme-od-eu-komentar/": "2026-10-07T23:40:42.462851+00:00",
-    "https://www.startitup.sk/russell-crowe-po-sestdesiatke-schudol-25-kil-zmenil-niekolko-beznych-navykov/": "2026-10-07T23:40:42.462853+00:00",
-    "https://www.topky.sk/cl/10/9512547/Milovnici-piva-maju-hlavu-v-smutku--Oblubeny-slovensky-pivovar-oznamil-KONIEC-": "2026-10-07T23:40:42.462855+00:00",
-    "https://www.aktuality.sk/clanok/dXjo36u/tragicky-koniec-pripadu-ktory-otriasol-spanielskom-dochodkyna-z-madridu-ktorej-vystahovanie-vyvolalo-protesty-zomrela/": "2026-10-07T23:40:42.462857+00:00",
     "https://www.topky.sk/cl/10/9510503/Znamy-dom-v-Bratislave-sa-zmenil-na-nepoznanie--Pozrite--co-s-nim-urobil-slovensky-umelec": "2026-10-08T03:57:28.095183+00:00",
     "https://bratislava.zoznam.sk/policia-v-bratislave-spustila-velku-akciu-v-obchodoch-radi-ako-sa-chranit-pred-kradezami/": "2026-10-08T03:57:31.099138+00:00",
     "https://www.pravda.sk/spravy/svet/clanok/2054863-ostroleka-polsko-student-skola-utok-vybusnina-batoh-policia-vysetrovanie-maceta": "2026-10-08T03:57:31.099172+00:00",
@@ -5829,11 +5801,11 @@
     "https://sita.sk/bratislava-korunovala-novych-sampionov-world-fitnes-cup-2026-priniesol-svetovu-uroven-a-8-novych-drzitelov-pro-kariet/": "2026-10-21T23:39:00.566514+00:00",
     "https://www.topky.sk/cl/10/9499351/Juraj-Blanar-oznacil-rokovanie-formatu-V4-s-Indiou-za-vyznamny-diplomaciu-uspech": "2026-10-21T23:39:00.566516+00:00",
     "https://www.topky.sk/cl/10/9499335/Ostra-reakcia-lodnej-spolocnosti--Ziadny-monopol-v-Bratislave-nemame--vsetko-je-to-loz": "2026-10-21T23:39:00.566518+00:00",
-    "https://www.topky.sk/cl/10/9498783/Drahe-paliva-trapia-Europu--Nemecko-znizi-vodicom-dane-o-17-centov--na-Slovensku-hrozi-dalsie-zdrazovanie": "2026-10-21T23:39:00.566520+00:00"
+    "https://www.topky.sk/cl/10/9498783/Drahe-paliva-trapia-Europu--Nemecko-znizi-vodicom-dane-o-17-centov--na-Slovensku-hrozi-dalsie-zdrazovanie": "2026-10-21T23:39:00.566520+00:00",
+    "https://sita.sk/byvaniehrou/ako-dlho-vydrzi-pes-bez-jedla-odpoved-moze-prekvapit-nejedneho-majitela/": "2026-10-22T00:23:52.068409+00:00",
+    "https://spravy.stvr.sk/2026/10/na-kysuciach-sa-naposledy-rozlucili-so-ziackou-nelkou-na-jej-pamiatku-vypustili-spoluziaci-biele-balony/": "2026-10-22T00:23:52.068422+00:00"
   },
   "seen_images": {
-    "img.topky.sk/9051205.jpg": "2026-10-07T23:40:39.457606+00:00",
-    "9051205.jpg": "2026-10-07T23:40:39.457606+00:00",
     "img.topky.sk/9048803.jpg": "2026-10-08T03:57:28.095204+00:00",
     "9048803.jpg": "2026-10-08T03:57:28.095204+00:00",
     "img.topky.sk/9052129.jpg": "2026-10-08T11:09:12.415898+00:00",
@@ -6078,7 +6050,6 @@
     "4-5758c059a4a31903b01c662d01bff4789c50ec42.jpg": "2026-10-21T23:38:57.555385+00:00"
   },
   "seen_hashes": {
-    "cec9d3d672f2f2f1": "2026-10-07T23:40:39.457606+00:00",
     "c0cb1b274f69e1e1": "2026-10-08T03:57:28.095204+00:00",
     "139239f8ec6a74b1": "2026-10-08T11:09:12.415898+00:00",
     "4edcca979ecb4e1e": "2026-10-08T12:43:10.833427+00:00",
@@ -6202,11 +6173,6 @@
     "31111c7cecf1e383": "2026-10-21T23:38:57.555385+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://refresher.sk/213512-Zoo-Bratislava-privitala-osem-dzelad-Prezyvaju-ich-opice-s-krvacajucim-srdcom",
-      "title": "Zoo Bratislava privítala osem dželád. Prezývajú ich opice s krvácajúcim srdcom ❤️",
-      "posted_at": "2026-10-19T00:20:53.582841+00:00"
-    },
     {
       "url": "https://www.pravda.sk/spravy/inzercia/clanok/2060007-pod-slavinom-oziva-mint-nova-restauracia-v-hoteli-albrecht",
       "title": "Pod Slavínom ožíva MINT: Nová reštaurácia v hoteli Albrecht",
