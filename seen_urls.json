@@ -1,35 +1,5 @@
 {
   "seen_urls": {
-    "https://www.topky.sk/cl/10/9513485/SOKUJUCE-pripady-nasilia-rastu--Dvaja-chlapci-z-Bratislavy-chceli-zavrazdit-spoluziaka--13---vraj-je-gej-a-zid-": "2026-10-08T23:52:01.936114+00:00",
-    "https://www.topky.sk/cl/10/9513085/Desiatky-tisic-Slovakov-caka-vyssia-vyplata--Od-januara-stupne-minimalna-mzda-aj-priplatky": "2026-10-08T23:52:04.942303+00:00",
-    "https://www.topky.sk/cl/10/9513823/PS-bije-na-poplach-pre-dianie-na-NSS--Skoncilo-cele-IT-oddelenie--Hovori-o-bezpecnostnom-riziku": "2026-10-08T23:52:04.942331+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2055637-bulharska-jadrova-elektraren-kozloduj-znizila-vykon-oboch-blokov-pre-nizku-hladinu-dunaja": "2026-10-08T23:52:04.942336+00:00",
-    "https://bratislava.zoznam.sk/alarmujuci-narast-pohlavne-prenosnych-chorob-na-slovensku-najviac-pripadov-medzi-mladymi/": "2026-10-08T23:52:04.942340+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2055615-kauza-kozmeticky-v-dozornej-rade-ma-dohru-inspekcia-vysetruje-sutaja-estoka-aj-sakovu-tvrdi-holeckova": "2026-10-08T23:52:04.942344+00:00",
-    "https://www.topky.sk/cl/10/9513615/Stovky-policajtov-v-terene-prekontrolovali-obchody--Vysledkom-je-jedna-kradez-a-viacero-priestupkov": "2026-10-08T23:52:04.942351+00:00",
-    "https://www.topky.sk/cl/10/9513577/Dopravny-kolaps-pri-Bratislave--Policia-varuje-pred-obmedzeniami-na-dialniciach-D2-a-D4": "2026-10-08T23:52:04.942357+00:00",
-    "https://bratislava.zoznam.sk/rozsiahly-poziar-v-bahoni-ohen-znicil-chatku-aj-garaz-skoda-dosiahla-200-tisic-eur/": "2026-10-08T23:52:04.942360+00:00",
-    "https://regiony.zoznam.sk/prudka-zmena-pocasia-zasiahne-nas-ochladenie-burky-aj-silny-vietor-mapa-vystrah/": "2026-10-08T23:52:04.942364+00:00",
-    "https://www.teraz.sk/sport/basketbalistky-wbc-slovan-bratislava-pre/998355-clanok.html": "2026-10-08T23:52:04.942368+00:00",
-    "https://www.pravda.sk/spravy/inzercia/clanok/2055315-andrew-tindall-na-rulezz-dnes-robime-marketing-efektivnejsie-ale-funguje-aj-lepsie": "2026-10-08T23:52:04.942372+00:00",
-    "https://www.pravda.sk/vat/vesmir/clanok/2055649-stvorica-astronautov-sa-po-osmich-mesiacoch-na-iss-vratila-na-zem-v-module-spacex": "2026-10-08T23:52:04.942375+00:00",
-    "https://www.pravda.sk/spravy/ekonomika/clanok/2055465-buducnost-je-tu-ai-kradne-pracu-slovakom-tieto-pracovne-pozicie-su-realne-na-odstrel": "2026-10-08T23:52:04.942378+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2055523-klucove-otazky-o-vyskyte-moru-dusenie-rychly-priebeh-a-malo-vakcin-mame-sa-bat-sirenia-v-europe": "2026-10-08T23:52:04.942380+00:00",
-    "https://www.pravda.sk/spravy/kultura/clanok/2055259-lubomir-feldek-ma-dnes-90-najviac-mi-chyba-olinka-hovori-jubilant": "2026-10-08T23:52:04.942383+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2055645-dlazobne-kocky-plamene-i-vodne-dela-do-francuzskych-ulic-opat-vysli-desattisice-demonstrantov": "2026-10-08T23:52:04.942386+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2055633-do-moskvy-prisiel-kvoli-supermarketom-skoncil-u-putina-exkancelar-schroder-oslavoval-so-svojim-starym-priatelom": "2026-10-08T23:52:04.942389+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2055607-rusko-odmieta-spravy-o-dalsom-pripade-moru-po-umrti-laborantky-ukoncilo-preventivne-opatrenia": "2026-10-08T23:52:04.942392+00:00",
-    "https://www.teraz.sk/zahranicie/francuzsko-protesty-studentov-pokrac/998361-clanok.html": "2026-10-08T23:52:04.942395+00:00",
-    "https://www.teraz.sk/zahranicie/ukrajina-pri-dalsom-utoku-na-kramato/998360-clanok.html": "2026-10-08T23:52:04.942399+00:00",
-    "https://www.teraz.sk/zahranicie/usa-uvalili-nove-sankcie-zamerane-na-p/998359-clanok.html": "2026-10-08T23:52:04.942401+00:00",
-    "https://www.teraz.sk/sport/studenic-prispel-k-triumfu-farjestadu/998358-clanok.html": "2026-10-08T23:52:04.942404+00:00",
-    "https://www.teraz.sk/slovensko/ce-ez-ar-priniesol-i-diskusiu-o-vystavb/998357-clanok.html": "2026-10-08T23:52:04.942407+00:00",
-    "https://www.teraz.sk/sport/futbal-nl-kosice-angazovali-brankara/998356-clanok.html": "2026-10-08T23:52:04.942409+00:00",
-    "https://www.startitup.sk/bezne-zvyky-pri-sprchovani-nicia-pokozku-odbornici-varuju-pred-znamou-chybou-ktoru-denne-robia-tisice-ludi/": "2026-10-08T23:52:04.942412+00:00",
-    "https://www.startitup.sk/pripravujes-sa-o-kvalitny-spanok-aj-zdrave-travenie-odbornici-urcili-presny-casovy-odstup-medzi-vecerou-a-postelou/": "2026-10-08T23:52:04.942415+00:00",
-    "https://refresher.sk/212781-Do-vily-mieri-Beata-a-Demi-Akeho-partnera-hladaju-novi-bombshells": "2026-10-08T23:52:04.942418+00:00",
-    "https://glowandknow.sk/magazin/212786-SOS-PRE-PODRAZDENU-PLET-K-beauty-topky-na-obnovu-bariery-Teraz-v-zlavach-do-60": "2026-10-08T23:52:04.942421+00:00",
-    "https://www.aktuality.sk/clanok/VcgoGJ9/pocasie-predpoved-na-piatok/": "2026-10-08T23:52:04.942425+00:00",
     "https://bratislava.zoznam.sk/policia-nasla-v-bratislave-muza-hladaneho-dva-roky-ukryval-sa-pod-schodmi-pomahala-mu-zena/": "2026-10-09T04:03:16.586697+00:00",
     "https://www.topky.sk/cl/10/9513505/Varovanie-zamestnavatelov--Dlh-Slovenska-moze-do-roku-2029-vzrast-az-na-118-miliard-eur": "2026-10-09T04:03:19.593119+00:00",
     "https://www.topky.sk/cl/10/9513427/Ministerstvo-vyplacalo-odmeny--vyvoleni-dostali-vyse-160-tisic--VIDEO-Taraba-ostro-reaguje": "2026-10-09T04:03:19.593153+00:00",
@@ -6127,11 +6097,10 @@
     "https://bratislavskykraj.sk/ako-volit-v-spojenych-krajskych-a-komunalnych-volbach/": "2026-10-22T23:51:01.113954+00:00",
     "https://bratislavskykraj.sk/na-post-predsedu-bratislavskeho-kraja-bolo-zaregistrovanych-7-kandidatov-za-poslancov-kandiduje-277-uchadzacov/": "2026-10-22T23:51:01.113984+00:00",
     "https://bratislavskykraj.sk/ako-sa-budu-zverejnovat-vysledky-volieb-najskor-sa-scitaju-krajske-potom-komunalne/": "2026-10-22T23:51:01.113987+00:00",
-    "https://sita.sk/estokovo-ministerstvo-meni-sidla-v-bratislave-za-sest-mesiacov-planuje-zaplatit-24-miliona-eur/": "2026-10-22T23:51:01.113988+00:00"
+    "https://sita.sk/estokovo-ministerstvo-meni-sidla-v-bratislave-za-sest-mesiacov-planuje-zaplatit-24-miliona-eur/": "2026-10-22T23:51:01.113988+00:00",
+    "https://www.bratislavak.sk/clanky/15972/spor-o-antimon-pri-pezinku-pokracuje-ministerstvo-predlzilo-prieskum-mesto-sa-obava-tazby": "2026-10-23T00:35:14.251698+00:00"
   },
   "seen_images": {
-    "img.topky.sk/9052327.jpg": "2026-10-08T23:52:01.936134+00:00",
-    "9052327.jpg": "2026-10-08T23:52:01.936134+00:00",
     "06/facebook-policia-sr.jpg": "2026-10-09T04:03:16.586720+00:00",
     "facebook-policia-sr.jpg": "2026-10-09T04:03:16.586720+00:00",
     "2543281/nahanacka.png": "2026-10-09T12:29:57.457779+00:00",
@@ -6398,7 +6367,6 @@
     "1792687109-smutna-sprava-pre-tanecny-sport-v-bratislave-zomrel-trener-ladislav-mrva-na-ktoreho-spominaju-aj-jeho-zverenci.webp": "2026-10-22T23:50:58.105146+00:00"
   },
   "seen_hashes": {
-    "27e7eb3938181e36": "2026-10-08T23:52:01.936134+00:00",
     "0f0f1e9892a6b6f4": "2026-10-09T04:03:16.586720+00:00",
     "8f8f8f9f6f4f072f": "2026-10-09T12:29:57.457779+00:00",
     "9b9ede9cbcb6557c": "2026-10-09T18:29:41.862402+00:00",
@@ -6835,11 +6803,6 @@
       "score": 3,
       "reason": "General weather forecast for Slovakia",
       "at": "2026-10-22T11:14:36.473493+00:00"
-    },
-    "https://www.bratislavak.sk/clanky/15972/spor-o-antimon-pri-pezinku-pokracuje-ministerstvo-predlzilo-prieskum-mesto-sa-obava-tazby": {
-      "score": 3,
-      "reason": "Administrative extension of antimony exploration near Pezinok",
-      "at": "2026-10-22T12:37:48.104175+00:00"
     },
     "https://www.teraz.sk/slovensko/spolok-svateho-vojtecha-predstavil-nov/1001828-clanok.html": {
       "score": 3,
