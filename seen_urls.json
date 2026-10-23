@@ -6098,7 +6098,8 @@
     "https://bratislavskykraj.sk/na-post-predsedu-bratislavskeho-kraja-bolo-zaregistrovanych-7-kandidatov-za-poslancov-kandiduje-277-uchadzacov/": "2026-10-22T23:51:01.113984+00:00",
     "https://bratislavskykraj.sk/ako-sa-budu-zverejnovat-vysledky-volieb-najskor-sa-scitaju-krajske-potom-komunalne/": "2026-10-22T23:51:01.113987+00:00",
     "https://sita.sk/estokovo-ministerstvo-meni-sidla-v-bratislave-za-sest-mesiacov-planuje-zaplatit-24-miliona-eur/": "2026-10-22T23:51:01.113988+00:00",
-    "https://www.bratislavak.sk/clanky/15972/spor-o-antimon-pri-pezinku-pokracuje-ministerstvo-predlzilo-prieskum-mesto-sa-obava-tazby": "2026-10-23T00:35:14.251698+00:00"
+    "https://www.bratislavak.sk/clanky/15972/spor-o-antimon-pri-pezinku-pokracuje-ministerstvo-predlzilo-prieskum-mesto-sa-obava-tazby": "2026-10-23T00:35:14.251698+00:00",
+    "https://www.startitup.sk/4-900-eur-mu-vybrali-z-uctu-v-leopoldove-bratislavcan-dal-udaje-k-svojmu-uctu-krypto-podvodnikovi/": "2026-10-23T01:42:50.253054+00:00"
   },
   "seen_images": {
     "06/facebook-policia-sr.jpg": "2026-10-09T04:03:16.586720+00:00",
@@ -6364,7 +6365,9 @@
     "2026-10/1792665291-foto-znamy-hudobnik-z-elanu-predava-luxusnu-vilu-v-bratislave-za-astronomicku-sumu-ponuka-prepychove-byvanie.webp": "2026-10-22T22:20:45.402972+00:00",
     "1792665291-foto-znamy-hudobnik-z-elanu-predava-luxusnu-vilu-v-bratislave-za-astronomicku-sumu-ponuka-prepychove-byvanie.webp": "2026-10-22T22:20:45.402972+00:00",
     "2026-10/1792687109-smutna-sprava-pre-tanecny-sport-v-bratislave-zomrel-trener-ladislav-mrva-na-ktoreho-spominaju-aj-jeho-zverenci.webp": "2026-10-22T23:50:58.105146+00:00",
-    "1792687109-smutna-sprava-pre-tanecny-sport-v-bratislave-zomrel-trener-ladislav-mrva-na-ktoreho-spominaju-aj-jeho-zverenci.webp": "2026-10-22T23:50:58.105146+00:00"
+    "1792687109-smutna-sprava-pre-tanecny-sport-v-bratislave-zomrel-trener-ladislav-mrva-na-ktoreho-spominaju-aj-jeho-zverenci.webp": "2026-10-22T23:50:58.105146+00:00",
+    "02/policia2-462615-vgllvzpd.jpg": "2026-10-23T01:42:50.253078+00:00",
+    "policia2-462615-vgllvzpd.jpg": "2026-10-23T01:42:50.253078+00:00"
   },
   "seen_hashes": {
     "0f0f1e9892a6b6f4": "2026-10-09T04:03:16.586720+00:00",
@@ -6498,7 +6501,8 @@
     "0f11111312330494": "2026-10-22T15:47:54.001919+00:00",
     "27268486a2273312": "2026-10-22T16:22:54.129527+00:00",
     "b9dad948481c0b6a": "2026-10-22T22:20:45.402972+00:00",
-    "c9cdcdc8c989adc4": "2026-10-22T23:50:58.105146+00:00"
+    "c9cdcdc8c989adc4": "2026-10-22T23:50:58.105146+00:00",
+    "05a4a45c486e8a01": "2026-10-23T01:42:50.253078+00:00"
   },
   "recent_posts": [
     {
@@ -6750,14 +6754,14 @@
       "url": "https://www.bratislavak.sk/clanky/15995/smutna-sprava-pre-tanecny-sport-v-bratislave-zomrel-trener-ladislav-mrva-na-ktoreho-spominaju-aj-jeho-zverenci",
       "title": "Bratislavský tanečný klub smúti za svojou výraznou osobnosťou",
       "posted_at": "2026-10-22T23:50:58.105141+00:00"
+    },
+    {
+      "url": "https://www.startitup.sk/4-900-eur-mu-vybrali-z-uctu-v-leopoldove-bratislavcan-dal-udaje-k-svojmu-uctu-krypto-podvodnikovi/",
+      "title": "4 900 eur mu vybrali z účtu v Leopoldove: Bratislavčan dal údaje k svojmu účtu krypto podvodníkovi",
+      "posted_at": "2026-10-23T01:42:50.253072+00:00"
     }
   ],
-  "failed_attempts": {
-    "https://www.startitup.sk/4-900-eur-mu-vybrali-z-uctu-v-leopoldove-bratislavcan-dal-udaje-k-svojmu-uctu-krypto-podvodnikovi/": {
-      "count": 2,
-      "last_failed_at": "2026-10-22T23:50:53.462144+00:00"
-    }
-  },
+  "failed_attempts": {},
   "evaluations": {
     "https://www.topky.sk/cl/10/9535893/Pozor-na-novu-vlnu-podvodov--Slovakom-chodia-falosne-SMS-spravy-o-pokutach-za-dopravne-priestupky": {
       "score": 4,
@@ -6828,11 +6832,6 @@
       "score": 6,
       "reason": "Major customs fraud investigation led by EPPO in Bratislava",
       "at": "2026-10-22T16:04:05.975738+00:00"
-    },
-    "https://www.startitup.sk/4-900-eur-mu-vybrali-z-uctu-v-leopoldove-bratislavcan-dal-udaje-k-svojmu-uctu-krypto-podvodnikovi/": {
-      "score": 6,
-      "reason": "Crypto scam targeting Bratislava resident",
-      "at": "2026-10-22T22:20:14.028812+00:00"
     },
     "https://bratislava.zoznam.sk/dalsia-rana-pre-stvr-nahle-zomrela-dlhorocna-tv-redaktorka-a-herecka-hrala-aj-v-legendarnom-seriali/": {
       "score": 4,
