@@ -1,90 +1,5 @@
 {
   "seen_urls": {
-    "https://bratislava.zoznam.sk/komplex-od-dunaj-v-bratislave-rekonstrukcia-finisuje-otvorenie-uz-na-jar-2027/": "2026-10-10T16:52:07.140854+00:00",
-    "https://www.topky.sk/cl/10/9515287/Zabery-z-vesmiru-vyrazaju-dych--Pozrite-sa--ako-brutalne-zo-Slovenska-mizne-voda": "2026-10-10T16:52:10.146520+00:00",
-    "https://www.topky.sk/cl/10/9514957/Nepochopitelny-OMYL-rakuskych-zelezniciarov--Vozickarka-mala-vystupit-v-Bratislave--skoncila-s-problemami-vo-Viedni-": "2026-10-10T16:52:10.146546+00:00",
-    "https://regiony.zoznam.sk/na-slovensko-sa-vali-vydatnejsi-dazd-pozrite-si-mapu-kde-naprsi-najviac-zrazok/": "2026-10-10T16:52:10.146550+00:00",
-    "https://www.teraz.sk/sport/futbalisti-skalice-remizovali-s-sk-slov/998759-clanok.html": "2026-10-10T16:52:10.146553+00:00",
-    "https://www.topky.sk/cl/2005793/9511381/Slovensky-pas-patri-medzi-najsilnejsie-na-svete--Cudzinci-sa-k-nam-vsak-dostanu-ovela-tazsie": "2026-10-10T16:52:10.146556+00:00",
-    "https://www.topky.sk/cl/10/9515143/Ostra-vymena-priamo-pred-mikrofonmi--Vlada-obhajuje-vyrovnany-rozpocet--KDH-hovori-o-politickej-pasci": "2026-10-10T16:52:10.146558+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2056567-miesto-vrazdy-jana-kuciaka-a-martiny-kusnirovej-sa-zmenilo-na-nepoznanie-vo-velkej-maci-otvorili-pamatnik-slobody-slova": "2026-10-10T16:52:10.146563+00:00",
-    "https://www.topky.sk/cl/10/9515079/Milionove-odmeny-na-envirorezorte--SNS-vyzyva-Kuffu-na-konanie--Taraba-obhajuje-statisice-pre-spolupracovnikov": "2026-10-10T16:52:10.146567+00:00",
-    "https://bratislava.zoznam.sk/bratislavska-policia-varuje-parkoviska-v-lesoparku-plne-uz-rano-vyuzite-radsej-mhd-na-kamzik-a-zeleznu-studnicku/": "2026-10-10T16:52:10.146570+00:00",
-    "https://bratislava.zoznam.sk/tisice-ludi-bez-domova-v-bratislave-depaul-slovensko-upozornuje-na-rastuci-problem-a-dolezitost-dostojneho-spanku/": "2026-10-10T16:52:10.146572+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2056669-vlastnu-maloletu-dceru-mali-ponukat-muzom-na-sex-policia-odhalila-otrasny-pripad-v-okrese-partizanske": "2026-10-10T16:52:10.146574+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2056665-velka-policajna-akcia-na-skolach-odhalila-znepokojive-cisla-policia-informovala-o-19-udalostiach": "2026-10-10T16:52:10.146576+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056659-krvavy-masaker-v-usa-strelec-zabil-devat-ludi-vratane-deti-to-co-policajti-objavili-v-dome-ich-sokovalo": "2026-10-10T16:52:10.146578+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056655-palestinsky-prezident-abbas-opat-odlozil-volby-jeho-mandat-pritom-vyprsal-uz-v-roku-2009": "2026-10-10T16:52:10.146580+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056651-eritrea-obvinila-etiopiu-z-vyhlasenia-vojny-hrozi-novy-krvavy-konflikt-do-hry-vstupuje-osn": "2026-10-10T16:52:10.146581+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056647-mohutny-vybuch-otriasol-letiskom-v-rijade-na-miesto-sa-rutili-sanitky-hlasia-zranenych": "2026-10-10T16:52:10.146583+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056641-slovensko-sa-postavilo-proti-trumpovmu-rozhodnutiu-spolu-s-eu-ziada-washington-aby-ustupil": "2026-10-10T16:52:10.146585+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056313-marilyn-wallman-zmiznutie-vysetrovanie-vrazda-dokazy-mapa-australia": "2026-10-10T16:52:10.146587+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056543-v-kremli-su-nadseni-trump-podrazil-zelenskeho-viacnasobne-kolko-penazi-putin-na-predaji-nafty-zarobi": "2026-10-10T16:52:10.146589+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056587-polskom-otriasa-dalsi-utok-na-skole-za-necely-tyzden-uz-treti-mlada-zena-zranila-tri-studentky": "2026-10-10T16:52:10.146591+00:00",
-    "https://www.pravda.sk/spravy/ekonomika/clanok/2056549-europou-sa-siri-virus-shamonda-nakazu-potvrdili-aj-blizko-slovenska": "2026-10-10T16:52:10.146593+00:00",
-    "https://www.pravda.sk/spravy/svet/clanok/2056597-cesko-ma-po-volbach-policia-riesila-viacere-incidenty-pavel-sa-po-kritike-vratil-z-dovolenky": "2026-10-10T16:52:10.146594+00:00",
-    "https://www.pravda.sk/spravy/domace/clanok/2056545-ficova-vlada-moze-dostat-stopku-od-ustavneho-sudu-tomas-priznal-co-by-znamenal-vyrovnany-rozpocet": "2026-10-10T16:52:10.146596+00:00",
-    "https://www.teraz.sk/sport/fellhauer-dal-najrychlejsi-gol-v-his/998766-clanok.html": "2026-10-10T16:52:10.146598+00:00",
-    "https://www.teraz.sk/zahranicie/devat-mrtvychpo-strelbe-v-pensylva/998765-clanok.html": "2026-10-10T16:52:10.146601+00:00",
-    "https://www.teraz.sk/sport/povazska-bystrica-remizovala-s-presov/998764-clanok.html": "2026-10-10T16:52:10.146602+00:00",
-    "https://www.teraz.sk/regiony/nezvestny-senior-policia-po-muzovi-p/998763-clanok.html": "2026-10-10T16:52:10.146604+00:00",
-    "https://www.teraz.sk/regiony/letecki-zachranari-pomahali-zene-uv/998762-clanok.html": "2026-10-10T16:52:10.146606+00:00",
-    "https://www.teraz.sk/regiony/policia-v-piatok-zaznamenala-19-udalost/998761-clanok.html": "2026-10-10T16:52:10.146608+00:00",
-    "https://www.teraz.sk/sport/fc-kosice-remizovali-s-komarnom-v-10/998760-clanok.html": "2026-10-10T16:52:10.146609+00:00",
-    "https://www.teraz.sk/sport/futbalisti-as-trencin-podlahli-banske/998758-clanok.html": "2026-10-10T16:52:10.146611+00:00",
-    "https://www.teraz.sk/slovensko/greenpeace-zabery-slovenska-ukazuju/998757-clanok.html": "2026-10-10T16:52:10.146612+00:00",
-    "https://www.teraz.sk/regiony/obchodovali-s-ludmi-policia-obvinen/998756-clanok.html": "2026-10-10T16:52:10.146614+00:00",
-    "https://www.teraz.sk/sport/seixas-je-historicky-najmladsi-vitaz/998755-clanok.html": "2026-10-10T16:52:10.146615+00:00",
-    "https://www.teraz.sk/slovensko/staty-eu-vratane-sr-vyzvali-usa-na-o/998754-clanok.html": "2026-10-10T16:52:10.146616+00:00",
-    "https://www.teraz.sk/sport/janov-zvitazil-nad-fiorentinou-v-6-ko/998753-clanok.html": "2026-10-10T16:52:10.146618+00:00",
-    "https://www.teraz.sk/ekonomika/nemecko-si-chce-udrzat-miesto-vo-vyko/998752-clanok.html": "2026-10-10T16:52:10.146619+00:00",
-    "https://spravy.stvr.sk/2026/10/foto-vo-velkej-maci-otvorili-pamatnik-slobody-slova-stoji-na-mieste-kde-zavrazdili-jana-kuciaka-a-martinu-kusnirovu/": "2026-10-10T16:52:10.146621+00:00",
-    "https://www.startitup.sk/finsko-chce-v-eu-zastavit-turisticke-viza-pre-rusov-slovensko-postupuje-inak/": "2026-10-10T16:52:10.146623+00:00",
-    "https://www.startitup.sk/slovensku-hrozi-dalsi-extrem-v-pocasi-europu-zasiahnu-vydatne-dazde-u-nas-sa-ocakava-uplne-opacny-scenar/": "2026-10-10T16:52:10.146624+00:00",
-    "https://www.startitup.sk/treti-utok-na-polskej-skole-za-menej-nez-tyzden-studentka-zranila-tri-zeny/": "2026-10-10T16:52:10.146626+00:00",
-    "https://www.startitup.sk/trump-kritizuje-nobelov-vybor-tvrdi-ze-ukoncil-8-vojen-pustil-sa-aj-do-laureatky/": "2026-10-10T16:52:10.146628+00:00",
-    "https://www.startitup.sk/letenky-zlacneli-az-o-66-rebricek-odhalil-10-atraktivnych-destinacii-pre-rok-2027/": "2026-10-10T16:52:10.146630+00:00",
-    "https://www.startitup.sk/ai-zasiahne-10-pracovnych-oblasti-oecd-upozornuje-na-vysoke-riziko-aj-na-slovensku/": "2026-10-10T16:52:10.146632+00:00",
-    "https://www.startitup.sk/oblieka-plackovu-aj-vinczeovu-mlada-slovenka-predava-modely-za-800-eur/": "2026-10-10T16:52:10.146634+00:00",
-    "https://www.startitup.sk/tychto-5-zdravych-potravin-moze-byt-pri-zapale-criev-problem-vedci-zistili-co-ich-spaja/": "2026-10-10T16:52:10.146635+00:00",
-    "https://news.refresher.sk/212899-Obyvatelia-obce-na-vychode-Slovenska-sa-stazuju-na-zmenu-chuti-vody-Obec-vysvetlila-co-je-za-tym": "2026-10-10T16:52:10.146637+00:00",
-    "https://refresher.sk/212397-Vacsina-financnych-poradcov-z-Instagramu-su-falosni-milionari-tou-pracou-sa-ani-neuzivia-Aj-mne-sa-smiali-hovori-poradca-Filip": "2026-10-10T16:52:10.146638+00:00",
-    "https://refresher.sk/212897-Toto-je-rebricek-najhorsich-slovenskych-jedal-Vacsina-Slovakov-urcite-nebude-suhlasit": "2026-10-10T16:52:10.146640+00:00",
-    "https://news.refresher.sk/212894-AKTUALNE-V-Polsku-doslo-k-dalsiemu-utoku-na-skole-studentka-zranila-tri-zeny": "2026-10-10T16:52:10.146642+00:00",
-    "https://refresher.sk/212893-Petra-Vlhova-je-spat-Slovenska-sampionka-startuje-novu-sezonu-Svetoveho-pohara-v-Soldene": "2026-10-10T16:52:10.146644+00:00",
-    "https://news.refresher.sk/212889-ZOZNAM-Kto-patri-k-medicinskej-spicke-Experti-zostavili-rebricek-75-najlepsich-lekarov": "2026-10-10T16:52:10.146646+00:00",
-    "https://refresher.sk/212892-Najroztomilejsi-Halloween-v-New-Yorku-Tompkins-Square-Park-chysta-36-rocnik-psej-prehliadky": "2026-10-10T16:52:10.146648+00:00",
-    "https://news.refresher.sk/212877-Kuracie-maso-s-bakteriou-sposobujucou-salmonelozu-Inspekcia-v-Ceskej-republike-upozornila-na-maso-z-Lidlu": "2026-10-10T16:52:10.146649+00:00",
-    "https://news.refresher.sk/212882-Tragedia-na-Zahori-Pri-tazobnych-pracach-zomrel-35-rocny-muz-udajne-ho-zavalil-strom": "2026-10-10T16:52:10.146651+00:00",
-    "https://refresher.sk/212888-Komedia-Zahulime-uvidime-sa-docka-stvrteho-pokracovania": "2026-10-10T16:52:10.146653+00:00",
-    "https://www.teraz.sk/regiony/komentatorovi-martinovi-schellingovi-ud/998742-clanok.html": "2026-10-10T16:52:10.146656+00:00",
-    "https://www.teraz.sk/regiony/r-trnka-na-akvapark-s-geotermalnym-vr/998741-clanok.html": "2026-10-10T16:52:10.146658+00:00",
-    "https://www.teraz.sk/regiony/depaul-slovensko-cesta-z-ulice-domov-sa/998729-clanok.html": "2026-10-10T16:52:10.146660+00:00",
-    "https://www.teraz.sk/regiony/v-novom-parku-odhalia-patmetrove-sus/998726-clanok.html": "2026-10-10T16:52:10.146662+00:00",
-    "https://www.teraz.sk/regiony/vo-velkej-maci-otvorili-pamatnik-slo/998722-clanok.html": "2026-10-10T16:52:10.146663+00:00",
-    "https://www.teraz.sk/regiony/navsteva-carovho-potomka-otvara-muz/998719-clanok.html": "2026-10-10T16:52:10.146665+00:00",
-    "https://www.teraz.sk/regiony/od-zaciatku-oktobra-v-ziari-nad-hrono/998718-clanok.html": "2026-10-10T16:52:10.146667+00:00",
-    "https://www.teraz.sk/regiony/mestska-policia-v-ba-odporuca-pri-ce/998714-clanok.html": "2026-10-10T16:52:10.146669+00:00",
-    "https://www.teraz.sk/regiony/pesia-zona-v-trencine-ziskala-ocene/998712-clanok.html": "2026-10-10T16:52:10.146670+00:00",
-    "https://www.topky.sk/cl/10/9515323/Uspesna-patracia-akcia-pri-Rimavskej-Sobote--Nezvestneho-muza-vypatrali-po-chladnej-noci": "2026-10-10T16:52:10.146672+00:00",
-    "https://www.topky.sk/cl/10/9515317/Zena-uviazla-pod-Ostrym-Rohacom--Na-pomoc-jej-prisli-horski-a-letecki-zachranari": "2026-10-10T16:52:10.146673+00:00",
-    "https://www.topky.sk/cl/10/9515257/Nahly-zasah-UBOK-u--Rodicia-mali-ponukat-maloletu-dceru-na-sex-za-peniaze--muz--38--skoncil-vo-vazbe-": "2026-10-10T16:52:10.146675+00:00",
-    "https://www.aktuality.sk/clanok/15zH0BG/strelbu-v-usa-neprezilo-devat-ludi/": "2026-10-10T16:52:10.146677+00:00",
-    "https://www.aktuality.sk/clanok/4ZQGp3U/policia-v-blhovciach-vypatrala-nezvestneho-seniora-po-noci-stravenej-mimo-domu-ho-nasli-podchladeneho/": "2026-10-10T16:52:10.146678+00:00",
-    "https://www.aktuality.sk/clanok/NNTPj01/zasah-pod-ostrym-rohacom-letecki-zachranari-evakuovali-uviaznutu-turistku/": "2026-10-10T16:52:10.146680+00:00",
-    "https://www.aktuality.sk/clanok/UjBxFfz/policia-obvinila-dvojicu-z-obchodovania-s-ludmi-dceru-mali-ponukat-na-sexualne-sluzby/": "2026-10-10T16:52:10.146681+00:00",
-    "https://www.aktuality.sk/clanok/h6UlsM5/donald-trump-uvalil-sankcie-na-trestny-sud-v-haagu-clenske-staty-europskej-unie-vratane-slovenska-ho-vyzyvaju-na-ich-odvolanie/": "2026-10-10T16:52:10.146683+00:00",
-    "https://www.aktuality.sk/clanok/pa6et3h/komisar-pre-deti-ziada-posilnenie-autority-ucitelov-rezort-skolstva-by-mal-zavedenim-discipliny-zvysit-bezpecnost-v-triedach/": "2026-10-10T16:52:10.146685+00:00",
-    "https://www.aktuality.sk/clanok/LJlkmdT/trinaste-dochodky-su-politicka-pasca-tvrdi-viliam-karas-erik-tomas-ludia-uz-musia-dostat-konsolidaciu-z-hlavy/": "2026-10-10T16:52:10.146686+00:00",
-    "https://www.aktuality.sk/clanok/L5rQWyl/v-den-90-narodenin-vaclava-havla-pribudla-lavicka-v-prahe-aj-kosiciach-fotoriport/": "2026-10-10T16:52:10.146688+00:00",
-    "https://www.aktuality.sk/clanok/hU3giJW/letisko-v-saudskoarabskej-metropole-rijad-sa-opat-stalo-tercom-husiov-cestujucich-evakuovali/": "2026-10-10T16:52:10.146690+00:00",
-    "https://www.aktuality.sk/clanok/QERBY7e/poziciavame-si-a-prejedame-to-mame-nulovu-rezervu-pre-pripad-krizy-varuje-byvaly-autor-rozpoctov/": "2026-10-10T16:52:10.146692+00:00",
-    "https://www.aktuality.sk/clanok/zbJF914/izraelske-udery-v-pasme-gazy-pri-dvoch-utokoch-zahynuli-najmenej-piati-palestincania/": "2026-10-10T16:52:10.146693+00:00",
-    "https://www.aktuality.sk/clanok/QZKW42a/treti-utok-na-polskej-skole-za-tyzden-studentka-vo-varsave-zranila-tri-zeny/": "2026-10-10T16:52:10.146696+00:00",
-    "https://www.aktuality.sk/clanok/TD8ijo0/vlada-upravila-pravidla-rozpoctoveho-provizoria-podla-politologa-chce-obist-poziadavky-poslancov/": "2026-10-10T16:52:10.146697+00:00",
-    "https://www.aktuality.sk/clanok/LnoslmL/palestinsky-prezident-odlozil-parlamentne-volby-z-novembra-tohto-roka-na-september-2027/": "2026-10-10T16:52:10.146699+00:00",
-    "https://www.aktuality.sk/clanok/PQR3sHF/kompletny-zoznam-kandidatov-na-primatora-mesta-presov-vo-volbach-2026/": "2026-10-10T16:52:10.146700+00:00",
-    "https://www.startitup.sk/ryanair-odhalil-prvych-29-novych-liniek-na-leto-2027-zo-slovenska-pribudne-spojenie-na-oblubeny-grecky-ostrov/": "2026-10-10T16:52:10.146703+00:00",
     "https://regiony.zoznam.sk/neskutocna-tragedia-zmizol-student-andrej-18-po-12-dnoch-ho-nasli-mrtveho-zo-slov-mamy-trha-srdce/": "2026-10-10T20:27:21.563623+00:00",
     "https://www.topky.sk/cl/10/9515389/Fico-obhajuje-rozpocet-na-rok-2027--Podla-premiera-ide-o-klucovy-plan-pre-prezitie-krajiny": "2026-10-10T20:27:24.570441+00:00",
     "https://www.topky.sk/cl/10/9515369/Taraba-sa-pustil-do-Kuffu-pre-odmeny--spomenul-aj-nominanta-SNS--Prehovoril-aj-o-kauze-majakov-v-Pezinku": "2026-10-10T20:27:24.570475+00:00",
@@ -6755,11 +6670,116 @@
     "https://www.topky.sk/cl/10/9538181/Volby-aj-bez-cesty-do-volebnej-miestnosti--Volici-mozu-vyuzit-prenosnu-schranku": "2026-10-24T13:53:35.071457+00:00",
     "https://www.bratislavak.sk/clanky/16014/online-sledujeme-priebeh-spojenych-volieb-kandidat-za-progresivne-slovensko-upozornil-na-mozny-podvod-v-petrzalke": "2026-10-24T13:53:38.085034+00:00",
     "https://www.aktuality.sk/clanok/HyVR4Zi/saudske-nalety-na-jemen-si-vyziadali-obete-husiovia-hlasia-utoky-na-hlavne-mesto/": "2026-10-24T13:53:38.085059+00:00",
-    "https://www.topky.sk/cl/10/9502041/Opitu-vodicku-zastavil-az-strom--Nafukala-viac-ako-dve-promile-": "2026-10-24T13:53:38.085064+00:00"
+    "https://www.topky.sk/cl/10/9502041/Opitu-vodicku-zastavil-az-strom--Nafukala-viac-ako-dve-promile-": "2026-10-24T13:53:38.085064+00:00",
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065617-vallo-smeruje-k-presvedcivemu-vitazstvu-v-bratislave-raza-podla-exit-pollu-porazil-s-vyraznym-naskokom": "2026-10-24T19:43:19.419565+00:00",
+    "https://www.topky.sk/cl/10/9538495/Blanar-mieri-do-Moskvy--Odmieta-novu-zeleznu-oponu-medzi-EU-a-Ruskom": "2026-10-24T19:43:22.432390+00:00",
+    "https://www.topky.sk/cl/10/9538483/Pozor-na-vietor-na-horach--Meteorologovia-vydali-vystrahy": "2026-10-24T19:43:22.432414+00:00",
+    "https://www.teraz.sk/regiony/policia-v-trnavskom-kraji-eviduje-deva/1002443-clanok.html": "2026-10-24T19:43:22.432419+00:00",
+    "https://www.teraz.sk/sport/volejbalistky-ziliny-zdolali-nitru-30/1002433-clanok.html": "2026-10-24T19:43:22.432422+00:00",
+    "https://www.aktuality.sk/clanok/1VE3CWT/volby-2026-v-trnave-a-kraji-prve-vysledky-su-zname/": "2026-10-24T19:43:22.432427+00:00",
+    "https://bratislava.zoznam.sk/juraj-blanar-v-nedelu-odcestuje-do-moskvy-na-zasadnutie-medzivladnej-komisie/": "2026-10-24T19:43:22.432430+00:00",
+    "https://www.teraz.sk/regiony/v-trnavskom-kraji-uzavreli-vacsinu-mi/1002425-clanok.html": "2026-10-24T19:43:22.432435+00:00",
+    "https://www.aktuality.sk/clanok/x5GiRNg/hlasovanie-s-nespravnymi-listkami-hlasia-z-bratislavy-aj-vychodu-pravnik-varuje-pred-spochybnenim-vysledkov/": "2026-10-24T19:43:22.432439+00:00",
+    "https://sita.sk/predkruzkovany-hlasovaci-listok-v-petrzalke-samosprava-odmieta-podozrenia-z-manipulacie-volieb/": "2026-10-24T19:43:22.432441+00:00",
+    "https://www.topky.sk/cl/10/9538445/Podozrenie-na-volebny-podvod-v-Bratislave--Petrzalka-vysvetluje--co-sa-malo-stat": "2026-10-24T19:43:22.432445+00:00",
+    "https://bratislava.zoznam.sk/pellegrini-zatial-nie-je-rozhodnuty-vymenovat-kuffu-konecne-slovo-oznami-buduci-tyzden/": "2026-10-24T19:43:22.432447+00:00",
+    "https://regiony.zoznam.sk/volby-do-vuc-2026-online-kto-bude-zupanom-sledujte-vysledky-vo-vsetkych-krajoch/": "2026-10-24T19:43:22.432450+00:00",
+    "https://www.topky.sk/cl/10/9538467/Pellegrini-zatial-Kuffovi-zelenu-nedal--O-jeho-osude-rozhodne-v-najblizsich-dnoch": "2026-10-24T19:43:22.432453+00:00",
+    "https://www.topky.sk/cl/10/9538429/Kandidat-na-starostu-celi-podozreniu--V-Jelke-mal-ponukat-peniaze-za-hlasy": "2026-10-24T19:43:22.432455+00:00",
+    "https://www.aktuality.sk/clanok/yXyUYkM/v-petrzalke-chybali-hlasovacie-listky-na-volbu-primatora-volicka-upozornila-na-styri-pripady/": "2026-10-24T19:43:22.432458+00:00",
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065537-volebny-rozruch-v-petrzalke-zena-tvrdila-ze-dostala-predkruzkovany-listok-komisia-ho-roztrhala-zasahovala-aj-policia": "2026-10-24T19:43:22.432460+00:00",
+    "https://www.startitup.sk/volicke-v-petrzalke-dali-uz-zakruzkovany-volebny-listok-tvrdi-puchovsky-predsednicka-to-ostrymi-slovami-odmieta/": "2026-10-24T19:43:22.432463+00:00",
+    "https://news.refresher.sk/214025-Incident-pocas-volieb-v-Bratislave-Volicka-tvrdi-ze-dostala-hlasovacie-listky-s-vopred-zakruzkovanymi-kandidatmi": "2026-10-24T19:43:22.432465+00:00",
+    "https://sita.sk/vzdravotnictve/utok-ira-v-ruzinovskej-nemocnici-ma-dohru-muz-celi-obvineniu-z-viacerych-trestnych-cinov/": "2026-10-24T19:43:22.432468+00:00",
+    "https://www.bratislavak.sk/clanky/16021/policia-obvinila-34-rocneho-ira-ktory-v-ruzinovskej-nemocnici-napadol-zdravotnicky-personal": "2026-10-24T19:43:22.432470+00:00",
+    "https://www.bratislavak.sk/clanky/16019/manzelka-jedneho-z-kandidatov-dostala-v-petrzalke-vopred-vyplnene-hlasovacie-listky-do-okrsku-bola-poslana-kontrola": "2026-10-24T19:43:22.432472+00:00",
+    "https://www.aktuality.sk/clanok/9Mf9YvA/primatorom-bratislavy-bude-podla-exit-pollu-opat-matus-vallo/": "2026-10-24T19:43:22.432510+00:00",
+    "https://www.teraz.sk/regiony/jozef-viskupic-sa-podakoval-volicom/1002445-clanok.html": "2026-10-24T19:43:22.432513+00:00",
+    "https://www.teraz.sk/regiony/ondreja-luntera-prislo-do-volebneho-s/1002442-clanok.html": "2026-10-24T19:43:22.432516+00:00",
+    "https://www.teraz.sk/regiony/v-trencianskom-kraji-po-scitani-vys/1002441-clanok.html": "2026-10-24T19:43:22.432518+00:00",
+    "https://www.teraz.sk/regiony/v-presovskom-kraji-po-scitani-173-p/1002440-clanok.html": "2026-10-24T19:43:22.432521+00:00",
+    "https://www.teraz.sk/regiony/v-obci-lomnicka-este-volby-prebiehaj/1002437-clanok.html": "2026-10-24T19:43:22.432524+00:00",
+    "https://www.teraz.sk/regiony/v-banskobystrickom-kraji-po-scitani-v/1002439-clanok.html": "2026-10-24T19:43:22.432527+00:00",
+    "https://www.teraz.sk/import/hokejisti-nitry-triumfovali-poprad-41/1002438-clanok.html": "2026-10-24T19:43:22.432529+00:00",
+    "https://www.teraz.sk/regiony/jurinova-predvolebna-kampan-bola-poz/1002436-clanok.html": "2026-10-24T19:43:22.432531+00:00",
+    "https://www.teraz.sk/regiony/f-olha-veri-v-uspech-zaver-kampane/1002434-clanok.html": "2026-10-24T19:43:22.432535+00:00",
+    "https://www.teraz.sk/priame-prenosy-a-videa-tasr-tv/volebny-stab-m-valla/1002435-clanok.html": "2026-10-24T19:43:22.432537+00:00",
+    "https://www.teraz.sk/sport/tatran-presov-zvitazili-nad-slovanom/1002422-clanok.html": "2026-10-24T19:43:22.432540+00:00",
+    "https://www.teraz.sk/sport/hadzanari-povazskej-bystrice-zdolali/1002413-clanok.html": "2026-10-24T19:43:22.432542+00:00",
+    "https://www.teraz.sk/regiony/m-majersky-stravil-moratorium-v-tatr/1002427-clanok.html": "2026-10-24T19:43:22.432545+00:00",
+    "https://www.teraz.sk/regiony/volebne-komisie-v-presovskom-kraji-nez/1002423-clanok.html": "2026-10-24T19:43:22.432549+00:00",
+    "https://www.teraz.sk/regiony/vsetky-volebne-miestnosti-v-nitriansko/1002421-clanok.html": "2026-10-24T19:43:22.432551+00:00",
+    "https://www.teraz.sk/regiony/politolog-ludia-ocakavaju-od-staro/1002417-clanok.html": "2026-10-24T19:43:22.432553+00:00",
+    "https://www.teraz.sk/regiony/okresna-volebna-komisia-v-l-mikulas/1002415-clanok.html": "2026-10-24T19:43:22.432556+00:00",
+    "https://sita.sk/blanar-povedie-slovensku-delegaciu-na-medzivladnej-komisii-v-moskve-stretne-sa-aj-s-lavrovom/": "2026-10-24T19:43:22.432559+00:00",
+    "https://sita.sk/byvaniehrou/jesenny-jedalnicek-ktory-doda-telu-energiu-a-podpori-imunitu-co-by-na-vasom-tanieri-nemalo-chybat/": "2026-10-24T19:43:22.432561+00:00",
+    "https://sita.sk/online-vysledky-volieb-2026-komunalnych-a-zupnych-do-vuc-zvoleni-zupani-krajski-poslanci-a-primatori-miest/": "2026-10-24T19:43:22.432564+00:00",
+    "https://sita.sk/byvaniehrou/pozor-na-dvojnikov-pravakov-niektore-huby-pokazia-veceru-ine-mozu-ohrozit-zdravie/": "2026-10-24T19:43:22.432567+00:00",
+    "https://sita.sk/nad-kosicami-pribudol-novy-agroturisticky-projekt-je-nim-krajske-monte-negro-pri-chate-hresna-foto/": "2026-10-24T19:43:22.432569+00:00",
+    "https://sita.sk/byvaniehrou/zelene-paradajky-pozbierajte-skor-nez-pridu-mrazy-vdaka-tymto-trikom-dozreju-aj-doma/": "2026-10-24T19:43:22.432571+00:00",
+    "https://sita.sk/irancom-hrozi-pre-ekonomicky-tlak-usa-nedostatok-jedla-prezident-vyzyva-na-ukoncenie-stavu-ani-vojny-ani-mieru/": "2026-10-24T19:43:22.432574+00:00",
+    "https://sita.sk/byvaniehrou/tieto-psy-menej-stekaju-a-takmer-neplznu-ich-cistotnost-potesi-kazdu-domacnost/": "2026-10-24T19:43:22.432576+00:00",
+    "https://sita.sk/srbski-studenti-chcu-po-14-rokoch-zosadit-vladnu-stranu-aleksandara-vucica-upozornuju-na-zastrasovanie-a-represie/": "2026-10-24T19:43:22.432579+00:00",
+    "https://sita.sk/vofinanciach/e-faktury-ulahcia-zivot-mnohym-uctovnikom-budu-moct-spracovavat-doklady-viacerych-firiem-naraz/": "2026-10-24T19:43:22.432581+00:00",
+    "https://sita.sk/pellegrini-vyzval-obcanov-na-aktivnu-ucast-vo-volbach-ich-spojenie-oznacil-za-mimoriadne-efektivne-video-foto/": "2026-10-24T19:43:22.432584+00:00",
+    "https://sita.sk/byvaniehrou/nedovolte-veverickam-aby-vas-pripravili-o-urodu-orechov-kedy-ich-zbierat-a-ako-ich-spravne-uskladnit/": "2026-10-24T19:43:22.432586+00:00",
+    "https://sita.sk/nasadoprava/kosicky-dopravny-podnik-posilni-pocas-dusickoveho-obdobia-linky-mestskej-hromadnej-dopravy/": "2026-10-24T19:43:22.432588+00:00",
+    "https://sita.sk/mesto-presov-zmodernizovalo-zimny-stadion-za-celkovo-priblizne-26-miliona-eur-foto/": "2026-10-24T19:43:22.432591+00:00",
+    "https://sita.sk/byvaniehrou/susicku-nepotrebujete-vzdy-japonsky-trik-s-vesanim-moze-vyrazne-urychlit-schnutie-bielizne/": "2026-10-24T19:43:22.432593+00:00",
+    "https://sita.sk/vskolstve/viac-nez-dva-miliony-eur-na-vysoke-skoly-slovensko-si-pripravuje-odbornikov-pre-jadrovu-energetiku/": "2026-10-24T19:43:22.432596+00:00",
+    "https://sita.sk/nasvidiek/strihat-levandulu-na-jesen-alebo-nie-nespravny-rez-jej-moze-uskodit/": "2026-10-24T19:43:22.432598+00:00",
+    "https://sita.sk/byvaniehrou/zahrada-plna-kvetov-od-jari-az-do-jesene-zdrave-rastliny-mozete-mat-aj-bez-chemie/": "2026-10-24T19:43:22.432601+00:00",
+    "https://sita.sk/autolike/jaguar-type-01-je-konecne-kompletne-odhaleny-super-gt-bez-kompromisov-prichadza-foto/": "2026-10-24T19:43:22.432603+00:00",
+    "https://sita.sk/byvaniehrou/jesenny-rez-vinica-a-popinavych-rastlin-co-upravit-v-oktobri-a-s-cim-radsej-pockat/": "2026-10-24T19:43:22.432606+00:00",
+    "https://sita.sk/francuzska-policia-pouzila-proti-demonstrantom-slzotvorny-plyn-napatie-zvysuju-bliziace-sa-volby/": "2026-10-24T19:43:22.432608+00:00",
+    "https://sita.sk/vzdravotnictve/prelezaniny-su-na-slovensku-vyznamnym-zdravotnym-problemom-liecba-pociatocnych-stadii-je-vsak-az-desatkrat-lacnejsia/": "2026-10-24T19:43:22.432612+00:00",
+    "https://sita.sk/byvaniehrou/jesenny-zber-byliniek-naucte-sa-ich-spravne-susit-a-skladovat-aby-ste-ich-mohli-vyuzivat-celu-zimu/": "2026-10-24T19:43:22.432614+00:00",
+    "https://sita.sk/v-baku-odstartoval-najvacsi-sampionat-v-historii-fifa-slovaci-zacali-desatgolovym-debaklom-supera/": "2026-10-24T19:43:22.432617+00:00",
+    "https://sita.sk/byvaniehrou/ako-pripravit-oleander-na-zimu-spravna-starostlivost-mu-pomoze-preckat-chlad-a-v-lete-bohato-kvitnut/": "2026-10-24T19:43:22.432619+00:00",
+    "https://sita.sk/hasici-zasahovali-pri-poziari-vyrobnej-technologie-v-hrinovej-skoda-sa-vysplhala-na-miliony-eur-video-foto/": "2026-10-24T19:43:22.432622+00:00",
+    "https://sita.sk/mama-place-otec-ju-objima-abrahamova-by-na-trening-pozvala-grigara-inspiruje-ju-jeho-vytrvalost/": "2026-10-24T19:43:22.432624+00:00",
+    "https://sita.sk/byvaniehrou/staci-tekvica-a-ostry-noz-vyrobte-si-originalny-tekvicovy-lampas-ktory-zvladne-aj-uplny-zaciatocnik/": "2026-10-24T19:43:22.432627+00:00",
+    "https://sita.sk/zelenskyj-si-vystrelil-z-trumpovho-vyslanca-ktory-oznacil-putina-za-humanistu-ja-asi-nie-som-taky-velky/": "2026-10-24T19:43:22.432629+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2065621-nobelovku-trump-opat-nedostal-tak-prisla-nahrada-muz-storocia-sa-tesil-z-vymyslenej-ceny": "2026-10-24T19:43:22.432632+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2065573-pellegrini-stale-vaha-s-kuffom-kedy-rozhodne-o-novom-sefovi-envirorezortu": "2026-10-24T19:43:22.432635+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2065553-francuzsko-v-uliciach-statisice-ludi-protestuju-proti-drahote-policia-v-parizi-nasadila-vodne-dela": "2026-10-24T19:43:22.432637+00:00",
+    "https://www.pravda.sk/spravy/domace/clanok/2065505-zasadny-obrat-v-pripade-judity-za-vrazdu-tomasa-dostala-vyse-12-rokov-teraz-by-mohla-opustit-vazenie": "2026-10-24T19:43:22.432640+00:00",
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065511-napatie-vo-volbach-na-vychode-slovenska-v-zehre-strazi-situaciu-policia-spory-sa-preniesli-az-do-britanie": "2026-10-24T19:43:22.432642+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2065477-znechuteny-vojnovy-veteran-prosi-putina-o-zasah-ked-upozornil-na-korupciu-politicky-ho-odstranili-ako-sa-mu-pomstili": "2026-10-24T19:43:22.432645+00:00",
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065503-kedy-sa-dozvieme-prve-vysledky-tu-su-odhadovane-casy": "2026-10-24T19:43:22.432647+00:00",
+    "https://www.pravda.sk/spravy/svet/clanok/2065479-starlink-na-ukrajine-opat-zrychlil-kyjev-hlasi-dolezity-zlom-pre-bojove-operacie": "2026-10-24T19:43:22.432650+00:00",
+    "https://www.aktuality.sk/clanok/S80bNjM/volby-2026-v-banskej-bystrici-a-kraji-ocakavame-prve-vysledky/": "2026-10-24T19:43:22.432652+00:00",
+    "https://www.aktuality.sk/clanok/qGGJlT9/volby-2026-v-presove-a-kraji-ocakavame-prve-vysledky/": "2026-10-24T19:43:22.432654+00:00",
+    "https://www.aktuality.sk/clanok/QxhDoPQ/volby-2026-v-kosiciach-a-kraji-prve-vysledky-su-zname/": "2026-10-24T19:43:22.432657+00:00",
+    "https://www.aktuality.sk/clanok/s8Rivkh/volby-2026-v-ziline-a-kraji-prve-vysledky-su-zname/": "2026-10-24T19:43:22.432659+00:00",
+    "https://www.aktuality.sk/clanok/vk9yyIu/volby-2026-v-nitre-a-kraji-prve-vysledky-su-zname/": "2026-10-24T19:43:22.432662+00:00",
+    "https://www.aktuality.sk/clanok/X9M1FBI/volby-2026-v-trencine-a-kraji-prve-vysledky-su-zname/": "2026-10-24T19:43:22.432664+00:00",
+    "https://www.aktuality.sk/clanok/Pi0PTVJ/noc-zo-soboty-na-nedelu-bude-chladna-na-zahori-a-v-dolinach-moze-mrznut/": "2026-10-24T19:43:22.432666+00:00",
+    "https://www.aktuality.sk/clanok/RFQkiYR/protestov-vo-francuzsku-sa-zucastnili-statisice-ludi-doslo-aj-k-stretom-s-policiou/": "2026-10-24T19:43:22.432669+00:00",
+    "https://www.aktuality.sk/clanok/CzNFm9c/vysledky-volieb-2026-online/": "2026-10-24T19:43:22.432671+00:00",
+    "https://www.aktuality.sk/clanok/eO8Qm4C/peter-pellegrini-zatial-nechce-menovat-filipa-kuffu-za-ministra-zivotneho-prostredia/": "2026-10-24T19:43:22.432674+00:00",
+    "https://www.aktuality.sk/clanok/s17qR4s/podozrenie-v-handlovej-volic-mal-dostat-listok-s-uz-vyznacenymi-kandidatmi/": "2026-10-24T19:43:22.432676+00:00",
+    "https://www.aktuality.sk/clanok/a713qlf/prezident-pellegrini-veri-ze-vysoka-ucast-doda-vysledkom-volieb-vacsiu-legitimitu/": "2026-10-24T19:43:22.432679+00:00",
+    "https://www.topky.sk/cl/10/9538435/Pellegrini-odvolil-s-mamou--Na-hlasovanie-si-musel-vystat-polhodinovy-rad": "2026-10-24T19:43:22.432681+00:00",
+    "https://www.startitup.sk/slovaci-rozhodli-o-zupanoch-prve-vysledky-naznacuju-prekvapenie-v-jednom-z-krajov/": "2026-10-24T19:43:22.432684+00:00",
+    "https://www.startitup.sk/volby-2026-slovensko-odvolilo-vo-viacerych-okresoch-je-sklz-den-sprevadzali-chyby-problemy-aj-podvody/": "2026-10-24T19:43:22.432686+00:00",
+    "https://www.startitup.sk/slovaci-by-mali-mat-na-ucte-az-8-553-eur-no-kazdy-piaty-nema-ani-euro-zachran-sa-v-3-krokoch-odbornicka/": "2026-10-24T19:43:22.432689+00:00",
+    "https://www.startitup.sk/mimoriadne-volebne-moratorium-sa-predlzuje-v-dalsich-dvoch-krajoch/": "2026-10-24T19:43:22.432691+00:00",
+    "https://www.startitup.sk/investovali-9-milionov-dolarov-do-vyskumu-superpsa-americky-experiment-odhalil-pravdu-o-najinteligentnejsich-plemenach/": "2026-10-24T19:43:22.432693+00:00",
+    "https://www.startitup.sk/9-z-10-slovakov-pohori-uz-na-prvej-otazke-spoznas-hrdinov-slovenskej-aj-svetovej-literatury-podla-ich-pribehov-kviz/": "2026-10-24T19:43:22.432696+00:00",
+    "https://www.startitup.sk/rusko-pohrozilo-moldavsku-tvrdou-reakciou-za-vyhostenie-diplomata/": "2026-10-24T19:43:22.432698+00:00",
+    "https://www.startitup.sk/moratorium-na-volby-sa-zrejme-rozsiri-aj-do-zilinskeho-kraja/": "2026-10-24T19:43:22.432700+00:00",
+    "https://news.refresher.sk/214028-Kupovanie-hlasov-na-vychode-aj-poziadavka-na-zrusenie-volieb-Policia-v-Presovskom-kraji-zadrzala-podozrivu-osobu": "2026-10-24T19:43:22.432703+00:00",
+    "https://news.refresher.sk/214027-Odvolil-aj-prezident-Pellegrini-Do-volebnej-miestnosti-v-Banskej-Bystrici-prisiel-aj-s-mamou": "2026-10-24T19:43:22.432706+00:00",
+    "https://news.refresher.sk/214026-AKTUALNE-Volebne-moratorium-sa-predlzuje-v-4-krajoch-pridava-sa-Zilina-a-Trencin": "2026-10-24T19:43:22.432708+00:00",
+    "https://news.refresher.sk/214024-Oblubeny-doplnok-na-spanie-moze-suvisiet-s-vaznymi-problemami-so-srdcom-Vedci-upozornuju-na-nove-rizika": "2026-10-24T19:43:22.432711+00:00",
+    "https://refresher.sk/214023-Korytnacka-ktora-ti-sprijemni-den": "2026-10-24T19:43:22.432713+00:00",
+    "https://news.refresher.sk/214021-MAPA-VYSKYTU-HUB-Pozri-si-v-ktorych-slovenskych-lesoch-hubari-aktualne-hlasia-plne-kosiky": "2026-10-24T19:43:22.432716+00:00",
+    "https://refresher.sk/214018-Petra-Vlhova": "2026-10-24T19:43:22.432718+00:00",
+    "https://bratislavaden.sk/bratislavsky-kraj-chysta-netradicne-dobrodruzstvo-pre-deti-v-cunove-ich-caka-noc-plna-tajomstiev-a-mytickych-bytosti/": "2026-10-24T19:43:22.432721+00:00",
+    "https://sita.sk/vrealitach/model-druztevneho-byvania-prichadza-uz-aj-do-centra-bratislavy-foto/": "2026-10-24T19:43:22.432724+00:00"
   },
   "seen_images": {
-    "02/od-dunaj-rotated.jpg": "2026-10-10T16:52:07.140878+00:00",
-    "od-dunaj-rotated.jpg": "2026-10-10T16:52:07.140878+00:00",
     "10/andrij-tragicke-patranie-cover-anon.jpg": "2026-10-10T20:27:21.563645+00:00",
     "andrij-tragicke-patranie-cover-anon.jpg": "2026-10-10T20:27:21.563645+00:00",
     "10/andrij-tragicke-patranie-anon.jpg": "2026-10-10T20:27:21.563682+00:00",
@@ -7067,10 +7087,11 @@
     "10/1024-volici-dnv01252678002652.jpg": "2026-10-24T13:23:31.124953+00:00",
     "1024-volici-dnv01252678002652.jpg": "2026-10-24T13:23:31.124953+00:00",
     "img.topky.sk/9065491.jpg": "2026-10-24T13:53:35.071476+00:00",
-    "9065491.jpg": "2026-10-24T13:53:35.071476+00:00"
+    "9065491.jpg": "2026-10-24T13:53:35.071476+00:00",
+    "2525145/vallo.jpg": "2026-10-24T19:43:19.419588+00:00",
+    "vallo.jpg": "2026-10-24T19:43:19.419588+00:00"
   },
   "seen_hashes": {
-    "077efdad3b71751c": "2026-10-10T16:52:07.140878+00:00",
     "2516656131766348": "2026-10-10T20:27:21.563645+00:00",
     "e60391372d6d2d93": "2026-10-10T20:27:21.563682+00:00",
     "c7614d8c9a1d5d58": "2026-10-10T20:27:21.563695+00:00",
@@ -7224,44 +7245,10 @@
     "b6ccc6c3878c9a0b": "2026-10-24T13:23:31.124899+00:00",
     "13f1e9c9199c9f1f": "2026-10-24T13:23:31.124939+00:00",
     "3b7574b9d8585834": "2026-10-24T13:23:31.124953+00:00",
-    "c253794e2c4c0e4c": "2026-10-24T13:53:35.071476+00:00"
+    "c253794e2c4c0e4c": "2026-10-24T13:53:35.071476+00:00",
+    "bd69cddd7b397476": "2026-10-24T19:43:19.419588+00:00"
   },
   "recent_posts": [
-    {
-      "url": "https://www.topky.sk/cl/10/9534675/Svetove-osobnosti-mieria-na-Slovensko--Aj-tento-rok-Bratislava-hosti-udalost-s-viac-ako-50-rocnou-tradiciou",
-      "title": "Svetové osobnosti mieria na Slovensko: Aj tento rok Bratislava hostí udalosť s viac ako 50-ročnou tradíciou",
-      "posted_at": "2026-10-21T14:19:53.841253+00:00"
-    },
-    {
-      "url": "https://news.refresher.sk/213772-Zuzana-Subova-je-ochotna-vzdat-sa-kandidatury-v-prospech-Matusa-Valla-Ziada-novu-sekciu-na-magistrate",
-      "title": "Zuzana Šubová je ochotná vzdať sa kandidatúry v prospech Matúša Valla: Žiada novú sekciu na magistráte",
-      "posted_at": "2026-10-21T14:49:36.346101+00:00"
-    },
-    {
-      "url": "https://sita.sk/subova-je-ochotna-vzdat-sa-kandidatury-na-primatorku-bratislavy-v-prospech-valla-ma-vsak-podmienku/",
-      "title": "Šubová je ochotná vzdať sa kandidatúry na primátorku Bratislavy v prospech Valla, má však podmienku",
-      "posted_at": "2026-10-21T15:26:22.711348+00:00"
-    },
-    {
-      "url": "https://sita.sk/nasadoprava/bratislavske-letisko-prvykrat-v-historii-vybavilo-styri-miliony-cestujucich-raz-pripisal-vyznamny-prinos-aj-spolocnosti-wizz-air/",
-      "title": "Bratislavské letisko prvýkrát v histórii vybavilo štyri milióny cestujúcich, Ráž pripísal významný prínos aj spoločnosti Wizz Air",
-      "posted_at": "2026-10-21T15:56:16.026875+00:00"
-    },
-    {
-      "url": "https://www.topky.sk/cl/10/9536155/Svetovy-POPLACH-na-internete--Slovenske-ministerstvo-aj-vladne-urady-v-Europe-hufne-vypinaju-weby",
-      "title": "Svetový POPLACH na internete! Slovenské ministerstvo aj vládne úrady v Európe húfne vypínajú weby",
-      "posted_at": "2026-10-21T16:26:15.260792+00:00"
-    },
-    {
-      "url": "https://www.bratislavak.sk/clanky/15624/foto-bratislavcania-spominaju-na-stary-hotel-carlton-fotografia-z-minulosti-vyvolala-mnozstvo-osobnych-spomienok",
-      "title": "Fotografia hotela Carlton vyvolala spomienky Bratislavčanov",
-      "posted_at": "2026-10-21T17:04:50.189714+00:00"
-    },
-    {
-      "url": "https://www.bratislavak.sk/clanky/15924/zapchy-v-okoli-bratislavy-vytacaju-vodicov-pravy-pruh-nie-je-hanba-na-r7-upozornuju-na-neprijemny-zlozvyk",
-      "title": "Vodičov na R7 vytáča jazda v strednom pruhu. Čo hovorí zákon?",
-      "posted_at": "2026-10-21T17:34:56.735882+00:00"
-    },
     {
       "url": "https://www.teraz.sk/regiony/policia-kontroly-na-dunaji-odhalili-po/1001634-clanok.html",
       "title": "KONTROLY NA DUNAJI:Zistili porušenie predpisov pri prevádzke plavidiel",
@@ -7486,15 +7473,15 @@
       "url": "https://www.topky.sk/cl/10/9538181/Volby-aj-bez-cesty-do-volebnej-miestnosti--Volici-mozu-vyuzit-prenosnu-schranku",
       "title": "Voľby aj bez cesty do volebnej miestnosti: Voliči môžu využiť prenosnú schránku",
       "posted_at": "2026-10-24T13:53:35.071470+00:00"
+    },
+    {
+      "url": "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065617-vallo-smeruje-k-presvedcivemu-vitazstvu-v-bratislave-raza-podla-exit-pollu-porazil-s-vyraznym-naskokom",
+      "title": "Vallo smeruje k presvedčivému víťazstvu v Bratislave. Ráža podľa exit pollu porazil s výrazným náskokom",
+      "posted_at": "2026-10-24T19:43:19.419580+00:00"
     }
   ],
   "failed_attempts": {},
   "evaluations": {
-    "https://www.topky.sk/cl/10/9536975/Obrovsky-colny-podvod-na-Slovensku--Skody-za-stovky-milionov-eur--podozrivi-su-aj-verejni-cinitelia": {
-      "score": 6,
-      "reason": "Major customs fraud investigation led by EPPO in Bratislava",
-      "at": "2026-10-22T16:04:05.975738+00:00"
-    },
     "https://www.bratislavak.sk/clanky/16003/zomrel-legendarny-slovensky-dj-julo-alias-python-len-pred-par-dnami-este-zabaval-ludi-na-party": {
       "score": 6,
       "reason": "Passing of known local radio personality DJ Julo Python",
@@ -7540,11 +7527,6 @@
       "reason": "Florian Residence in Bratislava wins architectural award",
       "at": "2026-10-24T08:22:26.497166+00:00"
     },
-    "https://bratislavaden.sk/bratislavsky-kraj-chysta-netradicne-dobrodruzstvo-pre-deti-v-cunove-ich-caka-noc-plna-tajomstiev-a-mytickych-bytosti/": {
-      "score": 4,
-      "reason": "Children's event at Ekocentrum in Čunovo",
-      "at": "2026-10-24T08:22:26.497171+00:00"
-    },
     "https://regiony.zoznam.sk/zmena-pocasia-na-slovensko-prichadza-dazd-vieme-kde-naprsi-najviac/": {
       "score": 3,
       "reason": "General weather forecast for Slovakia, not exclusively Bratislava",
@@ -7554,11 +7536,6 @@
       "score": 3,
       "reason": "Bratislava region election kickoff overview",
       "at": "2026-10-24T08:22:26.497178+00:00"
-    },
-    "https://sita.sk/vrealitach/model-druztevneho-byvania-prichadza-uz-aj-do-centra-bratislavy-foto/": {
-      "score": 3,
-      "reason": "Cooperative housing model coming to central Bratislava",
-      "at": "2026-10-24T08:22:26.497183+00:00"
     },
     "https://www.topky.sk/cl/10/9538149/Bratislavcania-maju-vo-volbach-VIAC-prace--Do-ruk-dostanu-az-sest-hlasovacich-listkov": {
       "score": 4,
@@ -7589,6 +7566,91 @@
       "score": 3,
       "reason": "General health advice regarding time change from Bratislava RÚVZ",
       "at": "2026-10-24T11:52:57.287060+00:00"
+    },
+    "https://regiony.zoznam.sk/komunalne-volby-2026-online-kto-povedie-mesta-a-obce-sledujte-vysledky/": {
+      "score": 9,
+      "reason": "Municipal elections 2026 online updates and exit poll results for Bratislava",
+      "at": "2026-10-24T19:43:06.267644+00:00"
+    },
+    "https://www.topky.sk/cl/10/9537819/MIMORIADNY-ONLINE-Slovaci-rozhodli-o-buducnosti-samosprav--V-miestnostiach-scitavaju-hlasy--zverejnene-boli-prve-vysledky": {
+      "score": 8,
+      "reason": "Municipal elections live updates and vote counting in Bratislava",
+      "at": "2026-10-24T19:43:06.267648+00:00"
+    },
+    "https://www.aktuality.sk/clanok/GxyeiMD/volby-2026-v-bratislave-a-kraji-prve-vysledky-su-zname/": {
+      "score": 8,
+      "reason": "Bratislava regional elections first results breaking news",
+      "at": "2026-10-24T19:43:06.267653+00:00"
+    },
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065541-vysledky-volieb-2026-online-nazivo": {
+      "score": 8,
+      "reason": "Regional elections and mayoral race results in Bratislava and other regions",
+      "at": "2026-10-24T19:43:06.267657+00:00"
+    },
+    "https://www.bratislavak.sk/clanky/16022/online-su-zname-prve-vysledky-kto-bude-starostom-primatorom-a-zupanom": {
+      "score": 8,
+      "reason": "Live election results for mayors and regional governors in Bratislava",
+      "at": "2026-10-24T19:43:06.267661+00:00"
+    },
+    "https://sita.sk/nasadoprava/bratislavsky-kraj-postavi-novy-most-medzi-vajnormi-a-ciernou-vodou-prace-potrvaju-takmer-rok-foto/": {
+      "score": 8,
+      "reason": "Bratislava region to build a new bridge between Vajnory and Čierna Voda",
+      "at": "2026-10-24T19:43:06.267667+00:00"
+    },
+    "https://www.aktuality.sk/clanok/zhy5C9K/policia-obvinila-muza-ktory-v-nemocnici-v-ruzinove-napadol-personal/": {
+      "score": 8,
+      "reason": "Irishman charged for attacking medic in Ružinov hospital",
+      "at": "2026-10-24T19:43:06.267673+00:00"
+    },
+    "https://www.bratislavak.sk/clanky/16025/prvy-exit-poll-o-primatorovi-bratislavy-matus-vallo-ma-vyrazny-naskok-prve-slova-po-novych-odhadoch": {
+      "score": 7,
+      "reason": "Exit poll results for Bratislava mayoral election",
+      "at": "2026-10-24T19:43:06.267677+00:00"
+    },
+    "https://www.bratislavak.sk/clanky/16024/bratislava-ma-podla-exit-pollu-jasneho-vitaza-ministrovi-razovi-nepomohla-ani-podpora-vladnej-koalicie": {
+      "score": 7,
+      "reason": "Exit poll results showing Vallo's lead in Bratislava",
+      "at": "2026-10-24T19:43:06.267682+00:00"
+    },
+    "https://www.teraz.sk/regiony/raz-po-skonceni-hlasovania-tvrdi-/1002424-clanok.html": {
+      "score": 7,
+      "reason": "Election reaction from Bratislava mayoral candidate",
+      "at": "2026-10-24T19:43:06.267686+00:00"
+    },
+    "https://www.pravda.sk/spravy/regionalne-volby-2026/clanok/2065563-foto-a-video-v-bratislave-sa-vecer-tvorili-obrovske-rady-ludia-travili-za-plentou-dlhy-cas-mozno-sa-bude-volit-aj-po-20-00-h": {
+      "score": 7,
+      "reason": "Long queues and voting delays in Dúbravka",
+      "at": "2026-10-24T19:43:06.267690+00:00"
+    },
+    "https://www.teraz.sk/regiony/j-droba-vyhre-uverim-az-ked-uvid/1002444-clanok.html": {
+      "score": 6,
+      "reason": "Bratislava regional election candidate reactions",
+      "at": "2026-10-24T19:43:06.267694+00:00"
+    },
+    "https://www.startitup.sk/petrzalka-odmieta-obvinenia-z-manipulacie-s-hlasovacimi-listkami/": {
+      "score": 6,
+      "reason": "Petržalka response to election ballot manipulation accusations",
+      "at": "2026-10-24T19:43:06.267698+00:00"
+    },
+    "https://bratislava.zoznam.sk/pozor-na-zmenu-botanicka-zahrada-uk-od-zajtra-skracuje-otvaracie-hodiny-coskoro-zatvori-uplne/": {
+      "score": 4,
+      "reason": "Comenius University Botanical Garden shortening hours in Bratislava",
+      "at": "2026-10-24T19:43:06.267702+00:00"
+    },
+    "https://www.bratislavak.sk/clanky/15971/hubari-pripravte-si-kosiky-bratislavsky-kraj-pokropil-dazd-sikovna-mapa-prezradi-kde-uz-ludia-nachadzaju-huby": {
+      "score": 4,
+      "reason": "Mushroom picking map near Bratislava",
+      "at": "2026-10-24T19:43:06.267706+00:00"
+    },
+    "https://bratislava.zoznam.sk/ludia-ocakavaju-od-starostov-viac-nez-im-dovoluju-pravomoci-politolog-vysvetluje-preco/": {
+      "score": 3,
+      "reason": "General political analysis on local government powers",
+      "at": "2026-10-24T19:43:06.267710+00:00"
+    },
+    "https://www.startitup.sk/preco-mnohi-slovaci-ignoruju-volby-ktore-im-najviac-menia-zivot-bratislavcania-odhaduju-dovod-nizkej-ucasti/": {
+      "score": 3,
+      "reason": "General voter turnout commentary",
+      "at": "2026-10-24T19:43:06.267714+00:00"
     }
   }
 }
