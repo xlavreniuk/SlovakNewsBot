@@ -6439,7 +6439,11 @@
     "https://sita.sk/top-foto-dna-23-oktober-2026-trump-za-mrezami-gymnastka-na-ms-tankovanie-lietadla-kontrola-pre-ebolu-a-opatrenia-v-jordansku/": "2026-10-23T23:39:07.656871+00:00",
     "https://sita.sk/byvaniehrou/toto-si-mozno-uz-nekupite-ked-zistite-z-coho-sa-to-vyraba-rozhoduje-viac-nez-povod-surovin/": "2026-10-23T23:39:07.656874+00:00",
     "https://sita.sk/vofinanciach/nova-povinnost-pre-danovych-poradcov-uctovnikov-aj-realitky-na-registraciu-zostava-cas-do-konca-novembra/": "2026-10-23T23:39:07.656882+00:00",
-    "https://www.startitup.sk/znamy-bratislavsky-podnik-zacina-od-nuly-novy-majitel-priznava-co-bolo-jeho-najvacsou-slabinou/": "2026-10-23T23:39:07.656885+00:00"
+    "https://www.startitup.sk/znamy-bratislavsky-podnik-zacina-od-nuly-novy-majitel-priznava-co-bolo-jeho-najvacsou-slabinou/": "2026-10-23T23:39:07.656885+00:00",
+    "https://sita.sk/volby-do-vuc-2026-kandidati-na-predsedu-zupana-vysledky-a-zvoleni-poslanci-bratislavsky-samospravny-kraj/": "2026-10-24T00:25:07.282102+00:00",
+    "https://www.bratislavak.sk/clanky/15964/dedko-sa-na-zachode-v-auparku-dostal-do-ponizujucej-situacie-neznamy-mladik-mu-kupil-teplaky-teraz-ho-hlada": "2026-10-24T00:25:07.282118+00:00",
+    "https://refresher.sk/213936-Takto-vyzerala-Vecerna-trznica-na-Trnavskom-myte-Kedy-bude-dalsia": "2026-10-24T00:25:07.282122+00:00",
+    "https://www.topky.sk/cl/10/9537309/Ake-bude-pocasie-cez-VOLBY--Jesen-udrie-NAPLNO--radsej-zabudnite-na-slnko-a-dobre-sa-oblecte-": "2026-10-24T00:25:07.282126+00:00"
   },
   "seen_images": {
     "img.topky.sk/9053651.jpg": "2026-10-10T03:48:21.490138+00:00",
@@ -7106,7 +7110,12 @@
       "posted_at": "2026-10-23T22:54:23.989162+00:00"
     }
   ],
-  "failed_attempts": {},
+  "failed_attempts": {
+    "https://www.bratislavak.sk/clanky/15921/bratislavcania-si-zaspominali-na-poulicnu-legendu-kora-rudo-ulehla-zabaval-ludi-s-gitarou-a-hrebenom": {
+      "count": 1,
+      "last_failed_at": "2026-10-24T00:25:00.237029+00:00"
+    }
+  },
   "evaluations": {
     "https://www.pravda.sk/spravy/inzercia/clanok/2063867-autonomny-obchod-otvara-nove-moznosti-retailu-datapac-predstavil-slovensku-posybe-wiwo-store": {
       "score": 4,
@@ -7158,21 +7167,6 @@
       "reason": "Union dispute involving Amazon and ministry",
       "at": "2026-10-23T11:41:28.304147+00:00"
     },
-    "https://www.topky.sk/cl/10/9537309/Ake-bude-pocasie-cez-VOLBY--Jesen-udrie-NAPLNO--radsej-zabudnite-na-slnko-a-dobre-sa-oblecte-": {
-      "score": 3,
-      "reason": "Weather forecast for elections in Bratislava",
-      "at": "2026-10-23T13:11:31.265637+00:00"
-    },
-    "https://www.bratislavak.sk/clanky/15964/dedko-sa-na-zachode-v-auparku-dostal-do-ponizujucej-situacie-neznamy-mladik-mu-kupil-teplaky-teraz-ho-hlada": {
-      "score": 6,
-      "reason": "Wholesome missing connection story in Aupark Bratislava",
-      "at": "2026-10-23T14:12:31.246437+00:00"
-    },
-    "https://refresher.sk/213936-Takto-vyzerala-Vecerna-trznica-na-Trnavskom-myte-Kedy-bude-dalsia": {
-      "score": 5,
-      "reason": "Report on the evening market at Trnavské mýto",
-      "at": "2026-10-23T14:12:31.246464+00:00"
-    },
     "https://refresher.cz/213936-Takto-vyzerala-Vecerna-trznica-na-Trnavskom-myte-Kedy-bude-dalsia": {
       "score": 5,
       "reason": "Evening market at Trnavské mýto in Bratislava",
@@ -7182,11 +7176,6 @@
       "score": 4,
       "reason": "Local nostalgia story about Bratislava street legend Koro",
       "at": "2026-10-23T21:01:32.073713+00:00"
-    },
-    "https://sita.sk/volby-do-vuc-2026-kandidati-na-predsedu-zupana-vysledky-a-zvoleni-poslanci-bratislavsky-samospravny-kraj/": {
-      "score": 3,
-      "reason": "Bratislava self-governing region elections overview",
-      "at": "2026-10-23T23:39:07.656627+00:00"
     }
   }
 }
