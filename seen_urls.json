@@ -6443,7 +6443,13 @@
     "https://sita.sk/volby-do-vuc-2026-kandidati-na-predsedu-zupana-vysledky-a-zvoleni-poslanci-bratislavsky-samospravny-kraj/": "2026-10-24T00:25:07.282102+00:00",
     "https://www.bratislavak.sk/clanky/15964/dedko-sa-na-zachode-v-auparku-dostal-do-ponizujucej-situacie-neznamy-mladik-mu-kupil-teplaky-teraz-ho-hlada": "2026-10-24T00:25:07.282118+00:00",
     "https://refresher.sk/213936-Takto-vyzerala-Vecerna-trznica-na-Trnavskom-myte-Kedy-bude-dalsia": "2026-10-24T00:25:07.282122+00:00",
-    "https://www.topky.sk/cl/10/9537309/Ake-bude-pocasie-cez-VOLBY--Jesen-udrie-NAPLNO--radsej-zabudnite-na-slnko-a-dobre-sa-oblecte-": "2026-10-24T00:25:07.282126+00:00"
+    "https://www.topky.sk/cl/10/9537309/Ake-bude-pocasie-cez-VOLBY--Jesen-udrie-NAPLNO--radsej-zabudnite-na-slnko-a-dobre-sa-oblecte-": "2026-10-24T00:25:07.282126+00:00",
+    "https://sita.sk/komunalne-volby-2026-bratislava-cunovo-vysledky-kandidati-na-starostu/": "2026-10-24T01:32:25.855652+00:00",
+    "https://sita.sk/komunalne-volby-2026-bratislava-rusovce-vysledky-kandidati-na-starostu/": "2026-10-24T01:32:25.855656+00:00",
+    "https://sita.sk/komunalne-volby-2026-bratislava-jarovce-vysledky-kandidati-na-starostu/": "2026-10-24T01:32:25.855660+00:00",
+    "https://sita.sk/komunalne-volby-2026-bratislava-petrzalka-vysledky-kandidati-na-starostu/": "2026-10-24T01:32:25.855663+00:00",
+    "https://sita.sk/komunalne-volby-2026-bratislava-zahorska-bystrica-vysledky-kandidati-na-starostu/": "2026-10-24T01:32:25.855666+00:00",
+    "https://sita.sk/komunalne-volby-2026-bratislava-devinska-nova-ves-vysledky-kandidati-na-starostu/": "2026-10-24T01:32:25.855668+00:00"
   },
   "seen_images": {
     "img.topky.sk/9053651.jpg": "2026-10-10T03:48:21.490138+00:00",
@@ -7112,8 +7118,8 @@
   ],
   "failed_attempts": {
     "https://www.bratislavak.sk/clanky/15921/bratislavcania-si-zaspominali-na-poulicnu-legendu-kora-rudo-ulehla-zabaval-ludi-s-gitarou-a-hrebenom": {
-      "count": 1,
-      "last_failed_at": "2026-10-24T00:25:00.237029+00:00"
+      "count": 2,
+      "last_failed_at": "2026-10-24T01:32:25.855609+00:00"
     }
   },
   "evaluations": {
